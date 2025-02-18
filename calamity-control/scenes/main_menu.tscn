@@ -1,14 +1,17 @@
-[gd_scene format=3 uid="uid://drx37bmj2egrr"]
+[gd_scene load_steps=3 format=3 uid="uid://drx37bmj2egrr"]
+
+[ext_resource type="Texture2D" uid="uid://cnicqm41bskdc" path="res://assets/ui/Placeholder UI/indomap.jpg" id="1_kxva0"]
+[ext_resource type="Texture2D" uid="uid://dj5vbufgspbxx" path="res://assets/ui/Placeholder UI/elmo.jpg" id="2_48kog"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = -475.0
-offset_top = -218.0
-offset_right = -177.0
-offset_bottom = -54.0
+offset_left = -477.0
+offset_top = -102.0
+offset_right = -179.0
+offset_bottom = 87.0
 theme_override_constants/separation = 15
 
 [node name="Play Game" type="Button" parent="VBoxContainer"]
@@ -27,3 +30,35 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Exit Game
 "
+
+[node name="Title" type="Label" parent="."]
+offset_left = -315.0
+offset_top = -286.0
+offset_right = 317.0
+offset_bottom = -198.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "CALAMITY CONTROL"
+
+[node name="Images" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="IndoMap" type="TextureRect" parent="Images"]
+z_index = -1
+offset_left = -586.0
+offset_top = -329.0
+offset_right = 576.0
+offset_bottom = 325.0
+texture = ExtResource("1_kxva0")
+
+[node name="Elmo" type="TextureRect" parent="Images"]
+z_index = -1
+offset_left = -390.0
+offset_top = 152.0
+offset_right = 316.0
+offset_bottom = 331.0
+texture = ExtResource("2_48kog")
+expand_mode = 1
