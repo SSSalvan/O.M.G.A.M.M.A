@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7b123l16ffc"
-path="res://.godot/imported/Zhong_Xina.jpg-69eb851856696baedf55d6cd81cdcba0.ctex"
+uid="uid://cnh1fpbju5oaf"
+path="res://.godot/imported/c28d9b63d3255b4355e0f4b18e3e80e5_t-Photoroom.png-557a032bc98f94d307dbdc4a7a32f007.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scripts/Zhong_Xina.jpg"
-dest_files=["res://.godot/imported/Zhong_Xina.jpg-69eb851856696baedf55d6cd81cdcba0.ctex"]
+source_file="res://assets/sprites/c28d9b63d3255b4355e0f4b18e3e80e5_t-Photoroom.png"
+dest_files=["res://.godot/imported/c28d9b63d3255b4355e0f4b18e3e80e5_t-Photoroom.png-557a032bc98f94d307dbdc4a7a32f007.ctex"]
 
 [params]
 

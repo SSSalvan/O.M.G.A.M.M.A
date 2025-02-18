@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://rdkfte8a12tp"]
+
+[ext_resource type="Texture2D" uid="uid://cnicqm41bskdc" path="res://assets/ui/Placeholder UI/indomap.jpg" id="1_iu41n"]
+[ext_resource type="Texture2D" uid="uid://op1m8qxb0iuq" path="res://assets/ui/Placeholder UI/Zhong_Xina.jpg" id="2_rvc38"]
+[ext_resource type="Texture2D" uid="uid://cnh1fpbju5oaf" path="res://assets/sprites/c28d9b63d3255b4355e0f4b18e3e80e5_t-Photoroom.png" id="3_xa1hq"]
+[ext_resource type="Script" path="res://scripts/Sprite_click.gd" id="4_r8kal"]
+
+[node name="MainGameplay" type="Node2D"]
+
+[node name="Images" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Images"]
+layout_mode = 0
+offset_left = -578.0
+offset_top = -324.0
+offset_right = 575.0
+offset_bottom = 323.0
+texture = ExtResource("1_iu41n")
+
+[node name="Player_facecam" type="TextureRect" parent="Images"]
+layout_mode = 0
+offset_left = 394.0
+offset_top = 142.0
+offset_right = 575.0
+offset_bottom = 323.0
+texture = ExtResource("2_rvc38")
+expand_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Action_Needed" type="Sprite2D" parent="Camera2D"]
+position = Vector2(-366, -50)
+scale = Vector2(0.108824, 0.142647)
+texture = ExtResource("3_xa1hq")
+script = ExtResource("4_r8kal")
+
+[node name="Action_Needed2" type="Sprite2D" parent="Camera2D"]
+position = Vector2(-77, -66)
+scale = Vector2(0.108824, 0.142647)
+texture = ExtResource("3_xa1hq")
+script = ExtResource("4_r8kal")
+
+[node name="Action_Needed3" type="Sprite2D" parent="Camera2D"]
+position = Vector2(507, 11)
+scale = Vector2(0.108824, 0.142647)
+texture = ExtResource("3_xa1hq")
+script = ExtResource("4_r8kal")
