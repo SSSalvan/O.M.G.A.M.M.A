@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckdb64dsm6e8e"]
+[gd_scene load_steps=10 format=3 uid="uid://ckdb64dsm6e8e"]
 
 [ext_resource type="Script" path="res://scripts/main_gameplay.gd" id="1_b7bvk"]
 [ext_resource type="Texture2D" uid="uid://cnicqm41bskdc" path="res://assets/ui/Placeholder UI/indomap.jpg" id="1_iu41n"]
@@ -6,6 +6,34 @@
 [ext_resource type="Texture2D" uid="uid://op1m8qxb0iuq" path="res://assets/ui/Placeholder UI/Zhong_Xina.jpg" id="2_rvc38"]
 [ext_resource type="Texture2D" uid="uid://cnh1fpbju5oaf" path="res://assets/sprites/c28d9b63d3255b4355e0f4b18e3e80e5_t-Photoroom.png" id="3_xa1hq"]
 [ext_resource type="Script" path="res://scripts/Sprite_click.gd" id="4_r8kal"]
+
+[sub_resource type="GDScript" id="GDScript_kpdcs"]
+script/source = "extends Sprite2D
+
+func _ready() -> void:
+	set_process_input(true)
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		var mouse_pos = get_global_mouse_position()  # Get global mouse position
+		if get_rect().has_point(to_local(mouse_pos)):  # Convert mouse position to local and check
+			print(\"Kalimantan Selected\")
+	
+"
+
+[sub_resource type="GDScript" id="GDScript_7pf3y"]
+script/source = "extends Sprite2D
+
+func _ready() -> void:
+	set_process_input(true)
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		var mouse_pos = get_global_mouse_position()  # Get global mouse position
+		if get_rect().has_point(to_local(mouse_pos)):  # Convert mouse position to local and check
+			print(\"Papua Selected\")
+	
+"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r640c"]
 radius = 55.3432
@@ -60,13 +88,13 @@ script = ExtResource("4_r8kal")
 position = Vector2(-77, -66)
 scale = Vector2(0.108824, 0.142647)
 texture = ExtResource("3_xa1hq")
-script = ExtResource("4_r8kal")
+script = SubResource("GDScript_kpdcs")
 
 [node name="Action_Needed3" type="Sprite2D" parent="Camera2D"]
 position = Vector2(507, 11)
 scale = Vector2(0.108824, 0.142647)
 texture = ExtResource("3_xa1hq")
-script = ExtResource("4_r8kal")
+script = SubResource("GDScript_7pf3y")
 
 [node name="Area2D" type="Area2D" parent="Camera2D"]
 
