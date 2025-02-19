@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckdb64dsm6e8e"]
+[gd_scene load_steps=6 format=3 uid="uid://ckdb64dsm6e8e"]
 
 [ext_resource type="Texture2D" uid="uid://cnicqm41bskdc" path="res://assets/ui/Placeholder UI/indomap.jpg" id="1_iu41n"]
 [ext_resource type="Texture2D" uid="uid://op1m8qxb0iuq" path="res://assets/ui/Placeholder UI/Zhong_Xina.jpg" id="2_rvc38"]
 [ext_resource type="Texture2D" uid="uid://cnh1fpbju5oaf" path="res://assets/sprites/c28d9b63d3255b4355e0f4b18e3e80e5_t-Photoroom.png" id="3_xa1hq"]
 [ext_resource type="Script" path="res://scripts/Sprite_click.gd" id="4_r8kal"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r640c"]
+radius = 55.3432
+height = 325.149
 
 [node name="MainGameplay" type="Node2D"]
 
@@ -49,3 +53,10 @@ position = Vector2(507, 11)
 scale = Vector2(0.108824, 0.142647)
 texture = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
+
+[node name="Area2D" type="Area2D" parent="Camera2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D"]
+position = Vector2(-405, -60)
+rotation = -0.825563
+shape = SubResource("CapsuleShape2D_r640c")

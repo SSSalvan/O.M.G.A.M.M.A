@@ -8,3 +8,4 @@ func _input(event: InputEvent) -> void:
 		var mouse_pos = get_global_mouse_position()  # Get global mouse position
 		if get_rect().has_point(to_local(mouse_pos)):  # Convert mouse position to local and check
 			print("Social Credit ++")
+	
