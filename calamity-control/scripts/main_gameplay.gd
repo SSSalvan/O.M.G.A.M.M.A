@@ -17,7 +17,7 @@ func _on_end_week_pressed() -> void:
 	if week_counter:
 		week_counter.text = "Week: " + str(week)  # Avoids crashing
 	else:
-		print("not work :(((")
+		print("not work :(((") # Debugging
 
 func update_week_label():
 	print("Week Updated")

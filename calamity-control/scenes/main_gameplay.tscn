@@ -40,24 +40,14 @@ height = 325.149
 
 [node name="MainGameplay" type="Node2D"]
 
-[node name="GameManager" type="Node" parent="."]
-script = ExtResource("2_qg8ic")
-
-[node name="Week Counter" type="Label" parent="GameManager"]
-offset_left = -568.0
-offset_top = 114.0
-offset_right = -497.0
-offset_bottom = 137.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Week: x"
-
 [node name="Images" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="Images"]
+[node name="MapBackground" type="TextureRect" parent="Images"]
 layout_mode = 0
 offset_left = -578.0
 offset_top = -324.0
@@ -73,6 +63,18 @@ offset_right = 575.0
 offset_bottom = 323.0
 texture = ExtResource("2_rvc38")
 expand_mode = 1
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("2_qg8ic")
+
+[node name="Week Counter" type="Label" parent="GameManager"]
+offset_left = -567.0
+offset_top = -312.0
+offset_right = -447.0
+offset_bottom = -267.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Week: x"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -110,7 +112,6 @@ offset_right = -533.0
 offset_bottom = 219.0
 
 [node name="End Week" type="Button" parent="User Interface"]
-layout_mode = 0
 offset_right = 273.0
 offset_bottom = 102.0
 theme_override_font_sizes/font_size = 32
