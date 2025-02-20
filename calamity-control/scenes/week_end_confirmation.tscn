@@ -14,10 +14,24 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_kcofj")
 
+[node name="BackgroundBlocker" type="ColorRect" parent="Confirm_Week"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2617.0
+offset_top = -1488.0
+offset_right = 3157.0
+offset_bottom = 1451.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.0666667)
+
 [node name="Popup" type="TextureRect" parent="Confirm_Week"]
 layout_mode = 0
 offset_right = 426.0
 offset_bottom = 119.0
+mouse_filter = 0
 texture = SubResource("PlaceholderTexture2D_hypsg")
 
 [node name="Title" type="Label" parent="Confirm_Week"]

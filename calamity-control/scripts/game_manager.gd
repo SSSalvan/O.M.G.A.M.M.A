@@ -8,6 +8,8 @@ func _on_end_week_pressed() -> void:
 	var confirm_scene = load("res://scenes/week_end_confirmation.tscn").instantiate()
 	add_child(confirm_scene)
 	
+	confirm_scene.move_to_front()
+	
 	var control_node = confirm_scene.get_node("Confirm_Week")
 	
 	if control_node and control_node.has_signal("confirmed"):
