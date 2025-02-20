@@ -4,7 +4,10 @@ extends Node
 
 var week: int = 1
 
-func ready():
+func _on_end_week_pressed() -> void:
+	next_week()
+
+func _ready():
 	update_week_label()
 
 func next_week():
@@ -12,6 +15,5 @@ func next_week():
 	update_week_label()
 
 func update_week_label():
-	if week_counter:
-		week_counter.text = "Week: " + str (week)
-	print("Week Updated")
+	week_counter.text = "Week: " + str (week)
+	print("Week Updated, Bisma Gemoy, Week: ", week)

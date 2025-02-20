@@ -1,6 +1,5 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckdb64dsm6e8e"]
+[gd_scene load_steps=9 format=3 uid="uid://ckdb64dsm6e8e"]
 
-[ext_resource type="Script" path="res://scripts/main_gameplay.gd" id="1_b7bvk"]
 [ext_resource type="Texture2D" uid="uid://cnicqm41bskdc" path="res://assets/ui/Placeholder UI/indomap.jpg" id="1_iu41n"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="2_qg8ic"]
 [ext_resource type="Texture2D" uid="uid://op1m8qxb0iuq" path="res://assets/ui/Placeholder UI/Zhong_Xina.jpg" id="2_rvc38"]
@@ -40,7 +39,6 @@ radius = 55.3432
 height = 325.149
 
 [node name="MainGameplay" type="Node2D"]
-script = ExtResource("1_b7bvk")
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("2_qg8ic")
@@ -112,9 +110,10 @@ offset_right = -533.0
 offset_bottom = 219.0
 
 [node name="End Week" type="Button" parent="User Interface"]
+layout_mode = 0
 offset_right = 273.0
 offset_bottom = 102.0
 theme_override_font_sizes/font_size = 32
 text = "End Week"
 
-[connection signal="pressed" from="User Interface/End Week" to="." method="_on_end_week_pressed"]
+[connection signal="pressed" from="User Interface/End Week" to="GameManager" method="_on_end_week_pressed"]
