@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpefqkvrndiks"]
+[gd_scene load_steps=4 format=3 uid="uid://w0cdj0abjga6"]
 
 [ext_resource type="Script" path="res://scripts/week_end_confirmation.gd" id="1_kcofj"]
 [ext_resource type="Script" path="res://scripts/background_blocker.gd" id="2_w3sle"]
