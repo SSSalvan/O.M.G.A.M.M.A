@@ -30,6 +30,7 @@ color = Color(0, 0, 0, 0.0431373)
 script = ExtResource("2_w3sle")
 
 [node name="Popup" type="TextureRect" parent="Confirm_Week"]
+layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 427.0
