@@ -1,13 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://drx37bmj2egrr"]
+[gd_scene load_steps=6 format=3 uid="uid://drx37bmj2egrr"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_0fjxs"]
 [ext_resource type="StyleBox" uid="uid://d0t507jbbigq3" path="res://assets/ui/Placeholder UI/placeholder_button_stylebox_hover.tres" id="1_21kk1"]
 [ext_resource type="Texture2D" uid="uid://cnicqm41bskdc" path="res://assets/ui/Placeholder UI/indomap.jpg" id="1_kxva0"]
 [ext_resource type="Texture2D" uid="uid://dj5vbufgspbxx" path="res://assets/ui/Placeholder UI/elmo.jpg" id="2_48kog"]
 [ext_resource type="StyleBox" uid="uid://qngkfnkus1j1" path="res://assets/ui/Placeholder UI/placeholder_button_stylebox.tres" id="2_ljbj3"]
-[ext_resource type="Texture2D" uid="uid://da5iewfimx340" path="res://scenes/Mainmenu.png" id="4_pwayd"]
-
-[sub_resource type="Theme" id="Theme_t6n6p"]
 
 [node name="MainMenu" type="Node2D"]
 
@@ -31,39 +28,36 @@ metadata/_edit_use_anchors_ = true
 [node name="IndoMap" type="TextureRect" parent="MainMenu/Images"]
 z_index = -1
 layout_mode = 0
-offset_left = -577.0
-offset_top = -327.0
-offset_right = 585.0
-offset_bottom = 327.0
+offset_left = -586.0
+offset_top = -329.0
+offset_right = 576.0
+offset_bottom = 325.0
 texture = ExtResource("1_kxva0")
 
 [node name="Elmo" type="TextureRect" parent="MainMenu/Images"]
 z_index = -1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.351
-anchor_top = 0.5
-anchor_right = 2.245
-anchor_bottom = 2.591
-offset_left = -305.96
-offset_top = 130.0
-offset_right = -8.8
-offset_bottom = 221.36
+layout_mode = 0
+offset_left = -390.0
+offset_top = 152.0
+offset_right = 316.0
+offset_bottom = 331.0
 texture = ExtResource("2_48kog")
 expand_mode = 1
 
-[node name="Mainmenu" type="Sprite2D" parent="MainMenu/Images"]
-position = Vector2(10, -3)
-scale = Vector2(0.616406, 0.614352)
-texture = ExtResource("4_pwayd")
-
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
 layout_mode = 0
-offset_left = -553.0
-offset_top = 131.0
-offset_right = -255.0
-offset_bottom = 320.0
+offset_left = -477.0
+offset_top = -102.0
+offset_right = -179.0
+offset_bottom = 87.0
 theme_override_constants/separation = 15
+
+[node name="Play Game" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = ExtResource("1_21kk1")
+theme_override_styles/normal = ExtResource("2_ljbj3")
+text = "Play Game"
 
 [node name="Settings" type="Button" parent="MainMenu/VBoxContainer"]
 layout_mode = 2
@@ -81,25 +75,13 @@ theme_override_styles/normal = ExtResource("2_ljbj3")
 text = "Exit Game
 "
 
-[node name="Play Game" type="Button" parent="MainMenu/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_disabled_color = Color(0.0070624, 0.0497766, 0.0397632, 0)
-theme_override_font_sizes/font_size = 32
-theme_override_styles/hover = ExtResource("1_21kk1")
-theme_override_styles/normal = ExtResource("2_ljbj3")
-text = "Play Game"
-
 [node name="Title" type="Label" parent="MainMenu"]
 layout_mode = 0
-offset_left = -294.0
-offset_top = -281.0
-offset_right = 338.0
-offset_bottom = -193.0
-theme = SubResource("Theme_t6n6p")
-theme_override_colors/font_color = Color(0.454902, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.660331, 0.280713, 0, 1)
-theme_override_colors/font_outline_color = Color(0.99883, 0.641171, 0.775038, 1)
-theme_override_constants/shadow_offset_x = 4
+offset_left = -315.0
+offset_top = -286.0
+offset_right = 317.0
+offset_bottom = -198.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 64
 text = "CALAMITY CONTROL"
 
