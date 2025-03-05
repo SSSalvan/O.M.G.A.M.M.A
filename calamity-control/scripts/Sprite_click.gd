@@ -14,6 +14,3 @@ func _input(event: InputEvent) -> void:
 			confirm_scene.move_to_front()
 			var control_node = confirm_scene.get_node("Action_Select")
 			
-			
-			
-			
