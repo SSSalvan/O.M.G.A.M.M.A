@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_0fjxs"]
 [ext_resource type="StyleBox" uid="uid://d0t507jbbigq3" path="res://assets/ui/Placeholder UI/placeholder_button_stylebox_hover.tres" id="1_21kk1"]
-[ext_resource type="Texture2D" uid="uid://cnicqm41bskdc" path="res://assets/ui/Placeholder UI/indomap.jpg" id="1_kxva0"]
 [ext_resource type="Texture2D" uid="uid://dj5vbufgspbxx" path="res://assets/ui/Placeholder UI/elmo.jpg" id="2_48kog"]
 [ext_resource type="StyleBox" uid="uid://qngkfnkus1j1" path="res://assets/ui/Placeholder UI/placeholder_button_stylebox.tres" id="2_ljbj3"]
+[ext_resource type="Texture2D" uid="uid://b6kte0p5qx4oy" path="res://assets/sprites/Indomap.png" id="2_p32y5"]
 
 [node name="MainMenu" type="Node2D"]
 
@@ -32,7 +32,8 @@ offset_left = -586.0
 offset_top = -329.0
 offset_right = 576.0
 offset_bottom = 325.0
-texture = ExtResource("1_kxva0")
+texture = ExtResource("2_p32y5")
+expand_mode = 2
 
 [node name="Elmo" type="TextureRect" parent="MainMenu/Images"]
 z_index = -1
