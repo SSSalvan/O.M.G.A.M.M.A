@@ -8,12 +8,4 @@ func _input(event: InputEvent) -> void:
 		var mouse_pos = get_global_mouse_position()  # Get global mouse position
 		if get_rect().has_point(to_local(mouse_pos)):  # Convert mouse position to local and check
 			print("Sumatra Selected")
-			var confirm_scene = load("res://scenes/develop_province.tscn").instantiate()
-			add_child(confirm_scene)
-			
-			confirm_scene.move_to_front()
-			var control_node = confirm_scene.get_node("Action_Select")
-			
-			
-			
-			
+	
