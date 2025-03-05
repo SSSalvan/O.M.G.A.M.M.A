@@ -1,10 +1,8 @@
 extends Node
 
 @onready var week_counter: Label = $"Week Counter"
-@onready var resource_counter: Label = $"Resource Counter"
 
 var week: int = 1
-var resource: int = 500
 
 func _on_end_week_pressed() -> void:
 
@@ -19,7 +17,6 @@ func _on_end_week_pressed() -> void:
 	if control_node and control_node.has_signal("confirmed"):
 		print("Signal found!")  # Debugging
 		control_node.confirmed.connect(self.next_week)
-		control_node.confirmed.connect(self.weekly_income_resource)
 	else:
 		print("ERROR: Signal 'confirmed' not found!")  # Debugging
 	
@@ -27,20 +24,11 @@ func _on_end_week_pressed() -> void:
 		
 func _ready():
 	update_week_label()
-	update_resource_label()
 
 func next_week():
 	week += 1
 	update_week_label()
 
-func weekly_income_resource():
-	resource += 500
-	update_resource_label()
-	
 func update_week_label():
 	week_counter.text = "Week: " + str (week)
 	print("Week Updated, Bisma Gemoy, Week: ", week)
-	
-func update_resource_label():
-	resource_counter.text = "Resource: " + str (resource)
-	print("Resource Updated, Alvan Nigga, Current Resource: ", resource)

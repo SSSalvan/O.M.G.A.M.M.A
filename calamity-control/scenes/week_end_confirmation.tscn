@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://w0cdj0abjga6"]
+[gd_scene load_steps=4 format=3 uid="uid://cpefqkvrndiks"]
 
 [ext_resource type="Script" path="res://scripts/week_end_confirmation.gd" id="1_kcofj"]
 [ext_resource type="Script" path="res://scripts/background_blocker.gd" id="2_w3sle"]
@@ -30,7 +30,6 @@ color = Color(0, 0, 0, 0.0431373)
 script = ExtResource("2_w3sle")
 
 [node name="Popup" type="TextureRect" parent="Confirm_Week"]
-layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 427.0
