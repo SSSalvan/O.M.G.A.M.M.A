@@ -15,7 +15,6 @@ func _input(event: InputEvent) -> void:
 
 func show_development_prompt():
 	var confirm_scene = load("res://scenes/develop_province.tscn").instantiate()
-	# ✅ Cast to the correct type
 	var popup = confirm_scene.get_node("Action_Select") as DevelopProvince
 	if popup:
 		popup.confirmed.connect(self.increase_development)

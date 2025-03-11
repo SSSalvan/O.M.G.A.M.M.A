@@ -14,3 +14,7 @@ config/name="Calamity Control"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[editor]
+
+script/templates_search_path="res://scripts"
