@@ -76,7 +76,7 @@ rotation = -0.825563
 shape = SubResource("CapsuleShape2D_r640c")
 
 [node name="Action_Needed" type="Sprite2D" parent="GameManager"]
-position = Vector2(-366, -50)
+position = Vector2(-388, -50)
 scale = Vector2(0.108824, 0.142647)
 texture = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
