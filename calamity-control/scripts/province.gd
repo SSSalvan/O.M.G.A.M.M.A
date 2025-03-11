@@ -6,12 +6,13 @@ var development_level: int = 0  # Province-specific status
 
 func _ready() -> void:
 	set_process_input(true)
+	province_name = name
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var mouse_pos = to_local(get_global_mouse_position())  # Get global mouse position
 		if get_rect().has_point(mouse_pos):  # Convert mouse position to local and check
-			print("Sumatra Selected")
+			print(province_name, " Selected")
 			show_development_prompt()
 
 func show_development_prompt():
@@ -27,6 +28,6 @@ func increase_development():
 		game_manager.resource -= 400
 		development_level += 1
 		game_manager.update_resource_label()
-		print(province_name + "Developed: ", development_level, " times")
+		print(province_name + " has been developed: ", development_level, " times")
 	else:
 		print("You broke AF Boy!") 

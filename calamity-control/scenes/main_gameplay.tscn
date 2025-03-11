@@ -65,6 +65,18 @@ scale = Vector2(0.108824, 0.142647)
 texture = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
+[node name="Jawa" type="Sprite2D" parent="GameManager"]
+position = Vector2(-199, 122)
+scale = Vector2(0.108824, 0.142647)
+texture = ExtResource("3_xa1hq")
+script = ExtResource("4_r8kal")
+
+[node name="Sulawesi" type="Sprite2D" parent="GameManager"]
+position = Vector2(73, -11)
+scale = Vector2(0.108824, 0.142647)
+texture = ExtResource("3_xa1hq")
+script = ExtResource("4_r8kal")
+
 [node name="Camera2D" type="Camera2D" parent="GameManager"]
 
 [node name="Week Counter" type="Label" parent="GameManager"]
