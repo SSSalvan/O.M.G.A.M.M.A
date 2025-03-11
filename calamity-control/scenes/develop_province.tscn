@@ -6,6 +6,7 @@
 [sub_resource type="Texture2DRD" id="Texture2DRD_fmipi"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_eqrir")
 
 [node name="Action_Select" type="Control" parent="."]
 top_level = true
@@ -13,7 +14,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_eqrir")
 
 [node name="BackgroundBlocker" type="ColorRect" parent="Action_Select"]
 layout_mode = 1
@@ -60,5 +60,5 @@ offset_bottom = 106.0
 text = "NO
 "
 
-[connection signal="pressed" from="Action_Select/Popup/YES" to="Action_Select" method="_on_yes_pressed"]
-[connection signal="pressed" from="Action_Select/Popup/NO" to="Action_Select" method="_on_no_pressed"]
+[connection signal="pressed" from="Action_Select/Popup/YES" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="Action_Select/Popup/NO" to="." method="_on_no_pressed"]

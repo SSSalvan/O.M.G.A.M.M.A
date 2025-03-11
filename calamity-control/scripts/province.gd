@@ -1,6 +1,7 @@
 extends Sprite2D
 @onready var game_manager = get_parent()
 
+
 @export var province_name: String = ""  # Name of the province
 var development_level: int = 0  # Province-specific status
 
@@ -17,10 +18,15 @@ func _input(event: InputEvent) -> void:
 
 func show_development_prompt():
 	var confirm_scene = load("res://scenes/develop_province.tscn").instantiate()
-	var popup = confirm_scene.get_node("Action_Select") as DevelopProvince
-	popup.confirmed.connect(self.increase_development)
-	get_tree().current_scene.add_child(confirm_scene)
-	confirm_scene.move_to_front()
+	var popup = confirm_scene as DevelopProvince
+	if popup:
+		popup.set_title_text("Develop " + province_name + "?")
+		get_tree().current_scene.add_child(confirm_scene)
+		confirm_scene.move_to_front()
+		print("Setting label update")
+	else:
+		print("Failed to cast confirm_scene to DevelopProvince")
+
 
 
 func increase_development():
