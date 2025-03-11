@@ -15,12 +15,16 @@ func _input(event: InputEvent) -> void:
 
 func show_development_prompt():
 	var confirm_scene = load("res://scenes/develop_province.tscn").instantiate()
+	# ✅ Cast to the correct type
+	var popup = confirm_scene as DevelopProvince
+	if popup:
+		popup.confirmed.connect(self.increase_development)
+	else:
+		print("ERROR: Failed to cast confirm_scene to DevelopProvince")
 	get_tree().current_scene.add_child(confirm_scene)
 	confirm_scene.move_to_front()
 
-	# ✅ Pass reference to this province
-	confirm_scene.confirmed.connect(self.increase_development)
-
 func increase_development():
-	development_level += 1
-	print(province_name + " Development increased to:", development_level)
+	if development_level < 10:  # Example cap
+		development_level += 1
+		print(province_name + " Development increased to:", development_level)
