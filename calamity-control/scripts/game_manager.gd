@@ -43,4 +43,4 @@ func update_week_label():
 	
 func update_resource_label():
 	resource_counter.text = "Resource: " + str (resource)
-	print("Resource Updated, Alvan Nigga, Current Resource: ", resource)
+	print("Resource Updated, Alvan Jomoks, Current Resource: ", resource)

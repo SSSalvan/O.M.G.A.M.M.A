@@ -34,7 +34,7 @@ layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 427.0
-offset_bottom = 120.0
+offset_bottom = 402.0
 mouse_filter = 0
 texture = SubResource("Texture2DRD_fmipi")
 
@@ -43,7 +43,7 @@ layout_mode = 2
 offset_top = 13.0
 offset_right = 426.0
 offset_bottom = 36.0
-text = "Would you lke to develop this province?"
+text = "Would you lke to develop this province? (400 Moneys)"
 
 [node name="YES" type="Button" parent="Action_Select/Popup"]
 layout_mode = 2
