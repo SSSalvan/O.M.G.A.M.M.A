@@ -1,11 +1,11 @@
 extends ColorRect
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.mouse_filter = Control.MOUSE_FILTER_STOP
-	print("BackgroundBlocker is active!")
+	#print("BackgroundBlocker is active!")
+	self.visible = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton or event is InputEventMouseMotion:
+		accept_event()  # Block input from propagating
+		#print("Background blocked input: ", event)

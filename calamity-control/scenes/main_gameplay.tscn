@@ -47,36 +47,6 @@ position = Vector2(-405, -60)
 rotation = -0.825563
 shape = SubResource("CapsuleShape2D_r640c")
 
-[node name="Sumatra" type="Sprite2D" parent="GameManager"]
-position = Vector2(-388, -50)
-scale = Vector2(0.108824, 0.142647)
-texture = ExtResource("3_xa1hq")
-script = ExtResource("4_r8kal")
-
-[node name="Kalimantan" type="Sprite2D" parent="GameManager"]
-position = Vector2(-77, -66)
-scale = Vector2(0.108824, 0.142647)
-texture = ExtResource("3_xa1hq")
-script = ExtResource("4_r8kal")
-
-[node name="Papua" type="Sprite2D" parent="GameManager"]
-position = Vector2(507, 11)
-scale = Vector2(0.108824, 0.142647)
-texture = ExtResource("3_xa1hq")
-script = ExtResource("4_r8kal")
-
-[node name="Jawa" type="Sprite2D" parent="GameManager"]
-position = Vector2(-199, 122)
-scale = Vector2(0.108824, 0.142647)
-texture = ExtResource("3_xa1hq")
-script = ExtResource("4_r8kal")
-
-[node name="Sulawesi" type="Sprite2D" parent="GameManager"]
-position = Vector2(73, -11)
-scale = Vector2(0.108824, 0.142647)
-texture = ExtResource("3_xa1hq")
-script = ExtResource("4_r8kal")
-
 [node name="Camera2D" type="Camera2D" parent="GameManager"]
 
 [node name="Week Counter" type="Label" parent="GameManager"]
@@ -104,6 +74,36 @@ offset_left = -573.0
 offset_top = 179.0
 offset_right = -537.0
 offset_bottom = 219.0
+
+[node name="Sumatra" type="Sprite2D" parent="GameManager/User Interface"]
+position = Vector2(185, -229)
+scale = Vector2(0.108824, 0.142647)
+texture = ExtResource("3_xa1hq")
+script = ExtResource("4_r8kal")
+
+[node name="Kalimantan" type="Sprite2D" parent="GameManager/User Interface"]
+position = Vector2(496, -245)
+scale = Vector2(0.108824, 0.142647)
+texture = ExtResource("3_xa1hq")
+script = ExtResource("4_r8kal")
+
+[node name="Papua" type="Sprite2D" parent="GameManager/User Interface"]
+position = Vector2(1080, -168)
+scale = Vector2(0.108824, 0.142647)
+texture = ExtResource("3_xa1hq")
+script = ExtResource("4_r8kal")
+
+[node name="Jawa" type="Sprite2D" parent="GameManager/User Interface"]
+position = Vector2(374, -57)
+scale = Vector2(0.108824, 0.142647)
+texture = ExtResource("3_xa1hq")
+script = ExtResource("4_r8kal")
+
+[node name="Sulawesi" type="Sprite2D" parent="GameManager/User Interface"]
+position = Vector2(646, -190)
+scale = Vector2(0.108824, 0.142647)
+texture = ExtResource("3_xa1hq")
+script = ExtResource("4_r8kal")
 
 [node name="End Week" type="Button" parent="GameManager/User Interface"]
 layout_mode = 0

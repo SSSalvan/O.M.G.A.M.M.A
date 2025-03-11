@@ -2,9 +2,10 @@ extends Node
 
 @onready var week_counter: Label = $"Week Counter"
 @onready var resource_counter: Label = $"Resource Counter"
+@onready var game_manager = get_parent().get_parent()
 
 var week: int = 1
-var resource: int = 500
+var resource: int = 1000
 
 func _on_end_week_pressed() -> void:
 
@@ -12,7 +13,6 @@ func _on_end_week_pressed() -> void:
 	add_child(confirm_scene)
 	
 	confirm_scene.move_to_front()
-
 	
 	var control_node = confirm_scene.get_node("Confirm_Week")
 	
@@ -22,12 +22,14 @@ func _on_end_week_pressed() -> void:
 		control_node.confirmed.connect(self.weekly_income_resource)
 	else:
 		print("ERROR: Signal 'confirmed' not found!")  # Debugging
-	
 	print("Button Pressed")
-		
+
+
 func _ready():
+	#print("Game Manager: ", game_manager)
 	update_week_label()
 	update_resource_label()
+	get_tree().root.print_tree_pretty()
 
 func next_week():
 	week += 1

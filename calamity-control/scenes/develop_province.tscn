@@ -12,6 +12,8 @@ script = ExtResource("1_eqrir")
 top_level = true
 layout_mode = 3
 anchors_preset = 0
+offset_left = -328.0
+offset_top = -72.0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -33,8 +35,8 @@ script = ExtResource("2_wgbud")
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
-offset_right = 427.0
-offset_bottom = 402.0
+offset_right = 652.0
+offset_bottom = 127.0
 mouse_filter = 0
 texture = SubResource("Texture2DRD_fmipi")
 
@@ -48,14 +50,14 @@ text = "Would you lke to develop this province? (400 Moneys)"
 [node name="YES" type="Button" parent="Action_Select/Popup"]
 layout_mode = 2
 offset_top = 40.0
-offset_right = 426.0
+offset_right = 650.0
 offset_bottom = 71.0
 text = "YES"
 
 [node name="NO" type="Button" parent="Action_Select/Popup"]
 layout_mode = 2
 offset_top = 75.0
-offset_right = 426.0
+offset_right = 650.0
 offset_bottom = 106.0
 text = "NO
 "
