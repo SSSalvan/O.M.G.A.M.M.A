@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cnh1fpbju5oaf" path="res://assets/sprites/c28d9b63d3255b4355e0f4b18e3e80e5_t-Photoroom.png" id="3_xa1hq"]
 [ext_resource type="Script" path="res://scripts/province.gd" id="4_r8kal"]
 [ext_resource type="Script" path="res://scripts/animation_component.gd" id="5_a34ut"]
-[ext_resource type="PackedScene" uid="uid://dd23rciicmnkt" path="res://scenes/slot.tscn" id="6_04qc1"]
+[ext_resource type="PackedScene" path="res://scenes/slot.tscn" id="6_04qc1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r640c"]
 radius = 55.3432
