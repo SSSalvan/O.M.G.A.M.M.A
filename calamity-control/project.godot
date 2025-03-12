@@ -15,11 +15,9 @@ run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
-[display]
+[autoload]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-window/size/mode=4
+EmissionRateStatusPopup="*res://scenes/emission_rate_status_popup.tscn"
 
 [editor]
 
