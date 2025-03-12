@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ckdb64dsm6e8e"]
 
-[ext_resource type="Texture2D" uid="uid://b6kte0p5qx4oy" path="res://assets/sprites/Indomap.png" id="1_o62m6"]
+[ext_resource type="Texture2D" uid="uid://qcsfxf23f088" path="res://assets/map/indoMap.png" id="1_rl3v5"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="2_qg8ic"]
 [ext_resource type="Texture2D" uid="uid://cnh1fpbju5oaf" path="res://assets/sprites/c28d9b63d3255b4355e0f4b18e3e80e5_t-Photoroom.png" id="3_xa1hq"]
 [ext_resource type="Script" path="res://scripts/province.gd" id="4_r8kal"]
@@ -21,13 +21,15 @@ offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
 [node name="MapBackground" type="TextureRect" parent="Images"]
+texture_filter = 1
 layout_mode = 0
-offset_left = -575.0
-offset_top = -324.0
-offset_right = 576.0
-offset_bottom = 323.0
-texture = ExtResource("1_o62m6")
+offset_left = -957.0
+offset_top = -415.0
+offset_right = 979.0
+offset_bottom = 605.0
+texture = ExtResource("1_rl3v5")
 expand_mode = 2
+stretch_mode = 4
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("2_qg8ic")
@@ -99,10 +101,10 @@ offset_bottom = 219.0
 
 [node name="End Week" type="Button" parent="GameManager/User Interface"]
 layout_mode = 0
-offset_left = 11.0
-offset_top = 9.0
-offset_right = 262.0
-offset_bottom = 104.0
+offset_left = -301.0
+offset_top = 177.0
+offset_right = -50.0
+offset_bottom = 272.0
 theme_override_font_sizes/font_size = 32
 text = "End Week"
 
