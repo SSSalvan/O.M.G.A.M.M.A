@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://c85b04p6p35b4"]
+
+[sub_resource type="GDScript" id="GDScript_t7vq8"]
+script/source = "extends Control
+
+func StatusPopup(slot, item):
+	%EmissionRatePopUp.popup()
+
+func HideStatusPopup():
+	%EmissionRatePopUp.hide()
+"
+
+[node name="EmissionRateStatusPopup" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = SubResource("GDScript_t7vq8")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="EmissionRatePopUp" type="PopupPanel" parent="UI"]
+unique_name_in_owner = true
+initial_position = 1
+size = Vector2i(300, 150)
+visible = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/EmissionRatePopUp"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 296.0
+offset_bottom = 146.0
+
+[node name="Label" type="Label" parent="UI/EmissionRatePopUp/VBoxContainer"]
+layout_mode = 2
+text = "Emission Rate Status"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="UI/EmissionRatePopUp/VBoxContainer"]
+layout_mode = 2
+text = "
+Level: Alvan Jomok Nigga"
