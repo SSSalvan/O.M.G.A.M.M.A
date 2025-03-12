@@ -1,12 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8k1hcsqo3jn0"]
+[gd_scene load_steps=11 format=3 uid="uid://b8k1hcsqo3jn0"]
 
-[ext_resource type="Texture2D" uid="uid://cqewle226k7bj" path="res://assets/sprites/Indomap_1.png" id="1_8h3hm"]
+[ext_resource type="Script" uid="uid://b8tgvyd75xb4y" path="res://scenes/panel_container.gd" id="1_ai4rf"]
+[ext_resource type="Texture2D" uid="uid://qcsfxf23f088" path="res://assets/map/indoMap.png" id="1_oadui"]
 [ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="2_mg68r"]
 [ext_resource type="StyleBox" uid="uid://d0t507jbbigq3" path="res://assets/ui/Placeholder UI/placeholder_button_stylebox_hover.tres" id="3_oeypd"]
+[ext_resource type="Texture2D" uid="uid://carjtoykfxl4e" path="res://assets/sprites/Sprite-0002.png" id="4_1ysqr"]
+[ext_resource type="Texture2D" uid="uid://wjln2twwvxhe" path="res://assets/sprites/OmGammaAward.jpeg" id="5_ai4rf"]
+[ext_resource type="Texture2D" uid="uid://ffnskiom5i6y" path="res://assets/ui/Menu_logo.png" id="6_1ysqr"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yb02k"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oeypd"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ai4rf"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ix8h7"]
 
@@ -14,10 +18,13 @@
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 material = SubResource("CanvasItemMaterial_yb02k")
-offset_right = 80.0
-offset_bottom = 80.0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 87.0
+offset_bottom = 85.0
 scale = Vector2(24.1214, 13.5179)
-theme_override_styles/panel = SubResource("StyleBoxFlat_oeypd")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ai4rf")
+script = ExtResource("1_ai4rf")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -26,22 +33,19 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="Indomap1" type="Sprite2D" parent="PanelContainer/MarginContainer"]
-modulate = Color(0.0470588, 0.894118, 0.376471, 1)
-self_modulate = Color(0.980392, 1, 0.862745, 1)
-light_mask = 0
-position = Vector2(39.8883, 47.1229)
-scale = Vector2(0.0420673, 0.0622126)
-texture = ExtResource("1_8h3hm")
+[node name="IndoMap" type="Sprite2D" parent="PanelContainer/MarginContainer"]
+position = Vector2(40.1718, 56.8875)
+scale = Vector2(0.236865, 0.363353)
+texture = ExtResource("1_oadui")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 274.0
-offset_top = 197.0
-offset_right = -578.0
-offset_bottom = -708.0
+offset_left = 256.0
+offset_top = 291.0
+offset_right = -596.0
+offset_bottom = -614.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.32066, 0.846771)
@@ -66,9 +70,9 @@ vertical_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 offset_left = 726.0
-offset_top = 457.0
+offset_top = 762.0
 offset_right = 807.0
-offset_bottom = 503.0
+offset_bottom = 808.0
 scale = Vector2(5.30227, 7.24813)
 
 [node name="Button" type="Button" parent="VBoxContainer2"]
@@ -88,3 +92,31 @@ theme_override_font_sizes/font_size = 16
 theme_override_icons/icon = SubResource("ViewportTexture_ix8h7")
 theme_override_styles/normal = ExtResource("3_oeypd")
 text = "Exit"
+
+[node name="Sprite-0002" type="Sprite2D" parent="."]
+position = Vector2(630, 587)
+scale = Vector2(1.82031, 1.91406)
+texture = ExtResource("4_1ysqr")
+
+[node name="OmGammaAward" type="Sprite2D" parent="."]
+position = Vector2(1070, 614)
+scale = Vector2(1.63867, 1.6875)
+texture = ExtResource("5_ai4rf")
+offset = Vector2(1.83075, -11.8519)
+
+[node name="Label" type="Label" parent="OmGammaAward"]
+offset_left = 89.7068
+offset_top = -25.4815
+offset_right = 869.707
+offset_bottom = 19.5185
+theme_override_fonts/font = ExtResource("2_mg68r")
+text = "Congratulation!
+You have save Indonesia from Global Anomaly, 
+here is your reward from om gamma!"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="MenuLogo" type="Sprite2D" parent="."]
+position = Vector2(949, 102)
+scale = Vector2(0.227901, 0.217083)
+texture = ExtResource("6_1ysqr")
