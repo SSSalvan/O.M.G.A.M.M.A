@@ -40,10 +40,10 @@ expand_mode = 2
 [node name="Elmo" type="TextureRect" parent="MainMenu/Images"]
 z_index = -1
 layout_mode = 0
-offset_left = -482.0
+offset_left = -522.0
 offset_top = -551.0
 offset_right = 961.0
-offset_bottom = 358.0
+offset_bottom = 379.0
 texture = ExtResource("2_48kog")
 expand_mode = 1
 
