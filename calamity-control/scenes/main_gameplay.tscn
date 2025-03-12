@@ -8,7 +8,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r640c"]
 radius = 55.3432
-height = 325.149
+height = 361.506
 
 [node name="MainGameplay" type="Node2D"]
 
@@ -20,15 +20,22 @@ offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
 [node name="MapBackground" type="TextureRect" parent="Images"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -9.575
+anchor_top = -5.475
+anchor_right = 9.5
+anchor_bottom = 5.425
 offset_left = -575.0
 offset_top = -324.0
 offset_right = 576.0
 offset_bottom = 323.0
 texture = ExtResource("1_o62m6")
 expand_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Player_facecam" type="TextureRect" parent="Images"]
+visible = false
 layout_mode = 0
 offset_left = 394.0
 offset_top = 142.0
@@ -43,29 +50,31 @@ script = ExtResource("2_qg8ic")
 [node name="Area2D" type="Area2D" parent="GameManager"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameManager/Area2D"]
-position = Vector2(-405, -60)
+position = Vector2(-627, -44)
 rotation = -0.825563
 shape = SubResource("CapsuleShape2D_r640c")
 
 [node name="Camera2D" type="Camera2D" parent="GameManager"]
 
 [node name="Week Counter" type="Label" parent="GameManager"]
-offset_left = -567.0
-offset_top = -312.0
-offset_right = -447.0
-offset_bottom = -267.0
+offset_left = -893.0
+offset_top = -508.0
+offset_right = -773.0
+offset_bottom = -463.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "Week: x"
+metadata/_edit_use_anchors_ = true
 
 [node name="Resource Counter" type="Label" parent="GameManager"]
-offset_left = -416.0
-offset_top = -311.0
-offset_right = -296.0
-offset_bottom = -266.0
+offset_left = -711.0
+offset_top = -509.0
+offset_right = -534.0
+offset_bottom = -464.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "Resource: x"
+metadata/_edit_use_anchors_ = true
 
 [node name="User Interface" type="Control" parent="GameManager"]
 layout_mode = 3
@@ -74,42 +83,49 @@ offset_left = -573.0
 offset_top = 179.0
 offset_right = -537.0
 offset_bottom = 219.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Sumatra" type="Sprite2D" parent="GameManager/User Interface"]
-position = Vector2(185, -229)
+position = Vector2(-53, -222)
 scale = Vector2(0.108824, 0.142647)
 texture = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
 [node name="Kalimantan" type="Sprite2D" parent="GameManager/User Interface"]
-position = Vector2(496, -245)
+position = Vector2(396, -252)
 scale = Vector2(0.108824, 0.142647)
 texture = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
 [node name="Papua" type="Sprite2D" parent="GameManager/User Interface"]
-position = Vector2(1080, -168)
+position = Vector2(1212, -196)
 scale = Vector2(0.108824, 0.142647)
 texture = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
 [node name="Jawa" type="Sprite2D" parent="GameManager/User Interface"]
-position = Vector2(374, -57)
+position = Vector2(271, 25)
 scale = Vector2(0.108824, 0.142647)
 texture = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
 [node name="Sulawesi" type="Sprite2D" parent="GameManager/User Interface"]
-position = Vector2(646, -190)
+position = Vector2(662, -190)
 scale = Vector2(0.108824, 0.142647)
 texture = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
 [node name="End Week" type="Button" parent="GameManager/User Interface"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -9.5
+anchor_top = 5.55
+anchor_right = -9.5
+anchor_bottom = 5.55
 offset_right = 273.0
 offset_bottom = 102.0
 theme_override_font_sizes/font_size = 32
 text = "End Week"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="GameManager/User Interface/End Week" to="GameManager" method="_on_end_week_pressed"]
