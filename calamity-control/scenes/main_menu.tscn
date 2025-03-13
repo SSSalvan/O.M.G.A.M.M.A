@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://drx37bmj2egrr"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_0fjxs"]
+[ext_resource type="Script" uid="uid://dkrejfkq1u1rw" path="res://scripts/main_menu.gd" id="1_0fjxs"]
 [ext_resource type="StyleBox" uid="uid://d0t507jbbigq3" path="res://assets/ui/Placeholder UI/placeholder_button_stylebox_hover.tres" id="1_21kk1"]
 [ext_resource type="Texture2D" uid="uid://dj5vbufgspbxx" path="res://assets/ui/Placeholder UI/elmo.jpg" id="2_48kog"]
 [ext_resource type="StyleBox" uid="uid://qngkfnkus1j1" path="res://assets/ui/Placeholder UI/placeholder_button_stylebox.tres" id="2_ljbj3"]

@@ -7,11 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://carjtoykfxl4e" path="res://assets/sprites/Sprite-0002.png" id="4_1ysqr"]
 [ext_resource type="Texture2D" uid="uid://wjln2twwvxhe" path="res://assets/sprites/OmGammaAward.jpeg" id="5_ai4rf"]
 [ext_resource type="Texture2D" uid="uid://ffnskiom5i6y" path="res://assets/ui/Menu_logo.png" id="6_1ysqr"]
-[ext_resource type="Texture2D" uid="uid://d062j7rh223y0" path="res://assets/sprites/Yesking.png" id="8_6au2w"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yb02k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ai4rf"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ix8h7"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -76,29 +77,29 @@ scale = Vector2(5.30227, 7.24813)
 
 [node name="Button" type="Button" parent="VBoxContainer2"]
 layout_mode = 2
-theme_override_constants/outline_size = 2
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("2_mg68r")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("3_oeypd")
-action_mode = 0
-text = "Menu"
+text = "Main Menu"
 autowrap_mode = 3
 
 [node name="Button2" type="Button" parent="VBoxContainer2"]
 layout_mode = 2
-theme_override_constants/outline_size = 2
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("2_mg68r")
 theme_override_font_sizes/font_size = 16
+theme_override_icons/icon = SubResource("ViewportTexture_ix8h7")
 theme_override_styles/normal = ExtResource("3_oeypd")
 text = "Exit"
 
 [node name="Sprite-0002" type="Sprite2D" parent="."]
-position = Vector2(463, 572)
+position = Vector2(630, 587)
 scale = Vector2(1.82031, 1.91406)
 texture = ExtResource("4_1ysqr")
 
 [node name="OmGammaAward" type="Sprite2D" parent="."]
-position = Vector2(1120, 593)
+position = Vector2(1127, 612)
 scale = Vector2(1.63867, 1.6875)
 texture = ExtResource("5_ai4rf")
 offset = Vector2(1.83075, -11.8519)
@@ -115,47 +116,7 @@ here is your reward from om gamma!"
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Yesking" type="Sprite2D" parent="."]
-position = Vector2(704, 493)
-scale = Vector2(0.554688, 0.585937)
-texture = ExtResource("8_6au2w")
-
-[node name="Yesking2" type="Sprite2D" parent="."]
-position = Vector2(637, 494)
-scale = Vector2(0.54567, 0.550674)
-texture = ExtResource("8_6au2w")
-
-[node name="Label" type="Label" parent="."]
-offset_left = 609.0
-offset_top = 438.0
-offset_right = 1389.0
-offset_bottom = 483.0
-theme_override_fonts/font = ExtResource("2_mg68r")
-theme_override_font_sizes/font_size = 32
-text = "Rating Gameplay:"
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="Label" type="Label" parent="Label"]
-offset_left = 2.00002
-offset_top = 131.0
-offset_right = 782.0
-offset_bottom = 244.0
-theme_override_fonts/font = ExtResource("2_mg68r")
-theme_override_font_sizes/font_size = 32
-text = "wEEK SURVIVED:
-XXX wEEK
-Used Money:
-xxx "
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="Yesking3" type="Sprite2D" parent="."]
-position = Vector2(766, 494)
-scale = Vector2(0.525292, 0.600198)
-texture = ExtResource("8_6au2w")
-
 [node name="MenuLogo" type="Sprite2D" parent="."]
-position = Vector2(930, 123)
+position = Vector2(949, 102)
 scale = Vector2(0.227901, 0.217083)
 texture = ExtResource("6_1ysqr")

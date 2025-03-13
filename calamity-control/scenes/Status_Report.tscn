@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2cmcy5uvx6xj"]
 
-[ext_resource type="Script" path="res://scripts/background_blocker.gd" id="1_3yhyh"]
+[ext_resource type="Script" uid="uid://bd15kc000je60" path="res://scripts/background_blocker.gd" id="1_3yhyh"]
 
 [node name="Node2D" type="Node2D"]
 

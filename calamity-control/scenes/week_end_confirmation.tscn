@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://w0cdj0abjga6"]
 
-[ext_resource type="Script" path="res://scripts/week_end_confirmation.gd" id="1_kcofj"]
-[ext_resource type="Script" path="res://scripts/background_blocker.gd" id="2_w3sle"]
+[ext_resource type="Script" uid="uid://5ghll0g6ukb" path="res://scripts/week_end_confirmation.gd" id="1_kcofj"]
+[ext_resource type="Script" uid="uid://bd15kc000je60" path="res://scripts/background_blocker.gd" id="2_w3sle"]
 
 [sub_resource type="Texture2DRD" id="Texture2DRD_fmipi"]
 

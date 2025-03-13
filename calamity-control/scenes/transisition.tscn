@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dq635jg4xww3q"]
 
 [ext_resource type="Texture2D" uid="uid://op1m8qxb0iuq" path="res://assets/ui/Placeholder UI/Zhong_Xina.jpg" id="1_facp0"]
-[ext_resource type="Script" path="res://scripts/scene_transition.gd" id="1_yoev0"]
+[ext_resource type="Script" uid="uid://c6poq1f20a22n" path="res://scripts/scene_transition.gd" id="1_yoev0"]
 
 [sub_resource type="Animation" id="Animation_gmitx"]
 resource_name = "RESET"
@@ -37,8 +37,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8e58i"]
 _data = {
-"RESET": SubResource("Animation_gmitx"),
-"dissolve": SubResource("Animation_4lop8")
+&"RESET": SubResource("Animation_gmitx"),
+&"dissolve": SubResource("Animation_4lop8")
 }
 
 [node name="Transisition" type="CanvasLayer"]
