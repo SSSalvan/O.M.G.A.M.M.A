@@ -1,0 +1,10 @@
+[gd_resource type="AnimatedTexture" load_steps=3 format=3 uid="uid://vkyc1a87b0j0"]
+
+[ext_resource type="Texture2D" uid="uid://byautg63i0xtx" path="res://assets/map/waterTile1.png" id="1_lixsc"]
+[ext_resource type="Texture2D" uid="uid://61yegy3m1d6k" path="res://assets/map/waterTile2.png" id="2_yx4d7"]
+
+[resource]
+frames = 2
+frame_0/texture = ExtResource("1_lixsc")
+frame_1/texture = ExtResource("2_yx4d7")
+frame_1/duration = 1.0

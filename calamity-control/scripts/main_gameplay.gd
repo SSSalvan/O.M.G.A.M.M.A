@@ -5,19 +5,8 @@ extends Node2D
 var week: int = 1
 
 func _ready():
-	print("Week Counter: ", week_counter)  # Debugging
-	if not week_counter:
-		week_counter = get_node("Week Counter")  # Fallback
-	update_week_label()
+	call_deferred("_print_tree")
 
-func _on_end_week_pressed() -> void:
-	print("Button Pressed!")  # Debugging
-	week += 1
-	print("Week + 1, Week: ", week)
-	if week_counter:
-		week_counter.text = "Week: " + str(week)  # Avoids crashing
-	else:
-		print("not work :(((") # Debugging
-
-func update_week_label():
-	print("Week Updated")
+func _print_tree():
+	print("Scene tree structure:")
+	get_tree().root.print_tree_pretty()
