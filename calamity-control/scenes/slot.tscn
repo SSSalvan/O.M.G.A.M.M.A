@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dx2hy3pwobcv" path="res://scripts/slot.gd" id="1_uv4db"]
 
-[node name="Slot" type="PanelContainer"]
+[node name="Slot" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,11 +15,16 @@ script = ExtResource("1_uv4db")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
+offset_right = 909.0
+offset_bottom = 565.0
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Button" type="Button" parent="."]
 show_behind_parent = true
 layout_mode = 2
-mouse_filter = 1
+offset_right = 123.0
+offset_bottom = 56.0
+toggle_mode = true
+text = "Check Status"
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="Button" to="." method="_on_button_toggled"]

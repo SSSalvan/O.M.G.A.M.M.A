@@ -2,7 +2,7 @@ extends Sprite2D
 @onready var game_manager = get_node("/root/MainGameplay/GameManager")
 
 @export var province_name: String = ""  # Name of the province
-var development_level: int = 0  # Province-specific status
+@export var development_level: int = 0  # Province-specific status
 
 func _ready() -> void:
 	set_process_input(true)

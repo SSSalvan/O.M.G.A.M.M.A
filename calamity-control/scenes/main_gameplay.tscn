@@ -153,40 +153,35 @@ script = ExtResource("5_a34ut")
 hover_scale = Vector2(1.05, 1.05)
 transition_type = 6
 
-[node name="StatRpt_Sumatra" parent="GameManager" instance=ExtResource("6_04qc1")]
-modulate = Color(1, 1, 1, 0)
-offset_left = -587.0
-offset_top = -135.0
-offset_right = -2462.0
-offset_bottom = -1133.0
+[node name="Sumatra2" parent="GameManager" instance=ExtResource("6_04qc1")]
+offset_left = -802.0
+offset_top = -308.0
+offset_right = -2595.0
+offset_bottom = -1332.0
 
 [node name="StatRpt_Kalimantan" parent="GameManager" instance=ExtResource("6_04qc1")]
-modulate = Color(1, 1, 1, 0)
-offset_left = -215.0
-offset_top = 97.0
-offset_right = -2103.0
-offset_bottom = -926.0
+offset_left = -348.0
+offset_top = 96.0
+offset_right = -2236.0
+offset_bottom = -927.0
 
 [node name="StatRpt_Papua" parent="GameManager" instance=ExtResource("6_04qc1")]
-modulate = Color(1, 1, 1, 0)
-offset_left = -138.0
-offset_top = -166.0
-offset_right = -2017.0
-offset_bottom = -1180.0
+offset_left = -262.0
+offset_top = -156.0
+offset_right = -2141.0
+offset_bottom = -1170.0
 
 [node name="StatRpt_Jawa" parent="GameManager" instance=ExtResource("6_04qc1")]
-modulate = Color(1, 1, 1, 0)
-offset_left = 84.0
-offset_top = -104.0
-offset_right = -1802.0
-offset_bottom = -1127.0
+offset_left = 49.0
+offset_top = -158.0
+offset_right = -1837.0
+offset_bottom = -1181.0
 
 [node name="StatRpt_Sulawesi" parent="GameManager" instance=ExtResource("6_04qc1")]
-modulate = Color(1, 1, 1, 0)
-offset_left = 764.0
-offset_top = -35.0
-offset_right = -1110.0
-offset_bottom = -1055.0
+offset_left = 641.0
+offset_top = -36.0
+offset_right = -1233.0
+offset_bottom = -1056.0
 
 [node name="InGameTopHub" type="Sprite2D" parent="."]
 position = Vector2(-653, -505)

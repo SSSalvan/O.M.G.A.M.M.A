@@ -1,9 +1,7 @@
-extends PanelContainer
+extends Control
 
-
-func _on_mouse_entered() -> void:
-	EmissionRateStatusPopup.StatusPopup(null, null)
-
-
-func _on_mouse_exited() -> void:
-	EmissionRateStatusPopup.HideStatusPopup()
+func _on_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		EmissionRateStatusPopup.StatusPopup(Rect2i(), null)
+	else:
+		EmissionRateStatusPopup.HideStatusPopup()

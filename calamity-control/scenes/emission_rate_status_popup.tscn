@@ -29,12 +29,19 @@ offset_top = 4.0
 offset_right = 296.0
 offset_bottom = 146.0
 
-[node name="Label" type="Label" parent="UI/EmissionRatePopUp/VBoxContainer"]
+[node name="Status Report_ Island_name" type="Label" parent="UI/EmissionRatePopUp/VBoxContainer"]
 layout_mode = 2
-text = "Emission Rate Status"
+text = "Status Report: XX"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="UI/EmissionRatePopUp/VBoxContainer"]
+[node name="Emission Rate" type="Label" parent="UI/EmissionRatePopUp/VBoxContainer"]
 layout_mode = 2
-text = "
-Level: Alvan Jomok Nigga"
+text = "Emission Rate: X%"
+
+[node name="Population Count" type="Label" parent="UI/EmissionRatePopUp/VBoxContainer"]
+layout_mode = 2
+text = "Population Count: X"
+
+[node name="Development Level" type="Label" parent="UI/EmissionRatePopUp/VBoxContainer"]
+layout_mode = 2
+text = "Development Level: X"
