@@ -1,19 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://c85b04p6p35b4"]
+[gd_scene load_steps=6 format=3 uid="uid://c85b04p6p35b4"]
 
-[sub_resource type="GDScript" id="GDScript_t7vq8"]
-script/source = "extends Control
+[ext_resource type="Script" uid="uid://dj8kxmpahlv5w" path="res://scripts/emission_rate_status_popup.gd" id="1_1ke72"]
 
-func StatusPopup(slot, item):
-	%EmissionRatePopUp.popup()
+[sub_resource type="LabelSettings" id="LabelSettings_1ke72"]
 
-func HideStatusPopup():
-	%EmissionRatePopUp.hide()
-"
+[sub_resource type="LabelSettings" id="LabelSettings_ykf56"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i0y7k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k5wtt"]
 
 [node name="EmissionRateStatusPopup" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = SubResource("GDScript_t7vq8")
+script = ExtResource("1_1ke72")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -31,17 +31,21 @@ offset_bottom = 146.0
 
 [node name="Status Report_ Island_name" type="Label" parent="UI/EmissionRatePopUp/VBoxContainer"]
 layout_mode = 2
-text = "Status Report: XX"
+text = "Status Report: X"
+label_settings = SubResource("LabelSettings_1ke72")
 horizontal_alignment = 1
 
 [node name="Emission Rate" type="Label" parent="UI/EmissionRatePopUp/VBoxContainer"]
 layout_mode = 2
 text = "Emission Rate: X%"
+label_settings = SubResource("LabelSettings_ykf56")
 
 [node name="Population Count" type="Label" parent="UI/EmissionRatePopUp/VBoxContainer"]
 layout_mode = 2
 text = "Population Count: X"
+label_settings = SubResource("LabelSettings_i0y7k")
 
 [node name="Development Level" type="Label" parent="UI/EmissionRatePopUp/VBoxContainer"]
 layout_mode = 2
 text = "Development Level: X"
+label_settings = SubResource("LabelSettings_k5wtt")
