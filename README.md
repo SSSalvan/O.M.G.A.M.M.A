@@ -1,5 +1,4 @@
-# Calamity Control
-Github of Calamity Control
+# O.M.G.A.M.M.A
+Github of gamma games for O.M.G.A.M.M.A project
 - [x] Control
-- [ ] https://github.com/octo-org/octo-repo/issues/740
-- [ ] Add delight to the experience when all tasks are complete :tada:
+
