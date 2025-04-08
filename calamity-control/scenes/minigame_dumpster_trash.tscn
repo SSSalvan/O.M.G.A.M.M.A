@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://b67x1jmdrr7r5"]
+
+[ext_resource type="Texture2D" uid="uid://4773museerlo" path="res://assets/minigames/dumpster/pngtree-crumpled-paper-ball-trash-page-png-image_5265046.png" id="1_cvkg7"]
+
+[sub_resource type="GDScript" id="GDScript_cvkg7"]
+script/source = "extends Area2D
+
+@export var fall_speed := 800
+var minigame  # ← set from the spawner
+
+
+func _ready():
+	connect(\"area_entered\", Callable(self, \"_on_area_entered\"))
+
+func _process(delta):
+	position.y += fall_speed * delta
+
+	# Despawn if it falls off screen
+	if position.y > get_viewport_rect().size.y + 100:
+		queue_free()
+
+
+func _on_area_entered(area):
+	print(\"Caught!\")
+	if area.name == \"CatchArea\":
+		minigame.increase_catch_count()
+		queue_free()
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cvkg7"]
+radius = 58.0517
+
+[node name="Trash" type="Area2D"]
+collision_mask = 2
+script = SubResource("GDScript_cvkg7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.86102e-06, -0.999998)
+scale = Vector2(0.437366, 0.4259)
+texture = ExtResource("1_cvkg7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cvkg7")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi63vo4dcrdhf"]
+
+[ext_resource type="PackedScene" uid="uid://cybc0370qmjxo" path="res://scenes/minigame_dumpster_control.tscn" id="1_0oujc"]
+
+[sub_resource type="GDScript" id="GDScript_0oujc"]
+script/source = "extends Node2D
+
+@onready var trash_scene = preload(\"res://scenes/minigame_dumpster_trash.tscn\")
+@export var spawn_interval := 1.5
+@onready var catch_label = $CatchLabel
+var timer := 0.0
+var catch_count := 0
+
+func _ready() -> void:
+	catch_label.text = \"Caught: %d\" % catch_count
+	
+func increase_catch_count():
+	catch_count += 1
+	catch_label.text = \"Caught: %d\" % catch_count
+	print(\"Trash Caught:\", catch_count)
+
+func _process(delta):
+	timer += delta
+	if timer >= spawn_interval:
+		timer = 0
+		spawn_trash()
+
+func spawn_trash():
+	var trash = trash_scene.instantiate()
+	add_child(trash)
+
+	trash.minigame = self  # still works even if root is just Node2D
+
+	trash.position = Vector2(
+		randf_range(-900, 900),
+		-1000
+	)
+"
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_0oujc")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_0oujc")]
+position = Vector2(-5, 525)
+
+[node name="CatchLabel" type="Label" parent="."]
+offset_left = -954.0
+offset_top = -539.0
+offset_right = -618.0
+offset_bottom = -459.0
+theme_override_font_sizes/font_size = 64
+text = "alvan hitam dan jomok"
