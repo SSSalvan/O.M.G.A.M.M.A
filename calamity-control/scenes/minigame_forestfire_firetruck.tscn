@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://je0ad24w5oem"]
+
+[ext_resource type="Texture2D" uid="uid://iquhve4esngu" path="res://assets/minigames/forestfire/firetruck-clipart-xl.png" id="1_nfy0a"]
+
+[sub_resource type="GDScript" id="GDScript_e5jkc"]
+script/source = "extends Sprite2D
+
+@onready var spray = $WaterSpray
+@onready var spray_area = $WaterSpray/SprayArea
+@export var speed := 300.0
+
+func _physics_process(delta):
+	var direction := 0
+
+	if Input.is_action_pressed(\"ui_left\"):
+		direction -= 1
+	if Input.is_action_pressed(\"ui_right\"):
+		direction += 1
+
+	position.x += direction * speed * delta
+
+	if Input.is_action_pressed(\"ui_accept\"):
+		spray.visible = true
+		spray_area.monitoring = true
+	else:
+		spray.visible = false
+		spray_area.monitoring = false
+
+
+func _on_spray_area_area_entered(area):
+	print(\"Spray hit:\", area.name)
+	if area.has_method(\"extinguish\"):
+		area.extinguish()
+"
+
+[sub_resource type="Gradient" id="Gradient_5vwfb"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.470343, 0.640012, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nfy0a"]
+gradient = SubResource("Gradient_5vwfb")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfy0a"]
+size = Vector2(249.203, 1.43963)
+
+[node name="FireTruck" type="CharacterBody2D"]
+
+[node name="FireTruckSprite" type="Sprite2D" parent="."]
+position = Vector2(3, -37)
+scale = Vector2(0.204948, 0.163329)
+texture = ExtResource("1_nfy0a")
+script = SubResource("GDScript_e5jkc")
+
+[node name="WaterSpray" type="Sprite2D" parent="FireTruckSprite"]
+position = Vector2(48.7929, -1579.63)
+scale = Vector2(2.15375, 2985.54)
+texture = SubResource("GradientTexture1D_nfy0a")
+
+[node name="SprayArea" type="Area2D" parent="FireTruckSprite/WaterSpray"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FireTruckSprite/WaterSpray/SprayArea"]
+position = Vector2(-2.26551, -0.227634)
+shape = SubResource("RectangleShape2D_nfy0a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[connection signal="area_entered" from="FireTruckSprite/WaterSpray/SprayArea" to="FireTruckSprite" method="_on_spray_area_area_entered"]
