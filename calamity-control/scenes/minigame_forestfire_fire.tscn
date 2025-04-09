@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://co2buksllqy4h"]
+
+[ext_resource type="Texture2D" uid="uid://bee0w3pjns8nd" path="res://assets/minigames/forestfire/fire-emoji-804x1024-u29u5i0c.png" id="1_h4fuw"]
+
+[sub_resource type="GDScript" id="GDScript_fwsyh"]
+script/source = "extends Area2D
+
+@onready var burn_timer = $Timer
+@export var burn_time := 5.0  # seconds until it burns the forest
+
+signal fire_failed
+
+func _ready():
+	$Timer.timeout.connect(_on_timer_timeout)
+	burn_timer.wait_time = burn_time
+	burn_timer.one_shot = true
+	burn_timer.start()
+
+func extinguish():
+	print(\"Fire extinguished!\")
+	queue_free()
+
+func _on_timer_timeout():
+	print(\"Fire was not extinguished in time!\")
+	emit_signal(\"fire_failed\")
+	queue_free()
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h4fuw"]
+radius = 87.0517
+
+[node name="Fire" type="Area2D"]
+script = SubResource("GDScript_fwsyh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -2)
+scale = Vector2(0.235075, 0.174805)
+texture = ExtResource("1_h4fuw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_h4fuw")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
