@@ -7,7 +7,7 @@ extends Node
 var week: int = 1
 var resource: int = 1000
 
-# Data for each island
+
 var islands = {
 	"Sumatra": { "development": 0, "emission": 10, "population": 100 },
 	"Kalimantan": { "development": 0, "emission": 10, "population": 100 },
@@ -20,7 +20,7 @@ func _ready():
 	update_week_label()
 	update_resource_label()
 	get_tree().root.print_tree_pretty()
-
+	
 func _on_end_week_pressed() -> void:
 	var confirm_scene = load("res://scenes/week_end_confirmation.tscn").instantiate()
 	add_child(confirm_scene)
@@ -28,12 +28,12 @@ func _on_end_week_pressed() -> void:
 	
 	var control_node = confirm_scene.get_node("Confirm_Week")
 	if control_node and control_node.has_signal("confirmed"):
-		print("Signal found!")  # Debugging
+		print("Signal found!")  
 		control_node.confirmed.connect(self.next_week)
 		control_node.confirmed.connect(self.weekly_income_resource)
 		control_node.confirmed.connect(self.check_development_requirements)
 	else:
-		print("ERROR: Signal 'confirmed' not found!")  # Debugging
+		print("ERROR: Signal 'confirmed' not found!") 
 	print("Button Pressed")
 
 func next_week():
