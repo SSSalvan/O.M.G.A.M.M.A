@@ -66,7 +66,9 @@ func increase_development(province_name: String, amount: int):
 func check_development_requirements():
 	for island in islands.keys():
 		var dev_level = islands[island]["development"]
+		@warning_ignore("unused_variable")
 		var emission = islands[island]["emission"]
+		@warning_ignore("unused_variable")
 		var population = islands[island]["population"]
 
 		# Define requirement threshold

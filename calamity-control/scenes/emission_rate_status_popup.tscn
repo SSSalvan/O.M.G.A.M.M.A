@@ -29,23 +29,23 @@ offset_top = 4.0
 offset_right = 296.0
 offset_bottom = 146.0
 
-[node name="Status Report_ Island_name" type="Label" parent="UI/EmissionRatePopUp/VBoxContainer"]
+[node name="status_report_island_name" type="Label" parent="UI/EmissionRatePopUp/VBoxContainer"]
 layout_mode = 2
 text = "Status Report: X"
 label_settings = SubResource("LabelSettings_1ke72")
 horizontal_alignment = 1
 
-[node name="Emission Rate" type="Label" parent="UI/EmissionRatePopUp/VBoxContainer"]
+[node name="emission_rate" type="Label" parent="UI/EmissionRatePopUp/VBoxContainer"]
 layout_mode = 2
 text = "Emission Rate: X%"
 label_settings = SubResource("LabelSettings_ykf56")
 
-[node name="Population Count" type="Label" parent="UI/EmissionRatePopUp/VBoxContainer"]
+[node name="population_count" type="Label" parent="UI/EmissionRatePopUp/VBoxContainer"]
 layout_mode = 2
 text = "Population Count: X"
 label_settings = SubResource("LabelSettings_i0y7k")
 
-[node name="Development Level" type="Label" parent="UI/EmissionRatePopUp/VBoxContainer"]
+[node name="development_level" type="Label" parent="UI/EmissionRatePopUp/VBoxContainer"]
 layout_mode = 2
 text = "Development Level: X"
 label_settings = SubResource("LabelSettings_k5wtt")
