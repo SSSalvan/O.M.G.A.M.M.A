@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cybc0370qmjxo"]
 
-[ext_resource type="Texture2D" uid="uid://dnm56468t6aa6" path="res://assets/minigames/dumpster/dumpster_bin.png" id="1_e5jkc"]
+[ext_resource type="Texture2D" uid="uid://wne1sqaqn4yv" path="res://assets/minigames/dumpster/dumpster_bin_sprite.png" id="1_e5jkc"]
 
 [sub_resource type="GDScript" id="GDScript_e5jkc"]
 script/source = "extends Sprite2D
@@ -19,7 +19,7 @@ func _process(delta):
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5jkc"]
-size = Vector2(276, 67)
+size = Vector2(37.75, 8.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w5npo"]
 size = Vector2(276, 47)
@@ -27,7 +27,9 @@ size = Vector2(276, 47)
 [node name="CharacterBody2D" type="CharacterBody2D"]
 
 [node name="DumpsterBin" type="Sprite2D" parent="."]
-position = Vector2(2, -104)
+texture_filter = 1
+position = Vector2(0, -121)
+scale = Vector2(8, 8)
 texture = ExtResource("1_e5jkc")
 script = SubResource("GDScript_e5jkc")
 
@@ -36,7 +38,7 @@ position = Vector2(-2, 104)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DumpsterBin/CatchArea"]
-position = Vector2(2, -199.5)
+position = Vector2(1.75, -111.625)
 shape = SubResource("RectangleShape2D_e5jkc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
