@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://beycfj6ubt75q"]
+[gd_scene load_steps=8 format=3 uid="uid://beycfj6ubt75q"]
 
-[ext_resource type="Script" uid="uid://hn0xr6k7dpnf" path="res://scripts/shop_panel.gd" id="1_8b1yh"]
 [ext_resource type="Texture2D" uid="uid://bas62ut2w5xhy" path="res://assets/sprites/istockphoto-1280715197-612x612.jpg" id="1_gu57e"]
 [ext_resource type="Texture2D" uid="uid://bya8a3g3i6rkr" path="res://assets/sprites/pngtree-png-solar-panel-icon-vector-png-image_5229059.png" id="2_xf0ew"]
 
@@ -72,7 +71,6 @@ _data = {
 [node name="ShopPanel" type="CanvasLayer"]
 offset = Vector2(0, -860)
 transform = Transform2D(1, 0, 0, 1, 0, -860)
-script = ExtResource("1_8b1yh")
 
 [node name="BG_ShopPanel" type="Panel" parent="."]
 anchors_preset = 8
@@ -87,6 +85,7 @@ offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_l6wj4")
+metadata/_edit_lock_ = true
 
 [node name="Turbin Angin" type="Panel" parent="BG_ShopPanel"]
 layout_mode = 0
@@ -149,6 +148,7 @@ process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_d568i")
 }
+speed_scale = 4.0
 
 [connection signal="mouse_entered" from="BG_ShopPanel/Turbin Angin" to="BG_ShopPanel/Turbin Angin" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="BG_ShopPanel/Turbin Angin" to="BG_ShopPanel/Turbin Angin" method="_on_mouse_exited"]
