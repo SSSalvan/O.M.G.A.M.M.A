@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2ndlx0jf2jxl"]
+
+[ext_resource type="PackedScene" uid="uid://je0ad24w5oem" path="res://scenes/minigame_forestfire_firetruck.tscn" id="1_ov78k"]
+
+[sub_resource type="GDScript" id="GDScript_ov78k"]
+script/source = "extends Node2D
+
+@onready var fire_scene = preload(\"res://scenes/minigame_forestfire_fire.tscn\")
+@export var fire_spawn_interval := 3.0
+var fire_timer := 0.0
+var fires_failed := 0
+var game_over := false
+
+func _process(delta):
+	if game_over:
+		return
+
+	fire_timer += delta
+	if fire_timer >= fire_spawn_interval:
+		fire_timer = 0
+		print(\"Spawning fire!\")
+		spawn_fire()
+
+func spawn_fire():
+	var fire = fire_scene.instantiate()
+	add_child(fire)
+	fire.position = Vector2(
+		randf_range(-400, 400),
+		randf_range(-300, -100)
+	)
+	fire.connect(\"fire_failed\", Callable(self, \"_on_fire_failed\"))
+
+func _on_fire_failed():
+	fires_failed += 1
+	print(\"A tree burned! Total burned:\", fires_failed)
+	if fires_failed >= 3:
+		print(\"GAME OVER: Too many trees burned!\")
+		game_over = true
+"
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_ov78k")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_ov78k")]
+position = Vector2(-2, 319)

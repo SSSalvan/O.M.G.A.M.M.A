@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://brre66iyt0qx2"]
+
+[ext_resource type="Script" uid="uid://cgcnvtafomw8a" path="res://scripts/develop_province.gd" id="1_eqrir"]
+[ext_resource type="Script" uid="uid://bd15kc000je60" path="res://scripts/background_blocker.gd" id="2_wgbud"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3dhsk"]
+bg_color = Color(0, 0, 0, 0.533333)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_eqrir")
+
+[node name="Action_Select" type="Control" parent="."]
+top_level = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -328.0
+offset_top = -72.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BackgroundBlocker" type="ColorRect" parent="Action_Select"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2615.0
+offset_top = -1528.0
+offset_right = 3159.0
+offset_bottom = 1411.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.0431373)
+script = ExtResource("2_wgbud")
+
+[node name="Popup" type="Panel" parent="Action_Select"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 652.0
+offset_bottom = 127.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3dhsk")
+
+[node name="Title" type="Label" parent="Action_Select/Popup"]
+layout_mode = 2
+offset_left = 113.0
+offset_top = 11.0
+offset_right = 539.0
+offset_bottom = 34.0
+text = "Would you like to develop this province? (400 Moneys)"
+horizontal_alignment = 1
+
+[node name="YES" type="Button" parent="Action_Select/Popup"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 40.0
+offset_right = 639.0
+offset_bottom = 71.0
+text = "YES"
+
+[node name="NO" type="Button" parent="Action_Select/Popup"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 75.0
+offset_right = 639.0
+offset_bottom = 106.0
+text = "NO
+"
+
+[connection signal="pressed" from="Action_Select/Popup/YES" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="Action_Select/Popup/NO" to="." method="_on_no_pressed"]

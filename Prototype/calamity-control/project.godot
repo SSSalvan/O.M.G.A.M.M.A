@@ -1,0 +1,31 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Calamity Control"
+run/main_scene="uid://drx37bmj2egrr"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+EmissionRateStatusPopup="*res://scenes/emission_rate_status_popup.tscn"
+ShopPanel="*res://scenes/ShopPanel.tscn"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
+
+[editor]
+
+script/templates_search_path="res://scripts"

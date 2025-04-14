@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://1m7oll7ar5qo"]
+
+[ext_resource type="Texture2D" uid="uid://ck2lfqdcaej5x" path="res://assets/minigames/recycle/cardboard.png" id="1_0d1bt"]
+[ext_resource type="PackedScene" uid="uid://ddt5rnluwqo3l" path="res://scenes/minigame_recycle_items.tscn" id="1_nixf7"]
+[ext_resource type="Texture2D" uid="uid://bdyvd5b7jitdu" path="res://assets/minigames/recycle/pngtree-isolated-blue-plastic-bottle-png-image_11585847.png" id="2_5bofi"]
+[ext_resource type="Script" uid="uid://bdquh88jobqrj" path="res://scripts/bin.gd" id="4_7jkrk"]
+
+[sub_resource type="GDScript" id="GDScript_gu04w"]
+script/source = "extends Node2D
+
+@export var recycle_item_scene: PackedScene
+@export var item_textures: Array[Texture2D]
+@export var item_types: Array[String]
+
+func _ready():
+	print_tree_pretty()
+	spawn_item()
+
+func spawn_item():
+	if recycle_item_scene and item_textures.size() > 0 and item_types.size() > 0:
+		var item = recycle_item_scene.instantiate()
+		add_child(item)
+		
+		# Pick a random texture and type
+		var index = randi() % item_textures.size()
+		item.set_texture(item_textures[index], item_types[index])
+		
+		# Center it horizontally at the top of the screen
+		var screen_width = get_viewport_rect().size.x
+		item.position = Vector2(0, -480)
+	else:
+		print(\"Failed to spawn item: Missing scene or textures\")
+"
+
+[node name="Minigame_Recycle" type="Node2D"]
+script = SubResource("GDScript_gu04w")
+recycle_item_scene = ExtResource("1_nixf7")
+item_textures = Array[Texture2D]([ExtResource("1_0d1bt"), ExtResource("2_5bofi")])
+
+[node name="Bins" type="Node2D" parent="."]
+
+[node name="Bin1" type="Area2D" parent="Bins" groups=["bin"]]
+script = ExtResource("4_7jkrk")
+
+[node name="ColorRect" type="ColorRect" parent="Bins/Bin1"]
+offset_left = -745.0
+offset_top = 53.0
+offset_right = -409.0
+offset_bottom = 452.0
+metadata/_edit_use_anchors_ = true
+
+[node name="BinSprite1" type="Sprite2D" parent="Bins/Bin1"]
+
+[node name="Collision1" type="CollisionShape2D" parent="Bins/Bin1"]
+
+[node name="Bin2" type="Area2D" parent="Bins" groups=["bin"]]
+
+[node name="ColorRect" type="ColorRect" parent="Bins/Bin2"]
+offset_left = -165.0
+offset_top = 53.0
+offset_right = 171.0
+offset_bottom = 452.0
+color = Color(0.385493, 0.385492, 0.385492, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="BinSprite2" type="Sprite2D" parent="Bins/Bin2"]
+
+[node name="Collision2" type="CollisionShape2D" parent="Bins/Bin2"]
+
+[node name="Bin3" type="Area2D" parent="Bins" groups=["bin"]]
+
+[node name="ColorRect" type="ColorRect" parent="Bins/Bin3"]
+offset_left = 417.0
+offset_top = 50.0
+offset_right = 753.0
+offset_bottom = 449.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="BinSprite3" type="Sprite2D" parent="Bins/Bin3"]
+
+[node name="Collision3" type="CollisionShape2D" parent="Bins/Bin3"]
+
+[node name="Camera2D" type="Camera2D" parent="."]

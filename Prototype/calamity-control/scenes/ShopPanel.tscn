@@ -1,0 +1,156 @@
+[gd_scene load_steps=8 format=3 uid="uid://beycfj6ubt75q"]
+
+[ext_resource type="Texture2D" uid="uid://bas62ut2w5xhy" path="res://assets/sprites/istockphoto-1280715197-612x612.jpg" id="1_gu57e"]
+[ext_resource type="Texture2D" uid="uid://bya8a3g3i6rkr" path="res://assets/sprites/pngtree-png-solar-panel-icon-vector-png-image_5229059.png" id="2_xf0ew"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6wj4"]
+bg_color = Color(0.18359, 0.18359, 0.18359, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.448659, 0.86796, 0.979101, 1)
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="Animation" id="Animation_gu57e"]
+resource_name = "In"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -860), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8b1yh"]
+resource_name = "Out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 900)]
+}
+
+[sub_resource type="Animation" id="Animation_xf0ew"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -860)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d568i"]
+_data = {
+&"In": SubResource("Animation_gu57e"),
+&"Out": SubResource("Animation_8b1yh"),
+&"RESET": SubResource("Animation_xf0ew")
+}
+
+[node name="ShopPanel" type="CanvasLayer"]
+offset = Vector2(0, -860)
+transform = Transform2D(1, 0, 0, 1, 0, -860)
+
+[node name="BG_ShopPanel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -300.0
+offset_right = 500.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l6wj4")
+metadata/_edit_lock_ = true
+
+[node name="Turbin Angin" type="Panel" parent="BG_ShopPanel"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 52.0
+offset_right = 602.0
+offset_bottom = 142.0
+
+[node name="Label" type="Label" parent="BG_ShopPanel/Turbin Angin"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 96.0
+offset_bottom = 26.0
+text = "Turbin Angin"
+
+[node name="Button" type="Button" parent="BG_ShopPanel/Turbin Angin"]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 35.0
+offset_right = 229.0
+offset_bottom = 66.0
+text = "Buy"
+
+[node name="Istockphoto-1280715197-612x612" type="Sprite2D" parent="BG_ShopPanel/Turbin Angin"]
+position = Vector2(52, 55)
+scale = Vector2(0.0996732, 0.0931373)
+texture = ExtResource("1_gu57e")
+
+[node name="PanelSurya" type="Panel" parent="BG_ShopPanel"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 51.0
+offset_right = 295.0
+offset_bottom = 141.0
+
+[node name="Pngtree-png-solar-panel-icon-vector-png-image5229059" type="Sprite2D" parent="BG_ShopPanel/PanelSurya"]
+position = Vector2(51, 51)
+scale = Vector2(0.141667, 0.1375)
+texture = ExtResource("2_xf0ew")
+
+[node name="Label" type="Label" parent="BG_ShopPanel/PanelSurya"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 96.0
+offset_bottom = 26.0
+text = "Panel Surya"
+
+[node name="Button" type="Button" parent="BG_ShopPanel/PanelSurya"]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 35.0
+offset_right = 229.0
+offset_bottom = 66.0
+text = "Buy"
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+&"": SubResource("AnimationLibrary_d568i")
+}
+speed_scale = 4.0
+
+[connection signal="mouse_entered" from="BG_ShopPanel/Turbin Angin" to="BG_ShopPanel/Turbin Angin" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BG_ShopPanel/Turbin Angin" to="BG_ShopPanel/Turbin Angin" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="BG_ShopPanel/PanelSurya" to="BG_ShopPanel/PanelSurya" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BG_ShopPanel/PanelSurya" to="BG_ShopPanel/PanelSurya" method="_on_mouse_exited"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2cmcy5uvx6xj"]
+
+[ext_resource type="Script" uid="uid://bd15kc000je60" path="res://scripts/background_blocker.gd" id="1_3yhyh"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Status_Report" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BackgroundBlocker" type="ColorRect" parent="Status_Report"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2615.0
+offset_top = -1528.0
+offset_right = 3159.0
+offset_bottom = 1411.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.101961)
+script = ExtResource("1_3yhyh")
+
+[node name="Status Report" type="TextureRect" parent="Status_Report"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
