@@ -71,7 +71,7 @@ func check_final_status():
 			  ", Population = " + str(pop))
 
 	# --- WIN / LOSE CONDITIONS ---
-	if total_emission < 30 and total_population > 80:
+	if total_emission < 100 and total_population > 200:
 		print("🎉 You Win!")
 		get_tree().change_scene_to_file("res://scenes/winning.tscn")
 	else:
