@@ -1,6 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://c85b04p6p35b4"]
+[gd_scene load_steps=7 format=3 uid="uid://c85b04p6p35b4"]
 
 [ext_resource type="Script" uid="uid://dj8kxmpahlv5w" path="res://scripts/emission_rate_status_popup.gd" id="1_1ke72"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ke72"]
+bg_color = Color(0, 0, 0, 0.32549)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="LabelSettings" id="LabelSettings_1ke72"]
 
@@ -22,12 +33,13 @@ unique_name_in_owner = true
 initial_position = 1
 size = Vector2i(300, 150)
 visible = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_1ke72")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/EmissionRatePopUp"]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 296.0
-offset_bottom = 146.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 295.0
+offset_bottom = 145.0
 
 [node name="status_report_island_name" type="Label" parent="UI/EmissionRatePopUp/VBoxContainer"]
 layout_mode = 2
