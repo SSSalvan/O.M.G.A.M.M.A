@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://b8k1hcsqo3jn0"]
+[gd_scene load_steps=12 format=3 uid="uid://b8k1hcsqo3jn0"]
 
 [ext_resource type="Script" uid="uid://b8tgvyd75xb4y" path="res://scripts/panel_container.gd" id="1_ai4rf"]
+[ext_resource type="Script" uid="uid://bdrb81cd1ldpw" path="res://scenes/winning_screen.gd" id="1_amw80"]
 [ext_resource type="Texture2D" uid="uid://qcsfxf23f088" path="res://assets/map/indoMap.png" id="1_oadui"]
 [ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="2_mg68r"]
 [ext_resource type="StyleBox" uid="uid://d0t507jbbigq3" path="res://assets/ui/Placeholder UI/placeholder_button_stylebox_hover.tres" id="3_oeypd"]
@@ -14,6 +15,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ai4rf"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_amw80")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 material = SubResource("CanvasItemMaterial_yb02k")
@@ -160,3 +162,6 @@ texture = ExtResource("8_6au2w")
 position = Vector2(930, 123)
 scale = Vector2(0.227901, 0.217083)
 texture = ExtResource("6_1ysqr")
+
+[connection signal="pressed" from="VBoxContainer2/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Button2" to="." method="_on_button_2_pressed"]
