@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cd4uksn4jpmfx"]
+[gd_scene load_steps=3 format=3 uid="uid://bi63vo4dcrdhf"]
 
-[ext_resource type="PackedScene" path="res://scenes/minigame_dumpster_control.tscn" id="1_0oujc"]
+[ext_resource type="PackedScene" uid="uid://cybc0370qmjxo" path="res://scenes/minigame_dumpster_control.tscn" id="1_0oujc"]
 
 [sub_resource type="GDScript" id="GDScript_0oujc"]
 script/source = "extends Node2D
