@@ -1,0 +1,158 @@
+[gd_scene load_steps=6 format=3 uid="uid://c05rk4i33t62h"]
+
+[ext_resource type="Texture2D" uid="uid://c5egcmw4x1ta1" path="res://assets/ui/inGameItems/Pixel_Clipboard.png" id="1_iv0lu"]
+
+[sub_resource type="GDScript" id="GDScript_iv0lu"]
+script/source = "extends CanvasLayer
+
+
+
+func _on_button_pressed() -> void:
+	get_node(\"level_diff_anim\").play(\"Transition_In_level_diff\")
+"
+
+[sub_resource type="Animation" id="Animation_iv0lu"]
+resource_name = "Transition_In_level_diff"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/PixelClipboard3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-500, 497), Vector2(1568, 497)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/PixelClipboard2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-500, 496), Vector2(968, 496)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/PixelClipboard:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-500, 491), Vector2(354, 491)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lqy8f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/PixelClipboard:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-500, 491)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/PixelClipboard2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-500, 496)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel/PixelClipboard3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-500, 497)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ye6hp"]
+_data = {
+&"RESET": SubResource("Animation_lqy8f"),
+&"Transition_In_level_diff": SubResource("Animation_iv0lu")
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = SubResource("GDScript_iv0lu")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1916.0
+offset_bottom = 1080.0
+
+[node name="PixelClipboard" type="Sprite2D" parent="Panel"]
+position = Vector2(-500, 491)
+scale = Vector2(0.768, 0.592)
+texture = ExtResource("1_iv0lu")
+
+[node name="PixelClipboard2" type="Sprite2D" parent="Panel"]
+position = Vector2(-500, 496)
+scale = Vector2(0.768, 0.592)
+texture = ExtResource("1_iv0lu")
+
+[node name="PixelClipboard3" type="Sprite2D" parent="Panel"]
+position = Vector2(-500, 497)
+scale = Vector2(0.768, 0.592)
+texture = ExtResource("1_iv0lu")
+
+[node name="level_diff_anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ye6hp")
+}
+speed_scale = 1.5
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1773.0
+offset_top = 988.0
+offset_right = 1912.0
+offset_bottom = 1071.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
