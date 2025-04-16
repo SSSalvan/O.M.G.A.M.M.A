@@ -10,7 +10,7 @@ func _process(_delta: float) -> void:
 	pass
 
 func _on_play_game_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main_gameplay.tscn")
+	get_tree().change_scene_to_file("res://scenes/main_gameplay_diff_easy.tscn")
 
 func _on_exit_game_pressed() -> void:
 	get_tree().quit()
