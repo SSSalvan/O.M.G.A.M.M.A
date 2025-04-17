@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://b8k1hcsqo3jn0"]
 
-[ext_resource type="Script" path="res://scripts/panel_container.gd" id="1_ai4rf"]
+[ext_resource type="Script" uid="uid://b8tgvyd75xb4y" path="res://scripts/panel_container.gd" id="1_ai4rf"]
 [ext_resource type="Script" uid="uid://bdrb81cd1ldpw" path="res://scenes/winning_screen.gd" id="1_amw80"]
 [ext_resource type="Texture2D" uid="uid://qcsfxf23f088" path="res://assets/map/indoMap.png" id="1_oadui"]
 [ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="2_mg68r"]

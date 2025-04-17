@@ -145,6 +145,7 @@ text = "Turbin Angin"
 metadata/_edit_use_anchors_ = true
 
 [node name="QuantityTurbin" type="Label" parent="BG_ShopPanel/TurbinAngin"]
+layout_mode = 0
 offset_left = 167.0
 offset_top = 5.0
 offset_right = 207.0

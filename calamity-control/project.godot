@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 EmissionRateStatusPopup="*res://scenes/emission_rate_status_popup.tscn"
 ShopPanel="*res://scenes/ShopPanel.tscn"
 ResourceCount="*res://scripts/resource.gd"
+LevelDifficultiesSelect="*res://scenes/level_difficulties_select.tscn"
 
 [display]
 
