@@ -10,4 +10,3 @@ func subtract_money(amount: int) -> void:
 	if resource >= amount:
 		resource -= amount
 		print("Spent money, Resource is now: ", resource)
-	

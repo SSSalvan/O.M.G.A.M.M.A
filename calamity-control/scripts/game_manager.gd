@@ -92,7 +92,6 @@ func update_week_label():
 
 func update_resource_label():
 	resource_counter.text = "Resource: " + str(ResourceCount.resource)
-	print("Resource Updated, Current Resource: ", ResourceCount.resource)
 
 # Function to dynamically update development level
 func increase_development(province_name: String, amount: int):
