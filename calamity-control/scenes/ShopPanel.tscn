@@ -111,6 +111,7 @@ text = "Panel Surya"
 metadata/_edit_use_anchors_ = true
 
 [node name="QuantityPanel" type="Label" parent="BG_ShopPanel/PanelSurya"]
+layout_mode = 0
 offset_left = 160.0
 offset_top = 5.0
 offset_right = 200.0

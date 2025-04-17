@@ -31,11 +31,13 @@ func _on_select_medium_pressed() -> void:
 	var level_medium_button = get_node(\"background_cover/level_diff_medium/select_medium\")
 	if level_medium_button.text == \"Select\":
 		level_medium_button.text = \"Back\"
+		$background_cover/level_diff_medium/accept_contract_medium.visible = true
 		get_tree().paused = false
 		get_node(\"level_diff_anim\").play(\"level_medium_chosen_selected\")
 	else:
 		level_medium_button.text = \"Select\"
 		get_tree().paused = true
+		$background_cover/level_diff_medium/accept_contract_medium.visible = false
 		get_node(\"level_diff_anim\").play(\"level_medium_back_out\")
 		get_tree().paused = false
 
@@ -45,11 +47,13 @@ func _on_select_hard_pressed() -> void:
 	var level_hard_button = get_node(\"background_cover/level_diff_hard/select_hard\")
 	if level_hard_button.text == \"Select\":
 		level_hard_button.text = \"Back\"
+		$background_cover/level_diff_hard/accept_contract_hard.visible = true
 		get_tree().paused = false
 		get_node(\"level_diff_anim\").play(\"level_hard_chosen_selected\")
 	else:
 		level_hard_button.text = \"Select\"
 		get_tree().paused = true
+		$background_cover/level_diff_hard/accept_contract_hard.visible = false
 		get_node(\"level_diff_anim\").play(\"level_hard_back_out\")
 		get_tree().paused = false
 "
@@ -121,6 +125,30 @@ tracks/4/path = NodePath("background_cover/level_diff_easy/accept_contract_easy:
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("background_cover/level_diff_medium/accept_contract_medium:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("background_cover/level_diff_hard/accept_contract_hard:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -288,7 +316,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_a5kpt"]
 resource_name = "level_hard_chosen_selected"
-length = 1.5
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -324,6 +352,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1568, 500), Vector2(354, 500)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("background_cover/level_diff_hard/accept_contract_hard:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ygmnp"]
@@ -368,7 +408,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_ge3pk"]
 resource_name = "level_medium_chosen_selected"
-length = 1.5
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -404,6 +444,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(968, 496), Vector2(354, 496)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("background_cover/level_diff_medium/accept_contract_medium:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ye6hp"]
@@ -465,6 +517,16 @@ theme_override_fonts/font = ExtResource("2_lqy8f")
 theme_override_font_sizes/font_size = 80
 text = "Select"
 
+[node name="accept_contract_medium" type="Button" parent="background_cover/level_diff_medium"]
+visible = false
+offset_left = 409.0
+offset_top = 410.0
+offset_right = 1638.0
+offset_bottom = 510.0
+theme_override_fonts/font = ExtResource("2_lqy8f")
+theme_override_font_sizes/font_size = 60
+text = "Accept Contract"
+
 [node name="level_diff_hard" type="Sprite2D" parent="background_cover"]
 position = Vector2(-500, 497)
 scale = Vector2(0.768, 0.592)
@@ -478,6 +540,16 @@ offset_bottom = 522.0
 theme_override_fonts/font = ExtResource("2_lqy8f")
 theme_override_font_sizes/font_size = 80
 text = "Select"
+
+[node name="accept_contract_hard" type="Button" parent="background_cover/level_diff_hard"]
+visible = false
+offset_left = 409.0
+offset_top = 410.0
+offset_right = 1638.0
+offset_bottom = 510.0
+theme_override_fonts/font = ExtResource("2_lqy8f")
+theme_override_font_sizes/font_size = 60
+text = "Accept Contract"
 
 [node name="level_diff_anim" type="AnimationPlayer" parent="."]
 libraries = {
