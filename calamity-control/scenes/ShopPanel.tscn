@@ -74,6 +74,21 @@ offset = Vector2(0, -860)
 transform = Transform2D(1, 0, 0, 1, 0, -860)
 script = ExtResource("1_8b1yh")
 
+[node name="BG_Cover" type="Panel" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = -317.0
+offset_top = 1.0
+offset_right = 1698.0
+offset_bottom = 1094.0
+
+[node name="BG_Cover2" type="Panel" parent="BG_Cover"]
+layout_mode = 0
+offset_left = 1979.0
+offset_top = -348.0
+offset_right = 2322.0
+offset_bottom = 947.0
+
 [node name="BG_ShopPanel" type="Panel" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
