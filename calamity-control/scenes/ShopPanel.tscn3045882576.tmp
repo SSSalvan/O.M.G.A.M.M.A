@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://beycfj6ubt75q"]
+[gd_scene load_steps=10 format=3 uid="uid://beycfj6ubt75q"]
 
 [ext_resource type="Script" uid="uid://hn0xr6k7dpnf" path="res://scripts/shop_panel.gd" id="1_8b1yh"]
 [ext_resource type="Texture2D" uid="uid://bas62ut2w5xhy" path="res://assets/sprites/istockphoto-1280715197-612x612.jpg" id="1_gu57e"]
+[ext_resource type="Script" uid="uid://dj4uppbhqbkyr" path="res://scripts/buy_turbin.gd" id="2_d568i"]
 [ext_resource type="Texture2D" uid="uid://bya8a3g3i6rkr" path="res://assets/sprites/pngtree-png-solar-panel-icon-vector-png-image_5229059.png" id="2_xf0ew"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6wj4"]
@@ -87,37 +88,7 @@ offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_l6wj4")
-
-[node name="PanelSurya" type="Panel" parent="BG_ShopPanel"]
-layout_mode = 0
-offset_left = 37.0
-offset_top = 51.0
-offset_right = 295.0
-offset_bottom = 141.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Pngtree-png-solar-panel-icon-vector-png-image5229059" type="Sprite2D" parent="BG_ShopPanel/PanelSurya"]
-position = Vector2(51, 51)
-scale = Vector2(0.141667, 0.1375)
-texture = ExtResource("2_xf0ew")
-
-[node name="Label" type="Label" parent="BG_ShopPanel/PanelSurya"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 3.0
-offset_right = 96.0
-offset_bottom = 26.0
-text = "Panel Surya"
-metadata/_edit_use_anchors_ = true
-
-[node name="BuyPanel" type="Button" parent="BG_ShopPanel/PanelSurya"]
-layout_mode = 0
-offset_left = 155.0
-offset_top = 35.0
-offset_right = 229.0
-offset_bottom = 66.0
-text = "Buy"
-metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="Turbin Angin" type="Panel" parent="BG_ShopPanel"]
 layout_mode = 0
@@ -143,12 +114,44 @@ offset_top = 35.0
 offset_right = 229.0
 offset_bottom = 66.0
 text = "Buy"
+script = ExtResource("2_d568i")
 metadata/_edit_use_anchors_ = true
 
 [node name="Istockphoto-1280715197-612x612" type="Sprite2D" parent="BG_ShopPanel/Turbin Angin"]
 position = Vector2(52, 55)
 scale = Vector2(0.0996732, 0.0931373)
 texture = ExtResource("1_gu57e")
+
+[node name="PanelSurya" type="Panel" parent="BG_ShopPanel"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 51.0
+offset_right = 295.0
+offset_bottom = 141.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Pngtree-png-solar-panel-icon-vector-png-image5229059" type="Sprite2D" parent="BG_ShopPanel/PanelSurya"]
+position = Vector2(51, 51)
+scale = Vector2(0.141667, 0.1375)
+texture = ExtResource("2_xf0ew")
+
+[node name="Label" type="Label" parent="BG_ShopPanel/PanelSurya"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 96.0
+offset_bottom = 26.0
+text = "Panel Surya"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="BG_ShopPanel/PanelSurya"]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 35.0
+offset_right = 229.0
+offset_bottom = 66.0
+text = "Buy"
+metadata/_edit_use_anchors_ = true
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 process_mode = 3
@@ -157,10 +160,8 @@ libraries = {
 }
 speed_scale = 4.0
 
-[connection signal="mouse_entered" from="BG_ShopPanel/PanelSurya" to="BG_ShopPanel/PanelSurya" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="BG_ShopPanel/PanelSurya" to="BG_ShopPanel/PanelSurya" method="_on_mouse_exited"]
-[connection signal="pressed" from="BG_ShopPanel/PanelSurya/BuyPanel" to="." method="_on_buy_panel_pressed"]
 [connection signal="mouse_entered" from="BG_ShopPanel/Turbin Angin" to="BG_ShopPanel/Turbin Angin" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="BG_ShopPanel/Turbin Angin" to="BG_ShopPanel/Turbin Angin" method="_on_mouse_exited"]
-[connection signal="pressed" from="BG_ShopPanel/Turbin Angin/BuyTurbin" to="." method="_on_buy_turbin_pressed"]
 [connection signal="pressed" from="BG_ShopPanel/Turbin Angin/BuyTurbin" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="BG_ShopPanel/PanelSurya" to="BG_ShopPanel/PanelSurya" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BG_ShopPanel/PanelSurya" to="BG_ShopPanel/PanelSurya" method="_on_mouse_exited"]

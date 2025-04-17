@@ -8,5 +8,6 @@ func _ready():
 	call_deferred("_print_tree")
 
 func _print_tree():
-	print("Scene tree structure:")
-	get_tree().root.print_tree_pretty()
+	#print("Scene tree structure:")
+	#get_tree().root.print_tree_pretty()
+	pass

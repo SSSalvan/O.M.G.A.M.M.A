@@ -5,7 +5,6 @@ extends Node
 @onready var game_manager = get_parent().get_parent()
 
 var week: int = 1
-var resource: int = 1000
 const MAX_WEEKS: int = 10
 
 
@@ -20,8 +19,11 @@ var islands = {
 func _ready():
 	update_week_label()
 	update_resource_label()
-	get_tree().root.print_tree_pretty()
-	
+	#get_tree().root.print_tree_pretty()
+
+func _process(_delta: float) -> void:
+	update_resource_label()
+
 func _on_end_week_pressed() -> void:
 	var confirm_scene = load("res://scenes/week_end_confirmation.tscn").instantiate()
 	add_child(confirm_scene)
@@ -81,7 +83,7 @@ func check_final_status():
 
 
 func weekly_income_resource():
-	resource += 500
+	ResourceCount.add_money(500)
 	update_resource_label()
 
 func update_week_label():
@@ -89,8 +91,8 @@ func update_week_label():
 	print("Week Updated, Week: ", week)
 
 func update_resource_label():
-	resource_counter.text = "Resource: " + str(resource)
-	print("Resource Updated, Current Resource: ", resource)
+	resource_counter.text = "Resource: " + str(ResourceCount.resource)
+	print("Resource Updated, Current Resource: ", ResourceCount.resource)
 
 # Function to dynamically update development level
 func increase_development(province_name: String, amount: int):
