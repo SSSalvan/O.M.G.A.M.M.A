@@ -3,6 +3,8 @@ extends CanvasLayer
 var itemName: Array[String] = [""]
 var itemCount: Array[int] = []
 var itemPrice: Array[int] = []
+@onready var item1Label: Label = $BG_ShopPanel/PanelSurya/QuantityPanel
+@onready var item2Label: Label = $BG_ShopPanel/TurbinAngin/QuantityTurbin
 
 func _ready():
 	itemName.resize(5)  # now it's [0, 0, 0, 0, 0]
@@ -24,9 +26,11 @@ func _on_buy_panel_pressed() -> void:
 		itemCount[1]+=1
 		ResourceCount.subtract_money(itemPrice[1])
 		print("Bought, now ", itemCount[1], " Panel Surya")
+		item1Label.text = "%d" % itemCount[1]
 
 func _on_buy_turbin_pressed() -> void:
 	if ResourceCount.resource >= itemPrice[2]:
 		itemCount[2]+=1
 		ResourceCount.subtract_money(itemPrice[2])
 		print("Bought, now ", itemCount[2], " Turbin Angin")
+		item2Label.text = "%d" % itemCount[2]
