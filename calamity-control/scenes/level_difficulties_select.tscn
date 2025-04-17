@@ -1,0 +1,499 @@
+[gd_scene load_steps=14 format=3 uid="uid://llggp72hc3cb"]
+
+[ext_resource type="Texture2D" uid="uid://bhpu24iac5b7b" path="res://assets/ui/inGameItems/Pixel_Clipboard.png" id="1_iv0lu"]
+[ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="2_lqy8f"]
+
+[sub_resource type="GDScript" id="GDScript_iv0lu"]
+script/source = "extends CanvasLayer
+
+
+
+func _on_button_pressed() -> void:
+	get_node(\"level_diff_anim\").play(\"Transition_In_level_diff\")
+
+func _on_select_easy_pressed() -> void:
+	var level_easy_button = get_node(\"background_cover/level_diff_easy/select_easy\")
+	if level_easy_button.text == \"Select\":
+		level_easy_button.text = \"Back\"
+		$background_cover/level_diff_easy/accept_contract_easy.visible = true
+		get_tree().paused = false
+		get_node(\"level_diff_anim\").play(\"level_easy_chosen_selected\")
+	else:
+		level_easy_button.text = \"Select\"
+		get_tree().paused = true
+		$background_cover/level_diff_easy/accept_contract_easy.visible = false
+		get_node(\"level_diff_anim\").play(\"level_easy_back_out\")
+		get_tree().paused = false
+
+
+
+func _on_select_medium_pressed() -> void:
+	var level_medium_button = get_node(\"background_cover/level_diff_medium/select_medium\")
+	if level_medium_button.text == \"Select\":
+		level_medium_button.text = \"Back\"
+		get_tree().paused = false
+		get_node(\"level_diff_anim\").play(\"level_medium_chosen_selected\")
+	else:
+		level_medium_button.text = \"Select\"
+		get_tree().paused = true
+		get_node(\"level_diff_anim\").play(\"level_medium_back_out\")
+		get_tree().paused = false
+
+
+
+func _on_select_hard_pressed() -> void:
+	var level_hard_button = get_node(\"background_cover/level_diff_hard/select_hard\")
+	if level_hard_button.text == \"Select\":
+		level_hard_button.text = \"Back\"
+		get_tree().paused = false
+		get_node(\"level_diff_anim\").play(\"level_hard_chosen_selected\")
+	else:
+		level_hard_button.text = \"Select\"
+		get_tree().paused = true
+		get_node(\"level_diff_anim\").play(\"level_hard_back_out\")
+		get_tree().paused = false
+"
+
+[sub_resource type="GDScript" id="GDScript_ye6hp"]
+script/source = "extends Sprite2D
+
+#func _ready() -> void:
+	#$select_easy.visible = false
+
+#func _on_select_easy_pressed() -> void:
+	#get_node(\"level_diff_anim\").play(\"level_easy_chosen_selected\")
+"
+
+[sub_resource type="Animation" id="Animation_lqy8f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background_cover:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background_cover/level_diff_easy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-500, 491)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("background_cover/level_diff_medium:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-500, 496)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("background_cover/level_diff_hard:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-500, 497)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("background_cover/level_diff_easy/accept_contract_easy:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_iv0lu"]
+resource_name = "Transition_In_level_diff"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background_cover/level_diff_hard:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-500, 497), Vector2(1568, 497)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background_cover/level_diff_medium:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-500, 496), Vector2(968, 496)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("background_cover/level_diff_easy:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-500, 491), Vector2(354, 491)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("background_cover:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ermya"]
+resource_name = "level_easy_back_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background_cover/level_diff_medium:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(968, 1500), Vector2(968, 500)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background_cover/level_diff_hard:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1568, 1500), Vector2(1568, 500)]
+}
+
+[sub_resource type="Animation" id="Animation_ye6hp"]
+resource_name = "level_easy_chosen_selected"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background_cover/level_diff_medium:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(968, 496), Vector2(968, 1500)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background_cover/level_diff_hard:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1568, 497), Vector2(1568, 1500)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("background_cover/level_diff_easy/accept_contract_easy:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8qrn7"]
+resource_name = "level_hard_back_out"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background_cover/level_diff_hard:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(354, 500), Vector2(1568, 500)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background_cover/level_diff_medium:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(968, 1500), Vector2(968, 496)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("background_cover/level_diff_easy:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(354, 1500), Vector2(354, 500)]
+}
+
+[sub_resource type="Animation" id="Animation_a5kpt"]
+resource_name = "level_hard_chosen_selected"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background_cover/level_diff_easy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(354, 500), Vector2(354, 1500)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background_cover/level_diff_medium:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(968, 496), Vector2(968, 1500)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("background_cover/level_diff_hard:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1568, 500), Vector2(354, 500)]
+}
+
+[sub_resource type="Animation" id="Animation_ygmnp"]
+resource_name = "level_medium_back_out"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background_cover/level_diff_medium:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(354, 496), Vector2(968, 496)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background_cover/level_diff_easy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(354, 1500), Vector2(354, 500)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("background_cover/level_diff_hard:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1568, 1500), Vector2(1568, 500)]
+}
+
+[sub_resource type="Animation" id="Animation_ge3pk"]
+resource_name = "level_medium_chosen_selected"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background_cover/level_diff_easy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(354, 500), Vector2(354, 1500)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background_cover/level_diff_hard:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1568, 500), Vector2(1568, 1500)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("background_cover/level_diff_medium:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(968, 496), Vector2(354, 496)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ye6hp"]
+_data = {
+&"RESET": SubResource("Animation_lqy8f"),
+&"Transition_In_level_diff": SubResource("Animation_iv0lu"),
+&"level_easy_back_out": SubResource("Animation_ermya"),
+&"level_easy_chosen_selected": SubResource("Animation_ye6hp"),
+&"level_hard_back_out": SubResource("Animation_8qrn7"),
+&"level_hard_chosen_selected": SubResource("Animation_a5kpt"),
+&"level_medium_back_out": SubResource("Animation_ygmnp"),
+&"level_medium_chosen_selected": SubResource("Animation_ge3pk")
+}
+
+[node name="level_difficulties_select" type="CanvasLayer"]
+script = SubResource("GDScript_iv0lu")
+
+[node name="background_cover" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1916.0
+offset_bottom = 1080.0
+
+[node name="level_diff_easy" type="Sprite2D" parent="background_cover"]
+position = Vector2(-500, 491)
+scale = Vector2(0.768, 0.592)
+texture = ExtResource("1_iv0lu")
+script = SubResource("GDScript_ye6hp")
+
+[node name="select_easy" type="Button" parent="background_cover/level_diff_easy"]
+offset_left = -294.0
+offset_top = -514.0
+offset_right = 309.0
+offset_bottom = 522.0
+theme_override_fonts/font = ExtResource("2_lqy8f")
+theme_override_font_sizes/font_size = 80
+text = "Select"
+
+[node name="accept_contract_easy" type="Button" parent="background_cover/level_diff_easy"]
+visible = false
+offset_left = 409.0
+offset_top = 410.0
+offset_right = 1638.0
+offset_bottom = 510.0
+theme_override_fonts/font = ExtResource("2_lqy8f")
+theme_override_font_sizes/font_size = 60
+text = "Accept Contract"
+
+[node name="level_diff_medium" type="Sprite2D" parent="background_cover"]
+position = Vector2(-500, 496)
+scale = Vector2(0.768, 0.592)
+texture = ExtResource("1_iv0lu")
+
+[node name="select_medium" type="Button" parent="background_cover/level_diff_medium"]
+offset_left = -294.0
+offset_top = -514.0
+offset_right = 309.0
+offset_bottom = 522.0
+theme_override_fonts/font = ExtResource("2_lqy8f")
+theme_override_font_sizes/font_size = 80
+text = "Select"
+
+[node name="level_diff_hard" type="Sprite2D" parent="background_cover"]
+position = Vector2(-500, 497)
+scale = Vector2(0.768, 0.592)
+texture = ExtResource("1_iv0lu")
+
+[node name="select_hard" type="Button" parent="background_cover/level_diff_hard"]
+offset_left = -294.0
+offset_top = -514.0
+offset_right = 309.0
+offset_bottom = 522.0
+theme_override_fonts/font = ExtResource("2_lqy8f")
+theme_override_font_sizes/font_size = 80
+text = "Select"
+
+[node name="level_diff_anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ye6hp")
+}
+speed_scale = 1.5
+
+[node name="test_anim" type="Button" parent="."]
+offset_left = 1773.0
+offset_top = 988.0
+offset_right = 1912.0
+offset_bottom = 1071.0
+
+[connection signal="mouse_entered" from="background_cover/level_diff_easy/select_easy" to="background_cover/level_diff_easy" method="_on_select_easy_mouse_entered"]
+[connection signal="mouse_exited" from="background_cover/level_diff_easy/select_easy" to="background_cover/level_diff_easy" method="_on_select_easy_mouse_exited"]
+[connection signal="pressed" from="background_cover/level_diff_easy/select_easy" to="." method="_on_select_easy_pressed"]
+[connection signal="pressed" from="background_cover/level_diff_medium/select_medium" to="." method="_on_select_medium_pressed"]
+[connection signal="pressed" from="background_cover/level_diff_hard/select_hard" to="." method="_on_select_hard_pressed"]
+[connection signal="pressed" from="test_anim" to="." method="_on_button_pressed"]
