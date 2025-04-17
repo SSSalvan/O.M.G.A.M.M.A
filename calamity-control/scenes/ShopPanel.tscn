@@ -127,7 +127,7 @@ offset_bottom = 66.0
 text = "Buy"
 metadata/_edit_use_anchors_ = true
 
-[node name="Turbin Angin" type="Panel" parent="BG_ShopPanel"]
+[node name="TurbinAngin" type="Panel" parent="BG_ShopPanel"]
 layout_mode = 0
 offset_left = 344.0
 offset_top = 52.0
@@ -135,7 +135,7 @@ offset_right = 602.0
 offset_bottom = 142.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="BG_ShopPanel/Turbin Angin"]
+[node name="Label" type="Label" parent="BG_ShopPanel/TurbinAngin"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 3.0
@@ -144,7 +144,14 @@ offset_bottom = 26.0
 text = "Turbin Angin"
 metadata/_edit_use_anchors_ = true
 
-[node name="BuyTurbin" type="Button" parent="BG_ShopPanel/Turbin Angin"]
+[node name="QuantityTurbin" type="Label" parent="BG_ShopPanel/TurbinAngin"]
+offset_left = 167.0
+offset_top = 5.0
+offset_right = 207.0
+offset_bottom = 28.0
+text = "0"
+
+[node name="BuyTurbin" type="Button" parent="BG_ShopPanel/TurbinAngin"]
 layout_mode = 0
 offset_left = 155.0
 offset_top = 35.0
@@ -153,7 +160,7 @@ offset_bottom = 66.0
 text = "Buy"
 metadata/_edit_use_anchors_ = true
 
-[node name="Istockphoto-1280715197-612x612" type="Sprite2D" parent="BG_ShopPanel/Turbin Angin"]
+[node name="Istockphoto-1280715197-612x612" type="Sprite2D" parent="BG_ShopPanel/TurbinAngin"]
 position = Vector2(52, 55)
 scale = Vector2(0.0996732, 0.0931373)
 texture = ExtResource("1_gu57e")
@@ -168,7 +175,7 @@ speed_scale = 4.0
 [connection signal="mouse_entered" from="BG_ShopPanel/PanelSurya" to="BG_ShopPanel/PanelSurya" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="BG_ShopPanel/PanelSurya" to="BG_ShopPanel/PanelSurya" method="_on_mouse_exited"]
 [connection signal="pressed" from="BG_ShopPanel/PanelSurya/BuyPanel" to="." method="_on_buy_panel_pressed"]
-[connection signal="mouse_entered" from="BG_ShopPanel/Turbin Angin" to="BG_ShopPanel/Turbin Angin" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="BG_ShopPanel/Turbin Angin" to="BG_ShopPanel/Turbin Angin" method="_on_mouse_exited"]
-[connection signal="pressed" from="BG_ShopPanel/Turbin Angin/BuyTurbin" to="." method="_on_buy_turbin_pressed"]
-[connection signal="pressed" from="BG_ShopPanel/Turbin Angin/BuyTurbin" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="BG_ShopPanel/TurbinAngin" to="BG_ShopPanel/TurbinAngin" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BG_ShopPanel/TurbinAngin" to="BG_ShopPanel/TurbinAngin" method="_on_mouse_exited"]
+[connection signal="pressed" from="BG_ShopPanel/TurbinAngin/BuyTurbin" to="." method="_on_buy_turbin_pressed"]
+[connection signal="pressed" from="BG_ShopPanel/TurbinAngin/BuyTurbin" to="." method="_on_button_pressed"]
