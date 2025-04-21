@@ -12,7 +12,7 @@ func set_title_text(text: String):
 
 func _on_yes_pressed():
 	print("GameManager in popup: ", game_manager)
-	if game_manager and game_manager.resource >= 400:
+	if game_manager and ResourceCount.resource >= 400:
 		confirmed.emit()
 	else:
 		print("Not enough resources!")

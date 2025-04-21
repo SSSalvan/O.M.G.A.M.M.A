@@ -50,7 +50,8 @@ func on_event_confirmed(island_name: String, event_data: Dictionary):
 		print(island_name, " affected by: ", event_data["name"], ", emission now: ", islands[island_name]["emission"])
 	elif event_data["type"] == "positive":
 		ResourceCount.add_money(event_data["resource_reward"])
-		print("Positive event in ", island_name, ", gained resource: ", event_data["resource_reward"])
+		islands[island_name]["emission"] -= event_data["emission_decrease"]
+		print("Positive event in ", island_name, ", gained resource: ", event_data["resource_reward"], ", emission now: ", islands[island_name]["emission"])
 	update_resource_label()
 
 func on_event_negated(island_name: String, event_data: Dictionary):
