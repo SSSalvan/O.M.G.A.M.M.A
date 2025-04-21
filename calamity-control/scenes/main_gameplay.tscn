@@ -184,9 +184,9 @@ label_settings = SubResource("LabelSettings_gb8rl")
 
 [node name="Resource Counter" type="Label" parent="GameManager"]
 offset_left = -664.0
-offset_top = -531.0
+offset_top = -528.0
 offset_right = -487.0
-offset_bottom = -486.0
+offset_bottom = -483.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "Resource: x"
@@ -209,7 +209,7 @@ offset_bottom = 340.0
 theme_override_font_sizes/font_size = 32
 text = "End Week"
 
-[node name="Sumatra2" parent="GameManager" instance=ExtResource("6_04qc1")]
+[node name="StatRpt_Sumatra" parent="GameManager" instance=ExtResource("6_04qc1")]
 offset_left = -817.0
 offset_top = -322.0
 offset_right = -2610.0
