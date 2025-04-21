@@ -21,6 +21,7 @@ func set_event_data(_island_name: String, _event_data: Dictionary):
 		$BG_Event_Text/Event_Description.text = \"Sebuah peristiwa terjadi: %s.\\nEmisi akan naik sebanyak %d%%!\" % [event_data.name, event_data.emission_increase]
 		$BG_Event_Text/Confirmation_Take_Action.text = \"Bayar %d untuk cegah\" % event_data.cost
 		$BG_Event_Text/Ignore_Close.visible = true
+		$BG_Event_Text/Ignore_Close.text = \"Abaikan\"
 	else:
 		$BG_Event_Text/Event_Description.text = \"Kabar baik! %s.\\nSumber daya +%d, Emisi -%d%%.\" % [
 			event_data.name,
@@ -32,16 +33,18 @@ func set_event_data(_island_name: String, _event_data: Dictionary):
 
 
 func _on_confirmation_take_action_pressed() -> void:
-	if event_data.type == \"negative\":
+	print(\"EVENT DATA TYPE: \", event_data.get(\"type\"))
+
+	if event_data.get(\"type\") == \"negative\":
 		if ResourceCount.resource >= event_data.cost:
 			event_negated.emit(island_name, event_data)
 		else:
 			print(\"Not enough resources to negate!\")
 			event_confirmed.emit(island_name, event_data)
 	else:
+		print(\"Emitting POSITIVE event_confirmed!\")
 		event_confirmed.emit(island_name, event_data)
 	queue_free()
-
 
 func _on_ignore_close_pressed() -> void:
 	event_confirmed.emit(island_name, event_data)
