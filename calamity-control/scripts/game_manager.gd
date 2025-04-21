@@ -33,7 +33,7 @@ func _process(_delta: float) -> void:
 
 func trigger_random_events():
 	for island_name in islands.keys():
-		if randi() % 3 == 0:  
+		if randi() % 50 == 0:  
 			var random_event = events[randi() % events.size()]
 			show_event_popup(island_name, random_event)
 
