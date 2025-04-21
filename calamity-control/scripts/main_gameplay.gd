@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var week_counter: Label = $"Week Counter"  # Adjust if needed
+@onready var week_counter: Label = $"GameManager/Week Counter"  # Adjust if needed
 
 var week: int = 1
 

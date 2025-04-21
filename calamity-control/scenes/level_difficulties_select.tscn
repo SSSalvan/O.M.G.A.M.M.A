@@ -24,6 +24,9 @@ func _on_select_easy_pressed() -> void:
 		get_node(\"level_diff_anim\").play(\"level_easy_back_out\")
 		get_tree().paused = false
 
+func _on_accept_contract_easy_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/main_gameplay.tscn\")
+	get_node(\"/root/LevelDifficultiesSelect/.\").visible = false
 
 
 func _on_select_medium_pressed() -> void:
@@ -40,7 +43,8 @@ func _on_select_medium_pressed() -> void:
 		get_node(\"level_diff_anim\").play(\"level_medium_back_out\")
 		get_tree().paused = false
 
-
+func _on_accept_contract_medium_pressed() -> void:
+	pass # Replace with function body.
 
 func _on_select_hard_pressed() -> void:
 	var level_hard_button = get_node(\"background_cover/level_diff_hard/select_hard\")
@@ -55,6 +59,9 @@ func _on_select_hard_pressed() -> void:
 		$background_cover/level_diff_hard/accept_contract_hard.visible = false
 		get_node(\"level_diff_anim\").play(\"level_hard_back_out\")
 		get_tree().paused = false
+
+func _on_accept_contract_hard_pressed() -> void:
+	pass # Replace with function body.
 "
 
 [sub_resource type="GDScript" id="GDScript_ye6hp"]
@@ -228,6 +235,70 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_21637"]
+resource_name = "Transition_Out_level_diff"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background_cover/level_diff_easy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(354, 491), Vector2(-500, 491)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background_cover/level_diff_medium:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(968, 496), Vector2(-500, 496)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("background_cover/level_diff_hard:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1568, 497), Vector2(-500, 497)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("background_cover:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("test_anim:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.01, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ermya"]
@@ -481,70 +552,6 @@ tracks/3/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_21637"]
-resource_name = "Transition_Out_level_diff"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("background_cover/level_diff_easy:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(354, 491), Vector2(-500, 491)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("background_cover/level_diff_medium:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(968, 496), Vector2(-500, 496)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("background_cover/level_diff_hard:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1568, 497), Vector2(-500, 497)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("background_cover:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("test_anim:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(1.01, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ye6hp"]
 _data = {
 &"RESET": SubResource("Animation_lqy8f"),
@@ -659,6 +666,9 @@ text = "Back"
 [connection signal="mouse_entered" from="background_cover/level_diff_easy/select_easy" to="background_cover/level_diff_easy" method="_on_select_easy_mouse_entered"]
 [connection signal="mouse_exited" from="background_cover/level_diff_easy/select_easy" to="background_cover/level_diff_easy" method="_on_select_easy_mouse_exited"]
 [connection signal="pressed" from="background_cover/level_diff_easy/select_easy" to="." method="_on_select_easy_pressed"]
+[connection signal="pressed" from="background_cover/level_diff_easy/accept_contract_easy" to="." method="_on_accept_contract_easy_pressed"]
 [connection signal="pressed" from="background_cover/level_diff_medium/select_medium" to="." method="_on_select_medium_pressed"]
+[connection signal="pressed" from="background_cover/level_diff_medium/accept_contract_medium" to="." method="_on_accept_contract_medium_pressed"]
 [connection signal="pressed" from="background_cover/level_diff_hard/select_hard" to="." method="_on_select_hard_pressed"]
+[connection signal="pressed" from="background_cover/level_diff_hard/accept_contract_hard" to="." method="_on_accept_contract_hard_pressed"]
 [connection signal="pressed" from="test_anim" to="." method="_on_button_pressed"]

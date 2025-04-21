@@ -1,0 +1,116 @@
+[gd_scene load_steps=4 format=3 uid="uid://cju1m73svrqao"]
+
+[ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="1_8l8q7"]
+
+[sub_resource type="GDScript" id="GDScript_6jhv4"]
+script/source = "extends CanvasLayer
+
+signal event_confirmed(island_name, event_data)
+signal event_negated(island_name, event_data)
+
+var island_name: String
+var event_data: Dictionary
+
+func set_event_data(_island_name: String, _event_data: Dictionary):
+	island_name = _island_name
+	event_data = _event_data
+	
+	$BG_Event_Text/Event_Title.text = \"[%s] %s\" % [island_name, event_data.get(\"name\", \"Event\")]
+
+	if event_data.type == \"negative\":
+		$BG_Event_Text/Event_Description.text = \"Sebuah peristiwa terjadi: %s.\\nEmisi akan naik sebanyak %d%%!\" % [event_data.name, event_data.emission_increase]
+		$BG_Event_Text/Confirmation_Take_Action.text = \"Bayar %d untuk cegah\" % event_data.cost
+		$BG_Event_Text/Ignore_Close.visible = true
+	else:
+		$BG_Event_Text/Event_Description.text = \"Kabar baik! %s.\\nSumber daya +%d, Emisi -%d%%.\" % [
+			event_data.name,
+			event_data.resource_reward,
+			event_data.emission_decrease
+		]
+		$BG_Event_Text/Confirmation_Take_Action.text = \"Terima\"
+		$BG_Event_Text/Ignore_Close.visible = false
+
+
+func _on_confirmation_take_action_pressed() -> void:
+	if event_data.type == \"negative\":
+		if ResourceCount.resource >= event_data.cost:
+			event_negated.emit(island_name, event_data)
+		else:
+			print(\"Not enough resources to negate!\")
+			event_confirmed.emit(island_name, event_data)
+	else:
+		event_confirmed.emit(island_name, event_data)
+	queue_free()
+
+
+func _on_ignore_close_pressed() -> void:
+	event_confirmed.emit(island_name, event_data)
+	queue_free()
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8l8q7"]
+bg_color = Color(0.187176, 0.187176, 0.187176, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="EventNotification" type="CanvasLayer"]
+script = SubResource("GDScript_6jhv4")
+
+[node name="BG_Event_Text" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -335.0
+offset_top = -197.0
+offset_right = 335.0
+offset_bottom = 197.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8l8q7")
+
+[node name="Event_Title" type="Label" parent="BG_Event_Text"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 12.0
+offset_right = 652.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("1_8l8q7")
+theme_override_font_sizes/font_size = 35
+text = "sss"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Event_Description" type="RichTextLabel" parent="BG_Event_Text"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 69.0
+offset_right = 651.0
+offset_bottom = 293.0
+theme_override_fonts/normal_font = ExtResource("1_8l8q7")
+theme_override_font_sizes/normal_font_size = 30
+text = "sss"
+
+[node name="Confirmation_Take_Action" type="Button" parent="BG_Event_Text"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 281.0
+offset_right = 488.0
+offset_bottom = 321.0
+
+[node name="Ignore_Close" type="Button" parent="BG_Event_Text"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 324.0
+offset_right = 488.0
+offset_bottom = 364.0
+
+[connection signal="pressed" from="BG_Event_Text/Confirmation_Take_Action" to="." method="_on_confirmation_take_action_pressed"]
+[connection signal="pressed" from="BG_Event_Text/Ignore_Close" to="." method="_on_ignore_close_pressed"]

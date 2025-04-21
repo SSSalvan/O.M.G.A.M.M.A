@@ -16,12 +16,46 @@ var islands = {
 	"Sulawesi": { "development": 0, "emission": 10, "population": 100 }
 }
 
+var events = [
+	{ "type": "negative", "name": "Pembakaran Bahan Bakar Fosil", "emission_increase": 5, "cost": 300 },
+	{ "type": "negative", "name": "Penebangan Hutan", "emission_increase": 4, "cost": 250 },
+	{ "type": "positive", "name": "Mengurangi Bahan Bakar Fosil", "resource_reward": 300, "emission_decrease": 5 },
+	{ "type": "positive", "name": "Menghentikan Deforestasi", "resource_reward": 250, "emission_decrease": 3 }
+]
+
 func _ready():
 	update_week_label()
 	update_resource_label()
 	#get_tree().root.print_tree_pretty()
 
 func _process(_delta: float) -> void:
+	update_resource_label()
+
+func trigger_random_events():
+	for island_name in islands.keys():
+		if randi() % 3 == 0:  
+			var random_event = events[randi() % events.size()]
+			show_event_popup(island_name, random_event)
+
+func show_event_popup(island_name: String, event_data: Dictionary):
+	var popup = load("res://scenes/event_notification.tscn").instantiate()
+	add_child(popup)
+	popup.set_event_data(island_name, event_data)
+	popup.event_confirmed.connect(self.on_event_confirmed)
+	popup.event_negated.connect(self.on_event_negated)
+
+func on_event_confirmed(island_name: String, event_data: Dictionary):
+	if event_data["type"] == "negative":
+		islands[island_name]["emission"] += event_data["emission_increase"]
+		print(island_name, " affected by: ", event_data["name"], ", emission now: ", islands[island_name]["emission"])
+	elif event_data["type"] == "positive":
+		ResourceCount.add_money(event_data["resource_reward"])
+		print("Positive event in ", island_name, ", gained resource: ", event_data["resource_reward"])
+	update_resource_label()
+
+func on_event_negated(island_name: String, event_data: Dictionary):
+	ResourceCount.subtract_money(event_data["cost"])
+	print("Negated event in ", island_name, " for ", event_data["cost"])
 	update_resource_label()
 
 func _on_end_week_pressed() -> void:
@@ -48,6 +82,7 @@ func next_week():
 		week += 1
 		update_week_label()
 		show_development_levels()
+		trigger_random_events()
 	else:
 		print("10 weeks completed. Checking final status report...")
 		check_final_status()
