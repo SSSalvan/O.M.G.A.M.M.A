@@ -22,10 +22,12 @@ var events = [
 	{ "type": "negative", "name": "Penebangan Hutan", "emission_increase": 4, "cost": 250 },
 	{ "type": "positive", "name": "Mengurangi Bahan Bakar Fosil", "resource_reward": 300, "emission_decrease": 5 },
 	{ "type": "positive", "name": "Menghentikan Deforestasi", "resource_reward": 250, "emission_decrease": 3 },
-	{ "type": "minigame", "name": "Trash Catching", "resource_reward": 400, "emission_decrease": 5 }
+	{ "type": "minigame1", "name": "Trash Catching", "resource_reward": 400, "emission_decrease": 5 },
+	{ "type": "minigame2", "name": "Fire Extinguish", "resource_reward": 400, "emission_decrease": 5 }
 ]
 
 func _ready():
+	ResourceCount.resource = 500
 	update_week_label()
 	update_resource_label()
 	#get_tree().root.print_tree_pretty()

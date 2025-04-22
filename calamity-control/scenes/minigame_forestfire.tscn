@@ -4,22 +4,31 @@
 
 [sub_resource type="GDScript" id="GDScript_ov78k"]
 script/source = "extends Node2D
+signal winCon
+signal loseCon
 
 @onready var fire_scene = preload(\"res://scenes/minigame_forestfire_fire.tscn\")
 @export var fire_spawn_interval := 3.0
 var fire_timer := 0.0
+var total_time := 0.0
 var fires_failed := 0
 var game_over := false
 
 func _process(delta):
-	if game_over:
-		return
-
+	total_time += delta
 	fire_timer += delta
+	
 	if fire_timer >= fire_spawn_interval:
 		fire_timer = 0
 		print(\"Spawning fire!\")
 		spawn_fire()
+	
+	if total_time >= 15:
+		emit_signal(\"winCon\")
+		queue_free()
+	if fires_failed>=3:
+		emit_signal(\"loseCon\")
+		queue_free()
 
 func spawn_fire():
 	var fire = fire_scene.instantiate()
