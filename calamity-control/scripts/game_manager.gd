@@ -5,6 +5,7 @@ extends Node
 @onready var game_manager = get_parent().get_parent()
 
 var week: int = 1
+var is_event_active: bool = false
 const MAX_WEEKS: int = 10
 
 
@@ -49,19 +50,35 @@ func on_event_confirmed(island_name: String, event_data: Dictionary):
 	if event_data["type"] == "negative":
 		islands[island_name]["emission"] += event_data["emission_increase"]
 		print(island_name, " affected by: ", event_data["name"], ", emission now: ", islands[island_name]["emission"])
+
 	elif event_data["type"] == "positive":
 		ResourceCount.add_money(event_data["resource_reward"])
 		islands[island_name]["emission"] -= event_data["emission_decrease"]
 		print("Positive event in ", island_name, ", gained resource: ", event_data["resource_reward"], ", emission now: ", islands[island_name]["emission"])
+
+	elif event_data["type"] == "minigame":
+		# MENANG MINIGAME
+		ResourceCount.add_money(event_data["resource_reward"])
+		islands[island_name]["emission"] -= event_data["emission_decrease"]
+		print("🏆 Menang minigame di ", island_name, ": +%d resource, -%d emisi" % [
+			event_data["resource_reward"],
+			event_data["emission_decrease"]
+		])
+
 	update_resource_label()
 
+
 func on_event_negated(island_name: String, event_data: Dictionary):
-	if event_data.has("cost"):
-		ResourceCount.subtract_money(event_data["cost"])
-		print("Negated event in ", island_name, " for ", event_data["cost"])
-	else:
-		print("⚠️ event_data missing 'cost':", event_data)
+	if event_data["type"] == "negative":
+		islands[island_name]["emission"] += event_data["emission_increase"]
+		print("⚠️ Event NEGATIVE tidak dicegah, emisi naik di ", island_name)
+
+	elif event_data["type"] == "minigame":
+		# GAGAL MINIGAME, tidak dapat reward apa-apa
+		print("❌ Gagal minigame di ", island_name, ", tidak ada reward.")
+
 	update_resource_label()
+
 
 
 func _on_end_week_pressed() -> void:

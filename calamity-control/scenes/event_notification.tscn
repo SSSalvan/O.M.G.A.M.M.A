@@ -77,16 +77,20 @@ func _on_ignore_close_pressed() -> void:
 	queue_free()
 
 func _on_minigame_win():
-	# Only emit confirmation once, when minigame is finished
-	self.show()  # Show the event UI again
-	event_confirmed.emit(island_name, event_data)  # Emit reward confirmation
-	is_minigame_active = false  # Reset the flag to prevent further re-triggering
+	print(\"✅ Minigame berhasil diselesaikan! Kamu menang!\")
+	print(\"🎁 Reward: +%d resource, -%d emisi\" % [
+		event_data.get(\"resource_reward\", 0),
+		event_data.get(\"emission_decrease\", 0)
+	])
+	event_confirmed.emit(island_name, event_data)
+	is_minigame_active = false
 	queue_free()
 
 func _on_minigame_lose():
-	# Handle lose situation and close event
+	print(\"❌ Minigame gagal. Kamu kalah.\")
+	print(\"💸 Tidak dapat hadiah.\")
 	event_negated.emit(island_name, event_data)
-	is_minigame_active = false  # Reset the flag
+	is_minigame_active = false
 	queue_free()
 "
 
