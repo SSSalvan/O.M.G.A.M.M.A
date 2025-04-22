@@ -10,6 +10,7 @@ signal event_negated(island_name, event_data)
 
 var island_name: String
 var event_data: Dictionary
+var is_minigame_active: bool = false  # Track if minigame is active to prevent re-triggering
 
 func set_event_data(_island_name: String, _event_data: Dictionary):
 	island_name = _island_name
@@ -19,10 +20,11 @@ func set_event_data(_island_name: String, _event_data: Dictionary):
 
 	if event_data.type == \"negative\":
 		$BG_Event_Text/Event_Description.text = \"Sebuah peristiwa terjadi: %s.\\nEmisi akan naik sebanyak %d%%!\" % [event_data.name, event_data.emission_increase]
-		$BG_Event_Text/Confirmation_Take_Action.text = \"Bayar %d untuk cegah\" % event_data.cost
+		$BG_Event_Text/Confirmation_Take_Action.text = \"Bayar %d untuk cegah\" % event_data[\"cost\"]
 		$BG_Event_Text/Ignore_Close.visible = true
 		$BG_Event_Text/Ignore_Close.text = \"Abaikan\"
-	else:
+		
+	if event_data.type == \"positive\":
 		$BG_Event_Text/Event_Description.text = \"Kabar baik! %s.\\nSumber daya +%d, Emisi -%d%%.\" % [
 			event_data.name,
 			event_data.resource_reward,
@@ -30,24 +32,63 @@ func set_event_data(_island_name: String, _event_data: Dictionary):
 		]
 		$BG_Event_Text/Confirmation_Take_Action.text = \"Terima\"
 		$BG_Event_Text/Ignore_Close.visible = false
-
+	
+	if event_data.type == \"minigame\":
+		$BG_Event_Text/Event_Description.text = \"Selesaikan minigame untuk mengatasi peristiwa: %s!\" % event_data.name
+		$BG_Event_Text/Confirmation_Take_Action.text = \"Mainkan\"
+		$BG_Event_Text/Ignore_Close.visible = true
+		$BG_Event_Text/Ignore_Close.text = \"Lewati\"
 
 func _on_confirmation_take_action_pressed() -> void:
 	print(\"EVENT DATA TYPE: \", event_data.get(\"type\"))
 
-	if event_data.get(\"type\") == \"negative\":
-		if ResourceCount.resource >= event_data.cost:
-			event_negated.emit(island_name, event_data)
-		else:
-			print(\"Not enough resources to negate!\")
+	if is_minigame_active:
+		# Do nothing if the minigame is active (prevent further confirmations)
+		return
+
+	match event_data.get(\"type\"):
+		\"negative\":
+			if ResourceCount.resource >= event_data[\"cost\"]:
+				event_negated.emit(island_name, event_data)
+			else:
+				print(\"Not enough resources to negate!\")
+				event_confirmed.emit(island_name, event_data)
+			queue_free()
+
+		\"positive\":
+			print(\"Emitting POSITIVE event_confirmed!\")
 			event_confirmed.emit(island_name, event_data)
-	else:
-		print(\"Emitting POSITIVE event_confirmed!\")
-		event_confirmed.emit(island_name, event_data)
-	queue_free()
+			queue_free()
+		
+		\"minigame\":
+			# Hide the event popup while the minigame is active
+			self.hide()
+			is_minigame_active = true  # Set the flag to prevent further actions
+
+			# Launch the minigame scene
+			var minigame_scene = preload(\"res://scenes/minigame_dumpster.tscn\").instantiate()
+			get_tree().get_root().add_child(minigame_scene)
+			minigame_scene.connect(\"winCon\", Callable(self, \"_on_minigame_win\"))
+			minigame_scene.connect(\"loseCon\", Callable(self, \"_on_minigame_lose\"))
+			# No queue_free() here as we want to keep the event UI open for now
 
 func _on_ignore_close_pressed() -> void:
 	event_confirmed.emit(island_name, event_data)
+	queue_free()
+
+func _on_minigame_win():
+	# Only emit confirmation once, when minigame is finished
+	
+	self.show()  # Show the event UI again
+	event_confirmed.emit(island_name, event_data)  # Emit reward confirmation
+	is_minigame_active = false  # Reset the flag to prevent further re-triggering
+	queue_free()
+
+func _on_minigame_lose():
+	# Handle lose situation and close event
+	
+	event_negated.emit(island_name, event_data)
+	is_minigame_active = false  # Reset the flag
 	queue_free()
 "
 
