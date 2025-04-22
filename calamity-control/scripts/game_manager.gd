@@ -35,16 +35,31 @@ func _process(_delta: float) -> void:
 
 func trigger_random_events():
 	for island_name in islands.keys():
-		if randi() % 4 == 0:  
+		if is_event_active:
+			print("Event masih aktif, skip trigger baru.")
+			return  # Langsung keluar dari loop supaya tidak ada event baru
+
+		if randi() % 4 == 0:
 			var random_event = events[randi() % events.size()]
 			show_event_popup(island_name, random_event)
+			is_event_active = true  # Set aktif saat event ditrigger
+			break  # Hanya satu event yang bisa aktif
+
 
 func show_event_popup(island_name: String, event_data: Dictionary):
+	if is_event_active:
+		print("Event sedang aktif, tidak bisa munculkan event baru.")
+		return
+
 	var popup = load("res://scenes/event_notification.tscn").instantiate()
 	add_child(popup)
 	popup.set_event_data(island_name, event_data)
 	popup.event_confirmed.connect(self.on_event_confirmed)
 	popup.event_negated.connect(self.on_event_negated)
+
+	is_event_active = true  
+	print("Event aktif: ", event_data["name"])
+
 
 func on_event_confirmed(island_name: String, event_data: Dictionary):
 	if event_data["type"] == "negative":
@@ -60,23 +75,23 @@ func on_event_confirmed(island_name: String, event_data: Dictionary):
 		# MENANG MINIGAME
 		ResourceCount.add_money(event_data["resource_reward"])
 		islands[island_name]["emission"] -= event_data["emission_decrease"]
-		print("🏆 Menang minigame di ", island_name, ": +%d resource, -%d emisi" % [
+		print("Menang minigame di ", island_name, ": +%d resource, -%d emisi" % [
 			event_data["resource_reward"],
 			event_data["emission_decrease"]
 		])
-
+	is_event_active = false  # Reset saat event selesai
 	update_resource_label()
 
 
 func on_event_negated(island_name: String, event_data: Dictionary):
 	if event_data["type"] == "negative":
 		islands[island_name]["emission"] += event_data["emission_increase"]
-		print("⚠️ Event NEGATIVE tidak dicegah, emisi naik di ", island_name)
+		print("Event NEGATIVE tidak dicegah, emisi naik di ", island_name)
 
 	elif event_data["type"] == "minigame":
 		# GAGAL MINIGAME, tidak dapat reward apa-apa
-		print("❌ Gagal minigame di ", island_name, ", tidak ada reward.")
-
+		print("Gagal minigame di ", island_name, ", tidak ada reward.")
+	is_event_active = false  # Reset saat event selesai
 	update_resource_label()
 
 
@@ -132,10 +147,10 @@ func check_final_status():
 
 	# --- WIN / LOSE CONDITIONS ---
 	if total_emission < 30 and total_population > 80:
-		print("🎉 You Win!")
+		print("You Win!")
 		get_tree().change_scene_to_file("res://scenes/winning.tscn")
 	else:
-		print("💀 You Lose!")
+		print("You Lose!")
 		get_tree().change_scene_to_file("res://scenes/lose.tscn")
 
 
