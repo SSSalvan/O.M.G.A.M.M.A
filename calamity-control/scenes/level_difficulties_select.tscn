@@ -15,12 +15,14 @@ func _on_select_easy_pressed() -> void:
 	if level_easy_button.text == \"Select\":
 		level_easy_button.text = \"Back\"
 		$background_cover/level_diff_easy/accept_contract_easy.visible = true
+		$background_cover/level_diff_easy/Easy_Desc.visible = true
 		get_tree().paused = false
 		get_node(\"level_diff_anim\").play(\"level_easy_chosen_selected\")
 	else:
 		level_easy_button.text = \"Select\"
 		get_tree().paused = true
 		$background_cover/level_diff_easy/accept_contract_easy.visible = false
+		$background_cover/level_diff_easy/Easy_Desc.visible = false
 		get_node(\"level_diff_anim\").play(\"level_easy_back_out\")
 		get_tree().paused = false
 
@@ -34,12 +36,14 @@ func _on_select_medium_pressed() -> void:
 	if level_medium_button.text == \"Select\":
 		level_medium_button.text = \"Back\"
 		$background_cover/level_diff_medium/accept_contract_medium.visible = true
+		$background_cover/level_diff_medium/Medium_Desc.visible = true
 		get_tree().paused = false
 		get_node(\"level_diff_anim\").play(\"level_medium_chosen_selected\")
 	else:
 		level_medium_button.text = \"Select\"
 		get_tree().paused = true
 		$background_cover/level_diff_medium/accept_contract_medium.visible = false
+		$background_cover/level_diff_medium/Medium_Desc.visible = false
 		get_node(\"level_diff_anim\").play(\"level_medium_back_out\")
 		get_tree().paused = false
 
@@ -51,12 +55,16 @@ func _on_select_hard_pressed() -> void:
 	if level_hard_button.text == \"Select\":
 		level_hard_button.text = \"Back\"
 		$background_cover/level_diff_hard/accept_contract_hard.visible = true
+		$background_cover/level_diff_hard/Hard_Desc.visible = true
+		$background_cover/level_diff_hard/Hard_Desc2.visible = true
 		get_tree().paused = false
 		get_node(\"level_diff_anim\").play(\"level_hard_chosen_selected\")
 	else:
 		level_hard_button.text = \"Select\"
 		get_tree().paused = true
 		$background_cover/level_diff_hard/accept_contract_hard.visible = false
+		$background_cover/level_diff_hard/Hard_Desc.visible = false
+		$background_cover/level_diff_hard/Hard_Desc2.visible = false
 		get_node(\"level_diff_anim\").play(\"level_hard_back_out\")
 		get_tree().paused = false
 
@@ -171,6 +179,54 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("background_cover/level_diff_easy/Easy_Desc:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("background_cover/level_diff_medium/Medium_Desc:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("background_cover/level_diff_hard/Hard_Desc:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("background_cover/level_diff_hard/Hard_Desc2:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_iv0lu"]
@@ -367,6 +423,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("background_cover/level_diff_easy/Easy_Desc:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_8qrn7"]
 resource_name = "level_hard_back_out"
@@ -454,6 +522,30 @@ tracks/3/path = NodePath("background_cover/level_diff_hard/accept_contract_hard:
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(1.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("background_cover/level_diff_hard/Hard_Desc:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("background_cover/level_diff_hard/Hard_Desc2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(1.5, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -551,6 +643,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("background_cover/level_diff_medium/Medium_Desc:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ye6hp"]
 _data = {
@@ -566,6 +670,7 @@ _data = {
 }
 
 [node name="level_difficulties_select" type="CanvasLayer"]
+visible = false
 script = SubResource("GDScript_iv0lu")
 
 [node name="background_cover" type="Panel" parent="."]
@@ -589,6 +694,7 @@ theme_override_font_sizes/font_size = 80
 text = "Select"
 
 [node name="accept_contract_easy" type="Button" parent="background_cover/level_diff_easy"]
+visible = false
 offset_left = 409.0
 offset_top = 410.0
 offset_right = 1638.0
@@ -597,7 +703,7 @@ theme_override_fonts/font = ExtResource("2_lqy8f")
 theme_override_font_sizes/font_size = 60
 text = "Accept Contract"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="background_cover/level_diff_easy"]
+[node name="Easy_Desc" type="RichTextLabel" parent="background_cover/level_diff_easy"]
 visible = false
 offset_left = 419.271
 offset_top = -451.014
@@ -629,6 +735,7 @@ theme_override_font_sizes/font_size = 80
 text = "Select"
 
 [node name="accept_contract_medium" type="Button" parent="background_cover/level_diff_medium"]
+visible = false
 offset_left = 409.0
 offset_top = 410.0
 offset_right = 1638.0
@@ -637,7 +744,7 @@ theme_override_fonts/font = ExtResource("2_lqy8f")
 theme_override_font_sizes/font_size = 60
 text = "Accept Contract"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="background_cover/level_diff_medium"]
+[node name="Medium_Desc" type="RichTextLabel" parent="background_cover/level_diff_medium"]
 visible = false
 offset_left = 419.271
 offset_top = -451.014
@@ -675,6 +782,7 @@ theme_override_font_sizes/font_size = 80
 text = "Select"
 
 [node name="accept_contract_hard" type="Button" parent="background_cover/level_diff_hard"]
+visible = false
 offset_left = 409.0
 offset_top = 410.0
 offset_right = 1638.0
@@ -683,7 +791,7 @@ theme_override_fonts/font = ExtResource("2_lqy8f")
 theme_override_font_sizes/font_size = 60
 text = "Accept Contract"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="background_cover/level_diff_hard"]
+[node name="Hard_Desc" type="RichTextLabel" parent="background_cover/level_diff_hard"]
 visible = false
 offset_left = 419.0
 offset_top = -451.0
@@ -706,7 +814,7 @@ List of province:
 - Riau
 - NTB"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="background_cover/level_diff_hard"]
+[node name="Hard_Desc2" type="RichTextLabel" parent="background_cover/level_diff_hard"]
 visible = false
 offset_left = 1019.53
 offset_top = -444.257
