@@ -20,7 +20,8 @@ var events = [
 	{ "type": "negative", "name": "Pembakaran Bahan Bakar Fosil", "emission_increase": 5, "cost": 300 },
 	{ "type": "negative", "name": "Penebangan Hutan", "emission_increase": 4, "cost": 250 },
 	{ "type": "positive", "name": "Mengurangi Bahan Bakar Fosil", "resource_reward": 300, "emission_decrease": 5 },
-	{ "type": "positive", "name": "Menghentikan Deforestasi", "resource_reward": 250, "emission_decrease": 3 }
+	{ "type": "positive", "name": "Menghentikan Deforestasi", "resource_reward": 250, "emission_decrease": 3 },
+	{ "type": "minigame", "name": "Trash Catching", "resource_reward": 400, "emission_decrease": 5 }
 ]
 
 func _ready():
@@ -33,7 +34,7 @@ func _process(_delta: float) -> void:
 
 func trigger_random_events():
 	for island_name in islands.keys():
-		if randi() % 50 == 0:  
+		if randi() % 4 == 0:  
 			var random_event = events[randi() % events.size()]
 			show_event_popup(island_name, random_event)
 
@@ -55,9 +56,13 @@ func on_event_confirmed(island_name: String, event_data: Dictionary):
 	update_resource_label()
 
 func on_event_negated(island_name: String, event_data: Dictionary):
-	ResourceCount.subtract_money(event_data["cost"])
-	print("Negated event in ", island_name, " for ", event_data["cost"])
+	if event_data.has("cost"):
+		ResourceCount.subtract_money(event_data["cost"])
+		print("Negated event in ", island_name, " for ", event_data["cost"])
+	else:
+		print("⚠️ event_data missing 'cost':", event_data)
 	update_resource_label()
+
 
 func _on_end_week_pressed() -> void:
 	var confirm_scene = load("res://scenes/week_end_confirmation.tscn").instantiate()
