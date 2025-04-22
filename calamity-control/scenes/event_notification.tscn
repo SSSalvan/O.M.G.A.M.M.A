@@ -78,7 +78,6 @@ func _on_ignore_close_pressed() -> void:
 
 func _on_minigame_win():
 	# Only emit confirmation once, when minigame is finished
-	
 	self.show()  # Show the event UI again
 	event_confirmed.emit(island_name, event_data)  # Emit reward confirmation
 	is_minigame_active = false  # Reset the flag to prevent further re-triggering
@@ -86,7 +85,6 @@ func _on_minigame_win():
 
 func _on_minigame_lose():
 	# Handle lose situation and close event
-	
 	event_negated.emit(island_name, event_data)
 	is_minigame_active = false  # Reset the flag
 	queue_free()

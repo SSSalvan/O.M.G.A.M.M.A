@@ -21,7 +21,7 @@ func _ready() -> void:
 func increase_catch_count():
 	catch_count += 1
 	catch_label.text = \"Caught: %d\" % catch_count
-	print(\"Trash Caught:\", catch_count)
+	#print(\"Trash Caught:\", catch_count)
 
 func _process(delta):
 	timer += delta

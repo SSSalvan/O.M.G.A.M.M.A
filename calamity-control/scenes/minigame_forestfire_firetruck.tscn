@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://je0ad24w5oem"]
+[gd_scene load_steps=5 format=3 uid="uid://je0ad24w5oem"]
 
 [ext_resource type="Texture2D" uid="uid://5dyudh16b57e" path="res://assets/minigames/forestfire/firetruck_sprite.png" id="1_nfy0a"]
+[ext_resource type="Texture2D" uid="uid://dec4x6wx36nxx" path="res://assets/minigames/forestfire/waterspray_sprite.png" id="2_51oan"]
 
 [sub_resource type="GDScript" id="GDScript_e5jkc"]
 script/source = "extends Sprite2D
@@ -33,15 +34,8 @@ func _on_spray_area_area_entered(area):
 		area.extinguish()
 "
 
-[sub_resource type="Gradient" id="Gradient_5vwfb"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.470343, 0.640012, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_nfy0a"]
-gradient = SubResource("Gradient_5vwfb")
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfy0a"]
-size = Vector2(249.203, 0.990837)
+size = Vector2(12.1429, 49.6763)
 
 [node name="FireTruck" type="CharacterBody2D"]
 
@@ -53,14 +47,15 @@ texture = ExtResource("1_nfy0a")
 script = SubResource("GDScript_e5jkc")
 
 [node name="WaterSpray" type="Sprite2D" parent="FireTruckSprite"]
-position = Vector2(1.28571, -53.9286)
-scale = Vector2(0.0569196, 83.8571)
-texture = SubResource("GradientTexture1D_nfy0a")
+position = Vector2(1.28571, -66.1429)
+scale = Vector2(2.13445, 1.70982)
+texture = ExtResource("2_51oan")
 
 [node name="SprayArea" type="Area2D" parent="FireTruckSprite/WaterSpray"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FireTruckSprite/WaterSpray/SprayArea"]
-position = Vector2(-2.26551, -0.00323725)
+position = Vector2(0.0714281, 7.12385)
+scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_nfy0a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
