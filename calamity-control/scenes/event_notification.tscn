@@ -33,11 +33,19 @@ func set_event_data(_island_name: String, _event_data: Dictionary):
 		$BG_Event_Text/Confirmation_Take_Action.text = \"Terima\"
 		$BG_Event_Text/Ignore_Close.visible = false
 	
-	if event_data.type == \"minigame\":
+	if event_data.type == \"minigame1\":
 		$BG_Event_Text/Event_Description.text = \"Selesaikan minigame untuk mengatasi peristiwa: %s!\" % event_data.name
 		$BG_Event_Text/Confirmation_Take_Action.text = \"Mainkan\"
 		$BG_Event_Text/Ignore_Close.visible = true
 		$BG_Event_Text/Ignore_Close.text = \"Lewati\"
+		
+	if event_data.type == \"minigame2\":
+		$BG_Event_Text/Event_Description.text = \"Selesaikan minigame untuk mengatasi peristiwa: %s!\" % event_data.name
+		$BG_Event_Text/Confirmation_Take_Action.text = \"Mainkan\"
+		$BG_Event_Text/Ignore_Close.visible = true
+		$BG_Event_Text/Ignore_Close.text = \"Lewati\"
+		
+	
 
 func _on_confirmation_take_action_pressed() -> void:
 	print(\"EVENT DATA TYPE: \", event_data.get(\"type\"))
@@ -49,10 +57,10 @@ func _on_confirmation_take_action_pressed() -> void:
 	match event_data.get(\"type\"):
 		\"negative\":
 			if ResourceCount.resource >= event_data[\"cost\"]:
-				event_negated.emit(island_name, event_data)
+				event_confirmed.emit(island_name, event_data)
 			else:
 				print(\"Not enough resources to negate!\")
-				event_confirmed.emit(island_name, event_data)
+				event_negated.emit(island_name, event_data)
 			queue_free()
 
 		\"positive\":
@@ -81,7 +89,21 @@ func _on_confirmation_take_action_pressed() -> void:
 			minigame_scene.connect(\"loseCon\", Callable(self, \"_on_minigame_lose\"))
 
 func _on_ignore_close_pressed() -> void:
-	event_confirmed.emit(island_name, event_data)
+	match event_data.get(\"type\"):
+		\"minigame1\", \"minigame2\":
+			print(\"🚫 Player SKIPPED the minigame. Emit NEGATED.\")
+			event_negated.emit(island_name, event_data)  # Treat as failure
+		\"negative\":
+			if ResourceCount.resource >= event_data[\"cost\"]:
+				print(\"Player skipped paying but has enough — emit NEGATED.\")
+				event_negated.emit(island_name, event_data)
+			else:
+				print(\"Player skipped paying and can't afford — emit CONFIRMED.\")
+				event_confirmed.emit(island_name, event_data)
+		\"positive\":
+			print(\"Positive event skipped = auto confirmed.\")
+			event_confirmed.emit(island_name, event_data)
+
 	queue_free()
 
 func _on_minigame_win():

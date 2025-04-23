@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ckdb64dsm6e8e"]
+[gd_scene load_steps=23 format=3 uid="uid://ckdb64dsm6e8e"]
 
 [ext_resource type="Script" uid="uid://c0dby3imeo58y" path="res://scripts/main_gameplay.gd" id="1_hfa5i"]
 [ext_resource type="Texture2D" uid="uid://qcsfxf23f088" path="res://assets/map/indoMap.png" id="1_rl3v5"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://00tpit0g1bh1" path="res://scripts/province.gd" id="4_r8kal"]
 [ext_resource type="PackedScene" uid="uid://dd23rciicmnkt" path="res://scenes/EmissionPopupButton.tscn" id="6_04qc1"]
 [ext_resource type="Texture2D" uid="uid://b3oebr36cve2" path="res://assets/ui/InGameUI/InGameTopHub.png" id="8_swotn"]
+[ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="9_jh0gp"]
 [ext_resource type="Script" uid="uid://cglgxjgpk83ey" path="res://slot_papua.gd" id="11_jh0gp"]
 [ext_resource type="PackedScene" uid="uid://bcrk3sfaps54j" path="res://scenes/ShopButton.tscn" id="11_nnxur"]
 
@@ -178,7 +179,7 @@ offset_top = -529.0
 offset_right = -811.0
 offset_bottom = -484.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 40
 text = "Week: x"
 label_settings = SubResource("LabelSettings_gb8rl")
 
@@ -206,6 +207,7 @@ offset_left = -376.0
 offset_top = 245.0
 offset_right = -125.0
 offset_bottom = 340.0
+theme_override_fonts/font = ExtResource("9_jh0gp")
 theme_override_font_sizes/font_size = 32
 text = "End Week"
 

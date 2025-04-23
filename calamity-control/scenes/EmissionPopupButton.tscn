@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dd23rciicmnkt"]
+[gd_scene load_steps=3 format=3 uid="uid://dd23rciicmnkt"]
 
 [ext_resource type="Script" uid="uid://dx2hy3pwobcv" path="res://scripts/slot.gd" id="1_uv4db"]
+[ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="2_ilbmq"]
 
 [node name="Slot" type="Control"]
 layout_mode = 3
@@ -23,6 +24,7 @@ show_behind_parent = true
 layout_mode = 2
 offset_right = 123.0
 offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("2_ilbmq")
 toggle_mode = true
 text = "Check Status"
 
