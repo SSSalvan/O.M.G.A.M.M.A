@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://drx37bmj2egrr"]
+[gd_scene load_steps=10 format=3 uid="uid://drx37bmj2egrr"]
 
 [ext_resource type="Script" uid="uid://dkrejfkq1u1rw" path="res://scripts/main_menu.gd" id="1_0fjxs"]
 [ext_resource type="StyleBox" uid="uid://d0t507jbbigq3" path="res://assets/ui/Placeholder UI/placeholder_button_stylebox_hover.tres" id="1_21kk1"]
@@ -6,6 +6,11 @@
 [ext_resource type="StyleBox" uid="uid://qngkfnkus1j1" path="res://assets/ui/Placeholder UI/placeholder_button_stylebox.tres" id="2_ljbj3"]
 [ext_resource type="Texture2D" uid="uid://b6kte0p5qx4oy" path="res://assets/sprites/Indomap.png" id="2_p32y5"]
 [ext_resource type="Texture2D" uid="uid://djy65h7udywt4" path="res://assets/ui/mainMenu.png" id="4_4i31w"]
+[ext_resource type="Texture2D" uid="uid://t7h8d6236h3w" path="res://assets/ui/mainMenuUI/Menu Button.png" id="5_oa1go"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oa1go"]
+
+[sub_resource type="Theme" id="Theme_tbmy8"]
 
 [node name="MainMenu" type="Node2D"]
 
@@ -56,6 +61,15 @@ offset_bottom = 538.0
 texture = ExtResource("4_4i31w")
 expand_mode = 1
 
+[node name="TextureRect2" type="TextureRect" parent="MainMenu/Images"]
+layout_mode = 0
+offset_left = -963.0
+offset_top = 365.0
+offset_right = 966.0
+offset_bottom = 538.0
+texture = ExtResource("5_oa1go")
+expand_mode = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
 layout_mode = 0
 offset_left = -477.0
@@ -76,11 +90,13 @@ theme_override_font_sizes/font_size = 64
 text = "CALAMITY CONTROL"
 
 [node name="Play Game" type="Button" parent="MainMenu"]
+material = SubResource("CanvasItemMaterial_oa1go")
 layout_mode = 2
-offset_left = -910.0
-offset_top = 420.0
-offset_right = -709.0
-offset_bottom = 482.0
+offset_left = -884.0
+offset_top = 432.0
+offset_right = -683.0
+offset_bottom = 494.0
+theme = SubResource("Theme_tbmy8")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = ExtResource("1_21kk1")
 theme_override_styles/normal = ExtResource("2_ljbj3")
@@ -88,10 +104,10 @@ text = "Play Game"
 
 [node name="Settings" type="Button" parent="MainMenu"]
 layout_mode = 2
-offset_left = -531.0
-offset_top = 419.0
-offset_right = -307.0
-offset_bottom = 489.0
+offset_left = -109.0
+offset_top = 424.0
+offset_right = 115.0
+offset_bottom = 494.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = ExtResource("1_21kk1")
 theme_override_styles/normal = ExtResource("2_ljbj3")
