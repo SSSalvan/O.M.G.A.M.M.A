@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2ndlx0jf2jxl"]
+[gd_scene load_steps=4 format=3 uid="uid://b2ndlx0jf2jxl"]
 
+[ext_resource type="Texture2D" uid="uid://c8h2ea48j6bge" path="res://assets/ui/InGameUI/trashMiniGameBG.png" id="1_5vwfb"]
 [ext_resource type="PackedScene" uid="uid://je0ad24w5oem" path="res://scenes/minigame_forestfire_firetruck.tscn" id="1_ov78k"]
 
 [sub_resource type="GDScript" id="GDScript_ov78k"]
@@ -49,6 +50,11 @@ func _on_fire_failed():
 
 [node name="Node2D" type="Node2D"]
 script = SubResource("GDScript_ov78k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.00003, 3.06253)
+scale = Vector2(4.05833, 4.02176)
+texture = ExtResource("1_5vwfb")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

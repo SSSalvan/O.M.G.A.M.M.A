@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcrk3sfaps54j"]
+[gd_scene load_steps=3 format=3 uid="uid://bcrk3sfaps54j"]
+
+[ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="1_r3kl7"]
 
 [sub_resource type="GDScript" id="GDScript_mudfl"]
 script/source = "extends Control
@@ -33,7 +35,8 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 184.0
 offset_bottom = 70.0
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("1_r3kl7")
+theme_override_font_sizes/font_size = 48
 text = "Shop"
 
 [connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]
