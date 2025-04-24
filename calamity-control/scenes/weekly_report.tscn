@@ -37,6 +37,8 @@ offset_left = 76.0
 offset_top = 113.0
 offset_right = 1142.0
 offset_bottom = 616.0
+theme_override_fonts/font = ExtResource("1_qa6uf")
+theme_override_font_sizes/font_size = 20
 text = "s"
 
 [node name="confirm_button" type="Button" parent="BG_weekly_report"]
@@ -58,3 +60,4 @@ offset_bottom = 64.5
 theme_override_fonts/font = ExtResource("1_qa6uf")
 theme_override_font_sizes/font_size = 40
 text = "s"
+horizontal_alignment = 1
