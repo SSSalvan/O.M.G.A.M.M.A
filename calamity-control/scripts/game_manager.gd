@@ -106,7 +106,6 @@ func on_event_negated(island_name: String, event_data: Dictionary):
 	update_resource_label()
 
 
-
 func _on_end_week_pressed() -> void:
 	var confirm_scene = load("res://scenes/week_end_confirmation.tscn").instantiate()
 	add_child(confirm_scene)
@@ -125,17 +124,27 @@ func _on_end_week_pressed() -> void:
 		else:
 			print("ERROR: Signal 'confirmed' not found!") 
 		print("Button Pressed")
-
+		
+func show_weekly_report():
+	var report_scene = load("res://scenes/weekly_report.tscn").instantiate()
+	add_child(report_scene)
+	var required_dev = randi_range(1, 3)
+	report_scene.set_report(week, islands, required_dev)
+	report_scene.report_closed.connect(self._on_report_closed)
+	
 func next_week():
 	print("============End Week ", week, " Report============")
 	show_development_levels()
-	trigger_random_events()
 	if week < MAX_WEEKS:
-		week += 1
-		update_week_label()
+		show_weekly_report()
 	else:
 		print("10 weeks completed. Checking final status report...")
 		check_final_status()
+
+func _on_report_closed():
+	week += 1
+	update_week_label()
+	trigger_random_events()
 
 func check_final_status():
 	print("===== FINAL STATUS REPORT =====")

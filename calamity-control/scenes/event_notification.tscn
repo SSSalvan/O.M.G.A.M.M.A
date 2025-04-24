@@ -91,7 +91,7 @@ func _on_confirmation_take_action_pressed() -> void:
 func _on_ignore_close_pressed() -> void:
 	match event_data.get(\"type\"):
 		\"minigame1\", \"minigame2\":
-			print(\"🚫 Player SKIPPED the minigame. Emit NEGATED.\")
+			print(\"Player SKIPPED the minigame. Emit NEGATED.\")
 			event_negated.emit(island_name, event_data)  # Treat as failure
 		\"negative\":
 			if ResourceCount.resource >= event_data[\"cost\"]:
@@ -107,8 +107,8 @@ func _on_ignore_close_pressed() -> void:
 	queue_free()
 
 func _on_minigame_win():
-	print(\"✅ Minigame berhasil diselesaikan! Kamu menang!\")
-	print(\"🎁 Reward: +%d resource, -%d emisi\" % [
+	print(\"Minigame berhasil diselesaikan! Kamu menang!\")
+	print(\"Reward: +%d resource, -%d emisi\" % [
 		event_data.get(\"resource_reward\", 0),
 		event_data.get(\"emission_decrease\", 0)
 	])
@@ -117,8 +117,8 @@ func _on_minigame_win():
 	queue_free()
 
 func _on_minigame_lose():
-	print(\"❌ Minigame gagal. Kamu kalah.\")
-	print(\"💸 Tidak dapat hadiah.\")
+	print(\"Minigame gagal. Kamu kalah.\")
+	print(\"Tidak dapat hadiah.\")
 	event_negated.emit(island_name, event_data)
 	is_minigame_active = false
 	queue_free()
