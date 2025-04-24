@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bi63vo4dcrdhf"]
+[gd_scene load_steps=7 format=3 uid="uid://bi63vo4dcrdhf"]
 
 [ext_resource type="PackedScene" uid="uid://cybc0370qmjxo" path="res://scenes/minigame_dumpster_control.tscn" id="1_0oujc"]
-[ext_resource type="Texture2D" uid="uid://c8h2ea48j6bge" path="res://assets/ui/InGameUI/trashMiniGameBG.png" id="1_1d5f4"]
+[ext_resource type="Texture2D" uid="uid://bg17dqjwihlsx" path="res://assets/ui/InGameUI/trashMiniGameBG1.png" id="1_nyeix"]
 [ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="2_jxcgu"]
+[ext_resource type="Texture2D" uid="uid://b664rquq0s5dl" path="res://assets/ui/InGameUI/trashMiniGameBG2.png" id="2_sri4l"]
 
 [sub_resource type="GDScript" id="GDScript_0oujc"]
 script/source = "extends Node2D
@@ -52,15 +53,32 @@ func spawn_trash():
 	)
 "
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_q5hvw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nyeix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sri4l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
 [node name="Node2D" type="Node2D"]
 script = SubResource("GDScript_0oujc")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-8.00015, -5.00002)
+scale = Vector2(40.2579, 39.8431)
+sprite_frames = SubResource("SpriteFrames_q5hvw")
+autoplay = "default"
 
-[node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
-position = Vector2(-2.00003, 3.06253)
-scale = Vector2(4.05833, 4.02176)
-texture = ExtResource("1_1d5f4")
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_0oujc")]
 position = Vector2(-5, 525)
@@ -72,4 +90,7 @@ offset_right = -618.0
 offset_bottom = -459.0
 theme_override_fonts/font = ExtResource("2_jxcgu")
 theme_override_font_sizes/font_size = 64
-text = "alvan hitam dan jomok"
+text = "alvan alvan
+alvan
+alvan
+"

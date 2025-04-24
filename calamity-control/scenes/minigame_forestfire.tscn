@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2ndlx0jf2jxl"]
+[gd_scene load_steps=6 format=3 uid="uid://b2ndlx0jf2jxl"]
 
-[ext_resource type="Texture2D" uid="uid://c8h2ea48j6bge" path="res://assets/ui/InGameUI/trashMiniGameBG.png" id="1_5vwfb"]
+[ext_resource type="Texture2D" uid="uid://bg17dqjwihlsx" path="res://assets/ui/InGameUI/trashMiniGameBG1.png" id="1_dasmt"]
 [ext_resource type="PackedScene" uid="uid://je0ad24w5oem" path="res://scenes/minigame_forestfire_firetruck.tscn" id="1_ov78k"]
+[ext_resource type="Texture2D" uid="uid://b664rquq0s5dl" path="res://assets/ui/InGameUI/trashMiniGameBG2.png" id="2_heiun"]
 
 [sub_resource type="GDScript" id="GDScript_ov78k"]
 script/source = "extends Node2D
@@ -48,13 +49,30 @@ func _on_fire_failed():
 		game_over = true
 "
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_dasmt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dasmt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_heiun")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
 [node name="Node2D" type="Node2D"]
 script = SubResource("GDScript_ov78k")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2.00003, 3.06253)
-scale = Vector2(4.05833, 4.02176)
-texture = ExtResource("1_5vwfb")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-8.00015, -5.00002)
+scale = Vector2(40.2579, 39.8431)
+sprite_frames = SubResource("SpriteFrames_dasmt")
+autoplay = "default"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
