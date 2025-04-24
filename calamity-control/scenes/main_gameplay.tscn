@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ckdb64dsm6e8e"]
+[gd_scene load_steps=25 format=3 uid="uid://ckdb64dsm6e8e"]
 
 [ext_resource type="Script" uid="uid://c0dby3imeo58y" path="res://scripts/main_gameplay.gd" id="1_hfa5i"]
 [ext_resource type="Texture2D" uid="uid://qcsfxf23f088" path="res://assets/map/indoMap.png" id="1_rl3v5"]
@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://cnh1fpbju5oaf" path="res://assets/sprites/c28d9b63d3255b4355e0f4b18e3e80e5_t-Photoroom.png" id="3_xa1hq"]
 [ext_resource type="Script" uid="uid://00tpit0g1bh1" path="res://scripts/province.gd" id="4_r8kal"]
 [ext_resource type="PackedScene" uid="uid://dd23rciicmnkt" path="res://scenes/EmissionPopupButton.tscn" id="6_04qc1"]
-[ext_resource type="Texture2D" uid="uid://b3oebr36cve2" path="res://assets/ui/InGameUI/InGameTopHub.png" id="8_swotn"]
 [ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="9_jh0gp"]
 [ext_resource type="Script" uid="uid://cglgxjgpk83ey" path="res://slot_papua.gd" id="11_jh0gp"]
 [ext_resource type="PackedScene" uid="uid://bcrk3sfaps54j" path="res://scenes/ShopButton.tscn" id="11_nnxur"]
+[ext_resource type="Texture2D" uid="uid://c1kpv1b4twda8" path="res://assets/ui/InGameUI/PixelTopLeftBar.png" id="13_jh0gp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_njxfe"]
 texture = ExtResource("2_nnxur")
@@ -98,6 +98,25 @@ func _on_button_toggled(toggled_on: bool) -> void:
 		EmissionRateStatusPopup.HideStatusPopup()
 "
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_58ik7"]
+texture = ExtResource("13_jh0gp")
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+2:0/0 = 0
+1:0/0 = 0
+0:0/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_fj2an"]
+sources/0 = SubResource("TileSetAtlasSource_58ik7")
+
 [node name="MainGameplay" type="Node2D"]
 script = ExtResource("1_hfa5i")
 
@@ -137,6 +156,7 @@ rotation = -0.825563
 shape = SubResource("CapsuleShape2D_r640c")
 
 [node name="InGameBottomHud" type="Sprite2D" parent="GameManager/Area2D"]
+visible = false
 position = Vector2(-1.31259, 429)
 scale = Vector2(0.399297, 0.468004)
 texture = ExtResource("3_axkgv")
@@ -174,10 +194,10 @@ script = ExtResource("4_r8kal")
 [node name="Camera2D" type="Camera2D" parent="GameManager"]
 
 [node name="Week Counter" type="Label" parent="GameManager"]
-offset_left = -931.0
-offset_top = -529.0
-offset_right = -811.0
-offset_bottom = -484.0
+offset_left = -933.0
+offset_top = -515.0
+offset_right = -774.0
+offset_bottom = -470.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("9_jh0gp")
 theme_override_font_sizes/font_size = 0
@@ -185,10 +205,10 @@ text = "Week: x"
 label_settings = SubResource("LabelSettings_gb8rl")
 
 [node name="Resource Counter" type="Label" parent="GameManager"]
-offset_left = -723.0
-offset_top = -529.0
-offset_right = -480.0
-offset_bottom = -484.0
+offset_left = -725.0
+offset_top = -515.0
+offset_right = -482.0
+offset_bottom = -470.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("9_jh0gp")
 theme_override_font_sizes/font_size = 32
@@ -205,10 +225,10 @@ offset_bottom = 219.0
 
 [node name="End Week" type="Button" parent="GameManager/User Interface"]
 layout_mode = 0
-offset_left = -376.0
-offset_top = 245.0
-offset_right = -125.0
-offset_bottom = 340.0
+offset_left = -350.0
+offset_top = 264.0
+offset_right = -118.0
+offset_bottom = 339.0
 theme_override_fonts/font = ExtResource("9_jh0gp")
 theme_override_font_sizes/font_size = 48
 text = "End Week"
@@ -248,14 +268,17 @@ offset_bottom = -1056.0
 script = ExtResource("11_jh0gp")
 
 [node name="ShopSlot" parent="GameManager" instance=ExtResource("11_nnxur")]
-offset_left = 754.0
-offset_top = 427.0
-offset_right = 754.0
-offset_bottom = 427.0
+offset_left = 708.0
+offset_top = 444.0
+offset_right = 708.0
+offset_bottom = 444.0
 
-[node name="InGameTopHub" type="Sprite2D" parent="."]
-position = Vector2(-653, -505)
-scale = Vector2(0.363636, 0.281482)
-texture = ExtResource("8_swotn")
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+position = Vector2(-640.07, -484.03)
+scale = Vector2(4, 4)
+tile_set = SubResource("TileSet_fj2an")
+format = 2
+layer_0/tile_data = PackedInt32Array(-5, 0, 2, -4, 0, 2, -3, 0, 2, -2, 0, 2, -1, 0, 2, -65536, 0, 2, -65535, 0, 2, -65534, 0, 2, 65531, 0, 3, 65532, 0, 3, 65533, 0, 3, 65534, 0, 3, 65535, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 3, 3, 65536, 3, -65533, 65536, 2, -65532, 131072, 2, 4, 131072, 3, 1114108, 196608, 1, 1114107, 196608, 1, 917525, 65536, 0, 917526, 65536, 0, 917527, 65536, 0, 983061, 65536, 1, 983062, 65536, 1, 983063, 65536, 1, 1048599, 196608, 1, 1048598, 196608, 1, 1048597, 196608, 1, 983035, 0, 0, 983038, 65536, 0, 983037, 65536, 0, 983036, 65536, 0, 983039, 131072, 0, 1048575, 131072, 1, 1048571, 0, 1, 1048573, 65536, 1, 1048574, 65536, 1, 1048572, 65536, 1, 1114109, 196608, 1, 1114110, 196608, 1, 1114111, 196608, 1, 917528, 131072, 0, 983064, 131072, 1, 1048600, 196608, 1, 917524, 0, 0, 983060, 0, 1, 1048596, 196608, 1)
 
 [connection signal="pressed" from="GameManager/User Interface/End Week" to="GameManager" method="_on_end_week_pressed"]
