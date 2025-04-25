@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ckdb64dsm6e8e"]
+[gd_scene load_steps=34 format=3 uid="uid://ckdb64dsm6e8e"]
 
 [ext_resource type="Script" uid="uid://c0dby3imeo58y" path="res://scripts/main_gameplay.gd" id="1_hfa5i"]
 [ext_resource type="Texture2D" uid="uid://qcsfxf23f088" path="res://assets/map/indoMap.png" id="1_rl3v5"]
@@ -29,6 +29,33 @@ sources/1 = SubResource("TileSetAtlasSource_nnxur")
 sources/0 = SubResource("TileSetAtlasSource_njxfe")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jh0gp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_58ik7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fj2an"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_un03y"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78l6q"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqthq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pl7rw"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fnheh"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7cath"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v62ff"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_gb8rl"]
@@ -161,6 +188,9 @@ offset_top = -167.0
 offset_right = -283.0
 offset_bottom = 181.0
 scale = Vector2(0.108824, 0.142647)
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_jh0gp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jh0gp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jh0gp")
 theme_override_styles/normal = SubResource("StyleBoxFlat_jh0gp")
 icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
@@ -171,6 +201,10 @@ offset_top = -180.0
 offset_right = 174.0
 offset_bottom = 168.0
 scale = Vector2(0.108824, 0.142647)
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_jh0gp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jh0gp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jh0gp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_58ik7")
 icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
@@ -180,6 +214,10 @@ offset_top = -46.0
 offset_right = 1111.0
 offset_bottom = 302.0
 scale = Vector2(0.108824, 0.142647)
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_jh0gp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jh0gp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jh0gp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fj2an")
 icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
@@ -189,6 +227,10 @@ offset_top = 84.0
 offset_right = 31.0
 offset_bottom = 432.0
 scale = Vector2(0.108824, 0.142647)
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_jh0gp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jh0gp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jh0gp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_un03y")
 icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
@@ -198,51 +240,80 @@ offset_top = -128.0
 offset_right = 428.0
 offset_bottom = 220.0
 scale = Vector2(0.108824, 0.142647)
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_jh0gp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jh0gp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jh0gp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_78l6q")
 icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
 [node name="Bali" type="Button" parent="GameManager"]
+visible = false
 offset_left = -118.0
 offset_top = 119.0
 offset_right = 230.0
 offset_bottom = 467.0
 scale = Vector2(0.109, 0.143)
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_jh0gp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jh0gp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jh0gp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sqthq")
 icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
 [node name="Maluku" type="Button" parent="GameManager"]
+visible = false
 offset_left = 434.0
 offset_top = -81.0
 offset_right = 782.0
 offset_bottom = 267.0
 scale = Vector2(0.109, 0.143)
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_pl7rw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pl7rw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jh0gp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pl7rw")
 icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
 [node name="NTB" type="Button" parent="GameManager"]
+visible = false
 offset_left = -69.0
 offset_top = 131.0
 offset_right = 279.0
 offset_bottom = 479.0
 scale = Vector2(0.109, 0.143)
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_pl7rw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pl7rw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pl7rw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fnheh")
 icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
 [node name="NTT" type="Button" parent="GameManager"]
+visible = false
 offset_left = 69.0
 offset_top = 175.0
 offset_right = 417.0
 offset_bottom = 523.0
 scale = Vector2(0.109, 0.143)
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_pl7rw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pl7rw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pl7rw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7cath")
 icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
 [node name="Maluku Utara" type="Button" parent="GameManager"]
+visible = false
 offset_left = 374.0
 offset_top = -217.0
 offset_right = 722.0
 offset_bottom = 131.0
 scale = Vector2(0.109, 0.143)
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_pl7rw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pl7rw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pl7rw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_v62ff")
 icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
@@ -351,6 +422,15 @@ tile_set = SubResource("TileSet_fj2an")
 format = 2
 layer_0/tile_data = PackedInt32Array(-5, 0, 2, -4, 0, 2, -3, 0, 2, -2, 0, 2, -1, 0, 2, -65536, 0, 2, -65535, 0, 2, -65534, 0, 2, 65531, 0, 3, 65532, 0, 3, 65533, 0, 3, 65534, 0, 3, 65535, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 3, 3, 65536, 3, -65533, 65536, 2, -65532, 131072, 2, 4, 131072, 3, 1114108, 196608, 1, 1114107, 196608, 1, 917525, 65536, 0, 917526, 65536, 0, 917527, 65536, 0, 983061, 65536, 1, 983062, 65536, 1, 983063, 65536, 1, 1048599, 196608, 1, 1048598, 196608, 1, 1048597, 196608, 1, 983035, 0, 0, 983038, 65536, 0, 983037, 65536, 0, 983036, 65536, 0, 983039, 131072, 0, 1048575, 131072, 1, 1048571, 0, 1, 1048573, 65536, 1, 1048574, 65536, 1, 1048572, 65536, 1, 1114109, 196608, 1, 1114110, 196608, 1, 1114111, 196608, 1, 917528, 131072, 0, 983064, 131072, 1, 1048600, 196608, 1, 917524, 0, 0, 983060, 0, 1, 1048596, 196608, 1, 917510, 0, 0, 917517, 131072, 0, 917516, 65536, 0, 917515, 65536, 0, 917514, 65536, 0, 917513, 65536, 0, 917512, 65536, 0, 917511, 65536, 0, 983046, 0, 1, 983047, 65536, 1, 983048, 65536, 1, 983049, 65536, 1, 983050, 65536, 1, 983051, 65536, 1, 983052, 65536, 1, 983053, 131072, 1, 1048582, 196608, 1, 1048583, 196608, 1, 1048584, 196608, 1, 1048585, 196608, 1, 1048586, 196608, 1, 1048587, 196608, 1, 1048588, 196608, 1, 1048589, 196608, 1)
 
-[connection signal="pressed" from="GameManager/Sumatra" to="GameManager" method="_on_sumatra_pressed"]
+[connection signal="pressed" from="GameManager/Sumatra" to="GameManager/Sumatra" method="_on_pressed"]
+[connection signal="pressed" from="GameManager/Kalimantan" to="GameManager/Kalimantan" method="_on_pressed"]
+[connection signal="pressed" from="GameManager/Papua" to="GameManager/Papua" method="_on_pressed"]
+[connection signal="pressed" from="GameManager/Jawa" to="GameManager/Jawa" method="_on_pressed"]
+[connection signal="pressed" from="GameManager/Sulawesi" to="GameManager/Sulawesi" method="_on_pressed"]
+[connection signal="pressed" from="GameManager/Bali" to="GameManager/Bali" method="_on_pressed"]
+[connection signal="pressed" from="GameManager/Maluku" to="GameManager/Maluku" method="_on_pressed"]
+[connection signal="pressed" from="GameManager/NTB" to="GameManager/NTB" method="_on_pressed"]
+[connection signal="pressed" from="GameManager/NTT" to="GameManager/NTT" method="_on_pressed"]
+[connection signal="pressed" from="GameManager/Maluku Utara" to="GameManager/Maluku Utara" method="_on_pressed"]
 [connection signal="pressed" from="GameManager/User Interface/End Week" to="GameManager" method="_on_end_week_pressed"]
 [connection signal="pressed" from="GameManager/User Interface/Show Islands Status" to="GameManager" method="_on_show_islands_status_pressed"]

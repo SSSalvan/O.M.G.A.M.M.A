@@ -7,7 +7,10 @@ extends Button
 func _ready() -> void:
 	set_process_input(true)
 	province_name = name
-
+	
+func _on_pressed() -> void:
+	show_development_prompt()
+	
 func show_development_prompt():
 	var confirm_scene = load("res://scenes/develop_province.tscn").instantiate()
 	get_tree().current_scene.add_child(confirm_scene)
