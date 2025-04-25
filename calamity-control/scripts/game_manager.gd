@@ -9,13 +9,7 @@ var is_event_active: bool = false
 const MAX_WEEKS: int = 10
 
 
-var islands = {
-	"Sumatra": { "development": 0, "emission": randi_range(5, 12), "population": 100 },
-	"Kalimantan": { "development": 0, "emission": randi_range(5, 12), "population": 100 },
-	"Papua": { "development": 0, "emission": randi_range(5, 12), "population": 100 },
-	"Jawa": { "development": 0, "emission": randi_range(5, 12), "population": 100 },
-	"Sulawesi": { "development": 0, "emission": randi_range(5, 12), "population": 100 }
-}
+var islands = {}
 
 var events = [
 	{ "type": "negative", "name": "Pembakaran Bahan Bakar Fosil", "emission_increase": 5, "cost": 300 },
@@ -27,7 +21,8 @@ var events = [
 ]
 
 func _ready():
-	randomize()  
+	randomize() 
+	islandSetup()
 	ResourceCount.resource = 500
 	update_week_label()
 	update_resource_label()
@@ -48,7 +43,13 @@ func trigger_random_events():
 			is_event_active = true  # Set aktif saat event ditrigger
 			break  # Hanya satu event yang bisa aktif
 
-
+func islandSetup():
+	islands["Sumatra"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
+	islands["Kalimantan"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
+	islands["Papua"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
+	islands["Jawa"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
+	islands["Sulawesi"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
+	
 func show_event_popup(island_name: String, event_data: Dictionary):
 	if is_event_active:
 		print("Event sedang aktif, tidak bisa munculkan event baru.")
