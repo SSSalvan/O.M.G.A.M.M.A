@@ -62,7 +62,6 @@ func _on_select_hard_pressed() -> void:
 		level_hard_button.text = \"Back\"
 		$background_cover/level_diff_hard/accept_contract_hard.visible = true
 		$background_cover/level_diff_hard/Hard_Desc.visible = true
-		$background_cover/level_diff_hard/Hard_Desc2.visible = true
 		get_tree().paused = false
 		get_node(\"level_diff_anim\").play(\"level_hard_chosen_selected\")
 	else:
@@ -70,7 +69,6 @@ func _on_select_hard_pressed() -> void:
 		get_tree().paused = true
 		$background_cover/level_diff_hard/accept_contract_hard.visible = false
 		$background_cover/level_diff_hard/Hard_Desc.visible = false
-		$background_cover/level_diff_hard/Hard_Desc2.visible = false
 		get_node(\"level_diff_anim\").play(\"level_hard_back_out\")
 		get_tree().paused = false
 
@@ -219,18 +217,6 @@ tracks/10/path = NodePath("background_cover/level_diff_hard/Hard_Desc:modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("background_cover/level_diff_hard/Hard_Desc2:modulate")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -547,18 +533,6 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("background_cover/level_diff_hard/Hard_Desc2:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(1.5, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_ygmnp"]
 resource_name = "level_medium_back_out"
@@ -769,11 +743,9 @@ List of province:
 - Sulawesi Selatan
 - Papua Pegunungan
 
+- Bali
 - Maluku
-- Kalimantan Timur
-- Sulawesi Utara
-- Riau
-- NTB"
+"
 
 [node name="level_diff_hard" type="Sprite2D" parent="background_cover"]
 position = Vector2(-500, 497)
@@ -816,28 +788,11 @@ List of province:
 - Sulawesi Selatan
 - Papua Pegunungan
 
-- Maluku
-- Kalimantan Timur
-- Sulawesi Utara
-- Riau
-- NTB"
-
-[node name="Hard_Desc2" type="RichTextLabel" parent="background_cover/level_diff_hard"]
-visible = false
-offset_left = 1019.53
-offset_top = -444.257
-offset_right = 2178.53
-offset_bottom = 342.743
-theme_override_fonts/normal_font = ExtResource("2_lqy8f")
-theme_override_font_sizes/normal_font_size = 64
-text = "
-
-
-- Jawa Timur
-- Jawa Tengah
 - Bali
-- Sumatra Barat
-- Papua Selatan"
+- Maluku
+- Riau
+- Ntb
+- Jawa Timur"
 
 [node name="level_diff_anim" type="AnimationPlayer" parent="."]
 libraries = {
