@@ -236,13 +236,14 @@ func update_resource_label():
 
 # Function to dynamically update development level
 func increase_development(province_name: String, amount: int):
-	var province_node = get_tree().root.get_node("MainGameplay/" + province_name)
+	var province_node = get_tree().root.get_node("MainGameplay/GameManager/" + province_name)
 	if province_node:
 		province_node.development_level += amount
 		islands[province_name]["development"] = province_node.development_level
 		print(province_name, " Development Increased to: ", islands[province_name]["development"])
 	else:
 		print("ERROR: Province node not found!")
+	
 
 func check_development_requirements():
 	for island in islands.keys():
