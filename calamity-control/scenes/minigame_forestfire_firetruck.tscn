@@ -15,8 +15,10 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed(\"ui_left\"):
 		direction -= 1
+		flip_sprite(false)  # Unflip sprite when moving left
 	if Input.is_action_pressed(\"ui_right\"):
 		direction += 1
+		flip_sprite(true)  # Flip sprite when moving right
 
 	position.x += direction * speed * delta
 
@@ -26,6 +28,10 @@ func _physics_process(delta):
 	else:
 		spray.visible = false
 		spray_area.monitoring = false
+
+
+func flip_sprite(flip):
+	flip_h = flip  # Set the horizontal flip based on input
 
 
 func _on_spray_area_area_entered(area):

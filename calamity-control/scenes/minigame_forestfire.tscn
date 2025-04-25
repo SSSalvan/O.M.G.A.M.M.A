@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2ndlx0jf2jxl"]
+[gd_scene load_steps=10 format=3 uid="uid://b2ndlx0jf2jxl"]
 
 [ext_resource type="Texture2D" uid="uid://bg17dqjwihlsx" path="res://assets/ui/InGameUI/trashMiniGameBG1.png" id="1_dasmt"]
 [ext_resource type="PackedScene" uid="uid://je0ad24w5oem" path="res://scenes/minigame_forestfire_firetruck.tscn" id="1_ov78k"]
 [ext_resource type="Texture2D" uid="uid://b664rquq0s5dl" path="res://assets/ui/InGameUI/trashMiniGameBG2.png" id="2_heiun"]
+[ext_resource type="Texture2D" uid="uid://c1kpv1b4twda8" path="res://assets/ui/InGameUI/PixelTopLeftBar.png" id="4_heiun"]
+[ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="5_xle2g"]
 
 [sub_resource type="GDScript" id="GDScript_ov78k"]
 script/source = "extends Node2D
@@ -11,6 +13,10 @@ signal loseCon
 
 @onready var fire_scene = preload(\"res://scenes/minigame_forestfire_fire.tscn\")
 @export var fire_spawn_interval := 3.0
+@onready var timer: Label = $Timer
+@onready var burns: Label = $Burns
+
+
 var fire_timer := 0.0
 var total_time := 0.0
 var fires_failed := 0
@@ -24,7 +30,9 @@ func _process(delta):
 		fire_timer = 0
 		print(\"Spawning fire!\")
 		spawn_fire()
-	
+		
+	timer.text = \"Timer: %ds!\" % int(15 - total_time)
+	burns.text = \"Burnt: %d/3\" % fires_failed
 	if total_time >= 15:
 		emit_signal(\"winCon\")
 		queue_free()
@@ -63,6 +71,29 @@ animations = [{
 "speed": 1.0
 }]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xle2g"]
+texture = ExtResource("4_heiun")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_s2u2w"]
+sources/1 = SubResource("TileSetAtlasSource_xle2g")
+
 [node name="Node2D" type="Node2D"]
 script = SubResource("GDScript_ov78k")
 
@@ -78,3 +109,58 @@ autoplay = "default"
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_ov78k")]
 position = Vector2(-2, 319)
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+tile_set = SubResource("TileSet_s2u2w")
+format = 2
+layer_0/tile_data = PackedInt32Array(-524274, 1, 2, -524275, 1, 2, -524276, 1, 2, -524277, 1, 2, -524278, 1, 2, -524279, 1, 2, -524280, 1, 2, -524281, 262145, 2, -524282, 196609, 2, -458745, 262145, 3, -458744, 1, 3, -458743, 1, 3, -458742, 1, 3, -458741, 1, 3, -458740, 1, 3, -458739, 1, 3, -458738, 1, 3, -458746, 196609, 3, -458767, 1, 2, -458766, 1, 2, -458765, 1, 2, -458764, 1, 2, -458763, 1, 2, -458762, 1, 2, -458761, 65537, 2, -458760, 131073, 2, -393224, 131073, 3, -393225, 65537, 3, -393226, 1, 3, -393227, 1, 3, -393228, 1, 3, -393229, 1, 3, -393230, 1, 3, -393231, 1, 3)
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = -283.0
+offset_top = -522.0
+offset_right = 290.0
+offset_bottom = -299.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_xle2g")
+theme_override_font_sizes/font_size = 52
+text = "Extinguish the fire
+for 15 seconds
+"
+horizontal_alignment = 1
+
+[node name="Description2" type="Label" parent="."]
+texture_filter = 1
+offset_left = -355.0
+offset_top = -371.0
+offset_right = 362.0
+offset_bottom = -148.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_xle2g")
+theme_override_font_sizes/font_size = 42
+text = "Move with arrow keys
+<--                  -->"
+horizontal_alignment = 1
+
+[node name="Timer" type="Label" parent="."]
+texture_filter = 1
+offset_left = 522.0
+offset_top = -485.0
+offset_right = 988.0
+offset_bottom = -262.0
+theme_override_fonts/font = ExtResource("5_xle2g")
+theme_override_font_sizes/font_size = 72
+text = "Timer: 30s!"
+
+[node name="Burns" type="Label" parent="."]
+texture_filter = 1
+offset_left = -929.0
+offset_top = -482.0
+offset_right = -546.0
+offset_bottom = -237.0
+theme_override_fonts/font = ExtResource("5_xle2g")
+theme_override_font_sizes/font_size = 72
+text = "Burnt: 0/3
+"

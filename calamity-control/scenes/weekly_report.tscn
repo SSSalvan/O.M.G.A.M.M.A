@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://7vklafu4t6qi"]
 
-[ext_resource type="Script" path="res://scripts/weekly_report.gd" id="1_ec7a8"]
+[ext_resource type="Script" uid="uid://cmwedgwiuxv78" path="res://scripts/weekly_report.gd" id="1_ec7a8"]
 [ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="1_qa6uf"]
 [ext_resource type="Script" uid="uid://bd15kc000je60" path="res://scripts/background_blocker.gd" id="3_thrsh"]
 
