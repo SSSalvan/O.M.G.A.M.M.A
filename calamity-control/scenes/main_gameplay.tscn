@@ -270,13 +270,13 @@ text = "End Week"
 
 [node name="Show Islands Status" type="Button" parent="GameManager/User Interface"]
 layout_mode = 0
-offset_left = 350.0
-offset_top = 261.0
-offset_right = 796.0
-offset_bottom = 336.0
+offset_left = 339.0
+offset_top = 265.0
+offset_right = 809.0
+offset_bottom = 340.0
 theme_override_fonts/font = ExtResource("9_jh0gp")
 theme_override_font_sizes/font_size = 48
-text = "Show Islands Status"
+text = "Show Province Status"
 
 [node name="StatRpt_Sumatra" parent="GameManager" instance=ExtResource("6_04qc1")]
 visible = false
