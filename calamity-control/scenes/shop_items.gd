@@ -3,7 +3,7 @@ var itemName: Array[String] = [""]
 var itemCount: Array[int] = []
 var itemPrice: Array[int] = []
 
-var howManyItemsBro = 52
+var howManyItemsBro = 53
 func _ready():
 	itemName.resize(howManyItemsBro)  # now it's [0, 0, 0, 0, 0]
 	itemCount.resize(howManyItemsBro)

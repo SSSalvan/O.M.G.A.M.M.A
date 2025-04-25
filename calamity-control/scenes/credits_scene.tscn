@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjcqi4iurqkeb"]
+[gd_scene load_steps=5 format=3 uid="uid://cpw05yl81em5y"]
 
-[ext_resource type="Script" uid="uid://carp4km4ugbfh" path="res://island_status_panel.gd" id="1_85gkt"]
-[ext_resource type="Script" uid="uid://bd15kc000je60" path="res://scripts/background_blocker.gd" id="2_t0sf1"]
-[ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="2_toyfp"]
+[ext_resource type="Script" uid="uid://carp4km4ugbfh" path="res://island_status_panel.gd" id="1_x5wno"]
+[ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="2_1pu23"]
+[ext_resource type="Script" uid="uid://bd15kc000je60" path="res://scripts/background_blocker.gd" id="3_1pu23"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toyfp"]
 bg_color = Color(0.122252, 0.122252, 0.122252, 1)
@@ -16,7 +16,7 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [node name="IslandStatusPanel" type="CanvasLayer"]
-script = ExtResource("1_85gkt")
+script = ExtResource("1_x5wno")
 
 [node name="BackgroundBlocker" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -29,7 +29,7 @@ offset_bottom = 978.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.0431373)
-script = ExtResource("2_t0sf1")
+script = ExtResource("3_1pu23")
 
 [node name="BG_Island_Status" type="Panel" parent="."]
 anchors_preset = 8
@@ -50,9 +50,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_toyfp")
 layout_mode = 2
 offset_right = 1465.0
 offset_bottom = 76.0
-theme_override_fonts/font = ExtResource("2_toyfp")
+theme_override_fonts/font = ExtResource("2_1pu23")
 theme_override_font_sizes/font_size = 40
-text = "sss"
+text = "Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -62,7 +62,7 @@ offset_left = 22.0
 offset_top = 86.0
 offset_right = 1440.0
 offset_bottom = 636.0
-theme_override_fonts/font = ExtResource("2_toyfp")
+theme_override_fonts/font = ExtResource("2_1pu23")
 theme_override_font_sizes/font_size = 30
 text = "hello
 "
@@ -73,7 +73,7 @@ offset_left = 615.401
 offset_top = 655.52
 offset_right = 862.401
 offset_bottom = 696.52
-theme_override_fonts/font = ExtResource("2_toyfp")
+theme_override_fonts/font = ExtResource("2_1pu23")
 theme_override_font_sizes/font_size = 40
 text = "Close"
 

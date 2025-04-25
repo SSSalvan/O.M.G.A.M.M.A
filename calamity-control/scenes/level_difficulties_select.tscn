@@ -5,9 +5,6 @@
 
 [sub_resource type="GDScript" id="GDScript_iv0lu"]
 script/source = "extends CanvasLayer
-signal easy
-signal medium
-signal hard
 
 func _on_button_pressed() -> void:
 	get_node(\"level_diff_anim\").play(\"Transition_Out_level_diff\")

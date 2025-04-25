@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://csm0uwxqwgudx"]
+[gd_scene load_steps=5 format=3 uid="uid://7vklafu4t6qi"]
 
-[ext_resource type="Script" uid="uid://cmwedgwiuxv78" path="res://scripts/weekly_report.gd" id="1_ec7a8"]
+[ext_resource type="Script" path="res://scripts/weekly_report.gd" id="1_ec7a8"]
 [ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="1_qa6uf"]
+[ext_resource type="Script" uid="uid://bd15kc000je60" path="res://scripts/background_blocker.gd" id="3_thrsh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ec7a8"]
 bg_color = Color(0.133196, 0.133196, 0.133196, 1)
@@ -16,6 +17,19 @@ corner_radius_bottom_left = 15
 
 [node name="weekly_report" type="CanvasLayer"]
 script = ExtResource("1_ec7a8")
+
+[node name="BackgroundBlocker" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1692.0
+offset_top = -1961.0
+offset_right = 4082.0
+offset_bottom = 978.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.0431373)
+script = ExtResource("3_thrsh")
 
 [node name="BG_weekly_report" type="Panel" parent="."]
 anchors_preset = 8

@@ -18,3 +18,8 @@ func _on_play_game_pressed() -> void:
 	
 func _on_exit_game_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_credts_pressed() -> void:
+	var credits = preload("res://scenes/credits_scene.tscn").instantiate()
+	add_child(credits)
