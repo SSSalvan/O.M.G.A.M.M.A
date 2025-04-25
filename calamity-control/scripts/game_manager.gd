@@ -14,10 +14,10 @@ const MAX_WEEKS: int = 52
 var islands = {}
 
 var events = [
-	{ "type": "negative", "name": "Pembakaran Bahan Bakar Fosil", "emission_increase": 5, "cost": 300 },
-	{ "type": "negative", "name": "Penebangan Hutan", "emission_increase": 4, "cost": 250 },
-	{ "type": "positive", "name": "Mengurangi Bahan Bakar Fosil", "resource_reward": 300, "emission_decrease": 5 },
-	{ "type": "positive", "name": "Menghentikan Deforestasi", "resource_reward": 250, "emission_decrease": 3 },
+	{ "type": "negative", "name": "Burning of Fossil Fuels", "emission_increase": 5, "cost": 300 },
+	{ "type": "negative", "name": "Deforestation", "emission_increase": 4, "cost": 250 },
+	{ "type": "positive", "name": "Reducing Fossil Fuel Usage", "resource_reward": 300, "emission_decrease": 5 },
+	{ "type": "positive", "name": "Stopping Deforestation", "resource_reward": 250, "emission_decrease": 3 },
 	{ "type": "minigame1", "name": "Trash Catching", "goal": "Catch all the trash floating in the water before time runs out.",
 		"resource_reward": 400, "emission_decrease": 5, 
 		"win_desc": "You've cleaned the water successfully! Marine life thrives again.",
