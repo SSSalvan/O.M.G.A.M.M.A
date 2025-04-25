@@ -23,6 +23,7 @@ LevelDifficultiesSelect="*res://scenes/level_difficulties_select.tscn"
 GameDifficulty="*res://game_difficulty.gd"
 ShopItems="*res://scripts/shop_items.gd"
 ShopPanel="*res://scenes/ShopPanel.tscn"
+UpgradeReq="*res://upgrade_req.gd"
 
 [display]
 
