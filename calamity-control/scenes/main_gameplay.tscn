@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://ckdb64dsm6e8e"]
+[gd_scene load_steps=44 format=3 uid="uid://ckdb64dsm6e8e"]
 
 [ext_resource type="Script" uid="uid://c0dby3imeo58y" path="res://scripts/main_gameplay.gd" id="1_hfa5i"]
 [ext_resource type="Texture2D" uid="uid://qcsfxf23f088" path="res://assets/map/indoMap.png" id="1_rl3v5"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://d4bouo6526vuv" path="res://assets/map/sun.png" id="13_fj2an"]
 [ext_resource type="Texture2D" uid="uid://c1kpv1b4twda8" path="res://assets/ui/InGameUI/PixelTopLeftBar.png" id="13_jh0gp"]
 [ext_resource type="AudioStream" uid="uid://bshtgubq8wmi7" path="res://assets/Audio/Soundtrack/hokkori tea time.mp3" id="14_58ik7"]
+[ext_resource type="Texture2D" uid="uid://bq84b430fgosc" path="res://assets/map/Fish-Sheet.png" id="14_un03y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_njxfe"]
 texture = ExtResource("2_nnxur")
@@ -146,6 +147,35 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqthq"]
+atlas = ExtResource("14_un03y")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pl7rw"]
+atlas = ExtResource("14_un03y")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnheh"]
+atlas = ExtResource("14_un03y")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7cath"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqthq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pl7rw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnheh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
 }]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_58ik7"]
@@ -440,11 +470,25 @@ offset_bottom = 444.0
 
 [node name="Decorations" type="Node2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Decorations"]
+[node name="TheSun" type="AnimatedSprite2D" parent="Decorations"]
 texture_filter = 1
-position = Vector2(841, -419)
+position = Vector2(842, -418)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_sqthq")
+autoplay = "default"
+
+[node name="Fish" type="AnimatedSprite2D" parent="Decorations"]
+texture_filter = 1
+position = Vector2(-789, 58)
+scale = Vector2(2.58, 2.58)
+sprite_frames = SubResource("SpriteFrames_7cath")
+autoplay = "default"
+
+[node name="Fish2" type="AnimatedSprite2D" parent="Decorations"]
+texture_filter = 1
+position = Vector2(532, -408)
+scale = Vector2(-2.58, 2.58)
+sprite_frames = SubResource("SpriteFrames_7cath")
 autoplay = "default"
 
 [node name="TileMap" type="TileMap" parent="."]

@@ -1,11 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://cybc0370qmjxo"]
+[gd_scene load_steps=10 format=3 uid="uid://cybc0370qmjxo"]
 
 [ext_resource type="Texture2D" uid="uid://wne1sqaqn4yv" path="res://assets/minigames/dumpster/dumpster_bin_sprite.png" id="1_e5jkc"]
+[ext_resource type="Texture2D" uid="uid://d160jomjpagb5" path="res://assets/minigames/dumpster/dumpster_bin_sprite_move.png" id="2_w5npo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6jiq"]
+atlas = ExtResource("1_e5jkc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxnll"]
+atlas = ExtResource("2_w5npo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mmen"]
+atlas = ExtResource("2_w5npo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cw3qj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6jiq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxnll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mmen")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
 
 [sub_resource type="GDScript" id="GDScript_e5jkc"]
-script/source = "extends Sprite2D
+script/source = "extends AnimatedSprite2D
 
 @export var speed := 300.0
+@onready var dumpster_bin: AnimatedSprite2D = $\".\"
 
 func _process(delta):
 	var direction := 0
@@ -14,7 +50,17 @@ func _process(delta):
 		direction -= 3
 	if Input.is_action_pressed(\"ui_right\"):
 		direction += 3
-
+	
+	if direction == 0:
+		dumpster_bin.play(\"idle\")
+	if direction != 0:
+		dumpster_bin.play(\"move\")
+	
+	if direction > 0:
+		dumpster_bin.flip_h = false
+	if direction < 0:
+		dumpster_bin.flip_h = true
+	
 	position.x += direction * speed * delta
 "
 
@@ -26,11 +72,12 @@ size = Vector2(276, 47)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 
-[node name="DumpsterBin" type="Sprite2D" parent="."]
+[node name="DumpsterBin" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -121)
 scale = Vector2(8, 8)
-texture = ExtResource("1_e5jkc")
+sprite_frames = SubResource("SpriteFrames_cw3qj")
+animation = &"idle"
 script = SubResource("GDScript_e5jkc")
 
 [node name="CatchArea" type="Area2D" parent="DumpsterBin"]

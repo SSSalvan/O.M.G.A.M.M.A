@@ -712,11 +712,11 @@ theme_override_font_sizes/normal_font_size = 64
 text = "Easy Difficulty
 
 List of province:
-- Aceh
-- Kalimantan Barat
-- DKI Jakarta
-- Sulawesi Selatan
-- Papua Pegunungan"
+- Sumatra
+- Kalimantan
+- Jawa
+- Sulawesi 
+- Papua "
 
 [node name="level_diff_medium" type="Sprite2D" parent="background_cover"]
 position = Vector2(-500, 496)
@@ -753,12 +753,11 @@ theme_override_font_sizes/normal_font_size = 64
 text = "Medium Difficulty
 
 List of province:
-- Aceh
-- Kalimantan Barat
-- DKI Jakarta
-- Sulawesi Selatan
-- Papua Pegunungan
-
+- Sumatra
+- Kalimantan
+- Jawa
+- Sulawesi 
+- Papua 
 - Bali
 - Maluku
 "
@@ -798,17 +797,16 @@ theme_override_font_sizes/normal_font_size = 64
 text = "Hard Difficulty
 
 List of province:
-- Aceh
-- Kalimantan Barat
-- DKI Jakarta
-- Sulawesi Selatan
-- Papua Pegunungan
-
+- Sumatra
+- Kalimantan
+- Jawa
+- Sulawesi 
+- Papua 
 - Bali
 - Maluku
-- Maluku Utara
-- Ntb
-- NTT"
+- NTT
+- NTB
+- Maluku Utara"
 
 [node name="level_diff_anim" type="AnimationPlayer" parent="."]
 libraries = {
