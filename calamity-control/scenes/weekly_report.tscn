@@ -30,6 +30,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.0431373)
 script = ExtResource("3_thrsh")
+[node name="BG_Cover" type="Panel" parent="."]
+visible = false
+offset_right = 1923.0
+offset_bottom = 1088.0
 
 [node name="BG_weekly_report" type="Panel" parent="."]
 anchors_preset = 8

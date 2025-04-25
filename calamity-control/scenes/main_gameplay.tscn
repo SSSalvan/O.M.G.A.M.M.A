@@ -28,9 +28,8 @@ use_texture_padding = false
 sources/1 = SubResource("TileSetAtlasSource_nnxur")
 sources/0 = SubResource("TileSetAtlasSource_njxfe")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r640c"]
-radius = 55.3432
-height = 325.149
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jh0gp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_gb8rl"]
 font_size = 48
@@ -150,80 +149,101 @@ script = ExtResource("2_qg8ic")
 
 [node name="Area2D" type="Area2D" parent="GameManager"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameManager/Area2D"]
-position = Vector2(-587, -113)
-rotation = -0.825563
-shape = SubResource("CapsuleShape2D_r640c")
-
 [node name="InGameBottomHud" type="Sprite2D" parent="GameManager/Area2D"]
 visible = false
 position = Vector2(-1.31259, 429)
 scale = Vector2(0.399297, 0.468004)
 texture = ExtResource("3_axkgv")
 
-[node name="Sumatra" type="Sprite2D" parent="GameManager"]
-position = Vector2(-564, -94)
+[node name="Sumatra" type="Button" parent="GameManager"]
+offset_left = -631.0
+offset_top = -167.0
+offset_right = -283.0
+offset_bottom = 181.0
 scale = Vector2(0.108824, 0.142647)
-texture = ExtResource("3_xa1hq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jh0gp")
+icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
-[node name="Kalimantan" type="Sprite2D" parent="GameManager"]
-position = Vector2(-117, -132)
+[node name="Kalimantan" type="Button" parent="GameManager"]
+offset_left = -174.0
+offset_top = -180.0
+offset_right = 174.0
+offset_bottom = 168.0
 scale = Vector2(0.108824, 0.142647)
-texture = ExtResource("3_xa1hq")
+icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
-[node name="Papua" type="Sprite2D" parent="GameManager"]
-position = Vector2(788, -6)
+[node name="Papua" type="Button" parent="GameManager"]
+offset_left = 763.0
+offset_top = -46.0
+offset_right = 1111.0
+offset_bottom = 302.0
 scale = Vector2(0.108824, 0.142647)
-texture = ExtResource("3_xa1hq")
+icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
-[node name="Jawa" type="Sprite2D" parent="GameManager"]
-position = Vector2(-294, 106)
+[node name="Jawa" type="Button" parent="GameManager"]
+offset_left = -317.0
+offset_top = 84.0
+offset_right = 31.0
+offset_bottom = 432.0
 scale = Vector2(0.108824, 0.142647)
-texture = ExtResource("3_xa1hq")
+icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
-[node name="Sulawesi" type="Sprite2D" parent="GameManager"]
-position = Vector2(102, -74)
+[node name="Sulawesi" type="Button" parent="GameManager"]
+offset_left = 80.0
+offset_top = -128.0
+offset_right = 428.0
+offset_bottom = 220.0
 scale = Vector2(0.108824, 0.142647)
-texture = ExtResource("3_xa1hq")
+icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
-[node name="Bali" type="Sprite2D" parent="GameManager"]
-visible = false
-position = Vector2(-97, 143)
+[node name="Bali" type="Button" parent="GameManager"]
+offset_left = -118.0
+offset_top = 119.0
+offset_right = 230.0
+offset_bottom = 467.0
 scale = Vector2(0.109, 0.143)
-texture = ExtResource("3_xa1hq")
+icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
-[node name="Maluku" type="Sprite2D" parent="GameManager"]
-visible = false
-position = Vector2(450, -58)
+[node name="Maluku" type="Button" parent="GameManager"]
+offset_left = 434.0
+offset_top = -81.0
+offset_right = 782.0
+offset_bottom = 267.0
 scale = Vector2(0.109, 0.143)
-texture = ExtResource("3_xa1hq")
+icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
-[node name="NTB" type="Sprite2D" parent="GameManager"]
-visible = false
-position = Vector2(-51, 153)
+[node name="NTB" type="Button" parent="GameManager"]
+offset_left = -69.0
+offset_top = 131.0
+offset_right = 279.0
+offset_bottom = 479.0
 scale = Vector2(0.109, 0.143)
-texture = ExtResource("3_xa1hq")
+icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
-[node name="NTT" type="Sprite2D" parent="GameManager"]
-visible = false
-position = Vector2(88, 198)
+[node name="NTT" type="Button" parent="GameManager"]
+offset_left = 69.0
+offset_top = 175.0
+offset_right = 417.0
+offset_bottom = 523.0
 scale = Vector2(0.109, 0.143)
-texture = ExtResource("3_xa1hq")
+icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
-[node name="Maluku Utara" type="Sprite2D" parent="GameManager"]
-visible = false
-position = Vector2(393, -191)
+[node name="Maluku Utara" type="Button" parent="GameManager"]
+offset_left = 374.0
+offset_top = -217.0
+offset_right = 722.0
+offset_bottom = 131.0
 scale = Vector2(0.109, 0.143)
-texture = ExtResource("3_xa1hq")
+icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
 [node name="Camera2D" type="Camera2D" parent="GameManager"]
@@ -331,5 +351,6 @@ tile_set = SubResource("TileSet_fj2an")
 format = 2
 layer_0/tile_data = PackedInt32Array(-5, 0, 2, -4, 0, 2, -3, 0, 2, -2, 0, 2, -1, 0, 2, -65536, 0, 2, -65535, 0, 2, -65534, 0, 2, 65531, 0, 3, 65532, 0, 3, 65533, 0, 3, 65534, 0, 3, 65535, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 3, 3, 65536, 3, -65533, 65536, 2, -65532, 131072, 2, 4, 131072, 3, 1114108, 196608, 1, 1114107, 196608, 1, 917525, 65536, 0, 917526, 65536, 0, 917527, 65536, 0, 983061, 65536, 1, 983062, 65536, 1, 983063, 65536, 1, 1048599, 196608, 1, 1048598, 196608, 1, 1048597, 196608, 1, 983035, 0, 0, 983038, 65536, 0, 983037, 65536, 0, 983036, 65536, 0, 983039, 131072, 0, 1048575, 131072, 1, 1048571, 0, 1, 1048573, 65536, 1, 1048574, 65536, 1, 1048572, 65536, 1, 1114109, 196608, 1, 1114110, 196608, 1, 1114111, 196608, 1, 917528, 131072, 0, 983064, 131072, 1, 1048600, 196608, 1, 917524, 0, 0, 983060, 0, 1, 1048596, 196608, 1, 917510, 0, 0, 917517, 131072, 0, 917516, 65536, 0, 917515, 65536, 0, 917514, 65536, 0, 917513, 65536, 0, 917512, 65536, 0, 917511, 65536, 0, 983046, 0, 1, 983047, 65536, 1, 983048, 65536, 1, 983049, 65536, 1, 983050, 65536, 1, 983051, 65536, 1, 983052, 65536, 1, 983053, 131072, 1, 1048582, 196608, 1, 1048583, 196608, 1, 1048584, 196608, 1, 1048585, 196608, 1, 1048586, 196608, 1, 1048587, 196608, 1, 1048588, 196608, 1, 1048589, 196608, 1)
 
+[connection signal="pressed" from="GameManager/Sumatra" to="GameManager" method="_on_sumatra_pressed"]
 [connection signal="pressed" from="GameManager/User Interface/End Week" to="GameManager" method="_on_end_week_pressed"]
 [connection signal="pressed" from="GameManager/User Interface/Show Islands Status" to="GameManager" method="_on_show_islands_status_pressed"]

@@ -84,7 +84,6 @@ func islandSetup():
 		$NTT.visible = true
 		$"Maluku Utara".visible = true
 	
-#	add to dictionary down here based on diff
 	if (islandCount>=1):
 		islands["Sumatra"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
 		islands["Kalimantan"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
