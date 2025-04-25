@@ -3,10 +3,11 @@ var itemName: Array[String] = [""]
 var itemCount: Array[int] = []
 var itemPrice: Array[int] = []
 
+var howManyItemsBro = 5
 func _ready():
-	itemName.resize(5)  # now it's [0, 0, 0, 0, 0]
-	itemCount.resize(5)
-	itemPrice.resize(5)
+	itemName.resize(howManyItemsBro)  # now it's [0, 0, 0, 0, 0]
+	itemCount.resize(howManyItemsBro)
+	itemPrice.resize(howManyItemsBro)
 	
 	itemName[0]  = "Panel Surya" #debug
 	itemPrice[0] = 300
@@ -15,3 +16,7 @@ func _ready():
 	itemPrice[1] = 450
 	
 	print("Item names array content: ", itemName)
+
+func startGame():
+	for i in range (howManyItemsBro):
+		itemCount[i] = 0
