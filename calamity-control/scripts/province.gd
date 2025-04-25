@@ -14,16 +14,20 @@ func _on_pressed() -> void:
 func show_development_prompt():
 	var confirm_scene = load("res://scenes/develop_province.tscn").instantiate()
 	get_tree().current_scene.add_child(confirm_scene)
-	
+
 	var popup = confirm_scene as DevelopProvince
 	if popup:
-		popup.game_manager = get_tree().root.get_node("MainGameplay/GameManager")
+		popup.game_manager = game_manager
 		print("GameManager assigned in popup:", popup.game_manager)
-		
+
 		await get_tree().process_frame
-		popup.set_title_text("Would you like to develop " + province_name + "? (400)")
 		popup.position = get_viewport_rect().size * 0.5 + Vector2(-500, 0)
-		
+
+		# ✨ Generate random item requirements based on week
+		var required_items = generate_required_items(game_manager.week)
+		popup.set_title_text("Would you like to develop " + province_name + "?")
+		popup.set_required_items(required_items)
+
 		popup.confirmed.connect(self.increase_development)
 	else:
 		print("Failed to cast confirm_scene to DevelopProvince")
@@ -42,3 +46,13 @@ func increase_development():
 		print(province_name + " has been developed: ", development_level, " times")
 	else:
 		print("Not enough resources to develop!")
+
+func generate_required_items(current_week: int) -> Dictionary:
+	var required_items = {}
+	var num_items = clamp(1 + int(current_week / 5), 1, 4)  # 1 item at start, up to 4
+
+	while required_items.size() < num_items:
+		var index = randi() % ShopItems.howManyItemsBro
+		if !required_items.has(index):
+			required_items[index] = randi_range(1, 3)  # Require 1–3 of that item
+	return required_items

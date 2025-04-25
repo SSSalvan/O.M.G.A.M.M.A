@@ -6,12 +6,16 @@
 [sub_resource type="GDScript" id="GDScript_iv0lu"]
 script/source = "extends CanvasLayer
 
+@onready var level_easy_button = get_node(\"background_cover/level_diff_easy/select_easy\")
+@onready var level_medium_button = get_node(\"background_cover/level_diff_medium/select_medium\")
+@onready var level_hard_button = get_node(\"background_cover/level_diff_hard/select_hard\")
+
 func _on_button_pressed() -> void:
 	get_node(\"level_diff_anim\").play(\"Transition_Out_level_diff\")
+	reset_scene_state()
 	get_node(\".\").visible = false
 
 func _on_select_easy_pressed() -> void:
-	var level_easy_button = get_node(\"background_cover/level_diff_easy/select_easy\")
 	if level_easy_button.text == \"Select\":
 		level_easy_button.text = \"Back\"
 		$background_cover/level_diff_easy/accept_contract_easy.visible = true
@@ -33,7 +37,6 @@ func _on_accept_contract_easy_pressed() -> void:
 
 
 func _on_select_medium_pressed() -> void:
-	var level_medium_button = get_node(\"background_cover/level_diff_medium/select_medium\")
 	if level_medium_button.text == \"Select\":
 		level_medium_button.text = \"Back\"
 		$background_cover/level_diff_medium/accept_contract_medium.visible = true
@@ -54,7 +57,6 @@ func _on_accept_contract_medium_pressed() -> void:
 	get_node(\"/root/LevelDifficultiesSelect/.\").visible = false
 
 func _on_select_hard_pressed() -> void:
-	var level_hard_button = get_node(\"background_cover/level_diff_hard/select_hard\")
 	if level_hard_button.text == \"Select\":
 		level_hard_button.text = \"Back\"
 		$background_cover/level_diff_hard/accept_contract_hard.visible = true
@@ -73,6 +75,23 @@ func _on_accept_contract_hard_pressed() -> void:
 	GameDifficulty.diff = \"hard\"
 	get_tree().change_scene_to_file(\"res://scenes/main_gameplay.tscn\")
 	get_node(\"/root/LevelDifficultiesSelect/.\").visible = false
+
+func reset_scene_state():
+	# Reset button states
+	level_easy_button.text = \"Select\"
+	level_medium_button.text = \"Select\"
+	level_hard_button.text = \"Select\"
+
+	# Hide additional UI elements
+	$background_cover/level_diff_easy/accept_contract_easy.visible = false
+	$background_cover/level_diff_easy/Easy_Desc.visible = false
+	$background_cover/level_diff_medium/accept_contract_medium.visible = false
+	$background_cover/level_diff_medium/Medium_Desc.visible = false
+	$background_cover/level_diff_hard/accept_contract_hard.visible = false
+	$background_cover/level_diff_hard/Hard_Desc.visible = false
+
+	# Ensure the tree is unpaused
+	get_tree().paused = false
 "
 
 [sub_resource type="GDScript" id="GDScript_ye6hp"]
@@ -787,9 +806,9 @@ List of province:
 
 - Bali
 - Maluku
-- Riau
+- Maluku Utara
 - Ntb
-- Jawa Timur"
+- NTT"
 
 [node name="level_diff_anim" type="AnimationPlayer" parent="."]
 libraries = {

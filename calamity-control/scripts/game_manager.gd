@@ -289,3 +289,22 @@ func show_development_levels():
 			print(province_name, " - Development Level: ", dev_level)
 		else:
 			print("ERROR: Province node for ", province_name, " not found!")
+
+func generate_item_requirements(week: int) -> Dictionary:
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var item_requirements = {}
+	var difficulty = clamp(week / 5, 1, 4)
+	var num_items = rng.randi_range(1, 2 + difficulty)
+	var used_indices = []
+	
+	while item_requirements.size() < num_items:
+		var index = rng.randi_range(0, ShopItems.howManyItemsBro - 1)
+		if index in used_indices:
+			continue
+		used_indices.append(index)
+		var item_name = ShopItems.itemName[index]
+		var item_amount = rng.randi_range(1, difficulty + 1)
+		item_requirements[item_name] = item_amount
+	
+	return item_requirements
