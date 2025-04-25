@@ -38,7 +38,11 @@ func increase_development():
 	if ResourceCount.resource >= 400:
 		ResourceCount.resource -= 400
 		development_level += 1
+		
+		# Notify GameManager to update islands dictionary
+		game_manager.increase_development(province_name, 0)
+		
 		game_manager.update_resource_label()
 		print(province_name + " has been developed: ", development_level, " times")
 	else:
-		print("You broke AF Boy!")
+		print("Not enough resources to develop!")

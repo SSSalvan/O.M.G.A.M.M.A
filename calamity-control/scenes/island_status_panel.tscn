@@ -52,20 +52,22 @@ offset_right = 1465.0
 offset_bottom = 76.0
 theme_override_fonts/font = ExtResource("2_toyfp")
 theme_override_font_sizes/font_size = 40
-text = "sss"
+text = "Status Island Report"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Status_Report" type="Label" parent="BG_Island_Status"]
+[node name="ScrollContainer" type="ScrollContainer" parent="BG_Island_Status/Status_Report_Title"]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 86.0
+offset_left = 27.0
+offset_top = 77.0
 offset_right = 1440.0
-offset_bottom = 636.0
+offset_bottom = 614.0
+
+[node name="Status_Report" type="Label" parent="BG_Island_Status/Status_Report_Title/ScrollContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_toyfp")
-theme_override_font_sizes/font_size = 30
-text = "hello
-"
+theme_override_font_sizes/font_size = 35
+text = "Hello"
 
 [node name="Close_Button" type="Button" parent="BG_Island_Status"]
 layout_mode = 2

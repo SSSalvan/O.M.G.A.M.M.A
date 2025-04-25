@@ -2,7 +2,7 @@ extends CanvasLayer
 
 signal report_closed
 
-@onready var report_text = $BG_weekly_report/island_report
+@onready var report_text = $BG_weekly_report/ScrollContainer/island_report
 @onready var title_label = $BG_weekly_report/title
 @onready var confirm_button = $BG_weekly_report/confirm_button
 
