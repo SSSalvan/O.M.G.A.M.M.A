@@ -19,13 +19,13 @@ func set_event_data(_island_name: String, _event_data: Dictionary):
 	$BG_Event_Text/Event_Title.text = \"[%s] %s\" % [island_name, event_data.get(\"name\", \"Event\")]
 
 	if event_data.type == \"negative\":
-		$BG_Event_Text/Event_Description.text = \"Sebuah peristiwa terjadi: %s.\\nEmisi akan naik sebanyak %d%%!\" % [event_data.name, event_data.emission_increase]
-		$BG_Event_Text/Confirmation_Take_Action.text = \"Bayar %d untuk cegah\" % event_data[\"cost\"]
+		$BG_Event_Text/Event_Description.text = \"An event has occured: %s.\\nEmission will rise by %d%%!\" % [event_data.name, event_data.emission_increase]
+		$BG_Event_Text/Confirmation_Take_Action.text = \"Would you like to pauy %d amount to prevent \" % event_data[\"cost\"]
 		$BG_Event_Text/Ignore_Close.visible = true
-		$BG_Event_Text/Ignore_Close.text = \"Abaikan\"
+		$BG_Event_Text/Ignore_Close.text = \"Ignore\"
 		
 	if event_data.type == \"positive\":
-		$BG_Event_Text/Event_Description.text = \"Kabar baik! %s.\\nSumber daya +%d, Emisi -%d%%.\" % [
+		$BG_Event_Text/Event_Description.text = \"Good news! %s.\\nResources +%d, Emissions -%d%%.\" % [
 			event_data.name,
 			event_data.resource_reward,
 			event_data.emission_decrease
@@ -34,16 +34,16 @@ func set_event_data(_island_name: String, _event_data: Dictionary):
 		$BG_Event_Text/Ignore_Close.visible = false
 	
 	if event_data.type == \"minigame1\":
-		$BG_Event_Text/Event_Description.text = \"Selesaikan minigame untuk mengatasi peristiwa: %s!\" % event_data.name
-		$BG_Event_Text/Confirmation_Take_Action.text = \"Mainkan\"
+		$BG_Event_Text/Event_Description.text = \"Complete the minigame to prevent the event: %s!\" % event_data.name
+		$BG_Event_Text/Confirmation_Take_Action.text = \"Start\"
 		$BG_Event_Text/Ignore_Close.visible = true
-		$BG_Event_Text/Ignore_Close.text = \"Lewati\"
+		$BG_Event_Text/Ignore_Close.text = \"Pass\"
 		
 	if event_data.type == \"minigame2\":
-		$BG_Event_Text/Event_Description.text = \"Selesaikan minigame untuk mengatasi peristiwa: %s!\" % event_data.name
-		$BG_Event_Text/Confirmation_Take_Action.text = \"Mainkan\"
+		$BG_Event_Text/Event_Description.text = \"Complete the minigame to prevent the event: %s!\" % event_data.name
+		$BG_Event_Text/Confirmation_Take_Action.text = \"Start\"
 		$BG_Event_Text/Ignore_Close.visible = true
-		$BG_Event_Text/Ignore_Close.text = \"Lewati\"
+		$BG_Event_Text/Ignore_Close.text = \"Pass\"
 		
 	
 
