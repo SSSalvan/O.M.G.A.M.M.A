@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://1m7oll7ar5qo"]
+[gd_scene load_steps=6 format=3 uid="uid://c6w60r85u4xr"]
 
 [ext_resource type="Texture2D" uid="uid://ck2lfqdcaej5x" path="res://assets/minigames/recycle/cardboard.png" id="1_0d1bt"]
-[ext_resource type="PackedScene" uid="uid://ddt5rnluwqo3l" path="res://scenes/minigame_recycle_items.tscn" id="1_nixf7"]
+[ext_resource type="PackedScene" path="res://scenes/minigame_recycle_items.tscn" id="1_nixf7"]
 [ext_resource type="Texture2D" uid="uid://bdyvd5b7jitdu" path="res://assets/minigames/recycle/pngtree-isolated-blue-plastic-bottle-png-image_11585847.png" id="2_5bofi"]
-[ext_resource type="Script" uid="uid://bdquh88jobqrj" path="res://scripts/bin.gd" id="4_7jkrk"]
+[ext_resource type="Script" path="res://scripts/bin.gd" id="4_7jkrk"]
 
 [sub_resource type="GDScript" id="GDScript_gu04w"]
 script/source = "extends Node2D

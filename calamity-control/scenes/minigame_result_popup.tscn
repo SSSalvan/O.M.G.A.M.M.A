@@ -1,0 +1,81 @@
+[gd_scene load_steps=4 format=3 uid="uid://wq0yfyur31gr"]
+
+[ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="1_algef"]
+
+[sub_resource type="GDScript" id="GDScript_hbmgv"]
+script/source = "extends CanvasLayer
+
+signal result_closed()
+
+func set_result_text(title: String, description: String):
+	$Result_BG/Result_Title.text = title
+	$Result_BG/Result_Description.text = description
+
+
+func _on_ok_button_pressed() -> void:
+	result_closed.emit()
+	queue_free()
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_algef"]
+bg_color = Color(0.122252, 0.122252, 0.122252, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="MinigameResultPopup" type="CanvasLayer"]
+script = SubResource("GDScript_hbmgv")
+
+[node name="Result_BG" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -335.0
+offset_top = -197.0
+offset_right = 335.0
+offset_bottom = 197.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_algef")
+
+[node name="Result_Title" type="Label" parent="Result_BG"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 12.0
+offset_right = 652.0
+offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("1_algef")
+theme_override_font_sizes/font_size = 40
+text = "s"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Result_Description" type="Label" parent="Result_BG"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 69.0
+offset_right = 651.0
+offset_bottom = 293.0
+theme_override_fonts/font = ExtResource("1_algef")
+theme_override_font_sizes/font_size = 30
+text = "ssssssssssssssssssssssssssssssssssssssssssssss"
+autowrap_mode = 3
+
+[node name="OK_Button" type="Button" parent="Result_BG"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 281.0
+offset_right = 488.0
+offset_bottom = 321.0
+theme_override_fonts/font = ExtResource("1_algef")
+theme_override_font_sizes/font_size = 20
+text = "Close"
+
+[connection signal="pressed" from="Result_BG/OK_Button" to="." method="_on_ok_button_pressed"]

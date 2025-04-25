@@ -106,22 +106,47 @@ func _on_ignore_close_pressed() -> void:
 
 	queue_free()
 
+func _show_minigame_result(won: bool):
+	var result_popup = preload(\"res://scenes/minigame_result_popup.tscn\").instantiate()
+	get_tree().get_root().add_child(result_popup)
+
+	# Retrieve win and lose descriptions from the event data
+	var win_desc = event_data.get(\"win_desc\", \"You won!\")
+	var lose_desc = event_data.get(\"lose_desc\", \"You lost!\")
+
+	var resource_change = event_data.get(\"resource_reward\", 0) if won else 0
+	var emission_change = -event_data.get(\"emission_decrease\", 0) if won else event_data.get(\"emission_increase\", 0)
+
+	var final_win_desc = \"[%s] %s\\n+%d Resources\\n%d%% Emissions\" % [
+		island_name, win_desc, resource_change, emission_change
+	]
+	var final_lose_desc = \"[%s] %s\\n+%d%% Emissions\" % [
+		island_name, lose_desc, emission_change
+	]
+
+	if won:
+		result_popup.set_result_text(\"Victory!\", final_win_desc)
+	else:
+		result_popup.set_result_text(\"Defeat\", final_lose_desc)
+
+	result_popup.connect(\"result_closed\", Callable(self, \"_on_result_popup_closed\"))
+
 func _on_minigame_win():
 	print(\"Minigame berhasil diselesaikan! Kamu menang!\")
-	print(\"Reward: +%d resource, -%d emisi\" % [
-		event_data.get(\"resource_reward\", 0),
-		event_data.get(\"emission_decrease\", 0)
-	])
 	event_confirmed.emit(island_name, event_data)
 	is_minigame_active = false
+	_show_minigame_result(true)
+
 	queue_free()
 
 func _on_minigame_lose():
 	print(\"Minigame gagal. Kamu kalah.\")
-	print(\"Tidak dapat hadiah.\")
 	event_negated.emit(island_name, event_data)
 	is_minigame_active = false
+	_show_minigame_result(false)
 	queue_free()
+	
+	
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8l8q7"]

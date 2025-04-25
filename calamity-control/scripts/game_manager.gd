@@ -17,8 +17,16 @@ var events = [
 	{ "type": "negative", "name": "Penebangan Hutan", "emission_increase": 4, "cost": 250 },
 	{ "type": "positive", "name": "Mengurangi Bahan Bakar Fosil", "resource_reward": 300, "emission_decrease": 5 },
 	{ "type": "positive", "name": "Menghentikan Deforestasi", "resource_reward": 250, "emission_decrease": 3 },
-	{ "type": "minigame1", "name": "Trash Catching", "resource_reward": 400, "emission_decrease": 5 },
-	{ "type": "minigame2", "name": "Fire Extinguish", "resource_reward": 400, "emission_decrease": 5 }
+	{ "type": "minigame1", "name": "Trash Catching", "goal": "Catch all the trash floating in the water before time runs out.",
+		"resource_reward": 400, "emission_decrease": 5, 
+		"win_desc": "You've cleaned the water successfully! Marine life thrives again.",
+		"lose_desc": "Too much trash was left behind. Pollution levels rise...", "emission_increase": 3
+	},
+	{ "type": "minigame2", "name": "Fire Extinguish", "goal": "Put out all the forest fires before they spread too far.",
+		"resource_reward": 400, "emission_decrease": 5, 
+		"win_desc": "Great job! The forest is safe and healthy once again.",
+		"lose_desc": "The fire spread too far... parts of the forest were lost.", "emission_increase": 3
+	}
 ]
 
 func _ready():
@@ -108,34 +116,29 @@ func on_event_confirmed(island_name: String, event_data: Dictionary):
 		islands[island_name]["emission"] -= event_data["emission_decrease"]
 		print("Positive event in ", island_name, ", gained resource: ", event_data["resource_reward"], ", emission now: ", islands[island_name]["emission"])
 
-	elif event_data["type"] == "minigame1":
-		# MENANG MINIGAME
+	elif event_data["type"] == "minigame1" or event_data["type"] == "minigame2":
+		# Assume player won the minigame (if there's a system to decide this dynamically, you can adjust)
 		ResourceCount.add_money(event_data["resource_reward"])
 		islands[island_name]["emission"] -= event_data["emission_decrease"]
-		print("Menang minigame di ", island_name, ": +%d resource, -%d emisi" % [
+		print("Minigame WIN in ", island_name, ": ", event_data["win_desc"])
+		print("+%d resource, -%d emission" % [
 			event_data["resource_reward"],
 			event_data["emission_decrease"]
 		])
 		
-	elif event_data["type"] == "minigame2":
-		# MENANG MINIGAME
-		ResourceCount.add_money(event_data["resource_reward"])
-		islands[island_name]["emission"] -= event_data["emission_decrease"]
-		print("Menang minigame di ", island_name, ": +%d resource, -%d emisi" % [
-			event_data["resource_reward"],
-			event_data["emission_decrease"]
-		])
-	is_event_active = false  # Reset saat event selesai
+	is_event_active = false 
 	update_resource_label()
 
 func on_event_negated(island_name: String, event_data: Dictionary):
 	if event_data["type"] == "negative":
 		islands[island_name]["emission"] += event_data["emission_increase"]
-		print("Event NEGATIVE tidak dicegah, emisi naik di ", island_name)
+		print("NEGATIVE event was not countered. Emission increased in ", island_name)
 
-	elif event_data["type"] == "minigame":
-		# GAGAL MINIGAME, tidak dapat reward apa-apa
-		print("Gagal minigame di ", island_name, ", tidak ada reward.")
+	elif event_data["type"] == "minigame1" or event_data["type"] == "minigame2":
+		islands[island_name]["emission"] += event_data["emission_increase"]
+		print("Minigame FAIL in ", island_name, ": ", event_data["lose_desc"])
+		print("+%d emission due to failure." % event_data["emission_increase"])
+		
 	is_event_active = false  # Reset saat event selesai
 	update_resource_label()
 
@@ -249,7 +252,7 @@ func check_development_requirements():
 
 		if dev_level < required_dev:
 			var emission_increase = randi_range(1, 4)
-			var pop_loss = int(emission * 0.05)  # 5% of current emission as population loss (rounded)
+			var pop_loss = int(emission * 0.5)  
 
 			islands[island]["emission"] += emission_increase
 			islands[island]["population"] -= pop_loss
