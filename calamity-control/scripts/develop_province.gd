@@ -27,9 +27,7 @@ func _on_yes_pressed():
 			break
 
 	if can_develop:
-		# Deduct used items
-		for index in required_items.keys():
-			ShopItems.itemCount[index] -= required_items[index]
+		# Emit the confirmed signal without modifying the inventory here
 		confirmed.emit()
 	else:
 		print("Not enough required items!")

@@ -153,7 +153,7 @@ offset_bottom = 94.0
 theme_override_fonts/font = ExtResource("3_xf0ew")
 text = "Price: "
 
-[node name="BuyPanel" type="Button" parent="BG_ShopPanel/PanelSurya"]
+[node name="BuyButton" type="Button" parent="BG_ShopPanel/PanelSurya"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 155.0
@@ -210,7 +210,7 @@ offset_bottom = 93.0
 theme_override_fonts/font = ExtResource("3_xf0ew")
 text = "Price: "
 
-[node name="BuyTurbin" type="Button" parent="BG_ShopPanel/TurbinAngin"]
+[node name="BuyButton" type="Button" parent="BG_ShopPanel/TurbinAngin"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 155.0
@@ -270,7 +270,7 @@ offset_bottom = 93.0
 theme_override_fonts/font = ExtResource("3_xf0ew")
 text = "Price: "
 
-[node name="BuyEducation" type="Button" parent="BG_ShopPanel/ClimateEducation"]
+[node name="BuyButton" type="Button" parent="BG_ShopPanel/ClimateEducation"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 155.0
@@ -332,7 +332,7 @@ offset_bottom = 95.0
 theme_override_fonts/font = ExtResource("3_xf0ew")
 text = "Price: "
 
-[node name="BuyReforestation" type="Button" parent="BG_ShopPanel/RainforestRestoration"]
+[node name="BuyButton" type="Button" parent="BG_ShopPanel/RainforestRestoration"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 155.0
@@ -397,7 +397,7 @@ offset_bottom = 95.0
 theme_override_fonts/font = ExtResource("3_xf0ew")
 text = "Price: "
 
-[node name="BuyEnergyPlant" type="Button" parent="BG_ShopPanel/WastetoEnergyPlant"]
+[node name="BuyButton" type="Button" parent="BG_ShopPanel/WastetoEnergyPlant"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 155.0
@@ -460,7 +460,7 @@ offset_bottom = 95.0
 theme_override_fonts/font = ExtResource("3_xf0ew")
 text = "Price: "
 
-[node name="BuyElectricVehicle" type="Button" parent="BG_ShopPanel/ElectricVehicleSubsidy"]
+[node name="BuyButton" type="Button" parent="BG_ShopPanel/ElectricVehicleSubsidy"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 155.0
@@ -522,7 +522,7 @@ offset_bottom = 94.0
 theme_override_fonts/font = ExtResource("3_xf0ew")
 text = "Price: "
 
-[node name="BuyGreenBuilding" type="Button" parent="BG_ShopPanel/GreenBuilding"]
+[node name="BuyButton" type="Button" parent="BG_ShopPanel/GreenBuilding"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 155.0
@@ -584,7 +584,7 @@ offset_bottom = 94.0
 theme_override_fonts/font = ExtResource("3_xf0ew")
 text = "Price: "
 
-[node name="BuyCarbonConservation" type="Button" parent="BG_ShopPanel/BlueCarbonConservation"]
+[node name="BuyButton" type="Button" parent="BG_ShopPanel/BlueCarbonConservation"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 155.0
@@ -646,7 +646,7 @@ offset_bottom = 94.0
 theme_override_fonts/font = ExtResource("3_xf0ew")
 text = "Price: "
 
-[node name="BuyCleanupDrone" type="Button" parent="BG_ShopPanel/OceanCleanupDrone"]
+[node name="BuyButton" type="Button" parent="BG_ShopPanel/OceanCleanupDrone"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 155.0
@@ -708,7 +708,7 @@ offset_bottom = 94.0
 theme_override_fonts/font = ExtResource("3_xf0ew")
 text = "Price: "
 
-[node name="BuyStorageDome" type="Button" parent="BG_ShopPanel/CarbonStorageDome"]
+[node name="BuyButton" type="Button" parent="BG_ShopPanel/CarbonStorageDome"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 155.0
@@ -770,7 +770,7 @@ offset_bottom = 94.0
 theme_override_fonts/font = ExtResource("3_xf0ew")
 text = "Price: "
 
-[node name="BuySoilRestoration" type="Button" parent="BG_ShopPanel/SoilRestorationKit"]
+[node name="BuyButton" type="Button" parent="BG_ShopPanel/SoilRestorationKit"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 155.0
@@ -822,7 +822,7 @@ theme_override_fonts/font = ExtResource("3_xf0ew")
 text = "0"
 metadata/_edit_use_anchors_ = true
 
-[node name="BuyAntiErosion" type="Button" parent="BG_ShopPanel/AntiErosionBarrier"]
+[node name="BuyButton" type="Button" parent="BG_ShopPanel/AntiErosionBarrier"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 155.0
@@ -858,38 +858,38 @@ speed_scale = 4.0
 
 [connection signal="mouse_entered" from="BG_ShopPanel/PanelSurya" to="BG_ShopPanel/PanelSurya" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="BG_ShopPanel/PanelSurya" to="BG_ShopPanel/PanelSurya" method="_on_mouse_exited"]
-[connection signal="pressed" from="BG_ShopPanel/PanelSurya/BuyPanel" to="." method="_on_buy_panel_pressed"]
+[connection signal="pressed" from="BG_ShopPanel/PanelSurya/BuyButton" to="." method="_on_buy_panel_pressed"]
 [connection signal="mouse_entered" from="BG_ShopPanel/TurbinAngin" to="BG_ShopPanel/TurbinAngin" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="BG_ShopPanel/TurbinAngin" to="BG_ShopPanel/TurbinAngin" method="_on_mouse_exited"]
-[connection signal="pressed" from="BG_ShopPanel/TurbinAngin/BuyTurbin" to="." method="_on_buy_turbin_pressed"]
-[connection signal="pressed" from="BG_ShopPanel/TurbinAngin/BuyTurbin" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="BG_ShopPanel/TurbinAngin/BuyButton" to="." method="_on_buy_turbin_pressed"]
+[connection signal="pressed" from="BG_ShopPanel/TurbinAngin/BuyButton" to="." method="_on_button_pressed"]
 [connection signal="mouse_entered" from="BG_ShopPanel/ClimateEducation" to="BG_ShopPanel/ClimateEducation" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="BG_ShopPanel/ClimateEducation" to="BG_ShopPanel/ClimateEducation" method="_on_mouse_exited"]
-[connection signal="pressed" from="BG_ShopPanel/ClimateEducation/BuyEducation" to="." method="_on_buy_education_pressed"]
+[connection signal="pressed" from="BG_ShopPanel/ClimateEducation/BuyButton" to="." method="_on_buy_education_pressed"]
 [connection signal="mouse_entered" from="BG_ShopPanel/RainforestRestoration" to="BG_ShopPanel/RainforestRestoration" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="BG_ShopPanel/RainforestRestoration" to="BG_ShopPanel/RainforestRestoration" method="_on_mouse_exited"]
-[connection signal="pressed" from="BG_ShopPanel/RainforestRestoration/BuyReforestation" to="." method="_on_buy_reforestation_pressed"]
+[connection signal="pressed" from="BG_ShopPanel/RainforestRestoration/BuyButton" to="." method="_on_buy_reforestation_pressed"]
 [connection signal="mouse_entered" from="BG_ShopPanel/WastetoEnergyPlant" to="BG_ShopPanel/WastetoEnergyPlant" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="BG_ShopPanel/WastetoEnergyPlant" to="BG_ShopPanel/WastetoEnergyPlant" method="_on_mouse_exited"]
-[connection signal="pressed" from="BG_ShopPanel/WastetoEnergyPlant/BuyEnergyPlant" to="." method="_on_buy_energy_plant_pressed"]
+[connection signal="pressed" from="BG_ShopPanel/WastetoEnergyPlant/BuyButton" to="." method="_on_buy_energy_plant_pressed"]
 [connection signal="mouse_entered" from="BG_ShopPanel/ElectricVehicleSubsidy" to="BG_ShopPanel/ElectricVehicleSubsidy" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="BG_ShopPanel/ElectricVehicleSubsidy" to="BG_ShopPanel/ElectricVehicleSubsidy" method="_on_mouse_exited"]
-[connection signal="pressed" from="BG_ShopPanel/ElectricVehicleSubsidy/BuyElectricVehicle" to="." method="_on_buy_electric_vehicle_pressed"]
+[connection signal="pressed" from="BG_ShopPanel/ElectricVehicleSubsidy/BuyButton" to="." method="_on_buy_electric_vehicle_pressed"]
 [connection signal="mouse_entered" from="BG_ShopPanel/GreenBuilding" to="BG_ShopPanel/GreenBuilding" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="BG_ShopPanel/GreenBuilding" to="BG_ShopPanel/GreenBuilding" method="_on_mouse_exited"]
-[connection signal="pressed" from="BG_ShopPanel/GreenBuilding/BuyGreenBuilding" to="." method="_on_buy_green_building_pressed"]
+[connection signal="pressed" from="BG_ShopPanel/GreenBuilding/BuyButton" to="." method="_on_buy_green_building_pressed"]
 [connection signal="mouse_entered" from="BG_ShopPanel/BlueCarbonConservation" to="BG_ShopPanel/BlueCarbonConservation" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="BG_ShopPanel/BlueCarbonConservation" to="BG_ShopPanel/BlueCarbonConservation" method="_on_mouse_exited"]
-[connection signal="pressed" from="BG_ShopPanel/BlueCarbonConservation/BuyCarbonConservation" to="." method="_on_buy_carbon_conservation_pressed"]
+[connection signal="pressed" from="BG_ShopPanel/BlueCarbonConservation/BuyButton" to="." method="_on_buy_carbon_conservation_pressed"]
 [connection signal="mouse_entered" from="BG_ShopPanel/OceanCleanupDrone" to="BG_ShopPanel/OceanCleanupDrone" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="BG_ShopPanel/OceanCleanupDrone" to="BG_ShopPanel/OceanCleanupDrone" method="_on_mouse_exited"]
-[connection signal="pressed" from="BG_ShopPanel/OceanCleanupDrone/BuyCleanupDrone" to="." method="_on_buy_cleanup_drone_pressed"]
+[connection signal="pressed" from="BG_ShopPanel/OceanCleanupDrone/BuyButton" to="." method="_on_buy_cleanup_drone_pressed"]
 [connection signal="mouse_entered" from="BG_ShopPanel/CarbonStorageDome" to="BG_ShopPanel/CarbonStorageDome" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="BG_ShopPanel/CarbonStorageDome" to="BG_ShopPanel/CarbonStorageDome" method="_on_mouse_exited"]
-[connection signal="pressed" from="BG_ShopPanel/CarbonStorageDome/BuyStorageDome" to="." method="_on_buy_storage_dome_pressed"]
+[connection signal="pressed" from="BG_ShopPanel/CarbonStorageDome/BuyButton" to="." method="_on_buy_storage_dome_pressed"]
 [connection signal="mouse_entered" from="BG_ShopPanel/SoilRestorationKit" to="BG_ShopPanel/SoilRestorationKit" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="BG_ShopPanel/SoilRestorationKit" to="BG_ShopPanel/SoilRestorationKit" method="_on_mouse_exited"]
-[connection signal="pressed" from="BG_ShopPanel/SoilRestorationKit/BuySoilRestoration" to="." method="_on_buy_soil_restoration_pressed"]
+[connection signal="pressed" from="BG_ShopPanel/SoilRestorationKit/BuyButton" to="." method="_on_buy_soil_restoration_pressed"]
 [connection signal="mouse_entered" from="BG_ShopPanel/AntiErosionBarrier" to="BG_ShopPanel/AntiErosionBarrier" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="BG_ShopPanel/AntiErosionBarrier" to="BG_ShopPanel/AntiErosionBarrier" method="_on_mouse_exited"]
-[connection signal="pressed" from="BG_ShopPanel/AntiErosionBarrier/BuyAntiErosion" to="." method="_on_buy_anti_erosion_pressed"]
+[connection signal="pressed" from="BG_ShopPanel/AntiErosionBarrier/BuyButton" to="." method="_on_buy_anti_erosion_pressed"]
