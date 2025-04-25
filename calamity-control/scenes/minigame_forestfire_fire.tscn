@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://co2buksllqy4h"]
+[gd_scene load_steps=8 format=3 uid="uid://co2buksllqy4h"]
 
 [ext_resource type="Texture2D" uid="uid://fblc38pg5oj6" path="res://assets/minigames/forestfire/fire_sprite.png" id="1_h4fuw"]
 
@@ -26,17 +26,48 @@ func _on_timer_timeout():
 	queue_free()
 "
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4fuw"]
+atlas = ExtResource("1_h4fuw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2p2nu"]
+atlas = ExtResource("1_h4fuw")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5cu1"]
+atlas = ExtResource("1_h4fuw")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kioy3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4fuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2p2nu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5cu1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_h4fuw"]
 radius = 87.0517
 
 [node name="Fire" type="Area2D"]
 script = SubResource("GDScript_fwsyh")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-1, -2)
 scale = Vector2(11.155, 11.155)
-texture = ExtResource("1_h4fuw")
+sprite_frames = SubResource("SpriteFrames_kioy3")
+autoplay = "default"
+frame_progress = 0.957308
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_h4fuw")

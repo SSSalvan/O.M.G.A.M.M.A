@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://ckdb64dsm6e8e"]
+[gd_scene load_steps=49 format=3 uid="uid://ckdb64dsm6e8e"]
 
 [ext_resource type="Script" uid="uid://c0dby3imeo58y" path="res://scripts/main_gameplay.gd" id="1_hfa5i"]
 [ext_resource type="Texture2D" uid="uid://qcsfxf23f088" path="res://assets/map/indoMap.png" id="1_rl3v5"]
@@ -12,6 +12,7 @@
 [ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="9_jh0gp"]
 [ext_resource type="Script" uid="uid://cglgxjgpk83ey" path="res://slot_papua.gd" id="11_jh0gp"]
 [ext_resource type="PackedScene" uid="uid://bcrk3sfaps54j" path="res://scenes/ShopButton.tscn" id="11_nnxur"]
+[ext_resource type="Texture2D" uid="uid://b2j3pybs7gmau" path="res://assets/sprites/Whale1.png" id="13_78l6q"]
 [ext_resource type="Texture2D" uid="uid://d4bouo6526vuv" path="res://assets/map/sun.png" id="13_fj2an"]
 [ext_resource type="Texture2D" uid="uid://c1kpv1b4twda8" path="res://assets/ui/InGameUI/PixelTopLeftBar.png" id="13_jh0gp"]
 [ext_resource type="AudioStream" uid="uid://bshtgubq8wmi7" path="res://assets/Audio/Soundtrack/hokkori tea time.mp3" id="14_58ik7"]
@@ -126,6 +127,35 @@ func _on_button_toggled(toggled_on: bool) -> void:
 	else:
 		EmissionRateStatusPopup.HideStatusPopup()
 "
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cath"]
+atlas = ExtResource("13_78l6q")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v62ff"]
+atlas = ExtResource("13_78l6q")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qieye"]
+atlas = ExtResource("13_78l6q")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mhe6b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cath")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v62ff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qieye")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_un03y"]
 atlas = ExtResource("13_fj2an")
@@ -470,6 +500,13 @@ offset_bottom = 444.0
 
 [node name="Decorations" type="Node2D" parent="."]
 
+[node name="Whale" type="AnimatedSprite2D" parent="Decorations"]
+texture_filter = 1
+position = Vector2(459, 350)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_mhe6b")
+autoplay = "default"
+
 [node name="TheSun" type="AnimatedSprite2D" parent="Decorations"]
 texture_filter = 1
 position = Vector2(842, -418)
@@ -480,14 +517,14 @@ autoplay = "default"
 [node name="Fish" type="AnimatedSprite2D" parent="Decorations"]
 texture_filter = 1
 position = Vector2(-789, 58)
-scale = Vector2(2.58, 2.58)
+scale = Vector2(1.365, 1.365)
 sprite_frames = SubResource("SpriteFrames_7cath")
 autoplay = "default"
 
 [node name="Fish2" type="AnimatedSprite2D" parent="Decorations"]
 texture_filter = 1
 position = Vector2(532, -408)
-scale = Vector2(-2.58, 2.58)
+scale = Vector2(-1.375, 1.375)
 sprite_frames = SubResource("SpriteFrames_7cath")
 autoplay = "default"
 

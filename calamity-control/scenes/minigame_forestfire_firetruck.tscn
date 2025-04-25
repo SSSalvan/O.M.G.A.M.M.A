@@ -1,27 +1,66 @@
-[gd_scene load_steps=5 format=3 uid="uid://je0ad24w5oem"]
+[gd_scene load_steps=14 format=3 uid="uid://je0ad24w5oem"]
 
 [ext_resource type="Texture2D" uid="uid://5dyudh16b57e" path="res://assets/minigames/forestfire/firetruck_sprite.png" id="1_nfy0a"]
+[ext_resource type="Texture2D" uid="uid://cutb2bxe4uhy" path="res://assets/minigames/forestfire/firetruck_move.png" id="2_7tcoe"]
 [ext_resource type="Texture2D" uid="uid://dec4x6wx36nxx" path="res://assets/minigames/forestfire/waterspray_sprite.png" id="2_51oan"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_51oan"]
+atlas = ExtResource("1_nfy0a")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntmh2"]
+atlas = ExtResource("2_7tcoe")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7747"]
+atlas = ExtResource("2_7tcoe")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7tcoe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51oan")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntmh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7747")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
 [sub_resource type="GDScript" id="GDScript_e5jkc"]
-script/source = "extends Sprite2D
+script/source = "extends AnimatedSprite2D
 
 @onready var spray = $WaterSpray
 @onready var spray_area = $WaterSpray/SprayArea
 @export var speed := 300.0
+@onready var fire_truck_sprite: AnimatedSprite2D = $\".\"
 
 func _physics_process(delta):
 	var direction := 0
 
 	if Input.is_action_pressed(\"ui_left\"):
-		direction -= 1
+		direction -= 2
 		flip_sprite(false)  # Unflip sprite when moving left
 	if Input.is_action_pressed(\"ui_right\"):
-		direction += 1
+		direction += 2
 		flip_sprite(true)  # Flip sprite when moving right
 
 	position.x += direction * speed * delta
-
+	if direction == 0:
+		fire_truck_sprite.play(\"idle\")
+	if direction != 0:
+		fire_truck_sprite.play(\"move\")
 	if Input.is_action_pressed(\"ui_accept\"):
 		spray.visible = true
 		spray_area.monitoring = true
@@ -40,22 +79,54 @@ func _on_spray_area_area_entered(area):
 		area.extinguish()
 "
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tcoe"]
+atlas = ExtResource("2_51oan")
+region = Rect2(0, 0, 17, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6emaa"]
+atlas = ExtResource("2_51oan")
+region = Rect2(17, 0, 17, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg3b4"]
+atlas = ExtResource("2_51oan")
+region = Rect2(34, 0, 17, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_liyci"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tcoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6emaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg3b4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfy0a"]
 size = Vector2(12.1429, 49.6763)
 
 [node name="FireTruck" type="CharacterBody2D"]
 
-[node name="FireTruckSprite" type="Sprite2D" parent="."]
+[node name="FireTruckSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(3, -37)
-scale = Vector2(7, 7)
-texture = ExtResource("1_nfy0a")
+scale = Vector2(10.45, 10.45)
+sprite_frames = SubResource("SpriteFrames_7tcoe")
+animation = &"idle"
 script = SubResource("GDScript_e5jkc")
 
-[node name="WaterSpray" type="Sprite2D" parent="FireTruckSprite"]
-position = Vector2(1.28571, -66.1429)
-scale = Vector2(2.13445, 1.70982)
-texture = ExtResource("2_51oan")
+[node name="WaterSpray" type="AnimatedSprite2D" parent="FireTruckSprite"]
+position = Vector2(1.30316, -49.9314)
+scale = Vector2(1.20741, 1.23569)
+sprite_frames = SubResource("SpriteFrames_liyci")
+autoplay = "default"
+frame_progress = 0.916142
 
 [node name="SprayArea" type="Area2D" parent="FireTruckSprite/WaterSpray"]
 

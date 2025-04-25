@@ -92,7 +92,7 @@ texture = ExtResource("1_heiun")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_ov78k")]
-position = Vector2(-2, 477)
+position = Vector2(-40, 407)
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -125,7 +125,8 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_xle2g")
 theme_override_font_sizes/font_size = 42
 text = "Move with arrow keys
-<--                  -->"
+<--                  -->
+Space to spray water!"
 horizontal_alignment = 1
 
 [node name="Timer" type="Label" parent="."]

@@ -6,6 +6,7 @@
 script/source = "extends Area2D
 
 @export var fall_speed := 800
+@export var rotation_speed := 180
 var minigame  # ← set from the spawner
 
 
@@ -14,7 +15,7 @@ func _ready():
 
 func _process(delta):
 	position.y += fall_speed * delta
-
+	rotation_degrees += rotation_speed * delta
 	# Despawn if it falls off screen
 	if position.y > get_viewport_rect().size.y + 100:
 		queue_free()
