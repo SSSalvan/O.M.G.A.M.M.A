@@ -4,6 +4,7 @@ extends Node
 @onready var resource_counter: Label = $"Resource Counter"
 @onready var game_manager = get_parent().get_parent()
 
+var difficulty: String = "medium"
 var week: int = 1
 var is_event_active: bool = false
 const MAX_WEEKS: int = 10
@@ -22,11 +23,21 @@ var events = [
 
 func _ready():
 	randomize() 
+	difficulty = GameDifficulty.diff
+	diffCheck() #just to check if it works, difficulty is in global autoload
+	
 	islandSetup()
 	ResourceCount.resource = 500
 	update_week_label()
 	update_resource_label()
-	#get_tree().root.print_tree_pretty()
+
+func diffCheck():
+	if difficulty == "easy":
+		print("easy diff")
+	elif difficulty == "medium":
+		print("med diff")
+	elif difficulty == "hard":
+		print("hard diff")
 
 func _process(_delta: float) -> void:
 	update_resource_label()
@@ -43,12 +54,34 @@ func trigger_random_events():
 			is_event_active = true  # Set aktif saat event ditrigger
 			break  # Hanya satu event yang bisa aktif
 
+func _on_difficulty_selected(selected_difficulty: String) -> void:
+	# This method is called when the signal is emitted from the difficulty select scene
+	difficulty = selected_difficulty
+	print("Selected difficulty is: ", difficulty)
+
 func islandSetup():
-	islands["Sumatra"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
-	islands["Kalimantan"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
-	islands["Papua"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
-	islands["Jawa"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
-	islands["Sulawesi"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
+	var islandCount = 0;
+	if difficulty == "easy":
+		islandCount = 1
+	elif difficulty == "medium":
+		islandCount = 2
+	elif difficulty == "hard":
+		islandCount = 3
+	
+#	add to dictionary down here based on diff
+	if (islandCount>=1):
+		islands["Sumatra"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
+		islands["Kalimantan"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
+		islands["Papua"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
+		islands["Jawa"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
+		islands["Sulawesi"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
+	if (islandCount>=2):
+		islands["Bali"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
+		islands["Maluku"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
+	if (islandCount>=3):
+		islands["Riau"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
+		islands["Ntb"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
+		islands["Jatim"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
 	
 func show_event_popup(island_name: String, event_data: Dictionary):
 	if is_event_active:

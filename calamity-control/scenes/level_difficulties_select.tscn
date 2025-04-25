@@ -5,6 +5,9 @@
 
 [sub_resource type="GDScript" id="GDScript_iv0lu"]
 script/source = "extends CanvasLayer
+signal easy
+signal medium
+signal hard
 
 func _on_button_pressed() -> void:
 	get_node(\"level_diff_anim\").play(\"Transition_Out_level_diff\")
@@ -27,6 +30,7 @@ func _on_select_easy_pressed() -> void:
 		get_tree().paused = false
 
 func _on_accept_contract_easy_pressed() -> void:
+	GameDifficulty.diff = \"easy\"
 	get_tree().change_scene_to_file(\"res://scenes/main_gameplay.tscn\")
 	get_node(\"/root/LevelDifficultiesSelect/.\").visible = false
 
@@ -48,7 +52,9 @@ func _on_select_medium_pressed() -> void:
 		get_tree().paused = false
 
 func _on_accept_contract_medium_pressed() -> void:
-	pass # Replace with function body.
+	GameDifficulty.diff = \"medium\"
+	get_tree().change_scene_to_file(\"res://scenes/main_gameplay.tscn\")
+	get_node(\"/root/LevelDifficultiesSelect/.\").visible = false
 
 func _on_select_hard_pressed() -> void:
 	var level_hard_button = get_node(\"background_cover/level_diff_hard/select_hard\")
@@ -69,7 +75,9 @@ func _on_select_hard_pressed() -> void:
 		get_tree().paused = false
 
 func _on_accept_contract_hard_pressed() -> void:
-	pass # Replace with function body.
+	GameDifficulty.diff = \"hard\"
+	get_tree().change_scene_to_file(\"res://scenes/main_gameplay.tscn\")
+	get_node(\"/root/LevelDifficultiesSelect/.\").visible = false
 "
 
 [sub_resource type="GDScript" id="GDScript_ye6hp"]
