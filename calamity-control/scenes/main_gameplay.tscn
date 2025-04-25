@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ckdb64dsm6e8e"]
+[gd_scene load_steps=39 format=3 uid="uid://ckdb64dsm6e8e"]
 
 [ext_resource type="Script" uid="uid://c0dby3imeo58y" path="res://scripts/main_gameplay.gd" id="1_hfa5i"]
 [ext_resource type="Texture2D" uid="uid://qcsfxf23f088" path="res://assets/map/indoMap.png" id="1_rl3v5"]
@@ -12,7 +12,9 @@
 [ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="9_jh0gp"]
 [ext_resource type="Script" uid="uid://cglgxjgpk83ey" path="res://slot_papua.gd" id="11_jh0gp"]
 [ext_resource type="PackedScene" uid="uid://bcrk3sfaps54j" path="res://scenes/ShopButton.tscn" id="11_nnxur"]
+[ext_resource type="Texture2D" uid="uid://d4bouo6526vuv" path="res://assets/map/sun.png" id="13_fj2an"]
 [ext_resource type="Texture2D" uid="uid://c1kpv1b4twda8" path="res://assets/ui/InGameUI/PixelTopLeftBar.png" id="13_jh0gp"]
+[ext_resource type="AudioStream" uid="uid://bshtgubq8wmi7" path="res://assets/Audio/Soundtrack/hokkori tea time.mp3" id="14_58ik7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_njxfe"]
 texture = ExtResource("2_nnxur")
@@ -123,6 +125,28 @@ func _on_button_toggled(toggled_on: bool) -> void:
 	else:
 		EmissionRateStatusPopup.HideStatusPopup()
 "
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_un03y"]
+atlas = ExtResource("13_fj2an")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78l6q"]
+atlas = ExtResource("13_fj2an")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sqthq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_un03y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78l6q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_58ik7"]
 texture = ExtResource("13_jh0gp")
@@ -414,6 +438,15 @@ offset_top = 444.0
 offset_right = 708.0
 offset_bottom = 444.0
 
+[node name="Decorations" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Decorations"]
+texture_filter = 1
+position = Vector2(841, -419)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_sqthq")
+autoplay = "default"
+
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
 position = Vector2(-640.07, -484.03)
@@ -421,6 +454,11 @@ scale = Vector2(4, 4)
 tile_set = SubResource("TileSet_fj2an")
 format = 2
 layer_0/tile_data = PackedInt32Array(-5, 0, 2, -4, 0, 2, -3, 0, 2, -2, 0, 2, -1, 0, 2, -65536, 0, 2, -65535, 0, 2, -65534, 0, 2, 65531, 0, 3, 65532, 0, 3, 65533, 0, 3, 65534, 0, 3, 65535, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 3, 3, 65536, 3, -65533, 65536, 2, -65532, 131072, 2, 4, 131072, 3, 1114108, 196608, 1, 1114107, 196608, 1, 917525, 65536, 0, 917526, 65536, 0, 917527, 65536, 0, 983061, 65536, 1, 983062, 65536, 1, 983063, 65536, 1, 1048599, 196608, 1, 1048598, 196608, 1, 1048597, 196608, 1, 983035, 0, 0, 983038, 65536, 0, 983037, 65536, 0, 983036, 65536, 0, 983039, 131072, 0, 1048575, 131072, 1, 1048571, 0, 1, 1048573, 65536, 1, 1048574, 65536, 1, 1048572, 65536, 1, 1114109, 196608, 1, 1114110, 196608, 1, 1114111, 196608, 1, 917528, 131072, 0, 983064, 131072, 1, 1048600, 196608, 1, 917524, 0, 0, 983060, 0, 1, 1048596, 196608, 1, 917510, 0, 0, 917517, 131072, 0, 917516, 65536, 0, 917515, 65536, 0, 917514, 65536, 0, 917513, 65536, 0, 917512, 65536, 0, 917511, 65536, 0, 983046, 0, 1, 983047, 65536, 1, 983048, 65536, 1, 983049, 65536, 1, 983050, 65536, 1, 983051, 65536, 1, 983052, 65536, 1, 983053, 131072, 1, 1048582, 196608, 1, 1048583, 196608, 1, 1048584, 196608, 1, 1048585, 196608, 1, 1048586, 196608, 1, 1048587, 196608, 1, 1048588, 196608, 1, 1048589, 196608, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_58ik7")
+volume_db = -30.363
+autoplay = true
 
 [connection signal="pressed" from="GameManager/Sumatra" to="GameManager/Sumatra" method="_on_pressed"]
 [connection signal="pressed" from="GameManager/Kalimantan" to="GameManager/Kalimantan" method="_on_pressed"]
