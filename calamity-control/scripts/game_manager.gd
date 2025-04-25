@@ -81,6 +81,8 @@ func islandSetup():
 	elif difficulty == "hard":
 		islandCount = 3
 		howmanyisland = 10
+		$Bali.visible = true
+		$Maluku.visible = true
 		$NTB.visible = true
 		$NTT.visible = true
 		$"Maluku Utara".visible = true

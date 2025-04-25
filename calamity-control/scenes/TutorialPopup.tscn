@@ -1,8 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3166e4qbipjk"]
+[gd_scene load_steps=5 format=3 uid="uid://b3ie1igr2fgh6"]
 
-[ext_resource type="Script" uid="uid://di12mjuto5e3u" path="res://tutorial_popup.gd" id="1_muwgg"]
+[ext_resource type="Script" path="res://tutorial_popup.gd" id="1_muwgg"]
 [ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="2_gntui"]
 [ext_resource type="StyleBox" uid="uid://d0t507jbbigq3" path="res://assets/ui/Placeholder UI/placeholder_button_stylebox_hover.tres" id="3_bovm7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_muwgg"]
+bg_color = Color(0.0885599, 0.0885599, 0.0885598, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [node name="TutorialPopup" type="CanvasLayer"]
 script = ExtResource("1_muwgg")
@@ -20,6 +31,7 @@ offset_right = 195.5
 offset_bottom = 112.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_muwgg")
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0

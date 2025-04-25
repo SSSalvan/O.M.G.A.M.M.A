@@ -201,16 +201,16 @@ text = "sss"
 
 [node name="Confirmation_Take_Action" type="Button" parent="BG_Event_Text"]
 layout_mode = 0
-offset_left = 188.0
+offset_left = 137.0
 offset_top = 281.0
-offset_right = 488.0
+offset_right = 537.0
 offset_bottom = 321.0
 
 [node name="Ignore_Close" type="Button" parent="BG_Event_Text"]
 layout_mode = 0
-offset_left = 188.0
+offset_left = 137.0
 offset_top = 324.0
-offset_right = 488.0
+offset_right = 537.0
 offset_bottom = 364.0
 
 [connection signal="pressed" from="BG_Event_Text/Confirmation_Take_Action" to="." method="_on_confirmation_take_action_pressed"]
