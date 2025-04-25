@@ -7,7 +7,7 @@ extends Node
 var difficulty: String = "medium"
 var week: int = 1
 var is_event_active: bool = false
-const MAX_WEEKS: int = 10
+const MAX_WEEKS: int = 52
 
 
 var islands = {}
@@ -73,8 +73,13 @@ func islandSetup():
 		islandCount = 1
 	elif difficulty == "medium":
 		islandCount = 2
+		$Bali.visible = true
+		$Maluku.visible = true
 	elif difficulty == "hard":
 		islandCount = 3
+		$NTB.visible = true
+		$NTT.visible = true
+		$"Maluku Utara".visible = true
 	
 #	add to dictionary down here based on diff
 	if (islandCount>=1):
@@ -87,9 +92,9 @@ func islandSetup():
 		islands["Bali"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
 		islands["Maluku"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
 	if (islandCount>=3):
-		islands["Riau"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
+		islands["Ntt"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
 		islands["Ntb"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
-		islands["Jatim"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
+		islands["Maluku Utara"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
 	
 func show_event_popup(island_name: String, event_data: Dictionary):
 	if is_event_active:
