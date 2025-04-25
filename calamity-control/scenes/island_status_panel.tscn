@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://br14c84axqpu5"]
+
+[ext_resource type="Script" uid="uid://carp4km4ugbfh" path="res://island_status_panel.gd" id="1_85gkt"]
+[ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="2_toyfp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toyfp"]
+bg_color = Color(0.122252, 0.122252, 0.122252, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="IslandStatusPanel" type="CanvasLayer"]
+script = ExtResource("1_85gkt")
+
+[node name="BG_Island_Status" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -733.0
+offset_top = -360.5
+offset_right = 733.0
+offset_bottom = 360.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.983099, 1.01828)
+theme_override_styles/panel = SubResource("StyleBoxFlat_toyfp")
+
+[node name="Status_Report_Title" type="Label" parent="BG_Island_Status"]
+layout_mode = 2
+offset_right = 1465.0
+offset_bottom = 76.0
+theme_override_fonts/font = ExtResource("2_toyfp")
+theme_override_font_sizes/font_size = 40
+text = "sss"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Status_Report" type="Label" parent="BG_Island_Status"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 86.0
+offset_right = 1440.0
+offset_bottom = 636.0
+theme_override_fonts/font = ExtResource("2_toyfp")
+theme_override_font_sizes/font_size = 30
+text = "hello
+"
+
+[node name="Close_Button" type="Button" parent="BG_Island_Status"]
+layout_mode = 2
+offset_left = 615.401
+offset_top = 655.52
+offset_right = 862.401
+offset_bottom = 696.52
+theme_override_fonts/font = ExtResource("2_toyfp")
+theme_override_font_sizes/font_size = 40
+text = "Close"
+
+[connection signal="pressed" from="BG_Island_Status/Close_Button" to="." method="_on_close_button_pressed"]

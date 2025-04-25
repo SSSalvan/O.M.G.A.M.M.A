@@ -2,6 +2,7 @@ extends Node
 
 @onready var week_counter: Label = $"Week Counter"
 @onready var resource_counter: Label = $"Resource Counter"
+@onready var island_status_panel = preload("res://scenes/island_status_panel.tscn").instantiate()
 @onready var game_manager = get_parent().get_parent()
 
 var difficulty: String = "medium"
@@ -31,8 +32,10 @@ var events = [
 
 func _ready():
 	randomize() 
+	add_child(island_status_panel)
+	island_status_panel.hide() 
 	difficulty = GameDifficulty.diff
-	diffCheck() #just to check if it works, difficulty is in global autoload
+	diffCheck()
 	
 	islandSetup()
 	ResourceCount.resource = 500
@@ -147,7 +150,9 @@ func on_event_negated(island_name: String, event_data: Dictionary):
 	is_event_active = false  # Reset saat event selesai
 	update_resource_label()
 
-
+func _on_show_islands_status_pressed() -> void:
+	island_status_panel.populate(islands)
+	
 func _on_end_week_pressed() -> void:
 	var confirm_scene = load("res://scenes/week_end_confirmation.tscn").instantiate()
 	add_child(confirm_scene)
