@@ -20,7 +20,7 @@ func set_event_data(_island_name: String, _event_data: Dictionary):
 
 	if event_data.type == \"negative\":
 		$BG_Event_Text/Event_Description.text = \"An event has occured: %s.\\nEmission will rise by %d%%!\" % [event_data.name, event_data.emission_increase]
-		$BG_Event_Text/Confirmation_Take_Action.text = \"Would you like to pauy %d amount to prevent \" % event_data[\"cost\"]
+		$BG_Event_Text/Confirmation_Take_Action.text = \"Would you like to pay %d amount to prevent \" % event_data[\"cost\"]
 		$BG_Event_Text/Ignore_Close.visible = true
 		$BG_Event_Text/Ignore_Close.text = \"Ignore\"
 		
@@ -30,7 +30,7 @@ func set_event_data(_island_name: String, _event_data: Dictionary):
 			event_data.resource_reward,
 			event_data.emission_decrease
 		]
-		$BG_Event_Text/Confirmation_Take_Action.text = \"Terima\"
+		$BG_Event_Text/Confirmation_Take_Action.text = \"Confirm\"
 		$BG_Event_Text/Ignore_Close.visible = false
 	
 	if event_data.type == \"minigame1\":
@@ -132,7 +132,7 @@ func _show_minigame_result(won: bool):
 	result_popup.connect(\"result_closed\", Callable(self, \"_on_result_popup_closed\"))
 
 func _on_minigame_win():
-	print(\"Minigame berhasil diselesaikan! Kamu menang!\")
+	print(\"Minigame completed! You win!\")
 	event_confirmed.emit(island_name, event_data)
 	is_minigame_active = false
 	_show_minigame_result(true)
@@ -140,7 +140,7 @@ func _on_minigame_win():
 	queue_free()
 
 func _on_minigame_lose():
-	print(\"Minigame gagal. Kamu kalah.\")
+	print(\"Minigame fail. You lose.\")
 	event_negated.emit(island_name, event_data)
 	is_minigame_active = false
 	_show_minigame_result(false)
