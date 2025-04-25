@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2j2pufojpaix"]
+
+[ext_resource type="Script" uid="uid://di12mjuto5e3u" path="res://tutorial_popup.gd" id="1_l7lko"]
+[ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="2_cnou2"]
+[ext_resource type="StyleBox" uid="uid://d0t507jbbigq3" path="res://assets/ui/Placeholder UI/placeholder_button_stylebox_hover.tres" id="3_jahx3"]
+
+[node name="TutorialPopup" type="CanvasLayer"]
+script = ExtResource("1_l7lko")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(600, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.5
+offset_top = -112.0
+offset_right = 195.5
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 60.0
+offset_right = 570.0
+offset_bottom = 213.0
+theme_override_fonts/font = ExtResource("2_cnou2")
+theme_override_styles/normal = ExtResource("3_jahx3")
+text = "Welcome to O.M G.A.M.M.A! 
+
+- Click on (!) to develope a province.
+- Use resources wisely.
+- Shop upgrades in the Shop that will prevent random disaster event.
+- Click \"End Week\" to progress  your weekly report."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 228.0
+offset_right = 354.0
+offset_bottom = 277.0
+theme_override_fonts/font = ExtResource("2_cnou2")
+theme_override_styles/normal = ExtResource("3_jahx3")
+text = "Got it!"
