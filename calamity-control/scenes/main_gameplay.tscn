@@ -440,7 +440,7 @@ offset_bottom = 444.0
 
 [node name="Decorations" type="Node2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Decorations"]
+[node name="TheSun" type="AnimatedSprite2D" parent="Decorations"]
 texture_filter = 1
 position = Vector2(842, -418)
 scale = Vector2(5, 5)
