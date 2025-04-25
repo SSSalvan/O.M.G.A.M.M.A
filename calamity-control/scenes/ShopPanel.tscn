@@ -1,9 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://beycfj6ubt75q"]
+[gd_scene load_steps=20 format=3 uid="uid://beycfj6ubt75q"]
 
 [ext_resource type="Script" uid="uid://hn0xr6k7dpnf" path="res://scripts/shop_panel.gd" id="1_8b1yh"]
 [ext_resource type="Texture2D" uid="uid://h1yovodoixq" path="res://assets/ui/inGameItems/Solar_Panel.png" id="2_8b1yh"]
 [ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="3_xf0ew"]
 [ext_resource type="Texture2D" uid="uid://bd0j55agkmb2j" path="res://assets/ui/inGameItems/Wind_Turbine_Construction.png" id="4_d568i"]
+[ext_resource type="Texture2D" uid="uid://tq2lkcah8em3" path="res://assets/ui/inGameItems/Climate_Education_Program.png" id="5_d568i"]
+[ext_resource type="Texture2D" uid="uid://cxqps7enhw5ge" path="res://assets/ui/inGameItems/Rainforest_Restoration.png" id="6_l6wj4"]
+[ext_resource type="Texture2D" uid="uid://detdirl8d6s4i" path="res://assets/ui/inGameItems/Waste-to-Energy Plant.png" id="7_7hdwf"]
+[ext_resource type="Texture2D" uid="uid://b2mtt401vpq6a" path="res://assets/ui/inGameItems/Electric_Vehicle_Subsidy.png" id="8_nsakt"]
+[ext_resource type="Texture2D" uid="uid://dmlfy7lwr7t4n" path="res://assets/ui/inGameItems/Green_Building_Upgrade.png" id="9_5ayux"]
+[ext_resource type="Texture2D" uid="uid://cqkrkw51qrt10" path="res://assets/ui/inGameItems/Blue_Carbon_Conservation.png" id="10_lpw7i"]
+[ext_resource type="Texture2D" uid="uid://kx1ax6u03dir" path="res://assets/ui/inGameItems/Ocean_Clean-up_Drone.png" id="11_tgvys"]
+[ext_resource type="Texture2D" uid="uid://b0widsnopv0ma" path="res://assets/ui/inGameItems/Eco_Housing_Program.png" id="12_qc8t3"]
+[ext_resource type="Texture2D" uid="uid://blo5vydhv5lgs" path="res://assets/ui/inGameItems/Soil_Restoration_Kit.png" id="13_prs4w"]
+[ext_resource type="Texture2D" uid="uid://dtgqjsy0esrap" path="res://assets/ui/inGameItems/Anti-Erosion_Barrier.png" id="14_ov6gv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6wj4"]
 bg_color = Color(0.18359, 0.18359, 0.18359, 1)
@@ -112,12 +122,6 @@ offset_right = 295.0
 offset_bottom = 141.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Pngtree-png-solar-panel-icon-vector-png-image5229059" type="Sprite2D" parent="BG_ShopPanel/PanelSurya"]
-texture_filter = 1
-position = Vector2(49, 47)
-scale = Vector2(0.53, 0.53)
-texture = ExtResource("2_8b1yh")
-
 [node name="Label" type="Label" parent="BG_ShopPanel/PanelSurya"]
 texture_filter = 1
 layout_mode = 0
@@ -149,6 +153,12 @@ offset_bottom = 66.0
 theme_override_fonts/font = ExtResource("3_xf0ew")
 text = "Buy"
 metadata/_edit_use_anchors_ = true
+
+[node name="SolarPanel" type="Sprite2D" parent="BG_ShopPanel/PanelSurya"]
+texture_filter = 1
+position = Vector2(49, 47)
+scale = Vector2(0.53, 0.53)
+texture = ExtResource("2_8b1yh")
 
 [node name="TurbinAngin" type="Panel" parent="BG_ShopPanel"]
 layout_mode = 0
@@ -191,11 +201,533 @@ theme_override_fonts/font = ExtResource("3_xf0ew")
 text = "Buy"
 metadata/_edit_use_anchors_ = true
 
-[node name="Istockphoto-1280715197-612x612" type="Sprite2D" parent="BG_ShopPanel/TurbinAngin"]
+[node name="WindTurbine" type="Sprite2D" parent="BG_ShopPanel/TurbinAngin"]
 texture_filter = 1
 position = Vector2(52, 51)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_d568i")
+
+[node name="ClimateEducation" type="Panel" parent="BG_ShopPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.304
+anchor_right = 0.304
+offset_left = 344.0
+offset_top = 52.0
+offset_right = 602.0
+offset_bottom = 142.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="BG_ShopPanel/ClimateEducation"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 96.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "Climate Education"
+metadata/_edit_use_anchors_ = true
+
+[node name="QuantityEducation" type="Label" parent="BG_ShopPanel/ClimateEducation"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 167.0
+offset_top = 5.0
+offset_right = 207.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="BuyEducation" type="Button" parent="BG_ShopPanel/ClimateEducation"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 155.0
+offset_top = 35.0
+offset_right = 229.0
+offset_bottom = 66.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "Buy"
+metadata/_edit_use_anchors_ = true
+
+[node name="Education" type="Sprite2D" parent="BG_ShopPanel/ClimateEducation"]
+texture_filter = 1
+position = Vector2(52, 51)
+scale = Vector2(1.395, 1.395)
+texture = ExtResource("5_d568i")
+
+[node name="RainforestRestoration" type="Panel" parent="BG_ShopPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.306
+anchor_top = 0.218333
+anchor_right = -0.306
+anchor_bottom = 0.218333
+offset_left = 344.0
+offset_top = 52.0
+offset_right = 602.0
+offset_bottom = 142.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="BG_ShopPanel/RainforestRestoration"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 96.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "Reforestation"
+metadata/_edit_use_anchors_ = true
+
+[node name="QuantityReforestation" type="Label" parent="BG_ShopPanel/RainforestRestoration"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 167.0
+offset_top = 5.0
+offset_right = 207.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="BuyReforestation" type="Button" parent="BG_ShopPanel/RainforestRestoration"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 155.0
+offset_top = 35.0
+offset_right = 229.0
+offset_bottom = 66.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "Buy"
+metadata/_edit_use_anchors_ = true
+
+[node name="Reforestation" type="Sprite2D" parent="BG_ShopPanel/RainforestRestoration"]
+texture_filter = 2
+position = Vector2(52, 51)
+scale = Vector2(0.935, 0.935)
+texture = ExtResource("6_l6wj4")
+
+[node name="WastetoEnergyPlant" type="Panel" parent="BG_ShopPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.218333
+anchor_bottom = 0.218333
+offset_left = 344.0
+offset_top = 52.0
+offset_right = 602.0
+offset_bottom = 142.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="BG_ShopPanel/WastetoEnergyPlant"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 96.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "Waste to energy plant"
+metadata/_edit_use_anchors_ = true
+
+[node name="QuantityEnergyPlant" type="Label" parent="BG_ShopPanel/WastetoEnergyPlant"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0348837
+anchor_top = -0.0222222
+anchor_right = 0.0348837
+anchor_bottom = -0.0222222
+offset_left = 167.0
+offset_top = 5.0
+offset_right = 207.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="BuyEnergyPlant" type="Button" parent="BG_ShopPanel/WastetoEnergyPlant"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 155.0
+offset_top = 35.0
+offset_right = 229.0
+offset_bottom = 66.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "Buy"
+metadata/_edit_use_anchors_ = true
+
+[node name="EnergyPlant" type="Sprite2D" parent="BG_ShopPanel/WastetoEnergyPlant"]
+texture_filter = 1
+position = Vector2(52, 51)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("7_7hdwf")
+
+[node name="ElectricVehicleSubsidy" type="Panel" parent="BG_ShopPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.304
+anchor_top = 0.218333
+anchor_right = 0.304
+anchor_bottom = 0.218333
+offset_left = 344.0
+offset_top = 52.0
+offset_right = 602.0
+offset_bottom = 142.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="BG_ShopPanel/ElectricVehicleSubsidy"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 96.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "Electric Vehicle
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="QuantityElectricVehicle" type="Label" parent="BG_ShopPanel/ElectricVehicleSubsidy"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 167.0
+offset_top = 5.0
+offset_right = 207.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="BuyElectricVehicle" type="Button" parent="BG_ShopPanel/ElectricVehicleSubsidy"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 155.0
+offset_top = 35.0
+offset_right = 229.0
+offset_bottom = 66.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "Buy"
+metadata/_edit_use_anchors_ = true
+
+[node name="ElectricVehicle" type="Sprite2D" parent="BG_ShopPanel/ElectricVehicleSubsidy"]
+texture_filter = 1
+position = Vector2(52, 51)
+scale = Vector2(1.04, 1.04)
+texture = ExtResource("8_nsakt")
+
+[node name="GreenBuilding" type="Panel" parent="BG_ShopPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.305
+anchor_top = 0.436667
+anchor_right = -0.305
+anchor_bottom = 0.436667
+offset_left = 344.0
+offset_top = 52.0
+offset_right = 602.0
+offset_bottom = 142.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="BG_ShopPanel/GreenBuilding"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 96.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "Green Building"
+metadata/_edit_use_anchors_ = true
+
+[node name="QuantityGreenBuilding" type="Label" parent="BG_ShopPanel/GreenBuilding"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 167.0
+offset_top = 5.0
+offset_right = 207.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="BuyGreenBuilding" type="Button" parent="BG_ShopPanel/GreenBuilding"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 155.0
+offset_top = 35.0
+offset_right = 229.0
+offset_bottom = 66.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "Buy"
+metadata/_edit_use_anchors_ = true
+
+[node name="GreenBuilding" type="Sprite2D" parent="BG_ShopPanel/GreenBuilding"]
+texture_filter = 1
+position = Vector2(52, 51)
+scale = Vector2(1.115, 1.115)
+texture = ExtResource("9_5ayux")
+
+[node name="BlueCarbonConservation" type="Panel" parent="BG_ShopPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.001
+anchor_top = 0.436667
+anchor_right = 0.001
+anchor_bottom = 0.436667
+offset_left = 344.0
+offset_top = 52.0
+offset_right = 602.0
+offset_bottom = 142.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="BG_ShopPanel/BlueCarbonConservation"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 96.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "Blue Carbon Conserve"
+metadata/_edit_use_anchors_ = true
+
+[node name="QuantityCarbonConservation" type="Label" parent="BG_ShopPanel/BlueCarbonConservation"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 167.0
+offset_top = 5.0
+offset_right = 207.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="BuyCarbonConservation" type="Button" parent="BG_ShopPanel/BlueCarbonConservation"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 155.0
+offset_top = 35.0
+offset_right = 229.0
+offset_bottom = 66.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "Buy"
+metadata/_edit_use_anchors_ = true
+
+[node name="CarbonConservation" type="Sprite2D" parent="BG_ShopPanel/BlueCarbonConservation"]
+texture_filter = 1
+position = Vector2(52, 58)
+scale = Vector2(1.09, 1.09)
+texture = ExtResource("10_lpw7i")
+
+[node name="OceanCleanupDrone" type="Panel" parent="BG_ShopPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.307
+anchor_top = 0.436667
+anchor_right = 0.307
+anchor_bottom = 0.436667
+offset_left = 344.0
+offset_top = 52.0
+offset_right = 602.0
+offset_bottom = 142.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="BG_ShopPanel/OceanCleanupDrone"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 96.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "Ocean Cleanup Drone"
+metadata/_edit_use_anchors_ = true
+
+[node name="QuantityCleanupDrone" type="Label" parent="BG_ShopPanel/OceanCleanupDrone"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 167.0
+offset_top = 5.0
+offset_right = 207.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="BuyCleanupDrone" type="Button" parent="BG_ShopPanel/OceanCleanupDrone"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 155.0
+offset_top = 35.0
+offset_right = 229.0
+offset_bottom = 66.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "Buy"
+metadata/_edit_use_anchors_ = true
+
+[node name="CleanupDrone" type="Sprite2D" parent="BG_ShopPanel/OceanCleanupDrone"]
+texture_filter = 1
+position = Vector2(52, 51)
+scale = Vector2(1.395, 1.395)
+texture = ExtResource("11_tgvys")
+
+[node name="CarbonStorageDome" type="Panel" parent="BG_ShopPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.304
+anchor_top = 0.656667
+anchor_right = -0.304
+anchor_bottom = 0.656667
+offset_left = 344.0
+offset_top = 52.0
+offset_right = 602.0
+offset_bottom = 142.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="BG_ShopPanel/CarbonStorageDome"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 96.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "Carbon Storage Dome"
+metadata/_edit_use_anchors_ = true
+
+[node name="QuantityStorageDome" type="Label" parent="BG_ShopPanel/CarbonStorageDome"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 167.0
+offset_top = 5.0
+offset_right = 207.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="BuyStorageDome" type="Button" parent="BG_ShopPanel/CarbonStorageDome"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 155.0
+offset_top = 35.0
+offset_right = 229.0
+offset_bottom = 66.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "Buy"
+metadata/_edit_use_anchors_ = true
+
+[node name="StorageDome" type="Sprite2D" parent="BG_ShopPanel/CarbonStorageDome"]
+texture_filter = 1
+position = Vector2(52, 51)
+scale = Vector2(1.095, 1.095)
+texture = ExtResource("12_qc8t3")
+
+[node name="SoilRestorationKit" type="Panel" parent="BG_ShopPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.002
+anchor_top = 0.656667
+anchor_right = 0.002
+anchor_bottom = 0.656667
+offset_left = 344.0
+offset_top = 52.0
+offset_right = 602.0
+offset_bottom = 142.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="BG_ShopPanel/SoilRestorationKit"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 96.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "Soil Restoration"
+metadata/_edit_use_anchors_ = true
+
+[node name="QuantitySoilRestoration" type="Label" parent="BG_ShopPanel/SoilRestorationKit"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 167.0
+offset_top = 5.0
+offset_right = 207.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="BuySoilRestoration" type="Button" parent="BG_ShopPanel/SoilRestorationKit"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 155.0
+offset_top = 35.0
+offset_right = 229.0
+offset_bottom = 66.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "Buy"
+metadata/_edit_use_anchors_ = true
+
+[node name="SoilRestoration" type="Sprite2D" parent="BG_ShopPanel/SoilRestorationKit"]
+texture_filter = 1
+position = Vector2(52, 51)
+scale = Vector2(0.915, 0.915)
+texture = ExtResource("13_prs4w")
+
+[node name="AntiErosionBarrier" type="Panel" parent="BG_ShopPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.307
+anchor_top = 0.656667
+anchor_right = 0.307
+anchor_bottom = 0.656667
+offset_left = 344.0
+offset_top = 52.0
+offset_right = 602.0
+offset_bottom = 142.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="BG_ShopPanel/AntiErosionBarrier"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 96.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "Anti Erosion Barrier"
+metadata/_edit_use_anchors_ = true
+
+[node name="QuantityAntiErosion" type="Label" parent="BG_ShopPanel/AntiErosionBarrier"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 167.0
+offset_top = 5.0
+offset_right = 207.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="BuyAntiErosion" type="Button" parent="BG_ShopPanel/AntiErosionBarrier"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 155.0
+offset_top = 35.0
+offset_right = 229.0
+offset_bottom = 66.0
+theme_override_fonts/font = ExtResource("3_xf0ew")
+text = "Buy"
+metadata/_edit_use_anchors_ = true
+
+[node name="AntiErosion" type="Sprite2D" parent="BG_ShopPanel/AntiErosionBarrier"]
+texture_filter = 1
+position = Vector2(52, 51)
+scale = Vector2(1.205, 1.205)
+texture = ExtResource("14_ov6gv")
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 process_mode = 3
@@ -211,3 +743,33 @@ speed_scale = 4.0
 [connection signal="mouse_exited" from="BG_ShopPanel/TurbinAngin" to="BG_ShopPanel/TurbinAngin" method="_on_mouse_exited"]
 [connection signal="pressed" from="BG_ShopPanel/TurbinAngin/BuyTurbin" to="." method="_on_buy_turbin_pressed"]
 [connection signal="pressed" from="BG_ShopPanel/TurbinAngin/BuyTurbin" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="BG_ShopPanel/ClimateEducation" to="BG_ShopPanel/ClimateEducation" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BG_ShopPanel/ClimateEducation" to="BG_ShopPanel/ClimateEducation" method="_on_mouse_exited"]
+[connection signal="pressed" from="BG_ShopPanel/ClimateEducation/BuyEducation" to="." method="_on_buy_education_pressed"]
+[connection signal="mouse_entered" from="BG_ShopPanel/RainforestRestoration" to="BG_ShopPanel/RainforestRestoration" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BG_ShopPanel/RainforestRestoration" to="BG_ShopPanel/RainforestRestoration" method="_on_mouse_exited"]
+[connection signal="pressed" from="BG_ShopPanel/RainforestRestoration/BuyReforestation" to="." method="_on_buy_reforestation_pressed"]
+[connection signal="mouse_entered" from="BG_ShopPanel/WastetoEnergyPlant" to="BG_ShopPanel/WastetoEnergyPlant" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BG_ShopPanel/WastetoEnergyPlant" to="BG_ShopPanel/WastetoEnergyPlant" method="_on_mouse_exited"]
+[connection signal="pressed" from="BG_ShopPanel/WastetoEnergyPlant/BuyEnergyPlant" to="." method="_on_buy_energy_plant_pressed"]
+[connection signal="mouse_entered" from="BG_ShopPanel/ElectricVehicleSubsidy" to="BG_ShopPanel/ElectricVehicleSubsidy" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BG_ShopPanel/ElectricVehicleSubsidy" to="BG_ShopPanel/ElectricVehicleSubsidy" method="_on_mouse_exited"]
+[connection signal="pressed" from="BG_ShopPanel/ElectricVehicleSubsidy/BuyElectricVehicle" to="." method="_on_buy_electric_vehicle_pressed"]
+[connection signal="mouse_entered" from="BG_ShopPanel/GreenBuilding" to="BG_ShopPanel/GreenBuilding" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BG_ShopPanel/GreenBuilding" to="BG_ShopPanel/GreenBuilding" method="_on_mouse_exited"]
+[connection signal="pressed" from="BG_ShopPanel/GreenBuilding/BuyGreenBuilding" to="." method="_on_buy_green_building_pressed"]
+[connection signal="mouse_entered" from="BG_ShopPanel/BlueCarbonConservation" to="BG_ShopPanel/BlueCarbonConservation" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BG_ShopPanel/BlueCarbonConservation" to="BG_ShopPanel/BlueCarbonConservation" method="_on_mouse_exited"]
+[connection signal="pressed" from="BG_ShopPanel/BlueCarbonConservation/BuyCarbonConservation" to="." method="_on_buy_carbon_conservation_pressed"]
+[connection signal="mouse_entered" from="BG_ShopPanel/OceanCleanupDrone" to="BG_ShopPanel/OceanCleanupDrone" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BG_ShopPanel/OceanCleanupDrone" to="BG_ShopPanel/OceanCleanupDrone" method="_on_mouse_exited"]
+[connection signal="pressed" from="BG_ShopPanel/OceanCleanupDrone/BuyCleanupDrone" to="." method="_on_buy_cleanup_drone_pressed"]
+[connection signal="mouse_entered" from="BG_ShopPanel/CarbonStorageDome" to="BG_ShopPanel/CarbonStorageDome" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BG_ShopPanel/CarbonStorageDome" to="BG_ShopPanel/CarbonStorageDome" method="_on_mouse_exited"]
+[connection signal="pressed" from="BG_ShopPanel/CarbonStorageDome/BuyStorageDome" to="." method="_on_buy_storage_dome_pressed"]
+[connection signal="mouse_entered" from="BG_ShopPanel/SoilRestorationKit" to="BG_ShopPanel/SoilRestorationKit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BG_ShopPanel/SoilRestorationKit" to="BG_ShopPanel/SoilRestorationKit" method="_on_mouse_exited"]
+[connection signal="pressed" from="BG_ShopPanel/SoilRestorationKit/BuySoilRestoration" to="." method="_on_buy_soil_restoration_pressed"]
+[connection signal="mouse_entered" from="BG_ShopPanel/AntiErosionBarrier" to="BG_ShopPanel/AntiErosionBarrier" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BG_ShopPanel/AntiErosionBarrier" to="BG_ShopPanel/AntiErosionBarrier" method="_on_mouse_exited"]
+[connection signal="pressed" from="BG_ShopPanel/AntiErosionBarrier/BuyAntiErosion" to="." method="_on_buy_anti_erosion_pressed"]

@@ -16,34 +16,34 @@ func _ready():
 	itemPrice[1] = 450
 
 	itemName[2]  = "Climate Education Program"
-	itemPrice[2] = 0
+	itemPrice[2] = 400
 
 	itemName[3]  = "Rainforest Restoration"
-	itemPrice[3] = 0
+	itemPrice[3] = 600
 
 	itemName[4]  = "Waste-to-Energy Plant"
-	itemPrice[4] = 0
+	itemPrice[4] = 400
 
 	itemName[5]  = "Electric Vehicle Subsidy"
-	itemPrice[5] = 0
+	itemPrice[5] = 300
 
 	itemName[6]  = "Green Building"
-	itemPrice[6] = 0
+	itemPrice[6] = 200
 
 	itemName[7]  = "Blue Carbon Conservation"
-	itemPrice[7] = 0
+	itemPrice[7] = 350
 
 	itemName[8] = "Ocean Clean-up Drone"
-	itemPrice[8]= 0
+	itemPrice[8]= 400
 
 	itemName[9] = "Carbon Storage Dome"
-	itemPrice[9]= 0
+	itemPrice[9]= 500
 
 	itemName[10] = "Soil Restoration Kit"
-	itemPrice[10]= 0
+	itemPrice[10]= 450
 
 	itemName[11] = "Anti-Erosion Barrier"
-	itemPrice[11]= 0
+	itemPrice[11]= 150
 
 	print("Item names array content: ", itemName)
 
