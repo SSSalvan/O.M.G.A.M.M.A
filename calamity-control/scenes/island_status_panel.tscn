@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjcqi4iurqkeb"]
+[gd_scene load_steps=4 format=3 uid="uid://br14c84axqpu5"]
 
 [ext_resource type="Script" uid="uid://carp4km4ugbfh" path="res://island_status_panel.gd" id="1_85gkt"]
-[ext_resource type="Script" uid="uid://bd15kc000je60" path="res://scripts/background_blocker.gd" id="2_t0sf1"]
 [ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="2_toyfp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toyfp"]
@@ -18,18 +17,10 @@ corner_radius_bottom_left = 15
 [node name="IslandStatusPanel" type="CanvasLayer"]
 script = ExtResource("1_85gkt")
 
-[node name="BackgroundBlocker" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1692.0
-offset_top = -1961.0
-offset_right = 4082.0
-offset_bottom = 978.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.0431373)
-script = ExtResource("2_t0sf1")
+[node name="BG_cover" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1925.0
+offset_bottom = 1079.0
 
 [node name="BG_Island_Status" type="Panel" parent="."]
 anchors_preset = 8
@@ -47,6 +38,7 @@ scale = Vector2(0.983099, 1.01828)
 theme_override_styles/panel = SubResource("StyleBoxFlat_toyfp")
 
 [node name="Status_Report_Title" type="Label" parent="BG_Island_Status"]
+texture_filter = 1
 layout_mode = 2
 offset_right = 1465.0
 offset_bottom = 76.0
@@ -64,12 +56,14 @@ offset_right = 1440.0
 offset_bottom = 614.0
 
 [node name="Status_Report" type="Label" parent="BG_Island_Status/Status_Report_Title/ScrollContainer"]
+texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_toyfp")
 theme_override_font_sizes/font_size = 35
 text = "Hello"
 
 [node name="Close_Button" type="Button" parent="BG_Island_Status"]
+texture_filter = 1
 layout_mode = 2
 offset_left = 615.401
 offset_top = 655.52

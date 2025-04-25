@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Button
 @onready var game_manager = get_node("/root/MainGameplay/GameManager")
 
 @export var province_name: String = ""  # Name of the province
@@ -7,14 +7,10 @@ extends Sprite2D
 func _ready() -> void:
 	set_process_input(true)
 	province_name = name
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and not event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		var mouse_pos = to_local(get_global_mouse_position())
-		if get_rect().has_point(mouse_pos):
-			print(province_name, " Selected")
-			show_development_prompt()
-
+	
+func _on_pressed() -> void:
+	show_development_prompt()
+	
 func show_development_prompt():
 	var confirm_scene = load("res://scenes/develop_province.tscn").instantiate()
 	get_tree().current_scene.add_child(confirm_scene)

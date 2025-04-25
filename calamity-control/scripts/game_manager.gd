@@ -2,7 +2,6 @@ extends Node
 
 @onready var week_counter: Label = $"Week Counter"
 @onready var resource_counter: Label = $"Resource Counter"
-@onready var island_status_panel = preload("res://scenes/island_status_panel.tscn").instantiate()
 @onready var game_manager = get_parent().get_parent()
 
 var difficulty: String = "medium"
@@ -32,8 +31,6 @@ var events = [
 
 func _ready():
 	randomize() 
-	add_child(island_status_panel)
-	island_status_panel.hide() 
 	difficulty = GameDifficulty.diff
 	diffCheck()
 	
@@ -57,16 +54,15 @@ func trigger_random_events():
 	for island_name in islands.keys():
 		if is_event_active:
 			print("Event masih aktif, skip trigger baru.")
-			return  # Langsung keluar dari loop supaya tidak ada event baru
+			return  
 
 		if randi() % 4 == 0:
 			var random_event = events[randi() % events.size()]
 			show_event_popup(island_name, random_event)
-			is_event_active = true  # Set aktif saat event ditrigger
-			break  # Hanya satu event yang bisa aktif
+			is_event_active = true  
+			break  
 
 func _on_difficulty_selected(selected_difficulty: String) -> void:
-	# This method is called when the signal is emitted from the difficulty select scene
 	difficulty = selected_difficulty
 	print("Selected difficulty is: ", difficulty)
 
@@ -84,7 +80,6 @@ func islandSetup():
 		$NTT.visible = true
 		$"Maluku Utara".visible = true
 	
-#	add to dictionary down here based on diff
 	if (islandCount>=1):
 		islands["Sumatra"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
 		islands["Kalimantan"]= { "development": 0, "emission": randi_range(5, 12), "population": 100 }
@@ -147,11 +142,14 @@ func on_event_negated(island_name: String, event_data: Dictionary):
 		print("Minigame FAIL in ", island_name, ": ", event_data["lose_desc"])
 		print("+%d emission due to failure." % event_data["emission_increase"])
 		
-	is_event_active = false  # Reset saat event selesai
+	is_event_active = false 
 	update_resource_label()
 
 func _on_show_islands_status_pressed() -> void:
-	island_status_panel.populate(islands)
+	var new_panel = preload("res://scenes/island_status_panel.tscn").instantiate()
+	add_child(new_panel)
+	
+	new_panel.populate(islands)
 	
 func _on_end_week_pressed() -> void:
 	var confirm_scene = load("res://scenes/week_end_confirmation.tscn").instantiate()

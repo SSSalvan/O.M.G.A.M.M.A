@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://7vklafu4t6qi"]
+[gd_scene load_steps=5 format=3 uid="uid://csm0uwxqwgudx"]
 
 [ext_resource type="Script" uid="uid://cmwedgwiuxv78" path="res://scripts/weekly_report.gd" id="1_ec7a8"]
 [ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="1_qa6uf"]
@@ -31,6 +31,11 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.0431373)
 script = ExtResource("3_thrsh")
 
+[node name="BG_Cover" type="Panel" parent="."]
+visible = false
+offset_right = 1923.0
+offset_bottom = 1088.0
+
 [node name="BG_weekly_report" type="Panel" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
@@ -53,12 +58,14 @@ offset_right = 1191.0
 offset_bottom = 580.0
 
 [node name="island_report" type="Label" parent="BG_weekly_report/ScrollContainer"]
+texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_qa6uf")
 theme_override_font_sizes/font_size = 35
 text = "s"
 
 [node name="confirm_button" type="Button" parent="BG_weekly_report"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 228.5
 offset_top = 630.5
@@ -69,6 +76,7 @@ theme_override_font_sizes/font_size = 40
 text = "Confirm"
 
 [node name="title" type="Label" parent="BG_weekly_report"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 234.5
 offset_top = 22.5
