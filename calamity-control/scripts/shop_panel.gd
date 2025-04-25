@@ -16,8 +16,39 @@ extends CanvasLayer
 @onready var item10Label: Label = $BG_ShopPanel/SoilRestorationKit/QuantitySoilRestoration
 @onready var item11Label: Label = $BG_ShopPanel/AntiErosionBarrier/QuantityAntiErosion
 
+
+
+@onready var price0Label: Label = $BG_ShopPanel/PanelSurya/PricePanel
+@onready var price1Label: Label = $BG_ShopPanel/TurbinAngin/PriceTurbin
+@onready var price2Label: Label = $BG_ShopPanel/ClimateEducation/PriceEducation
+
+@onready var price3Label: Label = $BG_ShopPanel/RainforestRestoration/PriceReforestation
+@onready var price4Label: Label = $BG_ShopPanel/WastetoEnergyPlant/PriceEnergyPlant
+@onready var price5Label: Label = $BG_ShopPanel/ElectricVehicleSubsidy/PriceElectricVehicle
+
+@onready var price6Label: Label = $BG_ShopPanel/GreenBuilding/PriceGreenBuilding
+@onready var price7Label: Label = $BG_ShopPanel/BlueCarbonConservation/PriceCarbonConservation
+@onready var price8Label: Label = $BG_ShopPanel/OceanCleanupDrone/PriceCleanupDrone
+
+@onready var price9Label: Label = $BG_ShopPanel/CarbonStorageDome/PriceStorageDome
+@onready var price10Label: Label = $BG_ShopPanel/SoilRestorationKit/PriceSoilRestoration
+@onready var price11Label: Label = $BG_ShopPanel/AntiErosionBarrier/PriceAntiErosion
+
+
 func _ready():
-	pass
+	price0Label.text = "Price: %d" % ShopItems.itemPrice[0]
+	price1Label.text = "Price: %d" % ShopItems.itemPrice[1]
+	price2Label.text = "Price: %d" % ShopItems.itemPrice[2]
+	price3Label.text = "Price: %d" % ShopItems.itemPrice[3]
+	price4Label.text = "Price: %d" % ShopItems.itemPrice[4]
+	price5Label.text = "Price: %d" % ShopItems.itemPrice[5]
+	price6Label.text = "Price: %d" % ShopItems.itemPrice[6]
+	price7Label.text = "Price: %d" % ShopItems.itemPrice[7]
+	price8Label.text = "Price: %d" % ShopItems.itemPrice[8]
+	price9Label.text = "Price: %d" % ShopItems.itemPrice[9]
+	price10Label.text = "Price: %d" % ShopItems.itemPrice[10]
+	price11Label.text = "Price: %d" % ShopItems.itemPrice[11]
+
 
 func _on_buy_panel_pressed() -> void:
 	if ResourceCount.resource >= ShopItems.itemPrice[0]:
