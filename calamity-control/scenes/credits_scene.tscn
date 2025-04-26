@@ -56,16 +56,125 @@ text = "Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Status_Report" type="Label" parent="BG_Island_Status"]
+[node name="Lead Dev3" type="Label" parent="BG_Island_Status"]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 86.0
-offset_right = 1440.0
-offset_bottom = 636.0
+offset_left = 26.447
+offset_top = 84.9472
+offset_right = 299.447
+offset_bottom = 183.947
 theme_override_fonts/font = ExtResource("2_1pu23")
 theme_override_font_sizes/font_size = 30
-text = "hello
+text = "Project LEad:
+Silvanus ALvan"
+
+[node name="Lead Dev" type="Label" parent="BG_Island_Status"]
+layout_mode = 0
+offset_left = 26.447
+offset_top = 180.206
+offset_right = 299.447
+offset_bottom = 279.206
+theme_override_fonts/font = ExtResource("2_1pu23")
+theme_override_font_sizes/font_size = 30
+text = "Lead Programmer:
+Bisma Harun"
+
+[node name="Lead Dev2" type="Label" parent="BG_Island_Status"]
+layout_mode = 0
+offset_left = 26.447
+offset_top = 251.895
+offset_right = 299.447
+offset_bottom = 350.895
+theme_override_fonts/font = ExtResource("2_1pu23")
+theme_override_font_sizes/font_size = 30
+text = "Programming team:
+Bisma Harun
+Carlo Ernesto Tioe
+Jason Joe Stanley
 "
+
+[node name="Lead Dev4" type="Label" parent="BG_Island_Status"]
+layout_mode = 0
+offset_left = 26.447
+offset_top = 432.592
+offset_right = 299.447
+offset_bottom = 531.592
+theme_override_fonts/font = ExtResource("2_1pu23")
+theme_override_font_sizes/font_size = 30
+text = "Art Director:
+Jason Joe Stanley"
+
+[node name="Lead Dev5" type="Label" parent="BG_Island_Status"]
+layout_mode = 0
+offset_left = 26.447
+offset_top = 504.282
+offset_right = 299.447
+offset_bottom = 603.282
+theme_override_fonts/font = ExtResource("2_1pu23")
+theme_override_font_sizes/font_size = 30
+text = "Art Team:
+Carlo Ernesto Tioe
+Hansel Cristiano Johan
+Jason Joe Stanley"
+
+[node name="Lead Dev6" type="Label" parent="BG_Island_Status"]
+layout_mode = 0
+offset_left = 441.461
+offset_top = 227.344
+offset_right = 744.461
+offset_bottom = 336.344
+theme_override_fonts/font = ExtResource("2_1pu23")
+theme_override_font_sizes/font_size = 30
+text = "UI Designer:
+Hansel Cristiano Johan
+Jason Joe Stanley"
+
+[node name="Lead Dev8" type="Label" parent="BG_Island_Status"]
+layout_mode = 0
+offset_left = 441.461
+offset_top = 377.598
+offset_right = 744.461
+offset_bottom = 486.598
+theme_override_fonts/font = ExtResource("2_1pu23")
+theme_override_font_sizes/font_size = 30
+text = "Playtester:
+Putra Maulana
+Silvanus Alvan"
+
+[node name="Lead Dev7" type="Label" parent="BG_Island_Status"]
+layout_mode = 0
+offset_left = 441.461
+offset_top = 86.9113
+offset_right = 744.461
+offset_bottom = 195.911
+theme_override_fonts/font = ExtResource("2_1pu23")
+theme_override_font_sizes/font_size = 30
+text = "Writer:
+Bisma Harun
+Carlo Ernesto Tioe"
+
+[node name="Lead Dev9" type="Label" parent="BG_Island_Status"]
+layout_mode = 0
+offset_left = 813.753
+offset_top = 86.9113
+offset_right = 1116.75
+offset_bottom = 195.911
+theme_override_fonts/font = ExtResource("2_1pu23")
+theme_override_font_sizes/font_size = 30
+text = "Music:
+Hokkori Tea Time 
+By Otologic"
+
+[node name="Lead Dev10" type="Label" parent="BG_Island_Status"]
+layout_mode = 0
+offset_left = 813.753
+offset_top = 220.47
+offset_right = 1177.75
+offset_bottom = 329.469
+theme_override_fonts/font = ExtResource("2_1pu23")
+theme_override_font_sizes/font_size = 30
+text = "Font:
+Pixel Font: Stacked Pixel
+By Monkopus"
 
 [node name="Close_Button" type="Button" parent="BG_Island_Status"]
 layout_mode = 2
