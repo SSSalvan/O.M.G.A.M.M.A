@@ -46,10 +46,10 @@ texture = ExtResource("1_5dd4i")
 
 [node name="TextureRect3" type="TextureRect" parent="."]
 texture_filter = 1
-offset_left = -528.0
-offset_top = -571.0
-offset_right = 1077.0
-offset_bottom = 465.0
+offset_left = -539.0
+offset_top = -757.0
+offset_right = 1066.0
+offset_bottom = 279.0
 texture = ExtResource("10_5dd4i")
 
 [node name="fire" type="AnimatedSprite2D" parent="."]

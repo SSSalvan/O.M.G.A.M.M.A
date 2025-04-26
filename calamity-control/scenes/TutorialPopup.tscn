@@ -35,10 +35,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_muwgg")
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 92.0
-offset_top = 28.0
-offset_right = 1124.0
-offset_bottom = 518.0
+offset_left = 86.0
+offset_top = 24.0
+offset_right = 1140.0
+offset_bottom = 543.0
 theme_override_fonts/font = ExtResource("2_gntui")
 theme_override_font_sizes/font_size = 32
 text = "Welcome to O.M G.A.M.M.A! 
@@ -54,7 +54,8 @@ In the game, you will need to strategize and implement
 
 - Click on (!) to develope a province.
 - Use resources wisely.
-- Shop upgrades in the Shop that will prevent random disaster event.
+- Item upgrades in the Shop that can be used to develop provinces
+- There is a minimum development level stated at the end of each week,.
 - Click \"End Week\" to progress  your weekly report.
 
 Duration: 52 Weeks"
@@ -63,10 +64,10 @@ vertical_alignment = 1
 
 [node name="Button" type="Button" parent="Panel"]
 layout_mode = 0
-offset_left = 514.0
-offset_top = 529.0
-offset_right = 704.0
-offset_bottom = 578.0
+offset_left = 510.0
+offset_top = 546.0
+offset_right = 700.0
+offset_bottom = 595.0
 theme_override_fonts/font = ExtResource("2_gntui")
 theme_override_styles/normal = ExtResource("3_bovm7")
 text = "Got it!"
