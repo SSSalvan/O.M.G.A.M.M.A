@@ -52,6 +52,10 @@ func _ready():
 	# Reset inventory counts
 	start_game()
 
+func resetItemQuantity():
+	for i in range(12):
+		itemCount[i] = 0
+
 func start_game():
 	# Reset all item counts to zero at the start of the game
 	for i in range(howManyItemsBro):

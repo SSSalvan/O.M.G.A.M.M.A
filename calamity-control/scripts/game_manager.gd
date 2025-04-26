@@ -35,7 +35,10 @@ func _ready():
 	randomize() 
 	difficulty = GameDifficulty.diff
 	diffCheck()
+	
+	ShopItems.resetItemQuantity()
 	UpgradeReq._init()
+	
 	islandSetup()
 	ResourceCount.resource = 500
 	update_week_label()
@@ -51,6 +54,9 @@ func diffCheck():
 
 func _process(_delta: float) -> void:
 	update_resource_label()
+	if Input.is_action_just_pressed("ui_accept"):
+		_on_end_week_pressed()
+
 
 func trigger_random_events():
 	for island_name in islands.keys():
