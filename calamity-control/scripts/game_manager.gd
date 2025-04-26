@@ -54,7 +54,7 @@ func diffCheck():
 
 func _process(_delta: float) -> void:
 	update_resource_label()
-	if Input.is_action_just_pressed("ui_accept"):
+	if not is_event_active and Input.is_action_just_pressed("ui_accept"):
 		_on_end_week_pressed()
 
 

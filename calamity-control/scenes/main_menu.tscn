@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://drx37bmj2egrr"]
+[gd_scene load_steps=15 format=3 uid="uid://drx37bmj2egrr"]
 
 [ext_resource type="Script" uid="uid://dkrejfkq1u1rw" path="res://scripts/main_menu.gd" id="1_0fjxs"]
 [ext_resource type="Texture2D" uid="uid://4qv5fbuii08c" path="res://assets/ui/mainMenuUI/bg.png" id="1_5dd4i"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://djy65h7udywt4" path="res://assets/ui/mainMenu.png" id="4_4i31w"]
 [ext_resource type="Texture2D" uid="uid://t7h8d6236h3w" path="res://assets/ui/mainMenuUI/Menu Button.png" id="5_oa1go"]
 [ext_resource type="Texture2D" uid="uid://cg8t2lvhrrt8h" path="res://assets/ui/mainMenuUI/notElmo.png" id="8_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://6oqmkmblurd" path="res://assets/ui/InGameUI/trashMiniGameBG3.png" id="10_5dd4i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5dd4i"]
 atlas = ExtResource("1_jk1qb")
@@ -43,6 +44,14 @@ position = Vector2(-1.49998, 284.5)
 scale = Vector2(1.09115, 1.56759)
 texture = ExtResource("1_5dd4i")
 
+[node name="TextureRect3" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -528.0
+offset_top = -571.0
+offset_right = 1077.0
+offset_bottom = 465.0
+texture = ExtResource("10_5dd4i")
+
 [node name="fire" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(278, 28)
@@ -52,8 +61,8 @@ autoplay = "default"
 
 [node name="NotElmo" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(366, -225)
-scale = Vector2(10, 10)
+position = Vector2(368.29, 100)
+scale = Vector2(5.49, 5.49)
 texture = ExtResource("8_tbmy8")
 
 [node name="MainMenu" type="Control" parent="."]
