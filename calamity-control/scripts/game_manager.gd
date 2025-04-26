@@ -64,27 +64,34 @@ func trigger_random_events():
 			print("Event masih aktif, skip trigger baru.")
 			return  
 
+		if islands[island_name]["population"] <= 0:
+			continue  # Skip islands with no population
+
 		if randi() % 4 == 0:
 			var random_event = events[randi() % events.size()]
 			show_event_popup(island_name, random_event)
 			is_event_active = true  
 			break  
 
+
 func _on_difficulty_selected(selected_difficulty: String) -> void:
 	difficulty = selected_difficulty
 	print("Selected difficulty is: ", difficulty)
 
 func islandSetup():
+	var pop_base = 500
 	var islandCount = 0;
 	if difficulty == "easy":
 		islandCount = 1
 		howmanyisland = 5
 	elif difficulty == "medium":
+		pop_base = 1000
 		islandCount = 2
 		howmanyisland = 7
 		$Bali.visible = true
 		$Maluku.visible = true
 	elif difficulty == "hard":
+		pop_base = 1500
 		islandCount = 3
 		howmanyisland = 10
 		$Bali.visible = true
@@ -94,18 +101,18 @@ func islandSetup():
 		$"Maluku Utara".visible = true
 	
 	if (islandCount>=1):
-		islands["Riau"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 0}
-		islands["Kalimantan Barat"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 1}
-		islands["Papua Pegunungan"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 2}
-		islands["DKI Jakarta"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 3}
-		islands["Sulawesi Tengah"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 4}
+		islands["Riau"]= { "development": 0, "emission": randi_range(5, 12), "population": pop_base + randi_range(0, 200),  "type": 0}
+		islands["Kalimantan Barat"]= { "development": 0, "emission": randi_range(5, 12), "population": pop_base + randi_range(0, 200),  "type": 1}
+		islands["Papua Pegunungan"]= { "development": 0, "emission": randi_range(5, 12), "population": pop_base + randi_range(0, 200),  "type": 2}
+		islands["DKI Jakarta"]= { "development": 0, "emission": randi_range(5, 12), "population": pop_base + randi_range(0, 200),  "type": 3}
+		islands["Sulawesi Tengah"]= { "development": 0, "emission": randi_range(5, 12), "population": pop_base + randi_range(0, 200),  "type": 4}
 	if (islandCount>=2):
-		islands["Bali"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 5}
-		islands["Maluku"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 6}
+		islands["Bali"]= { "development": 0, "emission": randi_range(5, 12), "population": pop_base + randi_range(0, 200),  "type": 5}
+		islands["Maluku"]= { "development": 0, "emission": randi_range(5, 12), "population": pop_base + randi_range(0, 200),  "type": 6}
 	if (islandCount>=3):
-		islands["Ntt"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 7}
-		islands["Ntb"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 8}
-		islands["Maluku Utara"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 9}
+		islands["Ntt"]= { "development": 0, "emission": randi_range(5, 12), "population": pop_base + randi_range(0, 200),  "type": 7}
+		islands["Ntb"]= { "development": 0, "emission": randi_range(5, 12), "population": pop_base + randi_range(0, 200),  "type": 8}
+		islands["Maluku Utara"]= { "development": 0, "emission": randi_range(5, 12), "population": pop_base + randi_range(0, 200),  "type": 9}
 	
 func show_event_popup(island_name: String, event_data: Dictionary):
 	if is_event_active:
@@ -130,33 +137,36 @@ func on_event_confirmed(island_name: String, event_data: Dictionary):
 	elif event_data["type"] == "positive":
 		ResourceCount.add_money(event_data["resource_reward"])
 		islands[island_name]["emission"] -= event_data["emission_decrease"]
+		islands[island_name]["emission"] = clamp(islands[island_name]["emission"], 0, 100)
 		print("Positive event in ", island_name, ", gained resource: ", event_data["resource_reward"], ", emission now: ", islands[island_name]["emission"])
 
 	elif event_data["type"] == "minigame1" or event_data["type"] == "minigame2":
-		# Assume player won the minigame (if there's a system to decide this dynamically, you can adjust)
 		ResourceCount.add_money(event_data["resource_reward"])
 		islands[island_name]["emission"] -= event_data["emission_decrease"]
+		islands[island_name]["emission"] = clamp(islands[island_name]["emission"], 0, 100)
 		print("Minigame WIN in ", island_name, ": ", event_data["win_desc"])
 		print("+%d resource, -%d emission" % [
 			event_data["resource_reward"],
 			event_data["emission_decrease"]
 		])
-		
 	is_event_active = false 
 	update_resource_label()
 
 func on_event_negated(island_name: String, event_data: Dictionary):
 	if event_data["type"] == "negative":
 		islands[island_name]["emission"] += event_data["emission_increase"]
+		islands[island_name]["emission"] = clamp(islands[island_name]["emission"], 0, 100)
 		print("NEGATIVE event was not countered. Emission increased in ", island_name)
 
 	elif event_data["type"] == "minigame1" or event_data["type"] == "minigame2":
 		islands[island_name]["emission"] += event_data["emission_increase"]
+		islands[island_name]["emission"] = clamp(islands[island_name]["emission"], 0, 100)
 		print("Minigame FAIL in ", island_name, ": ", event_data["lose_desc"])
 		print("+%d emission due to failure." % event_data["emission_increase"])
-		
+
 	is_event_active = false 
 	update_resource_label()
+
 
 func _on_show_islands_status_pressed() -> void:
 	var status_panel = preload("res://scenes/island_status_panel.tscn").instantiate()
@@ -227,7 +237,21 @@ func check_final_status():
 			  ", Population = " + str(pop))
 
 	# --- WIN / LOSE CONDITIONS ---
-	if total_emission < 30 and total_population > 80:
+	var emission_threshold = 0
+	var population_threshold = 0
+
+	match difficulty:
+		"easy":
+			emission_threshold = 80
+			population_threshold = 2500
+		"medium":
+			emission_threshold = 60
+			population_threshold = 5000
+		"hard":
+			emission_threshold = 40
+			population_threshold = 7000
+
+	if total_emission < emission_threshold and total_population > population_threshold:
 		print("You Win!")
 		get_tree().change_scene_to_file("res://scenes/winning.tscn")
 	else:
@@ -262,33 +286,34 @@ func increase_development(province_name: String, amount: int):
 
 func check_development_requirements():
 	for island in islands.keys():
-		var dev_level = islands[island]["development"]
-		@warning_ignore("unused_variable")
-		var emission = islands[island]["emission"]
-		@warning_ignore("unused_variable")
 		var population = islands[island]["population"]
-		var required_dev: int = 0
+		if population <= 0:
+			print(island, " has 0 population. Skipping development and events.")
+			continue  # Skip if island is "dead"
 		
+		var dev_level = islands[island]["development"]
+		var emission = islands[island]["emission"]
+		var required_dev: int = 0
+
 		if week < 3:
 			required_dev = 0
 			print("No development is required")
 		else:
 			required_dev = randi_range(1, 3)
-			
 
 		if dev_level < required_dev:
 			var emission_increase = randi_range(1, 4)
-			var pop_loss = int(emission * 0.5)  
+			var pop_loss = int(emission * 0.5)
 
-			islands[island]["emission"] += emission_increase
-			islands[island]["population"] -= pop_loss
+			islands[island]["emission"] = clamp(emission + emission_increase, 0, 100)
+			islands[island]["population"] = max(population - pop_loss, 0)
 
 			print(island, " development too low! Required: ", required_dev)
 			print("Emission increased by ", emission_increase, " to ", islands[island]["emission"])
 			print("Population decreased by ", pop_loss, " to ", islands[island]["population"])
 		else:
 			print(island, " is developing well. No penalty this week (Required: ", required_dev, ")")
-
+ 
 func get_development_level(province_name: String) -> int:
 	var province_node = get_tree().root.get_node("MainGameplay/GameManager/" + province_name)
 	if province_node:
