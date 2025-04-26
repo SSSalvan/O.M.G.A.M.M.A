@@ -34,6 +34,8 @@ func _on_accept_contract_easy_pressed() -> void:
 	GameDifficulty.diff = \"easy\"
 	get_tree().change_scene_to_file(\"res://scenes/main_gameplay.tscn\")
 	get_node(\"/root/LevelDifficultiesSelect/.\").visible = false
+	reset_scene_state()
+	
 
 
 func _on_select_medium_pressed() -> void:
@@ -55,6 +57,8 @@ func _on_accept_contract_medium_pressed() -> void:
 	GameDifficulty.diff = \"medium\"
 	get_tree().change_scene_to_file(\"res://scenes/main_gameplay.tscn\")
 	get_node(\"/root/LevelDifficultiesSelect/.\").visible = false
+	reset_scene_state()
+	
 
 func _on_select_hard_pressed() -> void:
 	if level_hard_button.text == \"Select\":
@@ -75,6 +79,8 @@ func _on_accept_contract_hard_pressed() -> void:
 	GameDifficulty.diff = \"hard\"
 	get_tree().change_scene_to_file(\"res://scenes/main_gameplay.tscn\")
 	get_node(\"/root/LevelDifficultiesSelect/.\").visible = false
+	reset_scene_state()
+	
 
 func reset_scene_state():
 	# Reset button states
@@ -712,11 +718,11 @@ theme_override_font_sizes/normal_font_size = 64
 text = "Easy Difficulty
 
 List of province:
-- Sumatra
-- Kalimantan
-- Jawa
-- Sulawesi 
-- Papua "
+- Riau
+- Kalimantan Barat
+- DKI Jakarta
+- Papua Pegunungan
+- Sulawesi Tengah"
 
 [node name="level_diff_medium" type="Sprite2D" parent="background_cover"]
 position = Vector2(-500, 496)
@@ -753,11 +759,11 @@ theme_override_font_sizes/normal_font_size = 64
 text = "Medium Difficulty
 
 List of province:
-- Sumatra
-- Kalimantan
-- Jawa
-- Sulawesi 
-- Papua 
+- Riau
+- Kalimantan Barat
+- DKI Jakarta
+- Papua Pegunungan
+- Sulawesi Tengah
 - Bali
 - Maluku
 "
@@ -797,11 +803,11 @@ theme_override_font_sizes/normal_font_size = 64
 text = "Hard Difficulty
 
 List of province:
-- Sumatra
-- Kalimantan
-- Jawa
-- Sulawesi 
-- Papua 
+- Riau
+- Kalimantan Barat
+- DKI Jakarta
+- Papua Pegunungan
+- Sulawesi Tengah
 - Bali
 - Maluku
 - NTT

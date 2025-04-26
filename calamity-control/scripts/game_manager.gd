@@ -79,19 +79,19 @@ func _on_difficulty_selected(selected_difficulty: String) -> void:
 	print("Selected difficulty is: ", difficulty)
 
 func islandSetup():
-	var pop_base = 500
+	var pop_base = 750
 	var islandCount = 0;
 	if difficulty == "easy":
 		islandCount = 1
 		howmanyisland = 5
 	elif difficulty == "medium":
-		pop_base = 1000
+		pop_base = 1500
 		islandCount = 2
 		howmanyisland = 7
 		$Bali.visible = true
 		$Maluku.visible = true
 	elif difficulty == "hard":
-		pop_base = 1500
+		pop_base = 2000
 		islandCount = 3
 		howmanyisland = 10
 		$Bali.visible = true
@@ -243,13 +243,13 @@ func check_final_status():
 	match difficulty:
 		"easy":
 			emission_threshold = 80
-			population_threshold = 2500
+			population_threshold = 3000
 		"medium":
 			emission_threshold = 60
-			population_threshold = 5000
+			population_threshold = 7000
 		"hard":
 			emission_threshold = 40
-			population_threshold = 7000
+			population_threshold = 9000
 
 	if total_emission < emission_threshold and total_population > population_threshold:
 		print("You Win!")
@@ -295,25 +295,30 @@ func check_development_requirements():
 		var emission = islands[island]["emission"]
 		var required_dev: int = 0
 
-		if week < 3:
-			required_dev = 0
-			print("No development is required")
+		# Calculate required development based on week intervals
+		if week < 15:
+			required_dev = randi_range(1, 2) 
+		elif week < 30:
+			required_dev = randi_range(3, 4) 
+		elif week < 45:
+			required_dev = randi_range(5, 6)
 		else:
-			required_dev = randi_range(1, 3)
+			required_dev = randi_range(5, 9)
+
+		print(island, ": Checking development. Current: ", dev_level, ", Required: ", required_dev)
 
 		if dev_level < required_dev:
+			# Apply penalties if development is insufficient
 			var emission_increase = randi_range(1, 4)
 			var pop_loss = int(emission * 0.5)
-
 			islands[island]["emission"] = clamp(emission + emission_increase, 0, 100)
 			islands[island]["population"] = max(population - pop_loss, 0)
-
 			print(island, " development too low! Required: ", required_dev)
 			print("Emission increased by ", emission_increase, " to ", islands[island]["emission"])
 			print("Population decreased by ", pop_loss, " to ", islands[island]["population"])
 		else:
-			print(island, " is developing well. No penalty this week (Required: ", required_dev, ")")
- 
+			print(island, " is developing well. No penalty this week (Required: ", required_dev, ")") 
+			
 func get_development_level(province_name: String) -> int:
 	var province_node = get_tree().root.get_node("MainGameplay/GameManager/" + province_name)
 	if province_node:
