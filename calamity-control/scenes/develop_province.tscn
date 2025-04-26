@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://brre66iyt0qx2"]
+[gd_scene load_steps=5 format=3 uid="uid://brre66iyt0qx2"]
 
 [ext_resource type="Script" uid="uid://cgcnvtafomw8a" path="res://scripts/develop_province.gd" id="1_eqrir"]
 [ext_resource type="Script" uid="uid://bd15kc000je60" path="res://scripts/background_blocker.gd" id="2_wgbud"]
+[ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="3_54jpf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3dhsk"]
 bg_color = Color(0, 0, 0, 0.533333)
@@ -50,12 +51,18 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_3dhsk")
 
 [node name="Title" type="Label" parent="Action_Select/Popup"]
 layout_mode = 2
-offset_left = 113.0
-offset_top = 11.0
-offset_right = 539.0
-offset_bottom = 34.0
-text = "Would you like to develop this province? (400 Moneys)"
+offset_left = 21.0
+offset_top = 16.0
+offset_right = 627.0
+offset_bottom = 256.0
+theme_override_fonts/font = ExtResource("3_54jpf")
+theme_override_font_sizes/font_size = 35
+text = "Would you like to develop?
+
+
+"
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="YES" type="Button" parent="Action_Select/Popup"]
 layout_mode = 2
@@ -63,6 +70,8 @@ offset_left = 14.0
 offset_top = 262.0
 offset_right = 637.0
 offset_bottom = 293.0
+theme_override_fonts/font = ExtResource("3_54jpf")
+theme_override_font_sizes/font_size = 20
 text = "YES"
 
 [node name="NO" type="Button" parent="Action_Select/Popup"]
@@ -71,6 +80,8 @@ offset_left = 14.0
 offset_top = 297.0
 offset_right = 637.0
 offset_bottom = 328.0
+theme_override_fonts/font = ExtResource("3_54jpf")
+theme_override_font_sizes/font_size = 20
 text = "NO
 "
 

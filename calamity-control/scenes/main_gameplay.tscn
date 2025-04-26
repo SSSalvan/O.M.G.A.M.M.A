@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://ckdb64dsm6e8e"]
+[gd_scene load_steps=50 format=3 uid="uid://ckdb64dsm6e8e"]
 
 [ext_resource type="Script" uid="uid://c0dby3imeo58y" path="res://scripts/main_gameplay.gd" id="1_hfa5i"]
 [ext_resource type="Texture2D" uid="uid://qcsfxf23f088" path="res://assets/map/indoMap.png" id="1_rl3v5"]
@@ -67,6 +67,17 @@ font_size = 48
 
 [sub_resource type="LabelSettings" id="LabelSettings_toufg"]
 font_size = 48
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qieye"]
+bg_color = Color(0.187176, 0.187176, 0.187176, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 70
+corner_radius_top_right = 70
+corner_radius_bottom_right = 70
+corner_radius_bottom_left = 70
 
 [sub_resource type="GDScript" id="GDScript_nnxur"]
 script/source = "extends Control
@@ -266,7 +277,7 @@ position = Vector2(-1.31259, 429)
 scale = Vector2(0.399297, 0.468004)
 texture = ExtResource("3_axkgv")
 
-[node name="Sumatra" type="Button" parent="GameManager"]
+[node name="Riau" type="Button" parent="GameManager"]
 offset_left = -631.0
 offset_top = -167.0
 offset_right = -283.0
@@ -279,11 +290,11 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_jh0gp")
 icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
-[node name="Kalimantan" type="Button" parent="GameManager"]
-offset_left = -174.0
-offset_top = -180.0
-offset_right = 174.0
-offset_bottom = 168.0
+[node name="Kalimantan Barat" type="Button" parent="GameManager"]
+offset_left = -241.0
+offset_top = -169.0
+offset_right = 107.0
+offset_bottom = 179.0
 scale = Vector2(0.108824, 0.142647)
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_jh0gp")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jh0gp")
@@ -292,11 +303,11 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_58ik7")
 icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
-[node name="Papua" type="Button" parent="GameManager"]
-offset_left = 763.0
-offset_top = -46.0
-offset_right = 1111.0
-offset_bottom = 302.0
+[node name="Papua Pegunungan" type="Button" parent="GameManager"]
+offset_left = 769.0
+offset_top = -91.0
+offset_right = 1117.0
+offset_bottom = 257.0
 scale = Vector2(0.108824, 0.142647)
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_jh0gp")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jh0gp")
@@ -305,11 +316,11 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_fj2an")
 icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
-[node name="Jawa" type="Button" parent="GameManager"]
-offset_left = -317.0
-offset_top = 84.0
-offset_right = 31.0
-offset_bottom = 432.0
+[node name="DKI Jakarta" type="Button" parent="GameManager"]
+offset_left = -419.0
+offset_top = 64.0
+offset_right = -71.0
+offset_bottom = 412.0
 scale = Vector2(0.108824, 0.142647)
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_jh0gp")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jh0gp")
@@ -318,7 +329,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_un03y")
 icon = ExtResource("3_xa1hq")
 script = ExtResource("4_r8kal")
 
-[node name="Sulawesi" type="Button" parent="GameManager"]
+[node name="Sulawesi Tengah" type="Button" parent="GameManager"]
 offset_left = 80.0
 offset_top = -128.0
 offset_right = 428.0
@@ -453,6 +464,16 @@ theme_override_fonts/font = ExtResource("9_jh0gp")
 theme_override_font_sizes/font_size = 48
 text = "Show Province Status"
 
+[node name="Pause button" type="Button" parent="GameManager/User Interface"]
+offset_left = 522.0
+offset_top = -720.0
+offset_right = 625.0
+offset_bottom = -630.0
+theme_override_fonts/font = ExtResource("9_jh0gp")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_qieye")
+text = "Pause"
+
 [node name="StatRpt_Sumatra" parent="GameManager" instance=ExtResource("6_04qc1")]
 visible = false
 offset_left = -817.0
@@ -541,11 +562,11 @@ stream = ExtResource("14_58ik7")
 volume_db = -30.363
 autoplay = true
 
-[connection signal="pressed" from="GameManager/Sumatra" to="GameManager/Sumatra" method="_on_pressed"]
-[connection signal="pressed" from="GameManager/Kalimantan" to="GameManager/Kalimantan" method="_on_pressed"]
-[connection signal="pressed" from="GameManager/Papua" to="GameManager/Papua" method="_on_pressed"]
-[connection signal="pressed" from="GameManager/Jawa" to="GameManager/Jawa" method="_on_pressed"]
-[connection signal="pressed" from="GameManager/Sulawesi" to="GameManager/Sulawesi" method="_on_pressed"]
+[connection signal="pressed" from="GameManager/Riau" to="GameManager/Riau" method="_on_pressed"]
+[connection signal="pressed" from="GameManager/Kalimantan Barat" to="GameManager/Kalimantan Barat" method="_on_pressed"]
+[connection signal="pressed" from="GameManager/Papua Pegunungan" to="GameManager/Papua Pegunungan" method="_on_pressed"]
+[connection signal="pressed" from="GameManager/DKI Jakarta" to="GameManager/DKI Jakarta" method="_on_pressed"]
+[connection signal="pressed" from="GameManager/Sulawesi Tengah" to="GameManager/Sulawesi Tengah" method="_on_pressed"]
 [connection signal="pressed" from="GameManager/Bali" to="GameManager/Bali" method="_on_pressed"]
 [connection signal="pressed" from="GameManager/Maluku" to="GameManager/Maluku" method="_on_pressed"]
 [connection signal="pressed" from="GameManager/NTB" to="GameManager/NTB" method="_on_pressed"]
@@ -553,3 +574,4 @@ autoplay = true
 [connection signal="pressed" from="GameManager/Maluku Utara" to="GameManager/Maluku Utara" method="_on_pressed"]
 [connection signal="pressed" from="GameManager/User Interface/End Week" to="GameManager" method="_on_end_week_pressed"]
 [connection signal="pressed" from="GameManager/User Interface/Show Islands Status" to="GameManager" method="_on_show_islands_status_pressed"]
+[connection signal="pressed" from="GameManager/User Interface/Pause button" to="GameManager" method="_on_pause_button_pressed"]

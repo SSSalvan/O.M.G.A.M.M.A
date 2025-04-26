@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpw05yl81em5y"]
+[gd_scene load_steps=5 format=3 uid="uid://bbsxajlmij0iy"]
 
 [ext_resource type="Script" uid="uid://carp4km4ugbfh" path="res://island_status_panel.gd" id="1_x5wno"]
 [ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="2_1pu23"]
