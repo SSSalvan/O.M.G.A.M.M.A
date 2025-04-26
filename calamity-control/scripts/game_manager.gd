@@ -19,7 +19,7 @@ var events = [
 	{ "type": "negative", "name": "Deforestation", "emission_increase": 4, "cost": 250 },
 	{ "type": "positive", "name": "Reducing Fossil Fuel Usage", "resource_reward": 300, "emission_decrease": 5 },
 	{ "type": "positive", "name": "Stopping Deforestation", "resource_reward": 250, "emission_decrease": 3 },
-	{ "type": "minigame1", "name": "Trash Catching", "goal": "Catch all the trash floating in the water before time runs out.",
+	{ "type": "minigame1", "name": "Trash Catching", "goal": "Catch all the trash before time runs out.",
 		"resource_reward": 400, "emission_decrease": 5, 
 		"win_desc": "You've cleaned the water successfully! Marine life thrives again.",
 		"lose_desc": "Too much trash was left behind. Pollution levels rise...", "emission_increase": 3
@@ -94,11 +94,11 @@ func islandSetup():
 		$"Maluku Utara".visible = true
 	
 	if (islandCount>=1):
-		islands["Sumatra"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 0}
-		islands["Kalimantan"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 1}
-		islands["Papua"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 2}
-		islands["Jawa"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 3}
-		islands["Sulawesi"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 4}
+		islands["Riau"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 0}
+		islands["Kalimantan Barat"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 1}
+		islands["Papua Pegunungan"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 2}
+		islands["DKI Jakarta"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 3}
+		islands["Sulawesi Tengah"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 4}
 	if (islandCount>=2):
 		islands["Bali"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 5}
 		islands["Maluku"]= { "development": 0, "emission": randi_range(5, 12), "population": 100,  "type": 6}
@@ -159,10 +159,10 @@ func on_event_negated(island_name: String, event_data: Dictionary):
 	update_resource_label()
 
 func _on_show_islands_status_pressed() -> void:
-	var new_panel = preload("res://scenes/island_status_panel.tscn").instantiate()
-	add_child(new_panel)
+	var status_panel = preload("res://scenes/island_status_panel.tscn").instantiate()
+	add_child(status_panel)
 	
-	new_panel.populate(islands)
+	status_panel.populate(islands)
 	
 func _on_end_week_pressed() -> void:
 	var confirm_scene = load("res://scenes/week_end_confirmation.tscn").instantiate()
@@ -183,6 +183,8 @@ func _on_end_week_pressed() -> void:
 			print("ERROR: Signal 'confirmed' not found!") 
 		print("Button Pressed")
 		
+		
+
 func show_weekly_report():
 	var report_scene = load("res://scenes/weekly_report.tscn").instantiate()
 	add_child(report_scene)
@@ -232,7 +234,9 @@ func check_final_status():
 		print("You Lose!")
 		get_tree().change_scene_to_file("res://scenes/lose.tscn")
 
-
+func _on_pause_button_pressed() -> void:
+	var pause_scene = load("res://scenes/setting_menu.tscn").instantiate()
+	add_child(pause_scene)
 
 func weekly_income_resource():
 	ResourceCount.add_money(500)

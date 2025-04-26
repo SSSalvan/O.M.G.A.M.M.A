@@ -34,13 +34,19 @@ func set_event_data(_island_name: String, _event_data: Dictionary):
 		$BG_Event_Text/Ignore_Close.visible = false
 	
 	if event_data.type == \"minigame1\":
-		$BG_Event_Text/Event_Description.text = \"Complete the minigame to prevent the event: %s!\" % event_data.name
+		$BG_Event_Text/Event_Description.text = \"Minigame: %s\\nGoal: %s\" % [
+			event_data.name,
+			event_data.get(\"goal\", \"Complete the challenge!\")
+		]
 		$BG_Event_Text/Confirmation_Take_Action.text = \"Start\"
 		$BG_Event_Text/Ignore_Close.visible = true
 		$BG_Event_Text/Ignore_Close.text = \"Pass\"
 		
 	if event_data.type == \"minigame2\":
-		$BG_Event_Text/Event_Description.text = \"Complete the minigame to prevent the event: %s!\" % event_data.name
+		$BG_Event_Text/Event_Description.text = \"Minigame: %s\\nGoal: %s\" % [
+		event_data.name,
+		event_data.get(\"goal\", \"Complete the challenge!\")
+		]
 		$BG_Event_Text/Confirmation_Take_Action.text = \"Start\"
 		$BG_Event_Text/Ignore_Close.visible = true
 		$BG_Event_Text/Ignore_Close.text = \"Pass\"

@@ -1,5 +1,6 @@
 extends Button
 @onready var game_manager = get_node("/root/MainGameplay/GameManager")
+@onready var shopPanel = get_node("/root/ShopPanel")
 
 
 @export var province_name: String = ""  # Name of the province
@@ -82,10 +83,10 @@ func increase_development():
 	# Increase development level
 	development_level += 1
 	game_manager.increase_development(province_name, 0)
-	
+	shopPanel.refresh_item_labels()
 	game_manager.update_resource_label()
 	print(province_name + " has been developed: ", development_level, " times")
-
+	print("Current inventory:", ShopItems.itemCount)
 	# Clear cached required items for this province
 	cached_required_items.erase(province_name)
 	

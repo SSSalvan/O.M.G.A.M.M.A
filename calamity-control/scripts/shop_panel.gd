@@ -139,3 +139,17 @@ func _on_buy_anti_erosion_pressed() -> void:
 		print("Bought, now ", ShopItems.get_item_count(11), " Anti-Erosion Barrier")
 		print("Full inventory:", ShopItems.itemCount)  # Debug log
 		item11Label.text = "%d" % ShopItems.get_item_count(11)
+
+func refresh_item_labels():
+	item0Label.text = "%d" % ShopItems.get_item_count(0)
+	item1Label.text = "%d" % ShopItems.get_item_count(1)
+	item2Label.text = "%d" % ShopItems.get_item_count(2)
+	item3Label.text = "%d" % ShopItems.get_item_count(3)
+	item4Label.text = "%d" % ShopItems.get_item_count(4)
+	item5Label.text = "%d" % ShopItems.get_item_count(5)
+	item6Label.text = "%d" % ShopItems.get_item_count(6)
+	item7Label.text = "%d" % ShopItems.get_item_count(7)
+	item8Label.text = "%d" % ShopItems.get_item_count(8)
+	item9Label.text = "%d" % ShopItems.get_item_count(9)
+	item10Label.text = "%d" % ShopItems.get_item_count(10)
+	item11Label.text = "%d" % ShopItems.get_item_count(11)
