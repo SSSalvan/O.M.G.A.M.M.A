@@ -65,10 +65,10 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_gb8rl"]
-font_size = 48
+font_size = 30
 
 [sub_resource type="LabelSettings" id="LabelSettings_toufg"]
-font_size = 48
+font_size = 30
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qieye"]
 bg_color = Color(0, 0, 0, 0)
@@ -428,10 +428,10 @@ text = "Week: x"
 label_settings = SubResource("LabelSettings_gb8rl")
 
 [node name="Resource Counter" type="Label" parent="GameManager"]
-offset_left = -725.0
-offset_top = -515.0
-offset_right = -482.0
-offset_bottom = -470.0
+offset_left = -701.0
+offset_top = -518.0
+offset_right = -458.0
+offset_bottom = -473.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("9_jh0gp")
 theme_override_font_sizes/font_size = 32

@@ -1,0 +1,168 @@
+[gd_scene load_steps=4 format=3 uid="uid://vdvodwb137xd"]
+
+[ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="1_ievnb"]
+
+[sub_resource type="GDScript" id="GDScript_ievnb"]
+script/source = "extends CanvasLayer
+
+@onready var username_label: Label = $user_profile_panel/users_name
+@onready var playtime_label: Label = $user_profile_panel/playtime_detail
+@onready var wins_losses_label: Label = $user_profile_panel/wins_and_losses_details
+
+
+func _ready():
+	update_profile_display()
+
+func update_profile_display():
+	if UserData.current_user != \"\":
+		var user_data = UserData.get_user_data(UserData.current_user)
+		if user_data:
+			username_label.text = UserData.current_user
+			playtime_label.text = format_playtime(user_data.total_playtime)
+			wins_losses_label.text = str(user_data.games_won) + \" / \" + str(user_data.games_lost)
+		else:
+			printerr(\"Error: Could not retrieve user data for:\", UserData.current_user)
+	else:
+		username_label.text = \"Not Logged In\"
+		playtime_label.text = \"00:00:00.00\"
+		wins_losses_label.text = \"0 / 0\"
+
+func format_playtime(total_seconds: float) -> String:
+	var hours = floor(total_seconds / 3600)
+	var minutes = floor((total_seconds - hours * 3600) / 60)
+	var seconds = fmod(total_seconds, 60)
+	return \"%02d:%02d:%02.2f\" % [hours, minutes, seconds]
+
+func _on_back_pressed() -> void:
+	queue_free()
+
+func _on_log_out_pressed():
+	UserData.current_user = \"\"
+	get_tree().change_scene_to_file(\"res://scenes/main_menu.tscn\") # Adjust path as needed
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hnsv8"]
+bg_color = Color(0.129412, 0.117647, 0.129412, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="User_profile" type="CanvasLayer"]
+script = SubResource("GDScript_ievnb")
+
+[node name="user_profile_panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -261.0
+offset_top = -168.0
+offset_right = 261.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hnsv8")
+
+[node name="user_profile" type="Label" parent="user_profile_panel"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 10.0
+offset_right = 434.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("1_ievnb")
+theme_override_font_sizes/font_size = 28
+text = "User Profile"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="username" type="Label" parent="user_profile_panel"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 76.0
+offset_right = 117.0
+offset_bottom = 110.0
+theme_override_fonts/font = ExtResource("1_ievnb")
+theme_override_font_sizes/font_size = 20
+text = "Username:"
+vertical_alignment = 1
+
+[node name="users_name" type="Label" parent="user_profile_panel"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 76.0
+offset_right = 250.0
+offset_bottom = 110.0
+theme_override_fonts/font = ExtResource("1_ievnb")
+theme_override_font_sizes/font_size = 20
+text = "placeholder"
+vertical_alignment = 1
+
+[node name="playtime" type="Label" parent="user_profile_panel"]
+offset_left = 21.0
+offset_top = 140.0
+offset_right = 117.0
+offset_bottom = 174.0
+theme_override_fonts/font = ExtResource("1_ievnb")
+theme_override_font_sizes/font_size = 20
+text = "Playtime: "
+vertical_alignment = 1
+
+[node name="playtime_detail" type="Label" parent="user_profile_panel"]
+offset_left = 140.0
+offset_top = 140.0
+offset_right = 250.0
+offset_bottom = 174.0
+theme_override_fonts/font = ExtResource("1_ievnb")
+theme_override_font_sizes/font_size = 20
+text = "placeholder"
+vertical_alignment = 1
+
+[node name="wins_and_losses" type="Label" parent="user_profile_panel"]
+offset_left = 21.0
+offset_top = 203.0
+offset_right = 122.0
+offset_bottom = 237.0
+theme_override_fonts/font = ExtResource("1_ievnb")
+theme_override_font_sizes/font_size = 20
+text = "games won:"
+vertical_alignment = 1
+
+[node name="wins_and_losses_details" type="Label" parent="user_profile_panel"]
+offset_left = 140.0
+offset_top = 203.0
+offset_right = 250.0
+offset_bottom = 237.0
+theme_override_fonts/font = ExtResource("1_ievnb")
+theme_override_font_sizes/font_size = 20
+text = "X/x"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="back" type="Button" parent="user_profile_panel"]
+layout_mode = 0
+offset_left = 477.0
+offset_top = 12.0
+offset_right = 506.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("1_ievnb")
+theme_override_font_sizes/font_size = 28
+text = "x"
+
+[node name="log_out" type="Button" parent="user_profile_panel"]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 284.0
+offset_right = 341.0
+offset_bottom = 316.0
+theme_override_fonts/font = ExtResource("1_ievnb")
+theme_override_font_sizes/font_size = 28
+text = "Logout"
+
+[connection signal="pressed" from="user_profile_panel/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="user_profile_panel/log_out" to="." method="_on_log_out_pressed"]

@@ -9,8 +9,14 @@ var cached_required_items: Dictionary = {}  # Stores required items for each pro
 var difficulty: String = "medium"
 var week: int = 1
 var is_event_active: bool = false
-const MAX_WEEKS: int = 52
+const MAX_WEEKS: int = 5
 
+var current_session_start_time: float = 0.0
+var current_session_playtime: float = 0.0
+var total_playtime: float = 0.0
+var games_won: int = 0
+var games_lost: int = 0
+var current_username: String = ""
 
 var islands = {}
 
@@ -32,17 +38,19 @@ var events = [
 ]
 
 func _ready():
-	randomize() 
+	randomize()
 	difficulty = GameDifficulty.diff
 	diffCheck()
-	
+
 	ShopItems.resetItemQuantity()
 	UpgradeReq._init()
-	
+
 	islandSetup()
 	ResourceCount.resource = 500
 	update_week_label()
 	update_resource_label()
+
+	start_session_timer() # Start the timer when the game scene loads
 
 func diffCheck():
 	if difficulty == "easy":
@@ -54,6 +62,7 @@ func diffCheck():
 
 func _process(_delta: float) -> void:
 	update_resource_label()
+	update_playtime()
 	if not is_event_active and Input.is_action_just_pressed("ui_accept"):
 		_on_end_week_pressed()
 
@@ -218,7 +227,7 @@ func _on_report_closed():
 
 func check_final_status():
 	print("===== FINAL STATUS REPORT =====")
-	
+
 	var total_emission := 0
 	var total_population := 0
 	var all_dev_sufficient := true
@@ -239,6 +248,7 @@ func check_final_status():
 	# --- WIN / LOSE CONDITIONS ---
 	var emission_threshold = 0
 	var population_threshold = 0
+	var game_won: bool = false # Add a variable to track win/loss
 
 	match difficulty:
 		"easy":
@@ -253,11 +263,15 @@ func check_final_status():
 
 	if total_emission < emission_threshold and total_population > population_threshold:
 		print("You Win!")
+		game_won = true
 		get_tree().change_scene_to_file("res://scenes/winning.tscn")
 	else:
 		print("You Lose!")
+		game_won = false
 		get_tree().change_scene_to_file("res://scenes/lose.tscn")
 
+		end_game(game_won)
+	
 func _on_pause_button_pressed() -> void:
 	var pause_scene = load("res://scenes/setting_menu.tscn").instantiate()
 	add_child(pause_scene)
@@ -355,3 +369,73 @@ func generate_item_requirements(week: int) -> Dictionary:
 		item_requirements[item_name] = item_amount
 	
 	return item_requirements
+
+func set_current_user(username: String):
+	current_username = username
+	load_user_profile()
+	start_session_timer()
+
+func load_user_profile():
+	if current_username == "":
+		return
+
+	var path = "res://User/users.json"
+	if FileAccess.file_exists(path):
+		var file = FileAccess.open(path, FileAccess.READ)
+		var content = file.get_as_text()
+		var parsed = JSON.parse_string(content)
+		file.close()
+		if parsed is Dictionary and parsed.has(current_username):
+			var user_data = parsed[current_username]
+			total_playtime = user_data.get("total_playtime", 0.0)
+			games_won = user_data.get("games_won", 0)
+			games_lost = user_data.get("games_lost", 0)
+			print("Loaded user profile for:", current_username, "Playtime:", total_playtime, "Wins:", games_won, "Losses:", games_lost)
+		else:
+			print("User profile not found or invalid format for:", current_username)
+	else:
+		print("Warning: users.json not found.")
+
+func save_user_profile():
+	if current_username == "":
+		return
+
+	var path = "res://User/users.json"
+	var file = FileAccess.open(path, FileAccess.READ_WRITE)
+	var content = file.get_as_text()
+	var users_data = JSON.parse_string(content)
+	if not users_data is Dictionary:
+		users_data = {}
+
+	users_data[current_username] = {
+		"total_playtime": total_playtime,
+		"games_won": games_won,
+		"games_lost": games_lost
+	}
+
+	file.seek(0) # Go to the beginning of the file
+	file.store_string(JSON.stringify(users_data, "\t"))
+	file.truncate(file.get_position()) # Remove any remaining old content
+	file.close()
+	print("Saved user profile for:", current_username, "Playtime:", total_playtime, "Wins:", games_won, "Losses:", games_lost)
+
+func start_session_timer():
+	current_session_start_time = Time.get_unix_time_from_system()
+	current_session_playtime = 0.0
+	print("Session timer started.")
+
+func update_playtime():
+	if current_session_start_time > 0:
+		current_session_playtime = Time.get_unix_time_from_system() - current_session_start_time
+
+func end_game(won: bool):
+	update_playtime()
+	if UserData.current_user != "":
+		UserData.add_playtime(UserData.current_user, current_session_playtime)
+		if won:
+			UserData.add_win(UserData.current_user)
+		else:
+			UserData.add_loss(UserData.current_user)
+	current_session_start_time = 0.0 # Reset session timer
+	current_session_playtime = 0.0
+	print("Game ended. Total playtime and win/loss updated.")

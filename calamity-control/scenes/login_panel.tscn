@@ -1,0 +1,149 @@
+[gd_scene load_steps=4 format=3 uid="uid://q1ndhx5vtuuc"]
+
+[ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="1_qynjm"]
+
+[sub_resource type="GDScript" id="GDScript_qynjm"]
+script/source = "extends CanvasLayer
+
+@onready var username_input = $Panel/username_input
+@onready var password_input = $Panel/password_input
+
+func _ready():
+	visible = false
+
+func submit_login():
+	var username = username_input.text.strip_edges()
+	var password = password_input.text
+
+	if username == \"\" or password == \"\":
+		show_message(\"Username and password required.\")
+		return
+
+	if UserData.validate_login(username, password):
+		show_message(\"Login successful!\")
+		print(username + \" logged in\")
+		visible = false
+	else:
+		show_message(\"Invalid credentials.\")
+
+func show_message(msg):
+	print(msg)
+
+func _on_back_pressed() -> void:
+	visible = false
+	queue_free()
+
+func _on_confirm_pressed() -> void:
+	submit_login()
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r3goa"]
+bg_color = Color(0.129412, 0.117647, 0.129412, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="Login" type="CanvasLayer"]
+script = SubResource("GDScript_qynjm")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -261.0
+offset_top = -154.5
+offset_right = 261.0
+offset_bottom = 154.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r3goa")
+metadata/_edit_use_anchors_ = true
+
+[node name="login_title" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 15.5
+offset_right = 362.0
+offset_bottom = 55.5
+theme_override_fonts/font = ExtResource("1_qynjm")
+theme_override_font_sizes/font_size = 20
+text = "Login"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="username_label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 90.5
+offset_right = 133.0
+offset_bottom = 125.5
+theme_override_fonts/font = ExtResource("1_qynjm")
+theme_override_font_sizes/font_size = 20
+text = "Username: "
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="password_label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 174.5
+offset_right = 133.0
+offset_bottom = 209.5
+theme_override_fonts/font = ExtResource("1_qynjm")
+theme_override_font_sizes/font_size = 20
+text = "Password: "
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="username_input" type="TextEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 79.0
+offset_right = 469.0
+offset_bottom = 132.0
+theme_override_fonts/font = ExtResource("1_qynjm")
+theme_override_font_sizes/font_size = 20
+metadata/_edit_use_anchors_ = true
+
+[node name="password_input" type="LineEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 167.5
+offset_right = 469.0
+offset_bottom = 220.5
+theme_override_fonts/font = ExtResource("1_qynjm")
+theme_override_font_sizes/font_size = 20
+secret = true
+metadata/_edit_use_anchors_ = true
+
+[node name="back" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 467.0
+offset_top = 10.5
+offset_right = 508.0
+offset_bottom = 51.5
+theme_override_fonts/font = ExtResource("1_qynjm")
+text = "X"
+
+[node name="confirm" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 250.0
+offset_right = 368.0
+offset_bottom = 284.0
+theme_override_fonts/font = ExtResource("1_qynjm")
+theme_override_font_sizes/font_size = 32
+text = "confirm"
+
+[connection signal="pressed" from="Panel/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Panel/confirm" to="." method="_on_confirm_pressed"]

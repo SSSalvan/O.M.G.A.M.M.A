@@ -24,6 +24,7 @@ GameDifficulty="*res://game_difficulty.gd"
 ShopItems="*res://scripts/shop_items.gd"
 ShopPanel="*res://scenes/ShopPanel.tscn"
 UpgradeReq="*res://upgrade_req.gd"
+UserData="*res://user_data.gd"
 
 [display]
 

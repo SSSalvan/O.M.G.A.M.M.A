@@ -196,30 +196,6 @@ theme_override_fonts/font = ExtResource("10_lgwnu")
 theme_override_font_sizes/font_size = 32
 text = "Register"
 
-[node name="User_profile" type="Button" parent="MainMenu"]
-layout_mode = 0
-offset_left = -911.0
-offset_top = 116.0
-offset_right = -497.0
-offset_bottom = 242.0
-theme_override_fonts/font = ExtResource("10_lgwnu")
-theme_override_font_sizes/font_size = 32
-text = "User details"
-
-[node name="login_required_popup" type="Popup" parent="MainMenu"]
-size = Vector2i(300, 100)
-
-[node name="notif" type="Label" parent="MainMenu/login_required_popup"]
-offset_left = 1.0
-offset_top = 27.0
-offset_right = 299.0
-offset_bottom = 72.0
-theme_override_fonts/font = ExtResource("10_lgwnu")
-theme_override_font_sizes/font_size = 20
-text = "Please Log in First"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [connection signal="pressed" from="MainMenu/Play Game" to="MainMenu" method="_on_play_game_pressed"]
@@ -227,6 +203,3 @@ vertical_alignment = 1
 [connection signal="pressed" from="MainMenu/Exit Game" to="MainMenu" method="_on_exit_game_pressed"]
 [connection signal="pressed" from="MainMenu/Login" to="MainMenu" method="_on_login_pressed"]
 [connection signal="pressed" from="MainMenu/Register" to="MainMenu" method="_on_register_pressed"]
-[connection signal="pressed" from="MainMenu/User_profile" to="MainMenu" method="_on_user_profile_pressed"]
-[connection signal="close_requested" from="MainMenu/login_required_popup" to="MainMenu" method="_on_login_required_popup_close_requested"]
-[connection signal="visibility_changed" from="MainMenu/login_required_popup" to="MainMenu" method="_on_login_required_popup_visibility_changed"]
