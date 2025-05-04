@@ -8,7 +8,7 @@ func _ready():
 	_show_tutorial_popup()
 
 func _print_tree():
-	# get_tree().root.print_tree_pretty()
+	get_tree().root.print_tree_pretty()
 	pass
 
 func _show_tutorial_popup():
