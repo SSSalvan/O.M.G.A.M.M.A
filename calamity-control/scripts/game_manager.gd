@@ -278,7 +278,7 @@ func _on_pause_button_pressed() -> void:
 
 func weekly_income_resource():
 	ResourceCount.add_money(500)
-	update_resource_label()
+
 
 func update_week_label():
 	week_counter.text = "Week: " + str(week)
