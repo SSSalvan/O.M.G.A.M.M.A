@@ -130,7 +130,7 @@ offset_right = 122.0
 offset_bottom = 237.0
 theme_override_fonts/font = ExtResource("1_ievnb")
 theme_override_font_sizes/font_size = 20
-text = "games won:"
+text = "games w/l:"
 vertical_alignment = 1
 
 [node name="wins_and_losses_details" type="Label" parent="user_profile_panel"]
