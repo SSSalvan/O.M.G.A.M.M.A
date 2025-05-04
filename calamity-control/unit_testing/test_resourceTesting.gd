@@ -27,11 +27,15 @@ func test_end_week_resource_increase():
 
 func test_random_amount_end_week_resource_increase():
 	var game_manager = game_scene.get_node("GameManager")
-	var random_int = randi_range(100, 10000)
-	ResourceCount.resource = random_int
-	previousResource = ResourceCount.resource
-	game_manager.weekly_income_resource()
-	print("Running function: test_random_amount_end_week_resource_increase()")
-	print("Resource before week end: ", previousResource)
-	print("Resource after week end: ", ResourceCount.resource)
-	assert_eq(ResourceCount.resource, previousResource+500, "Resource should be increased by 500")
+	
+	for i in range(50): 
+		var random_int = randi_range(100, 10000)
+		ResourceCount.resource = random_int
+		previousResource = ResourceCount.resource
+		game_manager.weekly_income_resource()
+		
+		print("Run #%d" % (i + 1))
+		print("Resource before week end: ", previousResource)
+		print("Resource after week end: ", ResourceCount.resource)
+		
+		assert_eq(ResourceCount.resource, previousResource + 500, "Resource should be increased by 500")
