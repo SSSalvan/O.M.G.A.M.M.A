@@ -9,7 +9,7 @@ var cached_required_items: Dictionary = {}  # Stores required items for each pro
 var difficulty: String = "medium"
 var week: int = 1
 var is_event_active: bool = false
-const MAX_WEEKS: int = 5
+const MAX_WEEKS: int = 52
 
 var current_session_start_time: float = 0.0
 var current_session_playtime: float = 0.0
