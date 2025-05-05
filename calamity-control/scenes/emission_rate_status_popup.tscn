@@ -11,6 +11,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_k5wtt"]
 
 [node name="EmissionRateStatusPopup" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_1ke72")

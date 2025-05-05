@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://322fd6l0y614"]
+[gd_scene load_steps=5 format=3 uid="uid://322fd6l0y614"]
 
 [ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="1_gvynn"]
+[ext_resource type="FontFile" uid="uid://b0q0sf3psueg3" path="res://assets/font/PixelifySans-VariableFont_wght.ttf" id="2_th0y5"]
 
 [sub_resource type="GDScript" id="GDScript_gvynn"]
 script/source = "extends CanvasLayer
@@ -8,31 +9,70 @@ script/source = "extends CanvasLayer
 @onready var username_input = $register_panel/username_input
 @onready var password_input = $register_panel/password_input
 @onready var reenter_password_input = $register_panel/re_enter_password_input
+@onready var error_handling_label = $register_panel/error_handling
+
+var min_username_length = 8
+var min_password_length = 8
+var max_password_length = 32 
+var allowed_username_chars = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_\"
+var success_color = Color(\"green\") 
+var error_color = Color(\"red\")  
 
 func _ready():
 	visible = false
+	error_handling_label.text = \"\"
+	error_handling_label.modulate = error_color 
+
+func is_username_valid(username):
+	if username.length() < min_username_length:
+		show_message(\"Username must be at least %s characters long.\", error_color)
+		return false
+	for char in username:
+		if not allowed_username_chars.contains(char):
+			show_message(\"Username can only contain letters, numbers, and underscores.\", error_color)
+			return false
+	if UserData.users.has(username):
+		show_message(\"Username already exists.\", error_color)
+		return false
+	return true
+
+func is_password_valid(password):
+	if password.length() < min_password_length:
+		show_message(\"Password must be at least %s characters long.\", error_color)
+		return false
+	if password.length() > max_password_length:
+		show_message(\"Password cannot be longer than %s characters.\", error_color)
+		return false
+	return true
 
 func submit_register():
 	var username = username_input.text.strip_edges()
 	var password = password_input.text
 	var re_enter_password = reenter_password_input.text
 
-	if username == \"\" or password == \"\":
-		show_message(\"Username and password cannot be empty.\")
+	error_handling_label.text = \"\"
+	error_handling_label.modulate = error_color
+
+	if not is_username_valid(username):
+		return
+
+	if not is_password_valid(password):
 		return
 
 	if password != re_enter_password:
-		show_message(\"Passwords do not match.\")
+		show_message(\"Passwords do not match.\", error_color)
 		return
 
 	if UserData.register_user(username, password):
-		show_message(\"Registered successfully!\")
+		show_message(\"Registered successfully!\", success_color)
 		visible = false
 	else:
-		show_message(\"Username already exists.\")
+		show_message(\"Registration failed for an unknown reason.\", error_color)
 
-func show_message(msg):
+func show_message(msg: String, color: Color):
 	print(msg)
+	error_handling_label.text = msg
+	error_handling_label.modulate = color
 
 func _on_back_pressed() -> void:
 	visible = false
@@ -59,20 +99,25 @@ script = SubResource("GDScript_gvynn")
 [node name="register_panel" type="Panel" parent="."]
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.357463
+anchor_top = 0.576
 anchor_right = 0.5
-anchor_bottom = 0.382463
+anchor_bottom = 0.587111
 offset_left = -261.0
-offset_top = -0.0600281
+offset_top = -236.08
 offset_right = 261.0
-offset_bottom = 308.94
+offset_bottom = 99.92
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_th0y5")
 metadata/_edit_use_anchors_ = true
 
 [node name="register_title" type="Label" parent="register_panel"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00957854
+anchor_top = -0.00431034
+anchor_right = 0.00957854
+anchor_bottom = -0.00431034
 offset_left = 144.0
 offset_top = 15.5
 offset_right = 362.0
@@ -120,9 +165,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.366279
-anchor_top = -1.59541
+anchor_top = -1.5638
 anchor_right = -0.366279
-anchor_bottom = -1.58945
+anchor_bottom = -1.55784
 offset_left = 210.198
 offset_top = 747.472
 offset_right = 323.198
@@ -133,9 +178,9 @@ text = "re-enter:
 password "
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="username_input" type="TextEdit" parent="register_panel"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_top = -0.0711974
@@ -144,12 +189,12 @@ offset_left = 125.0
 offset_top = 79.0
 offset_right = 469.0
 offset_bottom = 132.0
-theme_override_fonts/font = ExtResource("1_gvynn")
-theme_override_font_sizes/font_size = 20
-placeholder_text = "enter username..."
-metadata/_edit_use_anchors_ = true
+theme_override_fonts/font = ExtResource("2_th0y5")
+theme_override_font_sizes/font_size = 14
+placeholder_text = "Username must be at least 8 characters long."
 
 [node name="password_input" type="LineEdit" parent="register_panel"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_top = -0.11584
@@ -158,28 +203,37 @@ offset_left = 125.0
 offset_top = 167.5
 offset_right = 469.0
 offset_bottom = 220.5
-theme_override_fonts/font = ExtResource("1_gvynn")
-theme_override_font_sizes/font_size = 20
-placeholder_text = "enter password..."
+theme_override_fonts/font = ExtResource("2_th0y5")
+theme_override_font_sizes/font_size = 14
+placeholder_text = "Password must be at least 8 characters long."
 secret = true
-metadata/_edit_use_anchors_ = true
 
 [node name="re_enter_password_input" type="LineEdit" parent="register_panel"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.366279
-anchor_top = -1.59541
+anchor_top = -1.5638
 anchor_right = -0.366279
-anchor_bottom = -1.59541
+anchor_bottom = -1.5638
 offset_left = 315.198
 offset_top = 740.472
 offset_right = 659.198
 offset_bottom = 793.472
-theme_override_fonts/font = ExtResource("1_gvynn")
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2_th0y5")
+theme_override_font_sizes/font_size = 14
 placeholder_text = "re-enter password..."
 secret = true
-metadata/_edit_use_anchors_ = true
+
+[node name="error_handling" type="Label" parent="register_panel"]
+layout_mode = 0
+offset_top = 250.0
+offset_right = 521.0
+offset_bottom = 286.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "sss"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="back" type="Button" parent="register_panel"]
 layout_mode = 0
@@ -192,10 +246,10 @@ text = "X"
 
 [node name="confirm" type="Button" parent="register_panel"]
 layout_mode = 0
-offset_left = 140.0
-offset_top = 278.0
-offset_right = 368.0
-offset_bottom = 312.0
+offset_left = 149.0
+offset_top = 294.0
+offset_right = 377.0
+offset_bottom = 328.0
 theme_override_fonts/font = ExtResource("1_gvynn")
 theme_override_font_sizes/font_size = 32
 text = "Confirm"
