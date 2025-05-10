@@ -25,7 +25,7 @@ This project was built in **Godot** as part of an academic game development proj
 - **Engine**: Godot 4.4
 - **Language**: GDScript
 - **Assets**: Pixel art, fonts, and royalty-free music
-- **Methodologies**: Object-Oriented Modeling (OOM), component-based game design
+- **Methodologies**: Object-Oriented Modeling (OOM), component-based game design, Human-Computer Interaction, Software Development Cycle
 
 ---
 
