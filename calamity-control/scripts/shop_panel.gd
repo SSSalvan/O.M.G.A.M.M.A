@@ -43,102 +43,40 @@ func _ready():
 	price10Label.text = "Price: %d" % ShopItems.itemPrice[10]
 	price11Label.text = "Price: %d" % ShopItems.itemPrice[11]
 
+func _process(_delta):
+	item0Label.text = "%d" % ShopItems.get_item_count(0)
+	item1Label.text = "%d" % ShopItems.get_item_count(1)
+	item2Label.text = "%d" % ShopItems.get_item_count(2)
+	item3Label.text = "%d" % ShopItems.get_item_count(3)
+	item4Label.text = "%d" % ShopItems.get_item_count(4)
+	item5Label.text = "%d" % ShopItems.get_item_count(5)
+	item6Label.text = "%d" % ShopItems.get_item_count(6)
+	item7Label.text = "%d" % ShopItems.get_item_count(7)
+	item8Label.text = "%d" % ShopItems.get_item_count(8)
+	item9Label.text = "%d" % ShopItems.get_item_count(9)
+	item10Label.text = "%d" % ShopItems.get_item_count(10)
+	item11Label.text = "%d" % ShopItems.get_item_count(11)
+
 # Standardized buy functions
-func _on_buy_panel_pressed() -> void:
-	if ResourceCount.resource >= ShopItems.itemPrice[0]:
-		ShopItems.add_item(0, 1)
-		ResourceCount.subtract_money(ShopItems.itemPrice[0])
-		print("Bought, now ", ShopItems.get_item_count(0), " Solar Panel")
-		print("Full inventory:", ShopItems.itemCount)  # Debug log
-		item0Label.text = "%d" % ShopItems.get_item_count(0)
+func _on_buy_panel_pressed(): buy_item(0, "Solar Panel")
+func _on_buy_turbin_pressed(): buy_item(1, "Wind Turbine")
+func _on_buy_education_pressed(): buy_item(2, "Climate Education")
+func _on_buy_reforestation_pressed(): buy_item(3, "Rainforest Restoration")
+func _on_buy_energy_plant_pressed(): buy_item(4, "Waste-to-Energy Plant")
+func _on_buy_electric_vehicle_pressed(): buy_item(5, "Electric Vehicle Subsidy")
+func _on_buy_green_building_pressed(): buy_item(6, "Green Building")
+func _on_buy_carbon_conservation_pressed(): buy_item(7, "Blue Carbon Conservation")
+func _on_buy_cleanup_drone_pressed(): buy_item(8, "Ocean Clean-up Drone")
+func _on_buy_storage_dome_pressed(): buy_item(9, "Carbon Storage Dome")
+func _on_buy_soil_restoration_pressed(): buy_item(10, "Soil Restoration Kit")
+func _on_buy_anti_erosion_pressed(): buy_item(11, "Anti-Erosion Barrier")
 
-func _on_buy_turbin_pressed() -> void:
-	if ResourceCount.resource >= ShopItems.itemPrice[1]:
-		ShopItems.add_item(1, 1)
-		ResourceCount.subtract_money(ShopItems.itemPrice[1])
-		print("Bought, now ", ShopItems.get_item_count(1), " Wind Turbine")
-		print("Full inventory:", ShopItems.itemCount)  # Debug log
-		item1Label.text = "%d" % ShopItems.get_item_count(1)
-
-func _on_buy_education_pressed() -> void:
-	if ResourceCount.resource >= ShopItems.itemPrice[2]:
-		ShopItems.add_item(2, 1)
-		ResourceCount.subtract_money(ShopItems.itemPrice[2])
-		print("Bought, now ", ShopItems.get_item_count(2), " Climate Education")
-		print("Full inventory:", ShopItems.itemCount)  # Debug log
-		item2Label.text = "%d" % ShopItems.get_item_count(2)
-
-func _on_buy_reforestation_pressed() -> void:
-	if ResourceCount.resource >= ShopItems.itemPrice[3]:
-		ShopItems.add_item(3, 1)
-		ResourceCount.subtract_money(ShopItems.itemPrice[3])
-		print("Bought, now ", ShopItems.get_item_count(3), " Rainforest Restoration")
-		print("Full inventory:", ShopItems.itemCount)  # Debug log
-		item3Label.text = "%d" % ShopItems.get_item_count(3)
-
-func _on_buy_energy_plant_pressed() -> void:
-	if ResourceCount.resource >= ShopItems.itemPrice[4]:
-		ShopItems.add_item(4, 1)
-		ResourceCount.subtract_money(ShopItems.itemPrice[4])
-		print("Bought, now ", ShopItems.get_item_count(4), " Waste-to-Energy Plant")
-		print("Full inventory:", ShopItems.itemCount)  # Debug log
-		item4Label.text = "%d" % ShopItems.get_item_count(4)
-
-func _on_buy_electric_vehicle_pressed() -> void:
-	if ResourceCount.resource >= ShopItems.itemPrice[5]:
-		ShopItems.add_item(5, 1)
-		ResourceCount.subtract_money(ShopItems.itemPrice[5])
-		print("Bought, now ", ShopItems.get_item_count(5), " Electric Vehicle Subsidy")
-		print("Full inventory:", ShopItems.itemCount)  # Debug log
-		item5Label.text = "%d" % ShopItems.get_item_count(5)
-
-func _on_buy_green_building_pressed() -> void:
-	if ResourceCount.resource >= ShopItems.itemPrice[6]:
-		ShopItems.add_item(6, 1)
-		ResourceCount.subtract_money(ShopItems.itemPrice[6])
-		print("Bought, now ", ShopItems.get_item_count(6), " Green Building")
-		print("Full inventory:", ShopItems.itemCount)  # Debug log
-		item6Label.text = "%d" % ShopItems.get_item_count(6)
-
-func _on_buy_carbon_conservation_pressed() -> void:
-	if ResourceCount.resource >= ShopItems.itemPrice[7]:
-		ShopItems.add_item(7, 1)
-		ResourceCount.subtract_money(ShopItems.itemPrice[7])
-		print("Bought, now ", ShopItems.get_item_count(7), " Blue Carbon Conservation")
-		print("Full inventory:", ShopItems.itemCount)  # Debug log
-		item7Label.text = "%d" % ShopItems.get_item_count(7)
-
-func _on_buy_cleanup_drone_pressed() -> void:
-	if ResourceCount.resource >= ShopItems.itemPrice[8]:
-		ShopItems.add_item(8, 1)
-		ResourceCount.subtract_money(ShopItems.itemPrice[8])
-		print("Bought, now ", ShopItems.get_item_count(8), " Ocean Clean-up Drone")
-		print("Full inventory:", ShopItems.itemCount)  # Debug log
-		item8Label.text = "%d" % ShopItems.get_item_count(8)
-
-func _on_buy_storage_dome_pressed() -> void:
-	if ResourceCount.resource >= ShopItems.itemPrice[9]:
-		ShopItems.add_item(9, 1)
-		ResourceCount.subtract_money(ShopItems.itemPrice[9])
-		print("Bought, now ", ShopItems.get_item_count(9), " Carbon Storage Dome")
-		print("Full inventory:", ShopItems.itemCount)  # Debug log
-		item9Label.text = "%d" % ShopItems.get_item_count(9)
-
-func _on_buy_soil_restoration_pressed() -> void:
-	if ResourceCount.resource >= ShopItems.itemPrice[10]:
-		ShopItems.add_item(10, 1)
-		ResourceCount.subtract_money(ShopItems.itemPrice[10])
-		print("Bought, now ", ShopItems.get_item_count(10), " Soil Restoration Kit")
-		print("Full inventory:", ShopItems.itemCount)  # Debug log
-		item10Label.text = "%d" % ShopItems.get_item_count(10)
-
-func _on_buy_anti_erosion_pressed() -> void:
-	if ResourceCount.resource >= ShopItems.itemPrice[11]:
-		ShopItems.add_item(11, 1)
-		ResourceCount.subtract_money(ShopItems.itemPrice[11])
-		print("Bought, now ", ShopItems.get_item_count(11), " Anti-Erosion Barrier")
-		print("Full inventory:", ShopItems.itemCount)  # Debug log
-		item11Label.text = "%d" % ShopItems.get_item_count(11)
+func buy_item(index: int, name: String) -> void:
+	if ResourceCount.resource >= ShopItems.itemPrice[index]:
+		ShopItems.add_item(index, 1)
+		ResourceCount.subtract_money(ShopItems.itemPrice[index])
+		print("Bought, now ", ShopItems.get_item_count(index), " ", name)
+		print("Full inventory:", ShopItems.itemCount)
 
 func refresh_item_labels():
 	item0Label.text = "%d" % ShopItems.get_item_count(0)
@@ -153,3 +91,32 @@ func refresh_item_labels():
 	item9Label.text = "%d" % ShopItems.get_item_count(9)
 	item10Label.text = "%d" % ShopItems.get_item_count(10)
 	item11Label.text = "%d" % ShopItems.get_item_count(11)
+
+func item_buy_test(number: int):
+	match number:
+		0:
+			_on_buy_panel_pressed()
+		1:
+			_on_buy_turbin_pressed()
+		2:
+			_on_buy_education_pressed()
+		3:
+			_on_buy_reforestation_pressed()
+		4:
+			_on_buy_energy_plant_pressed()
+		5:
+			_on_buy_electric_vehicle_pressed()
+		6:
+			_on_buy_green_building_pressed()
+		7:
+			_on_buy_carbon_conservation_pressed()
+		8:
+			_on_buy_cleanup_drone_pressed()
+		9:
+			_on_buy_storage_dome_pressed()
+		10:
+			_on_buy_soil_restoration_pressed()
+		11:
+			_on_buy_anti_erosion_pressed()
+		_:
+			print("Invalid item number:", number)
