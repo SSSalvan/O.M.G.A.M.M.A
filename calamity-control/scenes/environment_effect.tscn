@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://npd1ld5xj0gd"]
+
+[sub_resource type="GDScript" id="GDScript_jswd6"]
+script/source = "extends CanvasLayer
+
+@onready var overlay = $overlay
+
+var blinking = false
+
+func start_cloudy_overlay():
+	overlay.visible = true
+	overlay.color = Color(0.7, 0.7, 0.7, 0.5)  # light gray semi-transparent
+
+func stop_overlay():
+	overlay.visible = false
+
+func start_blinking(color: Color, duration := 2.0, blink_rate := 0.3):
+	blinking = true
+	overlay.color = color
+	overlay.visible = true
+	blink_loop(duration, blink_rate)
+
+func blink_loop(duration: float, rate: float) -> void:
+	var time_passed = 0.0
+	var visible = true
+	while time_passed < duration:
+		overlay.visible = visible
+		visible = !visible
+		await get_tree().create_timer(rate).timeout
+		time_passed += rate
+	overlay.visible = false
+	blinking = false
+"
+
+[node name="environment_effect" type="CanvasLayer"]
+script = SubResource("GDScript_jswd6")
+
+[node name="overlay" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.666667, 0.666667, 0.666667, 0.533333)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="overlay"]

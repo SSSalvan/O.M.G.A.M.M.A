@@ -1,12 +1,11 @@
 extends Button
 @onready var game_manager = get_node("/root/MainGameplay/GameManager")
 @onready var shopPanel = get_node("/root/ShopPanel")
-
-
+var FloatingText = preload("res://scenes/development_level_up.tscn")
 @export var province_name: String = ""  # Name of the province
 @export var development_level: int = 0  # Province-specific status
 var cached_required_items: Dictionary = {}  # Stores required items for each province
-var inventory: Dictionary = {}  # Initialize an empty dictionary to store items
+var inventory: Dictionary = {} 
 
 func _ready() -> void:
 	set_process_input(true)
@@ -81,12 +80,20 @@ func increase_development():
 			return
 
 	# Increase development level
-	development_level += 1
-	game_manager.increase_development(province_name, 0)
+	game_manager.increase_development(province_name, 1) # Pass the amount
+	development_level = game_manager.get_development_level(province_name)
 	shopPanel.refresh_item_labels()
 	game_manager.update_resource_label()
+
 	print(province_name + " has been developed: ", development_level, " times")
 	print("Current inventory:", ShopItems.itemCount)
+
+	var floating_text = FloatingText.instantiate()
+	floating_text.global_position = global_position
+	get_parent().add_child(floating_text)
+	floating_text.set_text(province_name + "\nDev +1")
+
+
 	# Clear cached required items for this province
 	cached_required_items.erase(province_name)
 	

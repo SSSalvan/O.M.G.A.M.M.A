@@ -37,6 +37,9 @@ var events = [
 	}
 ]
 
+var EnvironmentEffectScene = preload("res://scenes/environment_effect.tscn")
+var environment_effect_instance = null
+
 func _ready():
 	randomize()
 	difficulty = GameDifficulty.diff
@@ -217,13 +220,17 @@ func next_week():
 	if week < MAX_WEEKS:
 		show_weekly_report()
 	else:
-		print("10 weeks completed. Checking final status report...")
+		print("52 weeks completed. Checking final status report...")
 		check_final_status()
 
 func _on_report_closed():
 	week += 1
 	update_week_label()
 	trigger_random_events()
+	
+	# check total emission for visual updates
+	var total_emission = get_total_emission()
+	update_game_state(total_emission)
 
 func check_final_status():
 	print("===== FINAL STATUS REPORT =====")
@@ -248,17 +255,17 @@ func check_final_status():
 	# --- WIN / LOSE CONDITIONS ---
 	var emission_threshold = 0
 	var population_threshold = 0
-	var game_won: bool = false # Add a variable to track win/loss
+	var game_won: bool = false 
 
 	match difficulty:
 		"easy":
-			emission_threshold = 80
+			emission_threshold = 90
 			population_threshold = 3000
 		"medium":
-			emission_threshold = 60
+			emission_threshold = 70
 			population_threshold = 7000
 		"hard":
-			emission_threshold = 40
+			emission_threshold = 60
 			population_threshold = 9000
 
 	if total_emission < emission_threshold and total_population > population_threshold:
@@ -287,6 +294,25 @@ func update_week_label():
 func update_resource_label():
 	resource_counter.text = "Resource: " + str(ResourceCount.resource)
 
+func get_total_emission() -> float:
+	var total_emission = 0
+	for island_name in islands.keys():
+		total_emission += islands[island_name]["emission"]
+	return total_emission
+
+func update_game_state(emission_level):
+	if emission_level > 50: # testing only: subject to change
+		if environment_effect_instance == null:
+			environment_effect_instance = EnvironmentEffectScene.instantiate()
+			add_child(environment_effect_instance)
+		
+		environment_effect_instance.start_cloudy_overlay()
+	else:
+		# If emission is low, remove the instance
+		if environment_effect_instance != null:
+			environment_effect_instance.queue_free()
+			environment_effect_instance = null
+			
 # Function to dynamically update development level
 func increase_development(province_name: String, amount: int):
 	var province_node = get_tree().root.get_node("MainGameplay/GameManager/" + province_name)
@@ -310,7 +336,9 @@ func check_development_requirements():
 		var required_dev: int = 0
 
 		# Calculate required development based on week intervals
-		if week < 15:
+		if week < 4:
+			required_dev = 0
+		elif week < 15:
 			required_dev = randi_range(1, 2) 
 		elif week < 30:
 			required_dev = randi_range(3, 4) 
@@ -323,7 +351,7 @@ func check_development_requirements():
 
 		if dev_level < required_dev:
 			# Apply penalties if development is insufficient
-			var emission_increase = randi_range(1, 4)
+			var emission_increase = randi_range(1, 3)
 			var pop_loss = int(emission * 0.5)
 			islands[island]["emission"] = clamp(emission + emission_increase, 0, 100)
 			islands[island]["population"] = max(population - pop_loss, 0)
