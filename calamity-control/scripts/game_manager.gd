@@ -256,7 +256,7 @@ func check_final_status():
 		total_emission += data["emission"]
 		total_population += data["population"]
 
-	if total_emission < emission_threshold and total_population > population_threshold:
+	if week == MAX_WEEKS and total_emission < emission_threshold and total_population > population_threshold:
 		print("You Win!")
 		get_tree().change_scene_to_file("res://scenes/winning.tscn")
 		end_game(true)
