@@ -142,10 +142,11 @@ text = "CALAMITY CONTROL"
 
 [node name="Play Game" type="Button" parent="MainMenu"]
 layout_mode = 2
-offset_left = -884.0
-offset_top = 432.0
-offset_right = -683.0
-offset_bottom = 494.0
+offset_left = -758.0
+offset_top = 408.0
+offset_right = -526.48
+offset_bottom = 478.0
+scale = Vector2(1.38, 1.38)
 theme = SubResource("Theme_tbmy8")
 theme_override_fonts/font = ExtResource("10_lgwnu")
 theme_override_font_sizes/font_size = 32
@@ -154,10 +155,11 @@ text = "Play Game"
 
 [node name="Credts" type="Button" parent="MainMenu"]
 layout_mode = 2
-offset_left = 304.0
-offset_top = 424.0
-offset_right = 528.0
-offset_bottom = 494.0
+offset_left = -150.0
+offset_top = 408.0
+offset_right = 81.52
+offset_bottom = 478.0
+scale = Vector2(1.38, 1.38)
 theme_override_fonts/font = ExtResource("10_lgwnu")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = ExtResource("1_21kk1")
@@ -166,37 +168,19 @@ text = "Credits
 
 [node name="Exit Game" type="Button" parent="MainMenu"]
 layout_mode = 2
-offset_left = 702.0
-offset_top = 424.0
-offset_right = 908.0
-offset_bottom = 494.0
+offset_left = 474.0
+offset_top = 408.0
+offset_right = 705.52
+offset_bottom = 478.0
+scale = Vector2(1.38, 1.38)
 theme_override_fonts/font = ExtResource("10_lgwnu")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = ExtResource("1_21kk1")
 text = "Exit Game
 "
 
-[node name="Login" type="Button" parent="MainMenu"]
-layout_mode = 0
-offset_left = -482.0
-offset_top = 425.0
-offset_right = -258.0
-offset_bottom = 495.0
-theme_override_fonts/font = ExtResource("10_lgwnu")
-theme_override_font_sizes/font_size = 32
-text = "Login"
-
-[node name="Register" type="Button" parent="MainMenu"]
-layout_mode = 0
-offset_left = -99.0
-offset_top = 422.0
-offset_right = 125.0
-offset_bottom = 492.0
-theme_override_fonts/font = ExtResource("10_lgwnu")
-theme_override_font_sizes/font_size = 32
-text = "Register"
-
 [node name="User_profile" type="Button" parent="MainMenu"]
+visible = false
 layout_mode = 0
 offset_left = -911.0
 offset_top = 116.0
@@ -225,8 +209,6 @@ vertical_alignment = 1
 [connection signal="pressed" from="MainMenu/Play Game" to="MainMenu" method="_on_play_game_pressed"]
 [connection signal="pressed" from="MainMenu/Credts" to="MainMenu" method="_on_credts_pressed"]
 [connection signal="pressed" from="MainMenu/Exit Game" to="MainMenu" method="_on_exit_game_pressed"]
-[connection signal="pressed" from="MainMenu/Login" to="MainMenu" method="_on_login_pressed"]
-[connection signal="pressed" from="MainMenu/Register" to="MainMenu" method="_on_register_pressed"]
 [connection signal="pressed" from="MainMenu/User_profile" to="MainMenu" method="_on_user_profile_pressed"]
 [connection signal="close_requested" from="MainMenu/login_required_popup" to="MainMenu" method="_on_login_required_popup_close_requested"]
 [connection signal="visibility_changed" from="MainMenu/login_required_popup" to="MainMenu" method="_on_login_required_popup_visibility_changed"]

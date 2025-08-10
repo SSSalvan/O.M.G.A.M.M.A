@@ -4,13 +4,11 @@ func _ready() -> void:
 	pass
 
 func _on_play_game_pressed() -> void:
-	if UserData.current_user != "":
 		get_tree().paused = true
 		get_node("/root/LevelDifficultiesSelect/.").visible = true
 		get_node("/root/LevelDifficultiesSelect/level_diff_anim").play("Transition_In_level_diff")
 		get_tree().paused = false
-	else:
-		print("Please log in first")
+
 
 func _on_exit_game_pressed() -> void:
 	get_tree().quit()
