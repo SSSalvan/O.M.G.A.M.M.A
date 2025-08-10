@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b8k1hcsqo3jn0"]
+[gd_scene load_steps=11 format=3 uid="uid://b8k1hcsqo3jn0"]
 
 [ext_resource type="Script" uid="uid://b8tgvyd75xb4y" path="res://scripts/panel_container.gd" id="1_ai4rf"]
 [ext_resource type="Script" uid="uid://bdrb81cd1ldpw" path="res://scripts/winning_screen.gd" id="1_amw80"]
 [ext_resource type="Texture2D" uid="uid://qcsfxf23f088" path="res://assets/map/indoMap.png" id="1_oadui"]
 [ext_resource type="FontFile" uid="uid://b2kv35js2pjin" path="res://assets/font/Stacked pixel.ttf" id="2_mg68r"]
 [ext_resource type="StyleBox" uid="uid://d0t507jbbigq3" path="res://assets/ui/Placeholder UI/placeholder_button_stylebox_hover.tres" id="3_oeypd"]
-[ext_resource type="Texture2D" uid="uid://carjtoykfxl4e" path="res://assets/sprites/Sprite-0002.png" id="4_1ysqr"]
 [ext_resource type="Texture2D" uid="uid://wjln2twwvxhe" path="res://assets/sprites/OmGammaAward.jpeg" id="5_ai4rf"]
 [ext_resource type="Texture2D" uid="uid://ffnskiom5i6y" path="res://assets/ui/Menu_logo.png" id="6_1ysqr"]
 [ext_resource type="Texture2D" uid="uid://d062j7rh223y0" path="res://assets/sprites/Yesking.png" id="8_6au2w"]
@@ -96,7 +95,6 @@ text = "Exit"
 [node name="Sprite-0002" type="Sprite2D" parent="."]
 position = Vector2(463, 572)
 scale = Vector2(1.82031, 1.91406)
-texture = ExtResource("4_1ysqr")
 
 [node name="OmGammaAward" type="Sprite2D" parent="."]
 position = Vector2(1120, 593)
