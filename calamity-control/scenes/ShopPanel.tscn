@@ -130,7 +130,7 @@ offset_top = 3.0
 offset_right = 96.0
 offset_bottom = 26.0
 theme_override_fonts/font = ExtResource("3_xf0ew")
-text = "Soalr Panel"
+text = "Solar Panel"
 metadata/_edit_use_anchors_ = true
 
 [node name="QuantityPanel" type="Label" parent="BG_ShopPanel/PanelSurya"]

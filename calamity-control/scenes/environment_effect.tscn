@@ -1,36 +1,82 @@
-[gd_scene load_steps=2 format=3 uid="uid://npd1ld5xj0gd"]
+[gd_scene load_steps=9 format=3 uid="uid://npd1ld5xj0gd"]
+
+[ext_resource type="Texture2D" uid="uid://dh2lm17jry0rx" path="res://assets/sprites/smoke_particles.png" id="1_tcu3o"]
 
 [sub_resource type="GDScript" id="GDScript_jswd6"]
 script/source = "extends CanvasLayer
 
-@onready var overlay = $overlay
+@onready var particles_1 = $Smoke_effect1
+@onready var particles_2 = $Smoke_effect2
+@onready var particles_3 = $Smoke_effect3
 
 var blinking = false
 
 func start_cloudy_overlay():
-	overlay.visible = true
-	overlay.color = Color(0.7, 0.7, 0.7, 0.5)  # light gray semi-transparent
+	particles_1.emitting = true
+	particles_2.emitting = true
+	particles_3.emitting = true
 
 func stop_overlay():
-	overlay.visible = false
+	particles_1.emitting = false
+	particles_2.emitting = false
+	particles_3.emitting = false
 
-func start_blinking(color: Color, duration := 2.0, blink_rate := 0.3):
+func start_blinking(duration := 2.0, blink_rate := 0.3):
 	blinking = true
-	overlay.color = color
-	overlay.visible = true
 	blink_loop(duration, blink_rate)
 
 func blink_loop(duration: float, rate: float) -> void:
 	var time_passed = 0.0
 	var visible = true
 	while time_passed < duration:
-		overlay.visible = visible
 		visible = !visible
+		particles_1.visible = visible
+		particles_2.visible = visible
+		particles_3.visible = visible
 		await get_tree().create_timer(rate).timeout
 		time_passed += rate
-	overlay.visible = false
 	blinking = false
 "
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gm04j"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_x075j"]
+_data = [Vector2(0, 0.0224719), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.30979, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wpbyy"]
+width = 128
+curve = SubResource("Curve_x075j")
+
+[sub_resource type="Gradient" id="Gradient_jswd6"]
+offsets = PackedFloat32Array(0.803279, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.14902)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tcu3o"]
+gradient = SubResource("Gradient_jswd6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gm04j"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(30, 10.04, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+inherit_velocity_ratio = 0.65
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, -90.8, 0)
+damping_max = 20.0
+scale_max = 6.0
+scale_over_velocity_max = 1000.0
+color_ramp = SubResource("GradientTexture1D_tcu3o")
+hue_variation_min = -2.23517e-08
+hue_variation_max = -2.23517e-08
+anim_offset_max = 1.0
+anim_offset_curve = SubResource("CurveTexture_wpbyy")
 
 [node name="environment_effect" type="CanvasLayer"]
 script = SubResource("GDScript_jswd6")
@@ -46,3 +92,30 @@ mouse_filter = 2
 color = Color(0.666667, 0.666667, 0.666667, 0.533333)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="overlay"]
+
+[node name="Smoke_effect1" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_gm04j")
+position = Vector2(932, 498)
+scale = Vector2(30, 30)
+amount = 10
+texture = ExtResource("1_tcu3o")
+process_material = SubResource("ParticleProcessMaterial_gm04j")
+
+[node name="Smoke_effect2" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_gm04j")
+position = Vector2(932, 498)
+scale = Vector2(30, 30)
+amount = 10
+texture = ExtResource("1_tcu3o")
+process_material = SubResource("ParticleProcessMaterial_gm04j")
+
+[node name="Smoke_effect3" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_gm04j")
+position = Vector2(932, 498)
+scale = Vector2(30, 30)
+amount = 10
+texture = ExtResource("1_tcu3o")
+process_material = SubResource("ParticleProcessMaterial_gm04j")

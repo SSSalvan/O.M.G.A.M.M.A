@@ -29,7 +29,6 @@ extends CanvasLayer
 @onready var price11Label: Label = $BG_ShopPanel/AntiErosionBarrier/PriceAntiErosion
 
 func _ready():
-	# Set up price labels
 	price0Label.text = "Price: %d" % ShopItems.itemPrice[0]
 	price1Label.text = "Price: %d" % ShopItems.itemPrice[1]
 	price2Label.text = "Price: %d" % ShopItems.itemPrice[2]
@@ -57,7 +56,6 @@ func _process(_delta):
 	item10Label.text = "%d" % ShopItems.get_item_count(10)
 	item11Label.text = "%d" % ShopItems.get_item_count(11)
 
-# Standardized buy functions
 func _on_buy_panel_pressed(): buy_item(0, "Solar Panel")
 func _on_buy_turbin_pressed(): buy_item(1, "Wind Turbine")
 func _on_buy_education_pressed(): buy_item(2, "Climate Education")

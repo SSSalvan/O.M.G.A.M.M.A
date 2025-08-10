@@ -2,6 +2,7 @@ extends Node
 
 @onready var week_counter: Label = $"Week Counter"
 @onready var resource_counter: Label = $"Resource Counter"
+@onready var total_population_emission: Label = $"Total Count Population_Emission"
 @onready var game_manager = get_parent().get_parent()
 
 var howmanyisland: int = 0
@@ -10,6 +11,8 @@ var difficulty: String = "medium"
 var week: int = 1
 var is_event_active: bool = false
 const MAX_WEEKS: int = 52
+var emission_threshold: int = 0
+var population_threshold: int = 0
 
 var current_session_start_time: float = 0.0
 var current_session_playtime: float = 0.0
@@ -52,6 +55,8 @@ func _ready():
 	ResourceCount.resource = 500
 	update_week_label()
 	update_resource_label()
+	update_population_emission_label()
+
 
 	start_session_timer() # Start the timer when the game scene loads
 
@@ -92,39 +97,45 @@ func _on_difficulty_selected(selected_difficulty: String) -> void:
 
 func islandSetup():
 	var pop_base = 750
-	var islandCount = 0;
+	var islandCount = 0
 	if difficulty == "easy":
 		islandCount = 1
 		howmanyisland = 5
+		emission_threshold = 80
+		population_threshold = 3000
 	elif difficulty == "medium":
 		pop_base = 1500
 		islandCount = 2
 		howmanyisland = 7
+		emission_threshold = 120
+		population_threshold = 7000
 		$Bali.visible = true
 		$Maluku.visible = true
 	elif difficulty == "hard":
 		pop_base = 2000
 		islandCount = 3
 		howmanyisland = 10
+		emission_threshold = 150
+		population_threshold = 9000
 		$Bali.visible = true
 		$Maluku.visible = true
 		$NTB.visible = true
 		$NTT.visible = true
 		$"Maluku Utara".visible = true
-	
+
 	if (islandCount>=1):
-		islands["Riau"]= { "development": 0, "emission": randi_range(5, 12), "population": pop_base + randi_range(0, 200),  "type": 0}
-		islands["Kalimantan Barat"]= { "development": 0, "emission": randi_range(5, 12), "population": pop_base + randi_range(0, 200),  "type": 1}
-		islands["Papua Pegunungan"]= { "development": 0, "emission": randi_range(5, 12), "population": pop_base + randi_range(0, 200),  "type": 2}
-		islands["DKI Jakarta"]= { "development": 0, "emission": randi_range(5, 12), "population": pop_base + randi_range(0, 200),  "type": 3}
-		islands["Sulawesi Tengah"]= { "development": 0, "emission": randi_range(5, 12), "population": pop_base + randi_range(0, 200),  "type": 4}
+		islands["Riau"]= { "development": 0, "emission": randi_range(5, 8), "population": pop_base + randi_range(0, 200),  "type": 0}
+		islands["Kalimantan Barat"]= { "development": 0, "emission": randi_range(5, 8), "population": pop_base + randi_range(0, 200),  "type": 1}
+		islands["Papua Pegunungan"]= { "development": 0, "emission": randi_range(5, 8), "population": pop_base + randi_range(0, 200),  "type": 2}
+		islands["DKI Jakarta"]= { "development": 0, "emission": randi_range(5, 8), "population": pop_base + randi_range(0, 200),  "type": 3}
+		islands["Sulawesi Tengah"]= { "development": 0, "emission": randi_range(5, 8), "population": pop_base + randi_range(0, 200),  "type": 4}
 	if (islandCount>=2):
-		islands["Bali"]= { "development": 0, "emission": randi_range(5, 12), "population": pop_base + randi_range(0, 200),  "type": 5}
-		islands["Maluku"]= { "development": 0, "emission": randi_range(5, 12), "population": pop_base + randi_range(0, 200),  "type": 6}
+		islands["Bali"]= { "development": 0, "emission": randi_range(5, 8), "population": pop_base + randi_range(0, 200),  "type": 5}
+		islands["Maluku"]= { "development": 0, "emission": randi_range(5, 8), "population": pop_base + randi_range(0, 200),  "type": 6}
 	if (islandCount>=3):
-		islands["Ntt"]= { "development": 0, "emission": randi_range(5, 12), "population": pop_base + randi_range(0, 200),  "type": 7}
-		islands["Ntb"]= { "development": 0, "emission": randi_range(5, 12), "population": pop_base + randi_range(0, 200),  "type": 8}
-		islands["Maluku Utara"]= { "development": 0, "emission": randi_range(5, 12), "population": pop_base + randi_range(0, 200),  "type": 9}
+		islands["Ntt"]= { "development": 0, "emission": randi_range(5, 8), "population": pop_base + randi_range(0, 200),  "type": 7}
+		islands["Ntb"]= { "development": 0, "emission": randi_range(5, 8), "population": pop_base + randi_range(0, 200),  "type": 8}
+		islands["Maluku Utara"]= { "development": 0, "emission": randi_range(5, 8), "population": pop_base + randi_range(0, 200),  "type": 9}
 	
 func show_event_popup(island_name: String, event_data: Dictionary):
 	if is_event_active:
@@ -228,64 +239,42 @@ func _on_report_closed():
 	update_week_label()
 	trigger_random_events()
 	
-	# check total emission for visual updates
 	var total_emission = get_total_emission()
 	update_game_state(total_emission)
+	update_population_emission_label()
+	
+	check_final_status()
 
 func check_final_status():
 	print("===== FINAL STATUS REPORT =====")
 
 	var total_emission := 0
 	var total_population := 0
-	var all_dev_sufficient := true
 
 	for island in islands.keys():
 		var data = islands[island]
-		var dev = data["development"]
-		var emission = data["emission"]
-		var pop = data["population"]
-
-		total_emission += emission
-		total_population += pop
-
-		print(island + ": Development = " + str(dev) +
-			  ", Emission = " + str(emission) +
-			  ", Population = " + str(pop))
-
-	# --- WIN / LOSE CONDITIONS ---
-	var emission_threshold = 0
-	var population_threshold = 0
-	var game_won: bool = false 
-
-	match difficulty:
-		"easy":
-			emission_threshold = 90
-			population_threshold = 3000
-		"medium":
-			emission_threshold = 70
-			population_threshold = 7000
-		"hard":
-			emission_threshold = 60
-			population_threshold = 9000
+		total_emission += data["emission"]
+		total_population += data["population"]
 
 	if total_emission < emission_threshold and total_population > population_threshold:
 		print("You Win!")
-		game_won = true
 		get_tree().change_scene_to_file("res://scenes/winning.tscn")
-	else:
+		end_game(true)
+	elif total_population < population_threshold:
 		print("You Lose!")
-		game_won = false
 		get_tree().change_scene_to_file("res://scenes/lose.tscn")
-
-		end_game(game_won)
-	
+		end_game(false)
+	elif total_emission > emission_threshold:
+		print("You Lose!")
+		get_tree().change_scene_to_file("res://scenes/lose.tscn")
+		end_game(false)
+		
 func _on_pause_button_pressed() -> void:
 	var pause_scene = load("res://scenes/setting_menu.tscn").instantiate()
 	add_child(pause_scene)
 
 func weekly_income_resource():
 	ResourceCount.add_money(500)
-
 
 func update_week_label():
 	week_counter.text = "Week: " + str(week)
@@ -294,26 +283,57 @@ func update_week_label():
 func update_resource_label():
 	resource_counter.text = "Resource: " + str(ResourceCount.resource)
 
+func update_population_emission_label():
+	var total_emission := 0
+	var total_population := 0
+
+	for island_data in islands.values():
+		total_emission += island_data["emission"]
+		total_population += island_data["population"]
+
+	total_population_emission.text = (
+		"Total Population: %d / %d | Total Emission: %d / %d"
+		% [total_population, population_threshold, total_emission, emission_threshold]
+	)
+
 func get_total_emission() -> float:
 	var total_emission = 0
 	for island_name in islands.keys():
 		total_emission += islands[island_name]["emission"]
 	return total_emission
 
+
 func update_game_state(emission_level):
-	if emission_level > 50: # testing only: subject to change
-		if environment_effect_instance == null:
-			environment_effect_instance = EnvironmentEffectScene.instantiate()
-			add_child(environment_effect_instance)
-		
-		environment_effect_instance.start_cloudy_overlay()
+	var level1 = emission_threshold * 0.5
+	var level2 = emission_threshold * 0.75
+	var level3 = emission_threshold * 0.9
+
+	if environment_effect_instance == null:
+		environment_effect_instance = EnvironmentEffectScene.instantiate()
+		add_child(environment_effect_instance)
+
+	if emission_level < level1:
+		# No smoke
+		environment_effect_instance.particles_1.emitting = false
+		environment_effect_instance.particles_2.emitting = false
+		environment_effect_instance.particles_3.emitting = false
+	elif emission_level < level2:
+		# Light smoke
+		environment_effect_instance.particles_1.emitting = true
+		environment_effect_instance.particles_2.emitting = false
+		environment_effect_instance.particles_3.emitting = false
+	elif emission_level < level3:
+		# Medium smoke
+		environment_effect_instance.particles_1.emitting = true
+		environment_effect_instance.particles_2.emitting = true
+		environment_effect_instance.particles_3.emitting = false
 	else:
-		# If emission is low, remove the instance
-		if environment_effect_instance != null:
-			environment_effect_instance.queue_free()
-			environment_effect_instance = null
-			
-# Function to dynamically update development level
+		# Heavy smoke
+		environment_effect_instance.particles_1.emitting = true
+		environment_effect_instance.particles_2.emitting = true
+		environment_effect_instance.particles_3.emitting = true
+
+
 func increase_development(province_name: String, amount: int):
 	var province_node = get_tree().root.get_node("MainGameplay/GameManager/" + province_name)
 	if province_node:
@@ -335,7 +355,6 @@ func check_development_requirements():
 		var emission = islands[island]["emission"]
 		var required_dev: int = 0
 
-		# Calculate required development based on week intervals
 		if week < 4:
 			required_dev = 0
 		elif week < 15:
